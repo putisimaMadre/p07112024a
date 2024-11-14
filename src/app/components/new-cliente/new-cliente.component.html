@@ -1,0 +1,10 @@
+<p>new-cliente works!</p>
+<form [formGroup]="formCliente">
+    <label for="">nombre</label>
+    <input type="text" formControlName="nombre">
+    <label for="">apellido</label>
+    <input type="text" formControlName="apellido">
+    <label for="">telefono</label>
+    <input type="text" formControlName="telefono">
+    <button (click)="guardarCliente()">Guardar Cliente</button>
+</form>

@@ -1,0 +1,280 @@
+<div class="grid">
+    <div class="col-offset-3"></div>
+    <div class="col-7">
+        <h1 style="text-align: center;">Historia Clínica Odontología</h1>
+    </div>
+</div>
+
+<div class="grid">
+    <div class="col-12">
+    <mat-stepper #stepper>
+        <mat-step >
+          <!--form uno-->
+          <form [formGroup] = "formDatosGenerales">
+            <ng-template matStepLabel>Datos Generales</ng-template>
+            <div class="grid">
+                <div class="col-offset-1"></div>
+                <mat-form-field class="col-4">
+                    <mat-label>Nombre</mat-label>
+                    <input matInput type="text" formControlName="nombre">
+                </mat-form-field>
+                <mat-form-field class="col-4">
+                    <mat-label>Fecha de nacimiento</mat-label>
+                    <input matInput [matDatepicker]="picker" formControlName="fechaNacimiento">
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
+                <div class="col-2">
+                    <mat-card appearance="outlined">
+                        <mat-card-header>
+                          <mat-card-title>  Fecha: {{fechaHoy | date: 'dd/MM/yyyy'}} </mat-card-title>
+                        </mat-card-header>
+                      </mat-card>
+                </div>
+            </div>
+            <div class="grid">
+                <div class="col-offset-1"></div>
+                <mat-form-field class="col-4">
+                    <mat-label>Domicilio</mat-label>
+                    <input matInput type="text" formControlName="domicilio">
+                </mat-form-field>
+                <mat-form-field class="col-4">
+                    <mat-label>Edad</mat-label>
+                    <input matInput type="text" formControlName="edad">
+                </mat-form-field>
+                <mat-form-field class="col-2">
+                    <mat-label>Expediente</mat-label>
+                    <input matInput type="text">
+                </mat-form-field>
+            </div>
+            <div class="grid">
+                <div class="col-offset-1"></div>
+                <mat-form-field class="col-4">
+                    <mat-label>Entidad</mat-label>
+                    <input matInput type="text" formControlName="entidad">
+                </mat-form-field>
+
+                <mat-form-field class="col-4">
+                    <mat-label>Sexo</mat-label>
+                    <mat-select disableRipple formControlName="sexo">
+                      <mat-option value="masculino" >masculino</mat-option>
+                      <mat-option value="femenino" >femenino</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+            </div>
+                <div class="grid">
+                    <div class="col-offset-1"></div>
+                    <mat-form-field class="col-4">
+                        <mat-label>Ocupacion</mat-label>
+                        <input matInput type="text" formControlName="ocupacion">
+                    </mat-form-field>
+                    <mat-form-field class="col-4">
+                        <mat-label>Lugar Nacimiento</mat-label>
+                        <input matInput type="text" formControlName="lugarNacimiento">
+                    </mat-form-field>
+                </div>
+                
+                <div class="grid">
+                    <div class="col-offset-1"></div>
+                    <mat-form-field class="col-4">
+                        <mat-label>Escolaridad</mat-label>
+                        <input matInput type="text" formControlName="escolaridad">
+                    </mat-form-field>
+                    <mat-form-field class="col-4">
+                        <mat-label>Estado civil</mat-label>
+                        <mat-select disableRipple formControlName="estadoCivil">
+                          <mat-option value="casado">casado</mat-option>
+                          <mat-option value="soltero">soltero</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                </div>
+                
+                <div class="grid">
+                    <div class="col-offset-8"></div>
+                    <div class="col-4" *ngIf="completadoDatosGenerales == false">
+                        <button [disabled]="completadoDatosGenerales" mat-flat-button
+                        (click)="saveDatosGenerales()">Guardar</button>
+                    </div>
+                    <div class="col-4" *ngIf="completadoDatosGenerales == true">
+                        <button [disabled]="completadoDatosGenerales" mat-flat-button 
+                        >Informacion guardada</button>
+                    </div>
+                </div>
+                <!--<div *ngIf="estado == true">-->
+                <div *ngIf="completadoDatosGenerales == true">
+                    <button mat-button matStepperNext>Siguente</button>
+                </div>
+        </form>
+        </mat-step>
+        <mat-step>
+          <!--<form [formGroup]="antecedentesFyHForm">-->
+            <ng-template matStepLabel>Antecedentes Familiares y Hereditarios</ng-template>
+
+                <div class="grid"><!--Grid completo-->
+                    <div class="col-3"><!--columna de patologias-->
+                        <mat-list>
+                            <mat-list-item><i><b>Nombre del paciente {{paciente}}</b></i></mat-list-item>
+                            <mat-divider></mat-divider>
+                        </mat-list>
+                        <p><i><b>Patologías</b></i></p>
+                        <p>Diabetes</p>
+                        <p>Hipertensión Arterial</p>
+                        <p>Cardiopatías</p>
+                        <p>Neoplasia</p>
+                        <p>Epilepsia</p>
+                        <p>Malformaciones</p>
+                        <p>SIDA</p>
+                        <p>Enfermedades renales</p>
+                        <p>Hepatitis</p>
+                        <p>Artritis</p>
+                        <p>Otra</p>
+                        <p>Aparentemente sano</p>
+                    </div>
+                    <div class="col-4"><!--columna de datos de la madre-->
+                        <mat-list>
+                            <mat-list-item><i><b>Datos de la madre</b></i></mat-list-item>
+                            <mat-divider></mat-divider>
+                          </mat-list>
+
+                          <div class="grid">
+                            <div class="col-3">
+                                <mat-label><i><b>Madre</b></i></mat-label>
+                            </div>
+                            <div class="col-3">
+                                <mat-label><i><b>Abuela</b></i></mat-label>
+                            </div>
+                            <div class="col-3">
+                                <mat-label><i><b>Abuelo</b></i></mat-label>
+                            </div>
+                            <div class="col-3">
+                                <mat-label><i><b>Otros</b></i></mat-label>
+                            </div>
+                        </div>
+                    <form [formGroup]="diabetesForm">
+                        <div class="grid"><!--Fila de checks madre diabetes-->
+                            <div class="col-3">
+                                <mat-checkbox class="example-margin" formControlName="madre"></mat-checkbox>
+                            </div>
+                            <div class="col-3">
+                                <mat-checkbox class="example-margin" formControlName="abuelaM"></mat-checkbox>
+                            </div>
+                            <div class="col-3">
+                                <mat-checkbox class="example-margin" formControlName="abueloM"></mat-checkbox>
+                            </div>
+                            <div class="col-3">
+                                <mat-checkbox class="example-margin" formControlName="otrosM"></mat-checkbox>
+                            </div>
+                        </div>
+                    </form>
+                        <div class="grid"><!--Fila de checks para madre-->
+                            <div class="col-3">
+                                <mat-checkbox class="example-margin"></mat-checkbox>
+                            </div>
+                            <div class="col-3">
+                                <mat-checkbox class="example-margin"></mat-checkbox>
+                            </div>
+                            <div class="col-3">
+                                <mat-checkbox class="example-margin"></mat-checkbox>
+                            </div>
+                            <div class="col-3">
+                                <mat-checkbox class="example-margin"></mat-checkbox>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-5"><!--columna de datos de la padre-->
+                        <mat-list>
+                            <mat-list-item><i><b>Datos del padre</b></i></mat-list-item>
+                            <mat-divider></mat-divider>
+                          </mat-list>
+                        <div class="grid">
+                            <div class="col-2">
+                                <mat-label>padre</mat-label>
+                            </div>
+                            <div class="col-2">
+                                <mat-label>abuela</mat-label>
+                            </div>
+                            <div class="col-2">
+                                <mat-label>abuelo</mat-label>
+                            </div>
+                            <div class="col-2">
+                                <mat-label>hermano</mat-label>
+                            </div>
+                            <div class="col-2">
+                                <mat-label>otros</mat-label>
+                            </div>
+                        </div>
+                        <form [formGroup]="diabetesForm">
+                        <div class="grid"><!--fila de checks para padre-->
+                            <div class="col-2">
+                                <mat-checkbox class="example-margin" formControlName="padre"></mat-checkbox>
+                            </div>
+                            <div class="col-2">
+                                <mat-checkbox class="example-margin" formControlName="abuelaP"></mat-checkbox>
+                            </div>
+                            <div class="col-2">
+                                <mat-checkbox class="example-margin" formControlName="abueloP"></mat-checkbox>
+                            </div>
+                            <div class="col-2">
+                                <mat-checkbox class="example-margin" formControlName="hermanosP"></mat-checkbox>
+                            </div>
+                            <div class="col-2">
+                                <mat-checkbox class="example-margin" formControlName="otrosP"></mat-checkbox>
+                            </div>
+                        </div>
+                    </form>
+                        <div class="grid"><!--fila de checks para padre-->
+                            <div class="col-2">
+                                <mat-checkbox class="example-margin"></mat-checkbox>
+                            </div>
+                            <div class="col-2">
+                                <mat-checkbox class="example-margin"></mat-checkbox>
+                            </div>
+                            <div class="col-2">
+                                <mat-checkbox class="example-margin"></mat-checkbox>
+                            </div>
+                            <div class="col-2">
+                                <mat-checkbox class="example-margin"></mat-checkbox>
+                            </div>
+                            <div class="col-2">
+                                <mat-checkbox class="example-margin"></mat-checkbox>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                </div>
+                    
+                
+                    
+                    
+                
+                
+
+              <div class="grid">
+                <div class="col-offset-8"></div>
+                <div class="col-4">
+                    <button  mat-flat-button color="primary"
+                    (click)="savePatalogias()">Guardar</button>
+                </div>
+            </div>
+
+
+            <div>
+              <!--<p>Go to a different step to see the error state</p>-->
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+          <!--</form>-->
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Done</ng-template>
+          <p>You are now done.</p>
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button (click)="stepper.reset()">Reset</button>
+          </div>
+        </mat-step>
+      </mat-stepper>
+    </div>
+</div>
