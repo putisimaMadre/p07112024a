@@ -1,4 +1,5 @@
 export interface DatosGenerales {
+    "id": number,
     "nombre": string,
     "domicilio": string,
     "entidad": string,
@@ -9,4 +10,5 @@ export interface DatosGenerales {
     "sexo": string,
     "lugarNacimiento": string,
     "estadoCivil": string,
+    "numeroTelefono": string
 }

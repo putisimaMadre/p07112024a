@@ -13,6 +13,7 @@ import { NewDatosGeneralesComponent } from './components/new-datos-generales/new
 import { NewAntecedentesFyHComponent } from './components/new-antecedentes-fy-h/new-antecedentes-fy-h.component';
 import { MaterialModule } from './material/material.module';
 import { MenuComponent } from './components/menu/menu.component';
+import { NewAntecedentesPyPComponent } from './components/new-antecedentes-py-p/new-antecedentes-py-p.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { MenuComponent } from './components/menu/menu.component';
     AntecedentesFyHComponent,
     NewDatosGeneralesComponent,
     NewAntecedentesFyHComponent,
-    MenuComponent
+    MenuComponent,
+    NewAntecedentesPyPComponent
   ],
   imports: [
     BrowserModule,
