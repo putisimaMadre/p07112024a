@@ -612,11 +612,15 @@
                     </div>
                 </div>
 
-              <div class="grid">
-                <div class="col-offset-10"></div>
-                <div class="col-2">
-                    <button  mat-flat-button color="primary"
+            <div class="grid">
+                <div class="col-offset-8"></div>
+                <div class="col-4" *ngIf="completadoAntecedentesFyH == false">
+                    <button [disabled]="completadoAntecedentesFyH" mat-flat-button
                     (click)="savePatalogias()">Guardar</button>
+                </div>
+                <div class="col-4" *ngIf="completadoAntecedentesFyH == true">
+                    <button [disabled]="completadoAntecedentesFyH" mat-flat-button 
+                    >Informacion guardada</button>
                 </div>
             </div>
 
@@ -1231,11 +1235,15 @@
             </div> <!--col-4 donde van todos los antecedentes PyP-->
           </div> <!--grid final de ANTECEDENTES PERSONALES Y PATOLOGIAS-->
 
-          <div class="grid">
-            <div class="col-offset-10"></div>
-            <div class="col-2">
-                <button  mat-flat-button color="primary"
-                (click)="saveFormAntecedentesPyP()">Guardar PyP</button>
+        <div class="grid">
+            <div class="col-offset-8"></div>
+            <div class="col-4" *ngIf="completadoAntecedentesPyP == false">
+                <button [disabled]="completadoAntecedentesPyP" mat-flat-button
+                (click)="saveAntecedentesPyP()">Guardar PyP</button>
+            </div>
+            <div class="col-4" *ngIf="completadoAntecedentesPyP == true">
+                <button [disabled]="completadoAntecedentesPyP" mat-flat-button 
+                >Informacion guardada</button>
             </div>
         </div>
         </mat-step>

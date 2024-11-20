@@ -13,8 +13,8 @@ export class AntecedentesFyHService {
   private httpHeaders = new HttpHeaders({"Content-type":"Application/json"})
   constructor(private httpClient: HttpClient) { }
 
-  getAntecedentes(): Observable<AntecedentesFyHService[]>{
-    return this.httpClient.get<AntecedentesFyHService[]>(this.urlEndPoint);
+  getAntecedentes(): Observable<AntecedentesFyH[]>{
+    return this.httpClient.get<AntecedentesFyH[]>(this.urlEndPoint);
   }
 
   postAntecedentes(antecedentesFyH: AntecedentesFyH): Observable<AntecedentesFyH>{
