@@ -2,6 +2,35 @@
     width: 100%;
   }
 
-  .altoPickerPyP{
+  .altoRowSinoFecha{
     height: 5rem;
   }
+
+  .paddingSlide{
+    padding-top: 1rem;
+  }
+
+  .colorRowCheckbox{
+    background-color: #e0e2ec
+  }
+
+  /*.example-form mat-slide-toggle {
+    margin: 8px 0;
+    display: block;
+  }*/
+
+  .paddingTitulosPyP{
+    display: block; 
+    padding-top: .6rem; 
+    padding-bottom: .7rem; 
+    margin-top: .9rem
+  }
+
+  .paddingTitulosFyH{
+    display: block; 
+    padding-top: .7rem; 
+  }
+
+  /*.mat-mdc-radio-button ~ .mat-mdc-radio-button {
+    margin-left: 160px;
+  }*/

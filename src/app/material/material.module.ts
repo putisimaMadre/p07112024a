@@ -14,6 +14,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatListModule } from '@angular/material/list';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatRadioModule } from '@angular/material/radio';
 
 @NgModule({
   providers: [
@@ -33,7 +35,9 @@ import { MatListModule } from '@angular/material/list';
     MatCheckboxModule,
     MatTabsModule,
     MatMenuModule,
-    MatListModule
+    MatListModule,
+    MatSlideToggleModule,
+    MatRadioModule
   ]
 })
 export class MaterialModule { }
