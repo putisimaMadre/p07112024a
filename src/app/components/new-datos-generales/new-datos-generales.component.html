@@ -1227,43 +1227,136 @@
                         <div class="col-3">
                             <mat-label><b><i>Patrón Facial:</i></b></mat-label>
                         </div>
-                        
-                        <mat-radio-group aria-label="Select an option" formControlName="patronFacial">
-                            
-                            <mat-radio-button value="1"><div class="col-3">Mesofacial</div> </mat-radio-button>
-                            <mat-radio-button value="2"><div class="col-3">Dólico Facial</div></mat-radio-button>
-                            <mat-radio-button value="3">Branquifacial</mat-radio-button>
-                            
-                        </mat-radio-group>
-                        
+                        <div class="col-8">
+                            <mat-radio-group aria-label="Select an option" formControlName="patronFacial">
+                                <div class="grid">
+                                <mat-radio-button class="col-4" value="1">Mesofacial</mat-radio-button>
+                                <mat-radio-button class="col-4" value="2">Dólico Facial</mat-radio-button>
+                                <mat-radio-button class="col-4" value="3">Branquifacial</mat-radio-button>
+                                </div>
+                            </mat-radio-group>
+                        </div>
                     </div>
                     <div class="grid">
                         <div class="col-offset-1"></div>
                         <div class="col-3">
                             <mat-label><b><i>Perfil:</i></b></mat-label>
                         </div>
-                        
-                        <mat-radio-group aria-label="Select an option" formControlName="patronFacial">        
-                            
-                            <mat-radio-button class="col-3" value="4">Recto</mat-radio-button>
-                            <mat-radio-button class="col-3" value="5">Cóncavo</mat-radio-button>
-                            <mat-radio-button class="col-3" value="6">Convexo</mat-radio-button>
-                        </mat-radio-group>
-                    
-                    
+                        <div class="col-8">
+                            <mat-radio-group aria-label="Select an option" formControlName="perfil">
+                                <div class="grid">
+                                <mat-radio-button class="col-4" value="4">Recto</mat-radio-button>
+                                <mat-radio-button class="col-4" value="5">Cóncavo</mat-radio-button>
+                                <mat-radio-button class="col-4" value="6">Convexo</mat-radio-button>
+                            </div>
+                            </mat-radio-group>
+                        </div>
                     </div>
                     <div class="grid">
                         <div class="col-offset-1"></div>
                         <div class="col-3">
                             <mat-label><b><i>Asimetría:</i></b></mat-label>
                         </div>
-                        <mat-radio-group aria-label="Select an option" formControlName="patronFacial">
-                            <mat-radio-button value="4">Mand. Derecha</mat-radio-button>
-                            <mat-radio-button value="5">Mand. Izquierda</mat-radio-button>
-                            <mat-radio-button value="6">Otras</mat-radio-button>
+                        <div class="col-8">
+                        <mat-radio-group aria-label="Select an option" formControlName="asimetria">
+                            <div class="grid">
+                            <mat-radio-button class="col-4" value="7">Mand. Derecha</mat-radio-button>
+                            <mat-radio-button class="col-4" value="8">Mand. Izquierda</mat-radio-button>
+                            <mat-radio-button class="col-4" value="9">Otras</mat-radio-button>
+                            </div>
                         </mat-radio-group>
+                        </div>
                     </div>
-
+                    <div class="grid">
+                        <div class="col-offset-1"></div>
+                        <div class="col-3">
+                            <mat-label><b><i>Altura Facial: Equilibrada</i></b></mat-label>
+                        </div>
+                        <div class="col-8">
+                        <mat-radio-group aria-label="Select an option" formControlName="alturaFE">
+                            <div class="grid">
+                            <mat-radio-button class="col-4" value="10">Equilibrada</mat-radio-button>
+                            <mat-radio-button class="col-4" value="11">Larga</mat-radio-button>
+                            <mat-radio-button class="col-4" value="12">Corta</mat-radio-button>
+                            </div>
+                        </mat-radio-group>
+                        </div>
+                    </div>
+                    <div class="grid">
+                        <div class="col-offset-1"></div>
+                        <div class="col-3">
+                            <mat-label><b><i>Ancho Facial: Equilibrada</i></b></mat-label>
+                        </div>
+                        <div class="col-8">
+                        <mat-radio-group aria-label="Select an option" formControlName="anchuraFE">
+                            <div class="grid">
+                            <mat-radio-button class="col-4" value="13">Equilibrada</mat-radio-button>
+                            <mat-radio-button class="col-4" value="14">Estrecho</mat-radio-button>
+                            <mat-radio-button class="col-4" value="15">Amplio</mat-radio-button>
+                            </div>
+                        </mat-radio-group>
+                        </div>
+                    </div>
+                    <div class="grid">
+                        <div class="col-offset-1"></div>
+                        <div class="col-3">
+                            <mat-label><b><i>Perfil Maxilar</i></b></mat-label>
+                        </div>
+                        <div class="col-8">
+                        <mat-radio-group aria-label="Select an option" formControlName="perfilMaxilar">
+                            <div class="grid">
+                            <mat-radio-button class="col-4" value="16">Ortognático</mat-radio-button>
+                            <mat-radio-button class="col-4" value="17">Prognático</mat-radio-button>
+                            <mat-radio-button class="col-4" value="18">Retrognático</mat-radio-button>
+                            </div>
+                        </mat-radio-group>
+                        </div>
+                    </div>
+                    <div class="grid">
+                        <div class="col-offset-1"></div>
+                        <div class="col-3">
+                            <mat-label><b><i>Perfil Mandibular</i></b></mat-label>
+                        </div>
+                        <div class="col-8">
+                        <mat-radio-group aria-label="Select an option" formControlName="perfilMandibular">
+                            <div class="grid">
+                            <mat-radio-button class="col-4" value="19">Ortognático</mat-radio-button>
+                            <mat-radio-button class="col-4" value="20">Prognático</mat-radio-button>
+                            <mat-radio-button class="col-4" value="21">Retrognático</mat-radio-button>
+                            </div>
+                        </mat-radio-group>
+                        </div>
+                    </div>
+                    <div class="grid">
+                        <div class="col-offset-1"></div>
+                        <div class="col-3">
+                            <mat-label><b><i>Surco Labio-Mentón</i></b></mat-label>
+                        </div>
+                        <div class="col-8">
+                        <mat-radio-group aria-label="Select an option" formControlName="surcoLM">
+                            <div class="grid">
+                            <mat-radio-button class="col-4" value="22">Normal</mat-radio-button>
+                            <mat-radio-button class="col-4" value="23">Marcado</mat-radio-button>
+                            <mat-radio-button class="col-4" value="24">Borrador</mat-radio-button>
+                            </div>
+                        </mat-radio-group>
+                        </div>
+                    </div>
+                    <div class="grid">
+                        <div class="col-offset-1"></div>
+                        <div class="col-3">
+                            <mat-label><b><i>Labios en Reposo</i></b></mat-label>
+                        </div>
+                        <div class="col-8">
+                        <mat-radio-group aria-label="Select an option" formControlName="labiosEr">
+                            <div class="grid">
+                            <mat-radio-button class="col-4" value="25">Competentes</mat-radio-button>
+                            <mat-radio-button class="col-4" value="26">Incompetentes</mat-radio-button>
+                            </div>
+                        </mat-radio-group>
+                        </div>
+                    </div>
+                    <!--=============================================GUARDADO======================================-->
                     <div class="grid">
                         <div class="col-offset-8"></div>
                         <div class="col-4" *ngIf="completadoAnalisisFacial == false">
@@ -1277,6 +1370,152 @@
                     </div>
                 </form>
         </mat-step>
+        <mat-step>
+            <!--<form [formGroup]="antecedentesFyHForm">-->
+              <ng-template matStepLabel>Análisis Funcional</ng-template>
+              <form [formGroup]="analisisFuncionalForm">
+                <div class="grid">
+                    <div class="col-offset-1"></div>
+                    <div class="col-3">
+                        <mat-label><b><i>Actividad Comisural</i></b></mat-label>
+                    </div>
+                    <div class="col-8">
+                    <mat-radio-group aria-label="Select an option" formControlName="actividadComisural">
+                        <div class="grid">
+                        <mat-radio-button class="col-4" value="1">Normal</mat-radio-button>
+                        <mat-radio-button class="col-4" value="2">Contraccion</mat-radio-button>
+                        </div>
+                    </mat-radio-group>
+                    </div>
+                </div>
+                <div class="grid">
+                    <div class="col-offset-1"></div>
+                    <div class="col-3">
+                        <mat-label><b><i>Actividad Lingual</i></b></mat-label>
+                    </div>
+                    <div class="col-8">
+                    <mat-radio-group aria-label="Select an option" formControlName="actividadLingual">
+                        <div class="grid">
+                        <mat-radio-button class="col-4" value="1">Normal</mat-radio-button>
+                        <mat-radio-button class="col-4" value="3">Interp. Anterior</mat-radio-button>
+                        <mat-radio-button class="col-4" value="4">Interp. Lateral</mat-radio-button>
+                        </div>
+                    </mat-radio-group>
+                    </div>
+                </div>
+                <div class="grid">
+                    <div class="col-offset-1"></div>
+                    <div class="col-3">
+                        <mat-label><b><i>Labio Superior</i></b></mat-label>
+                    </div>
+                    <div class="col-8">
+                    <mat-radio-group aria-label="Select an option" formControlName="labioSuperior">
+                        <div class="grid">
+                        <mat-radio-button class="col-4" value="1">Normal</mat-radio-button>
+                        <mat-radio-button class="col-4" value="5">Hipoactivo</mat-radio-button>
+                        <mat-radio-button class="col-4" value="6">Hiperactivo</mat-radio-button>
+                        </div>
+                    </mat-radio-group>
+                    </div>
+                </div>
+                <div class="grid">
+                    <div class="col-offset-1"></div>
+                    <div class="col-3">
+                        <mat-label><b><i>Labio Inferior</i></b></mat-label>
+                    </div>
+                    <div class="col-8">
+                    <mat-radio-group aria-label="Select an option" formControlName="labioInferior">
+                        <div class="grid">
+                        <mat-radio-button class="col-4" value="1">Normal</mat-radio-button>
+                        <mat-radio-button class="col-4" value="5">Hipoactivo</mat-radio-button>
+                        <mat-radio-button class="col-4" value="6">Hiperactivo</mat-radio-button>
+                        </div>
+                    </mat-radio-group>
+                    </div>
+                </div>
+                <div class="grid">
+                    <div class="col-offset-1"></div>
+                    <div class="col-3">
+                        <mat-label><b><i>Masetero</i></b></mat-label>
+                    </div>
+                    <div class="col-8">
+                    <mat-radio-group aria-label="Select an option" formControlName="masetero">
+                        <div class="grid">
+                        <mat-radio-button class="col-4" value="1">Normal</mat-radio-button>
+                        <mat-radio-button class="col-4" value="5">Hipoactivo</mat-radio-button>
+                        <mat-radio-button class="col-4" value="6">Hiperactivo</mat-radio-button>
+                        </div>
+                    </mat-radio-group>
+                    </div>
+                </div>
+                <div class="grid">
+                    <div class="col-offset-1"></div>
+                    <div class="col-3">
+                        <mat-label><b><i>Mentoniano</i></b></mat-label>
+                    </div>
+                    <div class="col-8">
+                    <mat-radio-group aria-label="Select an option" formControlName="mentoniano">
+                        <div class="grid">
+                        <mat-radio-button class="col-4" value="1">Normal</mat-radio-button>
+                        <mat-radio-button class="col-4" value="5">Hipoactivo</mat-radio-button>
+                        <mat-radio-button class="col-4" value="6">Hiperactivo</mat-radio-button>
+                        </div>
+                    </mat-radio-group>
+                    </div>
+                </div>
+                <div class="grid">
+                    <div class="col-offset-1"></div>
+                    <div class="col-10">
+                        <mat-list>
+                            <mat-divider></mat-divider>
+                        </mat-list>
+                    </div>
+                </div>
+                
+                <div class="grid">
+                    <div class="col-offset-1"></div>
+                    <div class="col-3">
+                        <mat-label><b><i>Respiración</i></b></mat-label>
+                    </div>
+                    <div class="col-8">
+                    <mat-radio-group aria-label="Select an option" formControlName="respiracion">
+                        <div class="grid">
+                        <mat-radio-button class="col-4" value="7">Bucal</mat-radio-button>
+                        <mat-radio-button class="col-4" value="8">Nasal</mat-radio-button>
+                        <mat-radio-button class="col-4" value="10">Mixta</mat-radio-button>
+                        </div>
+                    </mat-radio-group>
+                    </div>
+                </div>
+                <div class="grid">
+                    <div class="col-offset-1"></div>
+                    <div class="col-3">
+                        <mat-label><b><i>Deglución</i></b></mat-label>
+                    </div>
+                    <div class="col-8">
+                    <mat-radio-group aria-label="Select an option" formControlName="deglucion">
+                        <div class="grid">
+                        <mat-radio-button class="col-4" value="1">Normal</mat-radio-button>
+                        <mat-radio-button class="col-4" value="9">Atípica</mat-radio-button>
+                        <mat-radio-button class="col-4" value="11">Especial</mat-radio-button>
+                        </div>
+                    </mat-radio-group>
+                    </div>
+                </div>
+                <!--=============================================GUARDADO======================================-->
+                <div class="grid">
+                    <div class="col-offset-8"></div>
+                    <div class="col-4" *ngIf="completadoAnalisisFuncional == false">
+                        <button [disabled]="completadoAnalisisFuncional" mat-flat-button
+                        (click)="saveAnalisisFuncional()">Guardar</button>
+                    </div>
+                    <div class="col-4" *ngIf="completadoAnalisisFuncional == true">
+                        <button [disabled]="completadoAnalisisFuncional" mat-flat-button 
+                        >Informacion guardada</button>
+                    </div>
+                </div>
+            </form>
+            </mat-step>
       </mat-stepper>
     </div>
 </div>

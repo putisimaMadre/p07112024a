@@ -8,6 +8,8 @@ import { AntecedentesFyH } from '../../models/antecedentes-fy-h';
 import { AntecedentesPyPService } from '../../services/antecedentes-py-p.service';
 import { AntecedentesPNoPService } from '../../services/antecedentes-pno-p.service';
 import { PadecimientosAService } from '../../services/padecimientos-a.service';
+import { AnalisisFacialService } from '../../services/analisis-facial.service';
+import { AnalisisFuncionalService } from '../../services/analisis-funcional.service';
 
 @Component({
   selector: 'app-new-datos-generales',
@@ -25,6 +27,7 @@ export class NewDatosGeneralesComponent implements OnInit{
   completadoAntecedentesPNoP = false;
   completadoPadecimientosActuales = false;
   completadoAnalisisFacial = false;
+  completadoAnalisisFuncional = false;
   patologiasArray: FormGroup[] = []
   patologiasPyPArray: FormGroup[] = []
   patologia = FormGroup
@@ -37,7 +40,9 @@ export class NewDatosGeneralesComponent implements OnInit{
     private formBuilder: FormBuilder,
     private antecedentesServicePyP: AntecedentesPyPService,
     private antecedentesPnoPService: AntecedentesPNoPService,
-    private padecimientosAService: PadecimientosAService
+    private padecimientosAService: PadecimientosAService,
+    private analisisFacialService: AnalisisFacialService,
+    private analisisFuncionalService: AnalisisFuncionalService
   ){}
 
   ngOnInit(): void {
@@ -443,14 +448,44 @@ export class NewDatosGeneralesComponent implements OnInit{
   })
 
   analisisFacialForm: FormGroup = this.formBuilder.group({
-    patronFacial: [""],
-    /*dolicoFacial: [false],
-    branquifacial: [false]*/
+    "patronFacial": [],
+    "perfil": [],
+    "asimetria": [],
+    "alturaFE": [],
+    "anchuraFE": [],
+    "perfilMaxilar": [],
+    "perfilMandibular": [],
+    "surcoLM": [],
+    "labiosEr": [],
+    "idDatosGenerales": this.pacienteId
+  })
+  
+  analisisFuncionalForm: FormGroup = this.formBuilder.group({
+    "actividadComisural": [],
+    "actividadLingual": [],
+    "labioSuperior": [],
+    "labioInferior": [],
+    "masetero": [],
+    "mentoniano": [],
+    "respiracion": [],
+    "deglucion": [],
+    "idDatosGenerales": this.pacienteId
   })
 
-  saveAnalisisFacial(): void{
-    console.log(this.analisisFacialForm.value)
-    //completadoAnalisisFacial
+  saveAnalisisFuncional(){
+    this.analisisFuncionalForm.controls['idDatosGenerales'].setValue(this.pacienteId)
+    this.analisisFuncionalService.postAnalisisFuncional(this.analisisFuncionalForm.value).subscribe(dato => {
+      console.log(dato)
+      this.completadoAnalisisFuncional = true
+    })
+  }
+
+  saveAnalisisFacial(){
+    this.analisisFacialForm.controls['idDatosGenerales'].setValue(this.pacienteId)
+    this.analisisFacialService.postAnalisisFacial(this.analisisFacialForm.value).subscribe(dato => {
+      console.log(dato)
+      this.completadoAnalisisFacial = true
+    })
   }
 
   savePadecimientosActuales(){
