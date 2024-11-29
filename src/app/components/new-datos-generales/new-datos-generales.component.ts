@@ -1,8 +1,8 @@
-import { Component ,model, OnInit} from '@angular/core';
+import { afterNextRender, Component ,inject, Injector, OnInit, ViewChild} from '@angular/core';
 import { DatosGeneralesService } from '../../services/datos-generales.service';
 import { Router } from '@angular/router';
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {provideNativeDateAdapter} from '@angular/material/core';
+import { provideNativeDateAdapter } from '@angular/material/core';
 import { AntecedentesFyHService } from '../../services/antecedentes-fy-h.service';
 import { AntecedentesFyH } from '../../models/antecedentes-fy-h';
 import { AntecedentesPyPService } from '../../services/antecedentes-py-p.service';
@@ -10,6 +10,16 @@ import { AntecedentesPNoPService } from '../../services/antecedentes-pno-p.servi
 import { PadecimientosAService } from '../../services/padecimientos-a.service';
 import { AnalisisFacialService } from '../../services/analisis-facial.service';
 import { AnalisisFuncionalService } from '../../services/analisis-funcional.service';
+import { CdkTextareaAutosize } from '@angular/cdk/text-field';
+
+/*interface Odontologo {
+  valor: string;
+  valorEnVista: string;
+}*/
+interface Odontologo {
+  valor: string;
+  valorEnVista: string;
+}
 
 @Component({
   selector: 'app-new-datos-generales',
@@ -19,6 +29,24 @@ import { AnalisisFuncionalService } from '../../services/analisis-funcional.serv
 })
 
 export class NewDatosGeneralesComponent implements OnInit{
+ //========ESTO ES PARA EL TEXT AREA =======//
+  private _injector = inject(Injector);
+  @ViewChild('autosize')
+  autosize!: CdkTextareaAutosize;
+
+  triggerResize() {
+    // Wait for content to render, then trigger textarea resize.
+    afterNextRender(
+      () => {
+        this.autosize.resizeToFitContent(true);
+      },
+      {
+        injector: this._injector,
+      },
+    );
+  }
+//========ESTO ES PARA EL TEXT AREA =======//
+
   //displayedColumns: string[] = ['madre', 'padre'];
   fechaHoy: number = Date.now();
   completadoDatosGenerales = false;
@@ -28,10 +56,13 @@ export class NewDatosGeneralesComponent implements OnInit{
   completadoPadecimientosActuales = false;
   completadoAnalisisFacial = false;
   completadoAnalisisFuncional = false;
+  completadoConsentimientoInformado = false
+  completadoPagos = false
   patologiasArray: FormGroup[] = []
   patologiasPyPArray: FormGroup[] = []
   patologia = FormGroup
   paciente: string = ""
+  sexo: string = ""
   pacienteId: number = 0;
 
   constructor(private datosGeneralesService: DatosGeneralesService,
@@ -42,25 +73,24 @@ export class NewDatosGeneralesComponent implements OnInit{
     private antecedentesPnoPService: AntecedentesPNoPService,
     private padecimientosAService: PadecimientosAService,
     private analisisFacialService: AnalisisFacialService,
-    private analisisFuncionalService: AnalisisFuncionalService
+    private analisisFuncionalService: AnalisisFuncionalService,
   ){}
 
   ngOnInit(): void {
-    //this.varicelaForm.controls['fechaAgno'].disable();
   }
 
   formDatosGenerales: FormGroup = this.formBuilder.group({
-    nombre: ["", Validators.required],
-    domicilio: ["", Validators.required],
-    entidad: ["", Validators.required],
-    ocupacion: ["", Validators.required],
-    escolaridad: ["", Validators.required],
-    fechaNacimiento: ["", Validators.required],
-    edad: ["", Validators.required],
-    sexo: ["", Validators.required],
-    lugarNacimiento: ["", Validators.required],
-    estadoCivil: ["", Validators.required],
-    numeroTelefono: ["", Validators.required],
+    "nombre": ["", Validators.required],
+    "domicilio": ["", Validators.required],
+    "entidad": ["", Validators.required],
+    "ocupacion": ["", Validators.required],
+    "escolaridad": ["", Validators.required],
+    "fechaNacimiento": ["", Validators.required],
+    "edad": ["", Validators.required],
+    "sexo": ["", Validators.required],
+    "lugarNacimiento": ["", Validators.required],
+    "estadoCivil": ["", Validators.required],
+    "numeroTelefono": ["", Validators.required],
   })
 
   diabetesForm: FormGroup = this.formBuilder.group({
@@ -78,168 +108,168 @@ export class NewDatosGeneralesComponent implements OnInit{
   })
 
   hipertensionAForm: FormGroup = this.formBuilder.group({
-    "madre": false,
-    "abuelaM": false,
-    "abueloM": false,
-    "otrosM": false,
-    "padre": false,
-    "abuelaP": false,
-    "abueloP": false,
-    "hermanosP": false,
-    "otrosP": false,
-    "idPatologias": 2,
-    "idDatosGenerales": this.pacienteId
+    "madre": [false],
+    "abuelaM": [false],
+    "abueloM": [false],
+    "otrosM": [false],
+    "padre": [false],
+    "abuelaP": [false],
+    "abueloP": [false],
+    "hermanosP": [false],
+    "otrosP": [false],
+    "idPatologias": [2],
+    "idDatosGenerales": [this.pacienteId]
   })
 
   cardiopatiaForm: FormGroup = this.formBuilder.group({
-    "madre": false,
-    "abuelaM": false,
-    "abueloM": false,
-    "otrosM": false,
-    "padre": false,
-    "abuelaP": false,
-    "abueloP": false,
-    "hermanosP": false,
-    "otrosP": false,
-    "idPatologias": 3,
-    "idDatosGenerales": this.pacienteId
+    "madre": [false],
+    "abuelaM": [false],
+    "abueloM": [false],
+    "otrosM": [false],
+    "padre": [false],
+    "abuelaP": [false],
+    "abueloP": [false],
+    "hermanosP": [false],
+    "otrosP": [false],
+    "idPatologias": [3],
+    "idDatosGenerales": [this.pacienteId]
   })
 
   neoplasiasForm: FormGroup = this.formBuilder.group({
-    "madre": false,
-    "abuelaM": false,
-    "abueloM": false,
-    "otrosM": false,
-    "padre": false,
-    "abuelaP": false,
-    "abueloP": false,
-    "hermanosP": false,
-    "otrosP": false,
-    "idPatologias": 4,
-    "idDatosGenerales": this.pacienteId
+    "madre": [false],
+    "abuelaM": [false],
+    "abueloM": [false],
+    "otrosM": [false],
+    "padre": [false],
+    "abuelaP": [false],
+    "abueloP": [false],
+    "hermanosP": [false],
+    "otrosP": [false],
+    "idPatologias": [4],
+    "idDatosGenerales": [[this.pacienteId]]
   })
 
   epilepsiaForm: FormGroup = this.formBuilder.group({
-    "madre": false,
-    "abuelaM": false,
-    "abueloM": false,
-    "otrosM": false,
-    "padre": false,
-    "abuelaP": false,
-    "abueloP": false,
-    "hermanosP": false,
-    "otrosP": false,
-    "idPatologias": 5,
-    "idDatosGenerales": this.pacienteId
+    "madre": [false],
+    "abuelaM": [false],
+    "abueloM": [false],
+    "otrosM": [false],
+    "padre": [false],
+    "abuelaP": [false],
+    "abueloP": [false],
+    "hermanosP": [false],
+    "otrosP": [false],
+    "idPatologias": [5],
+    "idDatosGenerales": [this.pacienteId]
   })
 
   malformacionesForm: FormGroup = this.formBuilder.group({
-    "madre": false,
-    "abuelaM": false,
-    "abueloM": false,
-    "otrosM": false,
-    "padre": false,
-    "abuelaP": false,
-    "abueloP": false,
-    "hermanosP": false,
-    "otrosP": false,
-    "idPatologias": 6,
-    "idDatosGenerales": this.pacienteId
+    "madre": [false],
+    "abuelaM": [false],
+    "abueloM": [false],
+    "otrosM": [false],
+    "padre": [false],
+    "abuelaP": [false],
+    "abueloP": [false],
+    "hermanosP": [false],
+    "otrosP": [false],
+    "idPatologias": [6],
+    "idDatosGenerales": [this.pacienteId]
   })
 
   SIDAForm: FormGroup = this.formBuilder.group({
-    "madre": false,
-    "abuelaM": false,
-    "abueloM": false,
-    "otrosM": false,
-    "padre": false,
-    "abuelaP": false,
-    "abueloP": false,
-    "hermanosP": false,
-    "otrosP": false,
-    "idPatologias": 7,
-    "idDatosGenerales": this.pacienteId
+    "madre": [false],
+    "abuelaM": [false],
+    "abueloM": [false],
+    "otrosM": [false],
+    "padre": [false],
+    "abuelaP": [false],
+    "abueloP": [false],
+    "hermanosP": [false],
+    "otrosP": [false],
+    "idPatologias": [7],
+    "idDatosGenerales": [this.pacienteId]
   })
 
   enfermedadesRForm: FormGroup = this.formBuilder.group({
-    "madre": false,
-    "abuelaM": false,
-    "abueloM": false,
-    "otrosM": false,
-    "padre": false,
-    "abuelaP": false,
-    "abueloP": false,
-    "hermanosP": false,
-    "otrosP": false,
-    "idPatologias": 8,
-    "idDatosGenerales": this.pacienteId
+    "madre": [false],
+    "abuelaM": [false],
+    "abueloM": [false],
+    "otrosM": [false],
+    "padre": [false],
+    "abuelaP": [false],
+    "abueloP": [false],
+    "hermanosP": [false],
+    "otrosP": [false],
+    "idPatologias": [8],
+    "idDatosGenerales": [this.pacienteId]
   })
 
   hepatitisForm: FormGroup = this.formBuilder.group({
-    "madre": false,
-    "abuelaM": false,
-    "abueloM": false,
-    "otrosM": false,
-    "padre": false,
-    "abuelaP": false,
-    "abueloP": false,
-    "hermanosP": false,
-    "otrosP": false,
-    "idPatologias": 9,
-    "idDatosGenerales": this.pacienteId
+    "madre": [false],
+    "abuelaM": [false],
+    "abueloM": [false],
+    "otrosM": [false],
+    "padre": [false],
+    "abuelaP": [false],
+    "abueloP": [false],
+    "hermanosP": [false],
+    "otrosP": [false],
+    "idPatologias": [9],
+    "idDatosGenerales": [this.pacienteId]
   })
 
   artritisForm: FormGroup = this.formBuilder.group({
-    "madre": false,
-    "abuelaM": false,
-    "abueloM": false,
-    "otrosM": false,
-    "padre": false,
-    "abuelaP": false,
-    "abueloP": false,
-    "hermanosP": false,
-    "otrosP": false,
-    "idPatologias": 10,
-    "idDatosGenerales": this.pacienteId
+    "madre": [false],
+    "abuelaM": [false],
+    "abueloM": [false],
+    "otrosM": [false],
+    "padre": [false],
+    "abuelaP": [false],
+    "abueloP": [false],
+    "hermanosP": [false],
+    "otrosP": [false],
+    "idPatologias": [10],
+    "idDatosGenerales": [this.pacienteId]
   })
 
   otraForm: FormGroup = this.formBuilder.group({
-    "madre": false,
-    "abuelaM": false,
-    "abueloM": false,
-    "otrosM": false,
-    "padre": false,
-    "abuelaP": false,
-    "abueloP": false,
-    "hermanosP": false,
-    "otrosP": false,
-    "idPatologias": 11,
-    "idDatosGenerales": this.pacienteId
+    "madre": [false],
+    "abuelaM": [false],
+    "abueloM": [false],
+    "otrosM": [false],
+    "padre": [false],
+    "abuelaP": [false],
+    "abueloP": [false],
+    "hermanosP": [false],
+    "otrosP": [false],
+    "idPatologias": [11],
+    "idDatosGenerales": [this.pacienteId]
   })
 
   aparentementeSForm: FormGroup = this.formBuilder.group({
-    "madre": false,
-    "abuelaM": false,
-    "abueloM": false,
-    "otrosM": false,
-    "padre": false,
-    "abuelaP": false,
-    "abueloP": false,
-    "hermanosP": false,
-    "otrosP": false,
-    "idPatologias": 12,
-    "idDatosGenerales": this.pacienteId
+    "madre": [false],
+    "abuelaM": [false],
+    "abueloM": [false],
+    "otrosM": [false],
+    "padre": [false],
+    "abuelaP": [false],
+    "abueloP": [false],
+    "hermanosP": [false],
+    "otrosP": [false],
+    "idPatologias": [12],
+    "idDatosGenerales": [this.pacienteId]
   })
   observacionesForm: FormGroup = this.formBuilder.group({
     "observacionesPatologias": [""],
-    "idDatosGenerales": this.pacienteId
+    "idDatosGenerales": [this.pacienteId]
   })
 
   varicelaForm: FormGroup = this.formBuilder.group({
     "siNo": [false, Validators.requiredTrue],
     "fechaAgno": [""],
-    "idEnfermedad": 1,
-    "idDatosGenerales": this.pacienteId
+    "idEnfermedad": [1],
+    "idDatosGenerales": [this.pacienteId]
   })
 
   ///ME QUEDO AQUI HAY QUE VERIFICAR COMO identificar eL siNo para que habilite el input
@@ -254,169 +284,169 @@ export class NewDatosGeneralesComponent implements OnInit{
   rubeolaForm: FormGroup = this.formBuilder.group({
     "siNo": [false],
     "fechaAgno": [""],
-    "idEnfermedad": 2,
-    "idDatosGenerales": this.pacienteId
+    "idEnfermedad": [2],
+    "idDatosGenerales": [this.pacienteId]
   })
 
   sarampionForm: FormGroup = this.formBuilder.group({
     "siNo": [false],
     "fechaAgno": [""],
-    "idEnfermedad": 3,
-    "idDatosGenerales": this.pacienteId
+    "idEnfermedad": [3],
+    "idDatosGenerales": [this.pacienteId]
   })
 
   parotiditisForm: FormGroup = this.formBuilder.group({
     "siNo": [false],
     "fechaAgno": [""],
-    "idEnfermedad": 4,
-    "idDatosGenerales": this.pacienteId
+    "idEnfermedad": [4],
+    "idDatosGenerales": [this.pacienteId]
   })
 
   tosferinaForm: FormGroup = this.formBuilder.group({
     "siNo": [false],
     "fechaAgno": [""],
-    "idEnfermedad": 5,
-    "idDatosGenerales": this.pacienteId
+    "idEnfermedad": [5],
+    "idDatosGenerales": [this.pacienteId]
   })
 
   escarlatinaForm: FormGroup = this.formBuilder.group({
     "siNo": [false],
     "fechaAgno": [""],
-    "idEnfermedad": 6,
-    "idDatosGenerales": this.pacienteId
+    "idEnfermedad": [6],
+    "idDatosGenerales": [this.pacienteId]
   })
 
   parasitosisForm: FormGroup = this.formBuilder.group({
     "siNo": [false],
     "fechaAgno": [""],
-    "idEnfermedad": 7,
-    "idDatosGenerales": this.pacienteId
+    "idEnfermedad": [7],
+    "idDatosGenerales": [this.pacienteId]
   })
 
   hepatitisPyPForm: FormGroup = this.formBuilder.group({
     "siNo": [false],
     "fechaAgno": [""],
-    "idEnfermedad": 8,
-    "idDatosGenerales": this.pacienteId
+    "idEnfermedad": [8],
+    "idDatosGenerales": [this.pacienteId]
   })
 
   SIDAPyPForm: FormGroup = this.formBuilder.group({
     "siNo": [false],
     "fechaAgno": [""],
-    "idEnfermedad": 9,
-    "idDatosGenerales": this.pacienteId
+    "idEnfermedad": [9],
+    "idDatosGenerales": [this.pacienteId]
   })
 
   asmaForm: FormGroup = this.formBuilder.group({
     "siNo": [false],
     "fechaAgno": [""],
-    "idEnfermedad": 10,
-    "idDatosGenerales": this.pacienteId
+    "idEnfermedad": [10],
+    "idDatosGenerales": [this.pacienteId]
   })
 
   disfuncionesEndocrinasForm: FormGroup = this.formBuilder.group({
     "siNo": [false],
     "fechaAgno": [""],
-    "idEnfermedad": 11,
-    "idDatosGenerales": this.pacienteId
+    "idEnfermedad": [11],
+    "idDatosGenerales": [this.pacienteId]
   })
 
   hipertensionForm: FormGroup = this.formBuilder.group({
     "siNo": [false],
     "fechaAgno": [""],
-    "idEnfermedad": 12,
-    "idDatosGenerales": this.pacienteId
+    "idEnfermedad": [12],
+    "idDatosGenerales": [this.pacienteId]
   })
 
   cancerForm: FormGroup = this.formBuilder.group({
     "siNo": [false],
     "fechaAgno": [""],
-    "idEnfermedad": 13,
-    "idDatosGenerales": this.pacienteId
+    "idEnfermedad": [13],
+    "idDatosGenerales": [this.pacienteId]
   })
 
   enfTransSexForm: FormGroup = this.formBuilder.group({
     "siNo": [false],
     "fechaAgno": [""],
-    "idEnfermedad": 14,
-    "idDatosGenerales": this.pacienteId
+    "idEnfermedad": [14],
+    "idDatosGenerales": [this.pacienteId]
   })
 
   epilepsiaPyPForm: FormGroup = this.formBuilder.group({
     "siNo": [false],
     "fechaAgno": [""],
-    "idEnfermedad": 15,
-    "idDatosGenerales": this.pacienteId
+    "idEnfermedad": [15],
+    "idDatosGenerales": [this.pacienteId]
   })
 
   amigdalitisForm: FormGroup = this.formBuilder.group({
     "siNo": [false],
     "fechaAgno": [""],
-    "idEnfermedad": 16,
-    "idDatosGenerales": this.pacienteId
+    "idEnfermedad": [16],
+    "idDatosGenerales": [this.pacienteId]
   })
 
   tubercolosisForm: FormGroup = this.formBuilder.group({
     "siNo": [false],
     "fechaAgno": [""],
-    "idEnfermedad": 17,
-    "idDatosGenerales": this.pacienteId
+    "idEnfermedad": [17],
+    "idDatosGenerales": [this.pacienteId]
   })
 
   fiebreReumaticaForm: FormGroup = this.formBuilder.group({
     "siNo": [false],
     "fechaAgno": [""],
-    "idEnfermedad": 18,
-    "idDatosGenerales": this.pacienteId
+    "idEnfermedad": [18],
+    "idDatosGenerales": [this.pacienteId]
   })
 
   diabetesPyPForm: FormGroup = this.formBuilder.group({
     "siNo": [false],
     "fechaAgno": [""],
-    "idEnfermedad": 19,
-    "idDatosGenerales": this.pacienteId
+    "idEnfermedad": [19],
+    "idDatosGenerales": [this.pacienteId]
   })
 
   enfCardiovascularesForm: FormGroup = this.formBuilder.group({
     "siNo": [false],
     "fechaAgno": [""],
-    "idEnfermedad": 20,
-    "idDatosGenerales": this.pacienteId
+    "idEnfermedad": [20],
+    "idDatosGenerales": [this.pacienteId]
   })
 
   artritisPyPForm: FormGroup = this.formBuilder.group({
     "siNo": [false],
     "fechaAgno": [""],
-    "idEnfermedad": 21,
-    "idDatosGenerales": this.pacienteId
+    "idEnfermedad": [21],
+    "idDatosGenerales": [this.pacienteId]
   })
 
   traumatitisConSecuelasForm: FormGroup = this.formBuilder.group({
     "siNo": [false],
     "fechaAgno": [""],
-    "idEnfermedad": 22,
-    "idDatosGenerales": this.pacienteId
+    "idEnfermedad": [22],
+    "idDatosGenerales": [this.pacienteId]
   })
 
   intervencionQuirurgicaForm: FormGroup = this.formBuilder.group({
     "siNo": [false],
     "fechaAgno": [""],
-    "idEnfermedad": 23,
-    "idDatosGenerales": this.pacienteId
+    "idEnfermedad": [23],
+    "idDatosGenerales": [this.pacienteId]
   })
 
   transfusionSanguineaForm: FormGroup = this.formBuilder.group({
     "siNo": [false],
     "fechaAgno": [""],
-    "idEnfermedad": 24,
-    "idDatosGenerales": this.pacienteId
+    "idEnfermedad": [24],
+    "idDatosGenerales": [this.pacienteId]
   })
 
   alergiaAForm: FormGroup = this.formBuilder.group({
     "siNo": [false],
     "fechaAgno": [""],
-    "idEnfermedad": 25,
-    "idDatosGenerales": this.pacienteId
+    "idEnfermedad": [25],
+    "idDatosGenerales": [this.pacienteId]
   })
 
   antecedentesPersonalesNoP: FormGroup = this.formBuilder.group({
@@ -424,7 +454,7 @@ export class NewDatosGeneralesComponent implements OnInit{
     "tabaquismo": [false],
     "drogas": [false],
     "otros": [""],
-    "idDatosGenerales": this.pacienteId
+    "idDatosGenerales": [this.pacienteId]
   })
 
   padecimientosActuales: FormGroup = this.formBuilder.group({
@@ -444,7 +474,7 @@ export class NewDatosGeneralesComponent implements OnInit{
     "preguntaSieteS": [""],
     "preguntaOcho": [false],
     "preguntaOchoS": [""],
-    "idDatosGenerales": this.pacienteId
+    "idDatosGenerales": [this.pacienteId]
   })
 
   analisisFacialForm: FormGroup = this.formBuilder.group({
@@ -457,7 +487,7 @@ export class NewDatosGeneralesComponent implements OnInit{
     "perfilMandibular": [],
     "surcoLM": [],
     "labiosEr": [],
-    "idDatosGenerales": this.pacienteId
+    "idDatosGenerales": [this.pacienteId]
   })
   
   analisisFuncionalForm: FormGroup = this.formBuilder.group({
@@ -469,8 +499,37 @@ export class NewDatosGeneralesComponent implements OnInit{
     "mentoniano": [],
     "respiracion": [],
     "deglucion": [],
-    "idDatosGenerales": this.pacienteId
+    "idDatosGenerales": [this.pacienteId]
   })
+
+  odontologoControl = new FormControl<Odontologo | null>(null, Validators.required);
+  odontologos: Odontologo[] = [
+    {valor: 'Etbaal Corona', valorEnVista: 'Etbaal Corona'},
+    {valor: 'Rosa Martinez', valorEnVista: 'Rosa Martinez'},
+    {valor: 'Araceli Gomez', valorEnVista: 'Araceli Gomez'},
+  ];
+
+  consentimientoInformadoForm: FormGroup = this.formBuilder.group({
+    "nombrePersona": [],
+    "odontologo": []
+  })
+
+  pagosForm: FormGroup =this.formBuilder.group({
+    fecha: [""],
+    evolucion: [""],
+    costo: [""],
+    aCuenta: [""],
+    saldo: [""]
+  })
+
+  savePagosForm(){
+    console.log(this.pagosForm.value)
+  }
+
+  saveConsentimientoInformado(){
+    this.consentimientoInformadoForm.controls['odontologo'].setValue(this.odontologoControl.value?.valorEnVista)
+    console.log(this.consentimientoInformadoForm.value);
+  }
 
   saveAnalisisFuncional(){
     this.analisisFuncionalForm.controls['idDatosGenerales'].setValue(this.pacienteId)
@@ -552,6 +611,7 @@ export class NewDatosGeneralesComponent implements OnInit{
       console.log(dato)
       this.completadoDatosGenerales = true
       this.paciente = dato.nombre
+      this.sexo = dato.sexo
       this.pacienteId = dato.id
     })
   }
@@ -621,6 +681,5 @@ export class NewDatosGeneralesComponent implements OnInit{
     });
   }
   //poner el segundo cuestionario
-  //poner una bandera para cuando se complete el segundo cuestionario
   //poner los combobox al primer cuestionario
 }

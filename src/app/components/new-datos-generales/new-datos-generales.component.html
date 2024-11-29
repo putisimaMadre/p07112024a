@@ -1516,6 +1516,332 @@
                 </div>
             </form>
             </mat-step>
+            <mat-step>
+                <!--<form [formGroup]="antecedentesFyHForm">-->
+                <ng-template matStepLabel>Evaluación Clínica Adulto</ng-template>
+                <div class="grid">
+                    <div class="col-offset-1"></div>
+                    <div class="col-3">
+                        <mat-list>
+                            <mat-list-item><i><b>Nombre del paciente: {{paciente}}</b></i></mat-list-item>
+                            <mat-divider></mat-divider>
+                        </mat-list>
+                        </div>
+                    </div>
+                    <div class="grid">
+                        <div class="col-offset-1"></div>
+                        <div class="col-3">
+                            <mat-list>
+                                <mat-list-item><i><b>Motivo de la consulta: </b></i></mat-list-item>
+                                <mat-divider></mat-divider>
+                                
+                            </mat-list>
+                            <mat-form-field class="col-12">
+                                <mat-label>Escriba aqui el texto</mat-label>
+                                <textarea matInput
+                                          cdkTextareaAutosize
+                                          #autosize="cdkTextareaAutosize"
+                                          cdkAutosizeMinRows="1"
+                                          cdkAutosizeMaxRows="5"></textarea>
+                              </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="grid">
+                            <div class="col-offset-1"></div>
+                            <div class="col-10">
+                                <mat-card class="example-card" appearance="outlined">
+                                    <mat-card-header>
+                                      <div mat-card-avatar class="example-header-image"></div>
+                                      <mat-card-title></mat-card-title>
+                                      <mat-card-subtitle></mat-card-subtitle>
+                                    </mat-card-header>
+                                    <img mat-card-image src="/odontograma-imagen.png">
+                                    <mat-card-content>
+                                    <!---->  
+                                    </mat-card-content>
+                                    <mat-card-actions>
+                                      <!---->
+                                    </mat-card-actions>
+                                  </mat-card>
+                            </div>
+                        </div>
+                        <div class="grid">
+                            <div class="col-offset-1"></div>
+                        <div class="col-4">
+                            <mat-list>
+                                <mat-list-item><i><b>Observaciones: </b></i></mat-list-item>
+                                <mat-divider></mat-divider>
+                                
+                            </mat-list>
+                            <mat-form-field class="col-12">
+                                <mat-label>Escriba aqui el texto</mat-label>
+                                <textarea matInput
+                                            cdkTextareaAutosize
+                                            #autosize="cdkTextareaAutosize"
+                                            cdkAutosizeMinRows="1"
+                                            cdkAutosizeMaxRows="5"></textarea>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-offset-1"></div>
+                            <div class="col-5">
+                                <mat-list>
+                                    <mat-list-item><i><b>Exploración: </b></i></mat-list-item>
+                                    <mat-divider></mat-divider>
+                                    
+                                </mat-list>
+                                <mat-form-field class="col-12">
+                                    <mat-label>Escriba aqui el texto</mat-label>
+                                    <textarea matInput
+                                              cdkTextareaAutosize
+                                              #autosize="cdkTextareaAutosize"
+                                              cdkAutosizeMinRows="1"
+                                              cdkAutosizeMaxRows="5"></textarea>
+                                  </mat-form-field>
+                                </div>
+                        </div>
+            </mat-step>
+            <mat-step>
+                <!--<form [formGroup]="antecedentesFyHForm">-->
+                <ng-template matStepLabel>Evaluación Clínica Infantil</ng-template>
+                <div class="grid">
+                    <div class="col-offset-1"></div>
+                    <div class="col-3">
+                        <mat-list>
+                            <mat-list-item><i><b>Nombre del paciente: {{paciente}}</b></i></mat-list-item>
+                            <mat-divider></mat-divider>
+                        </mat-list>
+                        </div>
+                    </div>
+                    <div class="grid">
+                        <div class="col-offset-1"></div>
+                        <div class="col-3">
+                            <mat-list>
+                                <mat-list-item><i><b>Motivo de la consulta: </b></i></mat-list-item>
+                                <mat-divider></mat-divider>
+                                
+                            </mat-list>
+                            <mat-form-field class="col-12">
+                                <mat-label>Escriba aqui el texto</mat-label>
+                                <textarea matInput
+                                          cdkTextareaAutosize
+                                          #autosize="cdkTextareaAutosize"
+                                          cdkAutosizeMinRows="1"
+                                          cdkAutosizeMaxRows="5"></textarea>
+                              </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="grid">
+                            <div class="col-offset-1"></div>
+                            <div class="col-10">
+                                <mat-card class="example-card" appearance="outlined">
+                                    <mat-card-header>
+                                      <div mat-card-avatar class="example-header-image"></div>
+                                      <mat-card-title></mat-card-title>
+                                      <mat-card-subtitle></mat-card-subtitle>
+                                    </mat-card-header>
+                                    <img mat-card-image src="/odontograma-infantil.png">
+                                    <mat-card-content>
+                                    <!---->  
+                                    </mat-card-content>
+                                    <mat-card-actions>
+                                      <!---->
+                                    </mat-card-actions>
+                                  </mat-card>
+                            </div>
+                        </div>
+                        <div class="grid">
+                            <div class="col-offset-1"></div>
+                        <div class="col-4">
+                            <mat-list>
+                                <mat-list-item><i><b>Observaciones: </b></i></mat-list-item>
+                                <mat-divider></mat-divider>
+                                
+                            </mat-list>
+                            <mat-form-field class="col-12">
+                                <mat-label>Escriba aqui el texto</mat-label>
+                                <textarea matInput
+                                            cdkTextareaAutosize
+                                            #autosize="cdkTextareaAutosize"
+                                            cdkAutosizeMinRows="1"
+                                            cdkAutosizeMaxRows="5"></textarea>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-offset-1"></div>
+                            <div class="col-5">
+                                <mat-list>
+                                    <mat-list-item><i><b>Exploración: </b></i></mat-list-item>
+                                    <mat-divider></mat-divider>
+                                    
+                                </mat-list>
+                                <mat-form-field class="col-12">
+                                    <mat-label>Escriba aqui el texto</mat-label>
+                                    <textarea matInput
+                                              cdkTextareaAutosize
+                                              #autosize="cdkTextareaAutosize"
+                                              cdkAutosizeMinRows="1"
+                                              cdkAutosizeMaxRows="5"></textarea>
+                                  </mat-form-field>
+                                </div>
+                        </div>
+            </mat-step>
+            <mat-step>
+                <!--<form [formGroup]="antecedentesFyHForm">-->
+                <ng-template matStepLabel>Consentimiento Informado</ng-template>
+                <form [formGroup]="consentimientoInformadoForm">
+                <div class="grid">
+                    <div class="col-offset-1"></div>
+                    <div class="col-4">
+                        
+                        <mat-form-field class="col-8">
+                            <mat-label>Seleccione el Odontólogo</mat-label>
+                            <mat-select [formControl]="odontologoControl" required>
+                            <mat-option>--</mat-option>
+                            @for (odontologo of odontologos; track odontologo) {
+                                <mat-option [value]="odontologo">{{odontologo.valor}}</mat-option>
+                            }
+                            </mat-select>
+                        </mat-form-field>
+                        
+                    </div>
+                    <div class="col-7">
+                        <p style="text-align: justify;">Yo, 
+                            <mat-form-field class="col-4">
+                                <b><input matInput type="text" formControlName="nombrePersona"></b>
+                            </mat-form-field>
+                        por medio del presente documento o en mi calidad del representante legal del paciente
+                        en pleno y normal uso de mis facultades mentales, otorgo en forma libre mi consentimiento al Odontólogo 
+                        <b>{{odontologoControl.value?.valorEnVista}}</b> así como de los auxiliares y técnicos en el ejercicio
+                        legal de su profesión, se me realice el siguiente tratamiento estipulado por escrito en este documento.
+
+                        Así mismo quedan autorizados para llevar a cabo o solicitar la práctica de conductas o procedimientos 
+                        odontológicos adicionales a los ya autorizados en el punto anterior, cuando el resultado del tratamiento
+                        así lo requiera.
+
+                        Como paciente o representante legal, declaro que conozco y comprendo en su totalidad la explicación antes
+                        dada y la posibilidad de que estos eventos se presenten en el desarrollo del curso del tratamiento y/o 
+                        post-operatorio y acepto todos los riesgos que conlleva dichos tratamientos a realizar.
+
+                        Acepto que la odontología no es una ciencia exacta y que con intervención autorizada se buscará la
+                        utilización de los medios idóneos para el caso y que los resultados no dependen exclusivamente del 
+                        Odontólogo.
+
+                        He recibido claras instrucciones en el sentido de que el consentimiento que otorgo mediante este documento
+                        puede ser revisado o dejado sin efecto por la simple decisión del suscrito, tomada antes de la intervención
+                        o realización del tratamiento.
+                        </p>
+                    </div>
+                </div>
+                <!--=============================================GUARDADO======================================-->
+                <div class="grid">
+                    <div class="col-offset-8"></div>
+                    <div class="col-4" *ngIf="completadoConsentimientoInformado == false">
+                        <button [disabled]="completadoConsentimientoInformado" mat-flat-button
+                        (click)="saveConsentimientoInformado()">Guardar</button>
+                    </div>
+                    <div class="col-4" *ngIf="completadoConsentimientoInformado == true">
+                        <button [disabled]="completadoConsentimientoInformado" mat-flat-button 
+                        >Informacion guardada</button>
+                    </div>
+                </div>
+            </form>
+            </mat-step>
+            <mat-step>
+                <ng-template matStepLabel>Pagos</ng-template>
+                <div class="grid">
+                    <div class="col-3">
+                        <mat-list>
+                            <mat-list-item><i><b>Nombre del paciente {{paciente}}</b></i></mat-list-item>
+                            <mat-divider></mat-divider>
+                        </mat-list>
+                    </div>
+                </div>
+                <div class="grid">
+                    <div class="col-3">
+                        <mat-list>
+                            <mat-list-item><i><b>Sexo {{sexo}}</b></i></mat-list-item>
+                            <mat-divider></mat-divider>
+                        </mat-list>
+                    </div>
+                </div>
+                <div class="grid" style="margin-top: 5rem;">
+                    <div class="col-offset-1"></div>
+                    <div class="col-3">
+                        <mat-list>
+                            <mat-list-item><i><b>Fecha</b></i></mat-list-item>
+                            <mat-divider></mat-divider>
+                        </mat-list>
+                    </div>
+                    <div class="col-3">
+                        <mat-list>
+                            <mat-list-item><i><b>Evolución</b></i></mat-list-item>
+                            <mat-divider></mat-divider>
+                        </mat-list>
+                    </div>
+                    <div class="col-4">
+                        <mat-list>
+                            <mat-list-item><i><b>Pagos</b></i></mat-list-item>
+                            <mat-divider></mat-divider>
+                        </mat-list>
+                    </div>
+                </div>
+                <form [formGroup]="pagosForm">
+                <div class="grid">
+                    
+                    <div class="col-offset-1"></div>
+                    <div class="grid col-3">
+                        <mat-form-field class="col-12">
+                            <mat-label>Fecha</mat-label>
+                            <input matInput [matDatepicker]="pickerFechaPago" formControlName="fecha">
+                            <mat-hint>MM/DD/YYYY</mat-hint>
+                            <mat-datepicker-toggle matIconSuffix [for]="pickerFechaPago"></mat-datepicker-toggle>
+                            <mat-datepicker #pickerFechaPago></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+                    <div class="grid col-3">
+                        <mat-form-field class="col-12">
+                            <mat-label>Escriba aqui el texto</mat-label>
+                            <textarea matInput
+                                    cdkTextareaAutosize
+                                    #autosize="cdkTextareaAutosize"
+                                    cdkAutosizeMinRows="1"
+                                    cdkAutosizeMaxRows="5" formControlName="evolucion"></textarea>
+                        </mat-form-field>
+                    </div>
+                    <div class="grid col-5">
+                            <div class="col-3">
+                                <mat-form-field>
+                                    <mat-label>Costo</mat-label>
+                                    <input matInput type="text" formControlName="costo">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-3">
+                                <mat-form-field>
+                                    <mat-label>A cuenta</mat-label>
+                                    <input matInput type="text" formControlName="aCuenta">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-3">
+                                <mat-form-field>
+                                    <mat-label>Saldo</mat-label>
+                                    <input matInput type="text" formControlName="saldo">
+                                </mat-form-field>
+                            </div>
+                    </div>
+                </div>
+                <!--=============================================GUARDADO======================================-->
+                <div class="grid">
+                    <div class="col-offset-8"></div>
+                    <div class="col-4" *ngIf="completadoPagos == false">
+                        <button [disabled]="completadoPagos" mat-flat-button
+                        (click)="savePagosForm()">Guardar</button>
+                    </div>
+                    <div class="col-4" *ngIf="completadoPagos == true">
+                        <button [disabled]="completadoPagos" mat-flat-button 
+                        >Informacion guardada</button>
+                    </div>
+                </div>
+            </form>
+            </mat-step>
       </mat-stepper>
     </div>
 </div>
