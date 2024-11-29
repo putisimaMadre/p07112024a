@@ -11,6 +11,10 @@ import { PadecimientosAService } from '../../services/padecimientos-a.service';
 import { AnalisisFacialService } from '../../services/analisis-facial.service';
 import { AnalisisFuncionalService } from '../../services/analisis-funcional.service';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
+import { EvaluacionClinicaService } from '../../services/evaluacion-clinica.service';
+import { EvaluacionClinicaInfantilService } from '../../services/evaluacion-clinica-infantil.service';
+import { ConsentimientoInformadoService } from '../../services/consentimiento-informado.service';
+import { PagosService } from '../../services/pagos.service';
 
 /*interface Odontologo {
   valor: string;
@@ -57,6 +61,8 @@ export class NewDatosGeneralesComponent implements OnInit{
   completadoAnalisisFacial = false;
   completadoAnalisisFuncional = false;
   completadoConsentimientoInformado = false
+  completadoEvaluacionClinica = false
+  completadoEvaluacionClinicaInfantil = false
   completadoPagos = false
   patologiasArray: FormGroup[] = []
   patologiasPyPArray: FormGroup[] = []
@@ -74,9 +80,14 @@ export class NewDatosGeneralesComponent implements OnInit{
     private padecimientosAService: PadecimientosAService,
     private analisisFacialService: AnalisisFacialService,
     private analisisFuncionalService: AnalisisFuncionalService,
+    private evaluacionClinicaService: EvaluacionClinicaService,
+    private evaluacionClinicaInfantilService: EvaluacionClinicaInfantilService,
+    private consentimientoInformado: ConsentimientoInformadoService,
+    private pagosService: PagosService
   ){}
 
   ngOnInit(): void {
+    //this.pagosForm.get('saldo')?.disable()
   }
 
   formDatosGenerales: FormGroup = this.formBuilder.group({
@@ -502,6 +513,20 @@ export class NewDatosGeneralesComponent implements OnInit{
     "idDatosGenerales": [this.pacienteId]
   })
 
+  evaluacionClinicaForm: FormGroup = this.formBuilder.group({
+    "motivo": [""],
+    "observaciones": [""],
+    "exploracion": [""],
+    "idDatosGenerales": [this.pacienteId]
+  })
+
+  evaluacionClinicaInfantilForm: FormGroup = this.formBuilder.group({
+    "motivo": [""],
+    "observaciones": [""],
+    "exploracion": [""],
+    "idDatosGenerales": [this.pacienteId]
+  })
+
   odontologoControl = new FormControl<Odontologo | null>(null, Validators.required);
   odontologos: Odontologo[] = [
     {valor: 'Etbaal Corona', valorEnVista: 'Etbaal Corona'},
@@ -511,24 +536,54 @@ export class NewDatosGeneralesComponent implements OnInit{
 
   consentimientoInformadoForm: FormGroup = this.formBuilder.group({
     "nombrePersona": [],
-    "odontologo": []
+    "odontologo": [],
+    "idDatosGenerales": [this.pacienteId]
   })
 
+  
   pagosForm: FormGroup =this.formBuilder.group({
-    fecha: [""],
-    evolucion: [""],
-    costo: [""],
-    aCuenta: [""],
-    saldo: [""]
+    "fecha": [""],
+    "evolucion": [""],
+    "costo": [""],
+    "aCuenta": [""],
+    "saldo": [""],
+    "idDatosGenerales": [this.pacienteId]
   })
+
+  saveEvaluacionClinicaInfantil(){
+    this.evaluacionClinicaInfantilForm.controls['idDatosGenerales'].setValue(this.pacienteId)
+    this.evaluacionClinicaInfantilService.postEvaluacionClinicaInfantil(this.evaluacionClinicaInfantilForm.value).subscribe(dato => {
+      console.log(dato)
+      this.completadoEvaluacionClinicaInfantil = true
+    })
+  }
+
+  saveEvaluacionClinica(){
+    this.evaluacionClinicaForm.controls['idDatosGenerales'].setValue(this.pacienteId)
+    this.evaluacionClinicaService.postEvaluacionClinica(this.evaluacionClinicaForm.value).subscribe(dato => {
+      console.log(dato)
+      this.completadoEvaluacionClinica = true
+    })
+  }
 
   savePagosForm(){
-    console.log(this.pagosForm.value)
+    let saldo:number = 0
+    this.pagosForm.controls['idDatosGenerales'].setValue(this.pacienteId)
+    saldo = this.pagosForm.get('costo')?.value - this.pagosForm.get('aCuenta')?.value
+    this.pagosForm.controls['saldo'].setValue(saldo)
+    this.pagosService.postPagos(this.pagosForm.value).subscribe(dato => {
+      console.log(dato)
+      this.completadoPagos = true
+    })
   }
 
   saveConsentimientoInformado(){
     this.consentimientoInformadoForm.controls['odontologo'].setValue(this.odontologoControl.value?.valorEnVista)
-    console.log(this.consentimientoInformadoForm.value);
+    this.consentimientoInformadoForm.controls['idDatosGenerales'].setValue(this.pacienteId)
+    this.consentimientoInformado.postConsentimientoInformado(this.consentimientoInformadoForm.value).subscribe(dato => {
+      console.log(dato)
+      this.completadoConsentimientoInformado = true
+    })
   }
 
   saveAnalisisFuncional(){

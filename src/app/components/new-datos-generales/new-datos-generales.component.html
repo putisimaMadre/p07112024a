@@ -1517,16 +1517,16 @@
             </form>
             </mat-step>
             <mat-step>
-                <!--<form [formGroup]="antecedentesFyHForm">-->
-                <ng-template matStepLabel>Evaluación Clínica Adulto</ng-template>
-                <div class="grid">
-                    <div class="col-offset-1"></div>
-                    <div class="col-3">
-                        <mat-list>
-                            <mat-list-item><i><b>Nombre del paciente: {{paciente}}</b></i></mat-list-item>
-                            <mat-divider></mat-divider>
-                        </mat-list>
-                        </div>
+                <form [formGroup]="evaluacionClinicaForm">
+                    <ng-template matStepLabel>Evaluación Clínica Adulto</ng-template>
+                    <div class="grid">
+                        <div class="col-offset-1"></div>
+                        <div class="col-3">
+                            <mat-list>
+                                <mat-list-item><i><b>Nombre del paciente: {{paciente}}</b></i></mat-list-item>
+                                <mat-divider></mat-divider>
+                            </mat-list>
+                            </div>
                     </div>
                     <div class="grid">
                         <div class="col-offset-1"></div>
@@ -1539,37 +1539,53 @@
                             <mat-form-field class="col-12">
                                 <mat-label>Escriba aqui el texto</mat-label>
                                 <textarea matInput
-                                          cdkTextareaAutosize
-                                          #autosize="cdkTextareaAutosize"
-                                          cdkAutosizeMinRows="1"
-                                          cdkAutosizeMaxRows="5"></textarea>
-                              </mat-form-field>
+                                            cdkTextareaAutosize
+                                            #autosize="cdkTextareaAutosize"
+                                            cdkAutosizeMinRows="1"
+                                            cdkAutosizeMaxRows="5" formControlName="motivo"></textarea>
+                                </mat-form-field>
                             </div>
                         </div>
-                        <div class="grid">
-                            <div class="col-offset-1"></div>
-                            <div class="col-10">
-                                <mat-card class="example-card" appearance="outlined">
-                                    <mat-card-header>
-                                      <div mat-card-avatar class="example-header-image"></div>
-                                      <mat-card-title></mat-card-title>
-                                      <mat-card-subtitle></mat-card-subtitle>
-                                    </mat-card-header>
-                                    <img mat-card-image src="/odontograma-imagen.png">
-                                    <mat-card-content>
-                                    <!---->  
-                                    </mat-card-content>
-                                    <mat-card-actions>
-                                      <!---->
-                                    </mat-card-actions>
-                                  </mat-card>
-                            </div>
+                    <div class="grid">
+                        <div class="col-offset-1"></div>
+                        <div class="col-10">
+                            <mat-card class="example-card" appearance="outlined">
+                                <mat-card-header>
+                                    <div mat-card-avatar class="example-header-image"></div>
+                                    <mat-card-title></mat-card-title>
+                                    <mat-card-subtitle></mat-card-subtitle>
+                                </mat-card-header>
+                                <img mat-card-image src="/odontograma-imagen.png">
+                                <mat-card-content>
+                                <!---->  
+                                </mat-card-content>
+                                <mat-card-actions>
+                                    <!---->
+                                </mat-card-actions>
+                                </mat-card>
                         </div>
-                        <div class="grid">
-                            <div class="col-offset-1"></div>
-                        <div class="col-4">
+                    </div>
+                    <div class="grid">
+                        <div class="col-offset-1"></div>
+                    <div class="col-4">
+                        <mat-list>
+                            <mat-list-item><i><b>Observaciones: </b></i></mat-list-item>
+                            <mat-divider></mat-divider>
+                            
+                        </mat-list>
+                        <mat-form-field class="col-12">
+                            <mat-label>Escriba aqui el texto</mat-label>
+                            <textarea matInput
+                                        cdkTextareaAutosize
+                                        #autosize="cdkTextareaAutosize"
+                                        cdkAutosizeMinRows="1"
+                                        cdkAutosizeMaxRows="5" formControlName="observaciones"></textarea>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-offset-1"></div>
+                        <div class="col-5">
                             <mat-list>
-                                <mat-list-item><i><b>Observaciones: </b></i></mat-list-item>
+                                <mat-list-item><i><b>Exploración: </b></i></mat-list-item>
                                 <mat-divider></mat-divider>
                                 
                             </mat-list>
@@ -1579,29 +1595,26 @@
                                             cdkTextareaAutosize
                                             #autosize="cdkTextareaAutosize"
                                             cdkAutosizeMinRows="1"
-                                            cdkAutosizeMaxRows="5"></textarea>
+                                            cdkAutosizeMaxRows="5" formControlName="exploracion"></textarea>
                                 </mat-form-field>
                             </div>
-                            <div class="col-offset-1"></div>
-                            <div class="col-5">
-                                <mat-list>
-                                    <mat-list-item><i><b>Exploración: </b></i></mat-list-item>
-                                    <mat-divider></mat-divider>
-                                    
-                                </mat-list>
-                                <mat-form-field class="col-12">
-                                    <mat-label>Escriba aqui el texto</mat-label>
-                                    <textarea matInput
-                                              cdkTextareaAutosize
-                                              #autosize="cdkTextareaAutosize"
-                                              cdkAutosizeMinRows="1"
-                                              cdkAutosizeMaxRows="5"></textarea>
-                                  </mat-form-field>
-                                </div>
-                        </div>
+                    </div>
+                    <!--=============================================GUARDADO======================================-->
+                <div class="grid">
+                    <div class="col-offset-8"></div>
+                    <div class="col-4" *ngIf="completadoEvaluacionClinica == false">
+                        <button [disabled]="completadoEvaluacionClinica" mat-flat-button
+                        (click)="saveEvaluacionClinica()">Guardar</button>
+                    </div>
+                    <div class="col-4" *ngIf="completadoEvaluacionClinica == true">
+                        <button [disabled]="completadoEvaluacionClinica" mat-flat-button 
+                        >Informacion guardada</button>
+                    </div>
+                </div>
+                    </form>
             </mat-step>
             <mat-step>
-                <!--<form [formGroup]="antecedentesFyHForm">-->
+                <form [formGroup]="evaluacionClinicaInfantilForm">
                 <ng-template matStepLabel>Evaluación Clínica Infantil</ng-template>
                 <div class="grid">
                     <div class="col-offset-1"></div>
@@ -1626,7 +1639,7 @@
                                           cdkTextareaAutosize
                                           #autosize="cdkTextareaAutosize"
                                           cdkAutosizeMinRows="1"
-                                          cdkAutosizeMaxRows="5"></textarea>
+                                          cdkAutosizeMaxRows="5" formControlName="motivo"></textarea>
                               </mat-form-field>
                             </div>
                         </div>
@@ -1663,7 +1676,7 @@
                                             cdkTextareaAutosize
                                             #autosize="cdkTextareaAutosize"
                                             cdkAutosizeMinRows="1"
-                                            cdkAutosizeMaxRows="5"></textarea>
+                                            cdkAutosizeMaxRows="5" formControlName="observaciones"></textarea>
                                 </mat-form-field>
                             </div>
                             <div class="col-offset-1"></div>
@@ -1679,10 +1692,23 @@
                                               cdkTextareaAutosize
                                               #autosize="cdkTextareaAutosize"
                                               cdkAutosizeMinRows="1"
-                                              cdkAutosizeMaxRows="5"></textarea>
+                                              cdkAutosizeMaxRows="5" formControlName="exploracion"></textarea>
                                   </mat-form-field>
                                 </div>
                         </div>
+                        <!--=============================================GUARDADO======================================-->
+                <div class="grid">
+                    <div class="col-offset-8"></div>
+                    <div class="col-4" *ngIf="completadoEvaluacionClinicaInfantil == false">
+                        <button [disabled]="completadoEvaluacionClinicaInfantil" mat-flat-button
+                        (click)="saveEvaluacionClinicaInfantil()">Guardar</button>
+                    </div>
+                    <div class="col-4" *ngIf="completadoEvaluacionClinicaInfantil == true">
+                        <button [disabled]="completadoEvaluacionClinicaInfantil" mat-flat-button 
+                        >Informacion guardada</button>
+                    </div>
+                </div>
+                    </form>
             </mat-step>
             <mat-step>
                 <!--<form [formGroup]="antecedentesFyHForm">-->
@@ -1750,7 +1776,7 @@
                 <div class="grid">
                     <div class="col-3">
                         <mat-list>
-                            <mat-list-item><i><b>Nombre del paciente {{paciente}}</b></i></mat-list-item>
+                            <mat-list-item><i><b>Nombre del paciente: {{paciente}}</b></i></mat-list-item>
                             <mat-divider></mat-divider>
                         </mat-list>
                     </div>
@@ -1758,14 +1784,14 @@
                 <div class="grid">
                     <div class="col-3">
                         <mat-list>
-                            <mat-list-item><i><b>Sexo {{sexo}}</b></i></mat-list-item>
+                            <mat-list-item><i><b>Sexo: {{sexo}}</b></i></mat-list-item>
                             <mat-divider></mat-divider>
                         </mat-list>
                     </div>
                 </div>
                 <div class="grid" style="margin-top: 5rem;">
                     <div class="col-offset-1"></div>
-                    <div class="col-3">
+                    <div class="col-2">
                         <mat-list>
                             <mat-list-item><i><b>Fecha</b></i></mat-list-item>
                             <mat-divider></mat-divider>
@@ -1786,9 +1812,8 @@
                 </div>
                 <form [formGroup]="pagosForm">
                 <div class="grid">
-                    
                     <div class="col-offset-1"></div>
-                    <div class="grid col-3">
+                    <div class="grid col-2">
                         <mat-form-field class="col-12">
                             <mat-label>Fecha</mat-label>
                             <input matInput [matDatepicker]="pickerFechaPago" formControlName="fecha">
@@ -1797,7 +1822,7 @@
                             <mat-datepicker #pickerFechaPago></mat-datepicker>
                         </mat-form-field>
                     </div>
-                    <div class="grid col-3">
+                    <div class="grid col-3" style="margin-left: 1rem;">
                         <mat-form-field class="col-12">
                             <mat-label>Escriba aqui el texto</mat-label>
                             <textarea matInput
@@ -1807,8 +1832,8 @@
                                     cdkAutosizeMaxRows="5" formControlName="evolucion"></textarea>
                         </mat-form-field>
                     </div>
-                    <div class="grid col-5">
-                            <div class="col-3">
+                    <div class="grid col-6">
+                            <div class="col-3" style="margin-left: 1rem;">
                                 <mat-form-field>
                                     <mat-label>Costo</mat-label>
                                     <input matInput type="text" formControlName="costo">
@@ -1823,7 +1848,7 @@
                             <div class="col-3">
                                 <mat-form-field>
                                     <mat-label>Saldo</mat-label>
-                                    <input matInput type="text" formControlName="saldo">
+                                    <input matInput type="text" formControlName="saldo" readonly="true">
                                 </mat-form-field>
                             </div>
                     </div>
