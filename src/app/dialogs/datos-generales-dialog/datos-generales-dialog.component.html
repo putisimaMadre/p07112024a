@@ -1,0 +1,9 @@
+<h2 mat-dialog-title>Antecedentes Familiares y Hereditarios</h2>
+<mat-dialog-content>
+    <ul *ngFor="let antecedentes of antecedentesByIdDatosGenerales">
+        <li>{{antecedentes.madre}}</li>
+    </ul>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>Close</button>
+</mat-dialog-actions>

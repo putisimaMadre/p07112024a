@@ -16,6 +16,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatListModule } from '@angular/material/list';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   providers: [
@@ -37,7 +38,8 @@ import { MatRadioModule } from '@angular/material/radio';
     MatMenuModule,
     MatListModule,
     MatSlideToggleModule,
-    MatRadioModule
+    MatRadioModule,
+    MatDialogModule
   ]
 })
 export class MaterialModule { }

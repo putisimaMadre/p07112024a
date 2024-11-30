@@ -1,4 +1,5 @@
 export interface AntecedentesFyH {
+    id:number
     madre: boolean;
     abuelaM: boolean;
     abueloM: boolean;

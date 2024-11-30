@@ -14,6 +14,7 @@ import { NewAntecedentesFyHComponent } from './components/new-antecedentes-fy-h/
 import { MaterialModule } from './material/material.module';
 import { MenuComponent } from './components/menu/menu.component';
 import { NewAntecedentesPyPComponent } from './components/new-antecedentes-py-p/new-antecedentes-py-p.component';
+import { DatosGeneralesDialogComponent } from './dialogs/datos-generales-dialog/datos-generales-dialog.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { NewAntecedentesPyPComponent } from './components/new-antecedentes-py-p/
     NewDatosGeneralesComponent,
     NewAntecedentesFyHComponent,
     MenuComponent,
-    NewAntecedentesPyPComponent
+    NewAntecedentesPyPComponent,
+    DatosGeneralesDialogComponent
   ],
   imports: [
     BrowserModule,

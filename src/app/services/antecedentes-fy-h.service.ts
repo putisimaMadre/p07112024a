@@ -10,6 +10,7 @@ import { AntecedentesFyH } from '../models/antecedentes-fy-h';
 export class AntecedentesFyHService {
 
   private urlEndPoint = "http://localhost:8000/api/antecedentesFyH"
+  private urlEndPointAntecedentesByIdDatosGenerales = "http://localhost:8000/api/antecedentesByIdDatosGenerales"
   private httpHeaders = new HttpHeaders({"Content-type":"Application/json"})
   constructor(private httpClient: HttpClient) { }
 
@@ -17,11 +18,15 @@ export class AntecedentesFyHService {
     return this.httpClient.get<AntecedentesFyH[]>(this.urlEndPoint);
   }
 
+  getAntecedentesById(idDatosGenerales: number): Observable<AntecedentesFyH>{
+    return this.httpClient.get<AntecedentesFyH>(this.urlEndPoint+'/'+idDatosGenerales);
+  }
+
+  getAntecedentesByIdDatosGenerales(antecedentesFyH: AntecedentesFyH): Observable<AntecedentesFyH[]>{
+    return this.httpClient.post<AntecedentesFyH[]>(this.urlEndPointAntecedentesByIdDatosGenerales, antecedentesFyH, {headers: this.httpHeaders})
+  }
+
   postAntecedentes(antecedentesFyH: AntecedentesFyH): Observable<AntecedentesFyH>{
     return this.httpClient.post<AntecedentesFyH>(this.urlEndPoint, antecedentesFyH, {headers: this.httpHeaders})
   }
-
-  /*postA1(antecedentesFyH: Map<string, FormGroup<any>>): Observable<Map<string, FormGroup<any>>>{
-    return this.httpClient.post<Map<string, FormGroup<any>>>(this.urlEndPoint, antecedentesFyH, {headers: this.httpHeaders})
-  }*/
 }
