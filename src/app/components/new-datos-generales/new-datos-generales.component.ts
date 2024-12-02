@@ -70,6 +70,7 @@ export class NewDatosGeneralesComponent implements OnInit{
   paciente: string = ""
   sexo: string = ""
   pacienteId: number = 0;
+  prueba = 2;
 
   constructor(private datosGeneralesService: DatosGeneralesService,
     private antecedentesService: AntecedentesFyHService,
@@ -105,169 +106,169 @@ export class NewDatosGeneralesComponent implements OnInit{
   })
 
   diabetesForm: FormGroup = this.formBuilder.group({
-    "madre": [false],
-    "abuelaM": [false],
-    "abueloM": [false],
-    "otrosM": [false],
-    "padre": [false],
-    "abuelaP": [false],
-    "abueloP": [false],
-    "hermanosP": [false],
-    "otrosP": [false],
+    "madre": [],
+    "abuelaM": [],
+    "abueloM": [],
+    "otrosM": [],
+    "padre": [],
+    "abuelaP": [],
+    "abueloP": [],
+    "hermanosP": [],
+    "otrosP": [],
     "idPatologias": [1],
     "idDatosGenerales": [this.pacienteId]
   })
 
   hipertensionAForm: FormGroup = this.formBuilder.group({
-    "madre": [false],
-    "abuelaM": [false],
-    "abueloM": [false],
-    "otrosM": [false],
-    "padre": [false],
-    "abuelaP": [false],
-    "abueloP": [false],
-    "hermanosP": [false],
-    "otrosP": [false],
+    "madre": [],
+    "abuelaM": [],
+    "abueloM": [],
+    "otrosM": [],
+    "padre": [],
+    "abuelaP": [],
+    "abueloP": [],
+    "hermanosP": [],
+    "otrosP": [],
     "idPatologias": [2],
     "idDatosGenerales": [this.pacienteId]
   })
 
   cardiopatiaForm: FormGroup = this.formBuilder.group({
-    "madre": [false],
-    "abuelaM": [false],
-    "abueloM": [false],
-    "otrosM": [false],
-    "padre": [false],
-    "abuelaP": [false],
-    "abueloP": [false],
-    "hermanosP": [false],
-    "otrosP": [false],
+    "madre": [],
+    "abuelaM": [],
+    "abueloM": [],
+    "otrosM": [],
+    "padre": [],
+    "abuelaP": [],
+    "abueloP": [],
+    "hermanosP": [],
+    "otrosP": [],
     "idPatologias": [3],
     "idDatosGenerales": [this.pacienteId]
   })
 
   neoplasiasForm: FormGroup = this.formBuilder.group({
-    "madre": [false],
-    "abuelaM": [false],
-    "abueloM": [false],
-    "otrosM": [false],
-    "padre": [false],
-    "abuelaP": [false],
-    "abueloP": [false],
-    "hermanosP": [false],
-    "otrosP": [false],
+    "madre": [],
+    "abuelaM": [],
+    "abueloM": [],
+    "otrosM": [],
+    "padre": [],
+    "abuelaP": [],
+    "abueloP": [],
+    "hermanosP": [],
+    "otrosP": [],
     "idPatologias": [4],
     "idDatosGenerales": [[this.pacienteId]]
   })
 
   epilepsiaForm: FormGroup = this.formBuilder.group({
-    "madre": [false],
-    "abuelaM": [false],
-    "abueloM": [false],
-    "otrosM": [false],
-    "padre": [false],
-    "abuelaP": [false],
-    "abueloP": [false],
-    "hermanosP": [false],
-    "otrosP": [false],
+    "madre": [],
+    "abuelaM": [],
+    "abueloM": [],
+    "otrosM": [],
+    "padre": [],
+    "abuelaP": [],
+    "abueloP": [],
+    "hermanosP": [],
+    "otrosP": [],
     "idPatologias": [5],
     "idDatosGenerales": [this.pacienteId]
   })
 
   malformacionesForm: FormGroup = this.formBuilder.group({
-    "madre": [false],
-    "abuelaM": [false],
-    "abueloM": [false],
-    "otrosM": [false],
-    "padre": [false],
-    "abuelaP": [false],
-    "abueloP": [false],
-    "hermanosP": [false],
-    "otrosP": [false],
+    "madre": [],
+    "abuelaM": [],
+    "abueloM": [],
+    "otrosM": [],
+    "padre": [],
+    "abuelaP": [],
+    "abueloP": [],
+    "hermanosP": [],
+    "otrosP": [],
     "idPatologias": [6],
     "idDatosGenerales": [this.pacienteId]
   })
 
   SIDAForm: FormGroup = this.formBuilder.group({
-    "madre": [false],
-    "abuelaM": [false],
-    "abueloM": [false],
-    "otrosM": [false],
-    "padre": [false],
-    "abuelaP": [false],
-    "abueloP": [false],
-    "hermanosP": [false],
-    "otrosP": [false],
+    "madre": [],
+    "abuelaM": [],
+    "abueloM": [],
+    "otrosM": [],
+    "padre": [],
+    "abuelaP": [],
+    "abueloP": [],
+    "hermanosP": [],
+    "otrosP": [],
     "idPatologias": [7],
     "idDatosGenerales": [this.pacienteId]
   })
 
   enfermedadesRForm: FormGroup = this.formBuilder.group({
-    "madre": [false],
-    "abuelaM": [false],
-    "abueloM": [false],
-    "otrosM": [false],
-    "padre": [false],
-    "abuelaP": [false],
-    "abueloP": [false],
-    "hermanosP": [false],
-    "otrosP": [false],
+    "madre": [],
+    "abuelaM": [],
+    "abueloM": [],
+    "otrosM": [],
+    "padre": [],
+    "abuelaP": [],
+    "abueloP": [],
+    "hermanosP": [],
+    "otrosP": [],
     "idPatologias": [8],
     "idDatosGenerales": [this.pacienteId]
   })
 
   hepatitisForm: FormGroup = this.formBuilder.group({
-    "madre": [false],
-    "abuelaM": [false],
-    "abueloM": [false],
-    "otrosM": [false],
-    "padre": [false],
-    "abuelaP": [false],
-    "abueloP": [false],
-    "hermanosP": [false],
-    "otrosP": [false],
+    "madre": [],
+    "abuelaM": [],
+    "abueloM": [],
+    "otrosM": [],
+    "padre": [],
+    "abuelaP": [],
+    "abueloP": [],
+    "hermanosP": [],
+    "otrosP": [],
     "idPatologias": [9],
     "idDatosGenerales": [this.pacienteId]
   })
 
   artritisForm: FormGroup = this.formBuilder.group({
-    "madre": [false],
-    "abuelaM": [false],
-    "abueloM": [false],
-    "otrosM": [false],
-    "padre": [false],
-    "abuelaP": [false],
-    "abueloP": [false],
-    "hermanosP": [false],
-    "otrosP": [false],
+    "madre": [],
+    "abuelaM": [],
+    "abueloM": [],
+    "otrosM": [],
+    "padre": [],
+    "abuelaP": [],
+    "abueloP": [],
+    "hermanosP": [],
+    "otrosP": [],
     "idPatologias": [10],
     "idDatosGenerales": [this.pacienteId]
   })
 
   otraForm: FormGroup = this.formBuilder.group({
-    "madre": [false],
-    "abuelaM": [false],
-    "abueloM": [false],
-    "otrosM": [false],
-    "padre": [false],
-    "abuelaP": [false],
-    "abueloP": [false],
-    "hermanosP": [false],
-    "otrosP": [false],
+    "madre": [],
+    "abuelaM": [],
+    "abueloM": [],
+    "otrosM": [],
+    "padre": [],
+    "abuelaP": [],
+    "abueloP": [],
+    "hermanosP": [],
+    "otrosP": [],
     "idPatologias": [11],
     "idDatosGenerales": [this.pacienteId]
   })
 
   aparentementeSForm: FormGroup = this.formBuilder.group({
-    "madre": [false],
-    "abuelaM": [false],
-    "abueloM": [false],
-    "otrosM": [false],
-    "padre": [false],
-    "abuelaP": [false],
-    "abueloP": [false],
-    "hermanosP": [false],
-    "otrosP": [false],
+    "madre": [],
+    "abuelaM": [],
+    "abueloM": [],
+    "otrosM": [],
+    "padre": [],
+    "abuelaP": [],
+    "abueloP": [],
+    "hermanosP": [],
+    "otrosP": [],
     "idPatologias": [12],
     "idDatosGenerales": [this.pacienteId]
   })
@@ -618,8 +619,19 @@ export class NewDatosGeneralesComponent implements OnInit{
     })
   }
 
+  cambioValorPatologia(formGroup: FormGroup){
+    let idPatologia = formGroup.get('idPatologias')?.value
+      Object.keys(formGroup.controls).forEach((key: string) => {
+        let valorAntecedente = formGroup.get(key);
+        if(valorAntecedente!.value === true){
+          formGroup.controls[key].setValue(idPatologia)
+          console.log(key + ' = ' + valorAntecedente!.value);
+        }
+      });
+  }
+
   savePatalogias(): void {
-    this.completadoAntecedentesFyH = true;
+    //this.completadoAntecedentesFyH = true;
     //this.diabetesForm.get('idDatosGenerales')?.value <--- Asi se obtiene un dato del formgroup
     this.diabetesForm.controls['idDatosGenerales'].setValue(this.pacienteId)
     this.hipertensionAForm.controls['idDatosGenerales'].setValue(this.pacienteId)
@@ -633,7 +645,7 @@ export class NewDatosGeneralesComponent implements OnInit{
     this.artritisForm.controls['idDatosGenerales'].setValue(this.pacienteId)
     this.otraForm.controls['idDatosGenerales'].setValue(this.pacienteId)
     this.aparentementeSForm.controls['idDatosGenerales'].setValue(this.pacienteId)
-
+//console.log(this.diabetesForm.value)
     //INSERTAR APARTE LAS OBSERVACIONES
     
     this.patologiasArray.push(this.diabetesForm);
@@ -649,10 +661,10 @@ export class NewDatosGeneralesComponent implements OnInit{
     this.patologiasArray.push(this.otraForm);
     this.patologiasArray.push(this.aparentementeSForm);
 
+    //console.log(this.patologiasArray)*/
     this.patologiasArray.forEach(element => {
-      this.antecedentesService
-      .postAntecedentes(element.value)
-      .subscribe(patologia => {
+      this.cambioValorPatologia(element)
+      this.antecedentesService.postAntecedentes(element.value).subscribe(patologia => {
         console.log(patologia)
       })
     });

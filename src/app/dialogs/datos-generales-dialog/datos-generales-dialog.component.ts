@@ -4,6 +4,7 @@ import { AntecedentesFyHService } from '../../services/antecedentes-fy-h.service
 import { AntecedentesFyH } from '../../models/antecedentes-fy-h';
 import { DatosGenerales } from '../../models/datos-generales';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Patologias } from '../../models/patologias';
 
 @Component({
   selector: 'app-datos-generales-dialog',
@@ -14,7 +15,20 @@ export class DatosGeneralesDialogComponent implements OnInit{
 
   readonly dialogRef = inject(MatDialogRef<DatosGeneralesDialogComponent>);
   antecedentesByIdDatosGenerales: AntecedentesFyH[] = []
-  
+  patologias: Patologias[] = [
+    {id: 1, patologia: "Diabetes"},
+    {id: 2, patologia: "Hipertensión Arterial"},
+    {id: 3, patologia: "Cardiopatías"},
+    {id: 4, patologia: "Neoplasias"},
+    {id: 5, patologia: "Epilepsia"},
+    {id: 6, patologia: "Malformaciones"},
+    {id: 7, patologia: "SIDA"},
+    {id: 8, patologia: "Enfermedades Renales"},
+    {id: 9, patologia: "Hepatitis"},
+    {id: 10, patologia: "Artritis"},
+    {id: 11, patologia: "Otra"},
+    {id: 12, patologia: "Aparentemente Sano"}
+  ]
 
   constructor(private antecedentesFyHService: AntecedentesFyHService,
     private formBuilder: FormBuilder,
@@ -26,29 +40,11 @@ export class DatosGeneralesDialogComponent implements OnInit{
    this.antecedentesFyHService.getAntecedentesByIdDatosGenerales(this.formAntecedentes.value)
    .subscribe(a => {
       this.antecedentesByIdDatosGenerales = a
-      this.evaluacionAntecedentes(this.antecedentesByIdDatosGenerales);
   })
   }
 
   formAntecedentes: FormGroup = this.formBuilder.group({
     "idDatosGenerales": []
   })
-
-  evaluacionAntecedentes(antecedentes: AntecedentesFyH[]){
-    antecedentes.forEach((item, index)=>{
-      //console.log("item: "+ item[index] +" index: "+index)
-      console.log(item.id)
-      //VER LA MANERA DE OBTENER LOS DATOS ORDENADOS EN UN ARRAY CON UN CASE 
-      //if(item )
-      /*switch (index) {
-        case 1:
-          console.log('Oranges are $0.59 a pound.');
-        break;
-        case 2:
-          console.log('Oranges are $0.59 a pound.');
-        break;
-      }*/
-    })
-  }
 
 }

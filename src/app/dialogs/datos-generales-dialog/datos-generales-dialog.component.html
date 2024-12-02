@@ -1,8 +1,77 @@
 <h2 mat-dialog-title>Antecedentes Familiares y Hereditarios</h2>
 <mat-dialog-content>
-    <ul *ngFor="let antecedentes of antecedentesByIdDatosGenerales">
-        <li>{{antecedentes.madre}}</li>
+  <section *ngFor="let antecedentes of antecedentesByIdDatosGenerales">
+    <ul *ngFor="let p of patologias">
+        <li *ngIf="p.id === antecedentes.madre && antecedentes.madre != null">
+          <span><b>Madre: </b></span>
+            <span >{{p.patologia}}</span>
+        </li>
     </ul>
+  </section>
+  <section *ngFor="let antecedentes of antecedentesByIdDatosGenerales">
+    <ul *ngFor="let p of patologias">
+        <li *ngIf="p.id === antecedentes.abuelaM && antecedentes.abuelaM != null">
+          <span><b>Abuela Materna: </b></span>
+            <span >{{p.patologia}}</span>
+        </li>
+    </ul>
+  </section>
+  <section *ngFor="let antecedentes of antecedentesByIdDatosGenerales">
+    <ul *ngFor="let p of patologias">
+        <li *ngIf="p.id === antecedentes.abueloM && antecedentes.abueloM != null">
+          <span><b>Abuelo Materno: </b></span>
+            <span >{{p.patologia}}</span>
+        </li>
+    </ul>
+  </section>
+  <section *ngFor="let antecedentes of antecedentesByIdDatosGenerales">
+    <ul *ngFor="let p of patologias">
+        <li *ngIf="p.id === antecedentes.otrosM && antecedentes.otrosM != null">
+          <span><b>Otros Maternos: </b></span>
+            <span >{{p.patologia}}</span>
+        </li>
+    </ul>
+  </section>
+  <section *ngFor="let antecedentes of antecedentesByIdDatosGenerales">
+    <ul *ngFor="let p of patologias">
+        <li *ngIf="p.id === antecedentes.padre && antecedentes.padre != null">
+          <span><b>Padre: </b></span>
+            <span >{{p.patologia}}</span>
+        </li>
+    </ul>
+  </section>
+  <section *ngFor="let antecedentes of antecedentesByIdDatosGenerales">
+    <ul *ngFor="let p of patologias">
+        <li *ngIf="p.id === antecedentes.abuelaP && antecedentes.abuelaP != null">
+          <span><b>Abuela paterna: </b></span>
+            <span >{{p.patologia}}</span>
+        </li>
+    </ul>
+  </section>
+  <section *ngFor="let antecedentes of antecedentesByIdDatosGenerales">
+    <ul *ngFor="let p of patologias">
+        <li *ngIf="p.id === antecedentes.abueloP && antecedentes.abueloP != null">
+          <span><b>Abuelo paterno: </b></span>
+            <span >{{p.patologia}}</span>
+        </li>
+    </ul>
+  </section>
+  <section *ngFor="let antecedentes of antecedentesByIdDatosGenerales">
+    <ul *ngFor="let p of patologias">
+        <li *ngIf="p.id === antecedentes.hermanosP && antecedentes.hermanosP != null">
+          <span><b>Hermanos paterno: </b></span>
+            <span >{{p.patologia}}</span>
+        </li>
+    </ul>
+  </section>
+  <section *ngFor="let antecedentes of antecedentesByIdDatosGenerales">
+    <ul *ngFor="let p of patologias">
+        <li *ngIf="p.id === antecedentes.otrosP && antecedentes.otrosP != null">
+          <span><b>Otros paterno: </b></span>
+            <span >{{p.patologia}}</span>
+        </li>
+    </ul>
+  </section>
 </mat-dialog-content>
 <mat-dialog-actions>
   <button mat-button mat-dialog-close>Close</button>

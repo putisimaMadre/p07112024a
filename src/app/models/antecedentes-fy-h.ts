@@ -1,14 +1,14 @@
 export interface AntecedentesFyH {
-    id:number
-    madre: boolean;
-    abuelaM: boolean;
-    abueloM: boolean;
-    otrosM: boolean;
-    padre: boolean;
-    abuelaP: boolean;
-    abueloP: boolean;
-    hermanosP: boolean;
-    otrosP: boolean;
+    id:number;
+    madre: number;
+    abuelaM: number;
+    abueloM: number;
+    otrosM: number;
+    padre: number;
+    abuelaP: number;
+    abueloP: number;
+    hermanosP: number;
+    otrosP: number;
     idPatologias: number;
     idDatosGenerales: number;
 }
