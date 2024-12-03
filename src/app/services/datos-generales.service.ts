@@ -16,6 +16,10 @@ export class DatosGeneralesService {
     return this.httpClient.get<DatosGenerales[]>(this.urlEndPoint);
   }
 
+  getDatosGeneralesById(idDatosGenerales: number): Observable<DatosGenerales>{
+    return this.httpClient.get<DatosGenerales>(this.urlEndPoint+'/'+idDatosGenerales);
+  }
+
   postDatosGenerales(datosGenerales: DatosGenerales): Observable<DatosGenerales>{
     return this.httpClient.post<DatosGenerales>(this.urlEndPoint, datosGenerales, {headers: this.httpHeaders})
   }

@@ -631,7 +631,7 @@ export class NewDatosGeneralesComponent implements OnInit{
   }
 
   savePatalogias(): void {
-    //this.completadoAntecedentesFyH = true;
+    this.completadoAntecedentesFyH = true;
     //this.diabetesForm.get('idDatosGenerales')?.value <--- Asi se obtiene un dato del formgroup
     this.diabetesForm.controls['idDatosGenerales'].setValue(this.pacienteId)
     this.hipertensionAForm.controls['idDatosGenerales'].setValue(this.pacienteId)
