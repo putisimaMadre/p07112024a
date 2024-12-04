@@ -69,7 +69,7 @@ export class NewDatosGeneralesComponent implements OnInit{
   completadoPagos = false
   patologiasArray: FormGroup[] = []
   patologiasPyPArray: FormGroup[] = []
-  patologia = FormGroup
+  //patologia = FormGroup
   paciente: string = ""
   sexo: string = ""
   pacienteId: number = 0;
@@ -111,15 +111,22 @@ export class NewDatosGeneralesComponent implements OnInit{
       switchMap(({id}) => this.antecedentesFyHService.getAntecedentesEdit(id)),
     )
     .subscribe(antecedentesFyH => {
-      this.antecedentesFyH = antecedentesFyH
-      console.log(antecedentesFyH)
-      //this.convertirABoolean(antecedentesFyH)
+      //this.antecedentesFyH = antecedentesFyH
+      this.convertirABoolean(antecedentesFyH)
       return;
     })
   }
 
   convertirABoolean(antecedentesFyH: AntecedentesFyH){
-    if(Number.isInteger(antecedentesFyH.madre)){
+    console.log(antecedentesFyH)
+    for(let a in antecedentesFyH){
+      console.log(a)
+    }
+    /*Object.keys(antecedentesFyH.madre).forEach(a => {
+      console.log(a)
+    })*/
+
+    /*if(Number.isInteger(antecedentesFyH.madre)){
       this.antecedentesFyHBool.madre = true;
     }
     if(Number.isInteger(antecedentesFyH.abuelaM)){
@@ -127,8 +134,7 @@ export class NewDatosGeneralesComponent implements OnInit{
     }
     if(Number.isInteger(antecedentesFyH.abueloM)){
       this.antecedentesFyHBool.abueloM = true
-    }
-    console.log(this.antecedentesFyHBool)
+    }*/
   }
 
   formDatosGenerales: FormGroup = this.formBuilder.group({
