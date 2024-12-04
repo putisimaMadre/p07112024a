@@ -11,6 +11,10 @@ const routes: Routes = [
   {
     path: "new-dato",
     component: NewDatosGeneralesComponent
+  },
+  {
+    path: "new-dato/:id",
+    component: NewDatosGeneralesComponent
   }
 ];
 

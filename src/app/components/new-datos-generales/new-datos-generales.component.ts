@@ -1,10 +1,11 @@
 import { afterNextRender, Component ,inject, Injector, OnInit, ViewChild} from '@angular/core';
 import { DatosGeneralesService } from '../../services/datos-generales.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { AntecedentesFyHService } from '../../services/antecedentes-fy-h.service';
 import { AntecedentesFyH } from '../../models/antecedentes-fy-h';
+import { AntecedentesFyHBool } from '../../models/antecedentes-fy-hbool';
 import { AntecedentesPyPService } from '../../services/antecedentes-py-p.service';
 import { AntecedentesPNoPService } from '../../services/antecedentes-pno-p.service';
 import { PadecimientosAService } from '../../services/padecimientos-a.service';
@@ -15,6 +16,8 @@ import { EvaluacionClinicaService } from '../../services/evaluacion-clinica.serv
 import { EvaluacionClinicaInfantilService } from '../../services/evaluacion-clinica-infantil.service';
 import { ConsentimientoInformadoService } from '../../services/consentimiento-informado.service';
 import { PagosService } from '../../services/pagos.service';
+import { switchMap } from 'rxjs';
+import { DatosGenerales } from '../../models/datos-generales';
 
 /*interface Odontologo {
   valor: string;
@@ -71,9 +74,12 @@ export class NewDatosGeneralesComponent implements OnInit{
   sexo: string = ""
   pacienteId: number = 0;
   prueba = 2;
+  datosGenerales?: DatosGenerales;
+  antecedentesFyH?: AntecedentesFyH;
+  antecedentesFyHBool = new AntecedentesFyHBool();
 
   constructor(private datosGeneralesService: DatosGeneralesService,
-    private antecedentesService: AntecedentesFyHService,
+    private antecedentesFyHService: AntecedentesFyHService,
     private router: Router,
     private formBuilder: FormBuilder,
     private antecedentesServicePyP: AntecedentesPyPService,
@@ -84,11 +90,45 @@ export class NewDatosGeneralesComponent implements OnInit{
     private evaluacionClinicaService: EvaluacionClinicaService,
     private evaluacionClinicaInfantilService: EvaluacionClinicaInfantilService,
     private consentimientoInformado: ConsentimientoInformadoService,
-    private pagosService: PagosService
+    private pagosService: PagosService,
+    private activatedRoute: ActivatedRoute
   ){}
 
   ngOnInit(): void {
-    //this.pagosForm.get('saldo')?.disable()
+    this.activatedRoute.params
+    .pipe(
+      switchMap(({id}) => this.datosGeneralesService.getDatosGeneralesById(id)),
+    )
+    .subscribe(datosGenerales => {
+      this.datosGenerales = datosGenerales
+      return;
+    })
+    
+    //ya se obtiene un registro en este caso 6 hay que hacer un bucle para que se obtengan
+    //todos los registros 6 y se conviertan en booleanos
+    this.activatedRoute.params
+    .pipe(
+      switchMap(({id}) => this.antecedentesFyHService.getAntecedentesEdit(id)),
+    )
+    .subscribe(antecedentesFyH => {
+      this.antecedentesFyH = antecedentesFyH
+      console.log(antecedentesFyH)
+      //this.convertirABoolean(antecedentesFyH)
+      return;
+    })
+  }
+
+  convertirABoolean(antecedentesFyH: AntecedentesFyH){
+    if(Number.isInteger(antecedentesFyH.madre)){
+      this.antecedentesFyHBool.madre = true;
+    }
+    if(Number.isInteger(antecedentesFyH.abuelaM)){
+      this.antecedentesFyHBool.abuelaM = true
+    }
+    if(Number.isInteger(antecedentesFyH.abueloM)){
+      this.antecedentesFyHBool.abueloM = true
+    }
+    console.log(this.antecedentesFyHBool)
   }
 
   formDatosGenerales: FormGroup = this.formBuilder.group({
@@ -664,7 +704,7 @@ export class NewDatosGeneralesComponent implements OnInit{
     //console.log(this.patologiasArray)*/
     this.patologiasArray.forEach(element => {
       this.cambioValorPatologia(element)
-      this.antecedentesService.postAntecedentes(element.value).subscribe(patologia => {
+      this.antecedentesFyHService.postAntecedentes(element.value).subscribe(patologia => {
         console.log(patologia)
       })
     });
