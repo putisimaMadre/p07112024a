@@ -20,8 +20,8 @@
                 </mat-form-field>
                 <mat-form-field class="col-4">
                     <mat-label>Fecha de nacimiento</mat-label>
-                    <input matInput [matDatepicker]="picker" formControlName="fechaNacimiento">
-                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <input matInput [matDatepicker]="picker" [value]="datosGenerales?.fechaNacimiento" formControlName="fechaNacimiento">
+                    <mat-hint>DD/MM/YYYY</mat-hint>
                     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
                   </mat-form-field>
@@ -37,15 +37,15 @@
                 <div class="col-offset-1"></div>
                 <mat-form-field class="col-4">
                     <mat-label>Domicilio</mat-label>
-                    <input matInput type="text" formControlName="domicilio">
+                    <input matInput type="text" [value]="datosGenerales?.domicilio" formControlName="domicilio">
                 </mat-form-field>
                 <mat-form-field class="col-2">
                     <mat-label>Edad</mat-label>
-                    <input matInput type="text" formControlName="edad">
+                    <input matInput type="text" [value]="datosGenerales?.edad" formControlName="edad">
                 </mat-form-field>
                 <mat-form-field class="col-2">
                     <mat-label>Numero Telefonico</mat-label>
-                    <input matInput type="text" formControlName="numeroTelefono">
+                    <input matInput type="text" [value]="datosGenerales?.numeroTelefono" formControlName="numeroTelefono">
                 </mat-form-field>
                 <mat-form-field class="col-2">
                     <mat-label>Expediente</mat-label>
@@ -56,12 +56,12 @@
                 <div class="col-offset-1"></div>
                 <mat-form-field class="col-4">
                     <mat-label>Entidad</mat-label>
-                    <input matInput type="text" formControlName="entidad">
+                    <input matInput type="text" [value]="datosGenerales?.entidad" formControlName="entidad">
                 </mat-form-field>
 
                 <mat-form-field class="col-4">
                     <mat-label>Sexo</mat-label>
-                    <mat-select disableRipple formControlName="sexo">
+                    <mat-select disableRipple [value]="datosGenerales?.sexo" formControlName="sexo">
                       <mat-option value="masculino" >masculino</mat-option>
                       <mat-option value="femenino" >femenino</mat-option>
                     </mat-select>
@@ -71,11 +71,11 @@
                     <div class="col-offset-1"></div>
                     <mat-form-field class="col-4">
                         <mat-label>Ocupacion</mat-label>
-                        <input matInput type="text" formControlName="ocupacion">
+                        <input matInput type="text" [value]="datosGenerales?.ocupacion" formControlName="ocupacion">
                     </mat-form-field>
                     <mat-form-field class="col-4">
                         <mat-label>Lugar Nacimiento</mat-label>
-                        <input matInput type="text" formControlName="lugarNacimiento">
+                        <input matInput type="text" [value]="datosGenerales?.lugarNacimiento" formControlName="lugarNacimiento">
                     </mat-form-field>
                 </div>
                 
@@ -83,11 +83,11 @@
                     <div class="col-offset-1"></div>
                     <mat-form-field class="col-4">
                         <mat-label>Escolaridad</mat-label>
-                        <input matInput type="text" formControlName="escolaridad">
+                        <input matInput type="text" [value]="datosGenerales?.escolaridad" formControlName="escolaridad">
                     </mat-form-field>
                     <mat-form-field class="col-4">
                         <mat-label>Estado civil</mat-label>
-                        <mat-select disableRipple formControlName="estadoCivil">
+                        <mat-select disableRipple [value]="datosGenerales?.estadoCivil" formControlName="estadoCivil">
                           <mat-option value="casado">casado</mat-option>
                           <mat-option value="soltero">soltero</mat-option>
                         </mat-select>
@@ -159,16 +159,16 @@
                     <form [formGroup]="diabetesForm">
                         <div class="grid"><!--Fila de checks madre diabetes-->
                             <div class="col-3 colorRowCheckbox">
-                                <mat-checkbox class="example-margin" [checked]="antecedentesFyHBool!.madre" formControlName="madre"></mat-checkbox>
+                                <mat-checkbox class="example-margin" formControlName="madre"></mat-checkbox>
                             </div>
                             <div class="col-3 colorRowCheckbox">
-                                <mat-checkbox class="example-margin" [checked]="antecedentesFyHBool!.abuelaM" formControlName="abuelaM"></mat-checkbox>
+                                <mat-checkbox class="example-margin" formControlName="abuelaM"></mat-checkbox>
                             </div>
                             <div class="col-3 colorRowCheckbox">
-                                <mat-checkbox class="example-margin" [checked]="antecedentesFyHBool!.abueloM" formControlName="abueloM"></mat-checkbox>
+                                <mat-checkbox class="example-margin" formControlName="abueloM"></mat-checkbox>
                             </div>
                             <div class="col-3 colorRowCheckbox">
-                                <mat-checkbox class="example-margin" [checked]="antecedentesFyHBool!.otrosM" formControlName="otrosM"></mat-checkbox>
+                                <mat-checkbox class="example-margin" formControlName="otrosM"></mat-checkbox>
                             </div>
                         </div>
                     </form>

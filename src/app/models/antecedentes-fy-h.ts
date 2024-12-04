@@ -11,4 +11,6 @@ export interface AntecedentesFyH {
     otrosP: number;
     idPatologias: number;
     idDatosGenerales: number;
+    created_at: string
+    updated_at: string 
 }

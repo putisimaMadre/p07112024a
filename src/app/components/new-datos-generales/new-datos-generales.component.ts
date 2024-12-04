@@ -75,7 +75,7 @@ export class NewDatosGeneralesComponent implements OnInit{
   pacienteId: number = 0;
   prueba = 2;
   datosGenerales?: DatosGenerales;
-  antecedentesFyH?: AntecedentesFyH;
+  antecedentesFyH?: any;
   antecedentesFyHBool = new AntecedentesFyHBool();
 
   constructor(private datosGeneralesService: DatosGeneralesService,
@@ -95,6 +95,7 @@ export class NewDatosGeneralesComponent implements OnInit{
   ){}
 
   ngOnInit(): void {
+    //=========DATOS GENERALES========
     this.activatedRoute.params
     .pipe(
       switchMap(({id}) => this.datosGeneralesService.getDatosGeneralesById(id)),
@@ -104,37 +105,426 @@ export class NewDatosGeneralesComponent implements OnInit{
       return;
     })
     
-    //ya se obtiene un registro en este caso 6 hay que hacer un bucle para que se obtengan
-    //todos los registros 6 y se conviertan en booleanos
+    //=========ANTECEDENTES PERSONALES Y HEREDITARIOS========
     this.activatedRoute.params
     .pipe(
       switchMap(({id}) => this.antecedentesFyHService.getAntecedentesEdit(id)),
     )
     .subscribe(antecedentesFyH => {
-      //this.antecedentesFyH = antecedentesFyH
       this.convertirABoolean(antecedentesFyH)
       return;
     })
+
+    //=========ANTECEDENTES PERSONALES Y PATOLOGICOS========
+    /*this.activatedRoute.params
+    .pipe(
+      switchMap(({id}) => this.antecedentesFyHService.getAntecedentesEdit(id)),
+    )
+    .subscribe(antecedentesFyH => {
+      this.convertirABoolean(antecedentesFyH)
+      return;
+    })*/
   }
 
   convertirABoolean(antecedentesFyH: AntecedentesFyH){
-    console.log(antecedentesFyH)
-    for(let a in antecedentesFyH){
-      console.log(a)
-    }
-    /*Object.keys(antecedentesFyH.madre).forEach(a => {
-      console.log(a)
-    })*/
+    //El problema que me enfrento aqui es que TS no infiere correctamente por lo que hace es solamente
+    //ver que esta recibiendo un arreglo y es por eso que cuando se utiliza Object.keys solo recibimos un
+    //arreglo con las claves
+    const keys = Object.keys(antecedentesFyH);
 
-    /*if(Number.isInteger(antecedentesFyH.madre)){
-      this.antecedentesFyHBool.madre = true;
-    }
-    if(Number.isInteger(antecedentesFyH.abuelaM)){
-      this.antecedentesFyHBool.abuelaM = true
-    }
-    if(Number.isInteger(antecedentesFyH.abueloM)){
-      this.antecedentesFyHBool.abueloM = true
-    }*/
+    keys.forEach((key) => {
+      if (this.isKey(antecedentesFyH, key)) {
+        this.antecedentesFyH = antecedentesFyH[key];
+        //this.pacienteId = this.antecedentesFyH.idDatosGenerales //<-- idDatosGEnerales cuando es un edit
+        //console.log(this.antecedentesFyH.idPatologias)
+        if(Number.isInteger(this.antecedentesFyH.madre)){
+          //console.log(this.diabetesForm.get("idPatologias")?.value)
+          let idPatologia = this.antecedentesFyH.idPatologias
+          switch ( idPatologia ) {
+            case 1:
+              this.diabetesForm.controls["madre"].setValue(true)
+                break;
+            case 2:
+              this.hipertensionAForm.controls["madre"].setValue(true)
+                break;
+            case 3:
+              this.cardiopatiaForm.controls["madre"].setValue(true)
+                break;
+            case 4:
+              this.neoplasiasForm.controls["madre"].setValue(true)
+                break;
+            case 5:
+              this.epilepsiaForm.controls["madre"].setValue(true)
+                break;
+            case 6:
+              this.malformacionesForm.controls["madre"].setValue(true)
+                break;
+            case 7:
+              this.SIDAForm.controls["madre"].setValue(true)
+                break;
+            case 8:
+              this.enfermedadesRForm.controls["madre"].setValue(true)
+                break;
+            case 9:
+              this.hepatitisForm.controls["madre"].setValue(true)
+                break;
+            case 10:
+              this.artritisForm.controls["madre"].setValue(true)
+                break;
+            case 11:
+              this.otraForm.controls["madre"].setValue(true)
+                break;
+            case 12:
+              this.aparentementeSForm.controls["madre"].setValue(true)
+                break;           
+            }
+        }
+
+        if(Number.isInteger(this.antecedentesFyH.abuelaM)){
+          //console.log(this.diabetesForm.get("idPatologias")?.value)
+          let idPatologia = this.antecedentesFyH.idPatologias
+          switch ( idPatologia ) {
+            case 1:
+              this.diabetesForm.controls["abuelaM"].setValue(true)
+                break;
+            case 2:
+              this.hipertensionAForm.controls["abuelaM"].setValue(true)
+                break;
+            case 3:
+              this.cardiopatiaForm.controls["abuelaM"].setValue(true)
+                break;
+            case 4:
+              this.neoplasiasForm.controls["abuelaM"].setValue(true)
+                break;
+            case 5:
+              this.epilepsiaForm.controls["abuelaM"].setValue(true)
+                break;
+            case 6:
+              this.malformacionesForm.controls["abuelaM"].setValue(true)
+                break;
+            case 7:
+              this.SIDAForm.controls["abuelaM"].setValue(true)
+                break;
+            case 8:
+              this.enfermedadesRForm.controls["abuelaM"].setValue(true)
+                break;
+            case 9:
+              this.hepatitisForm.controls["abuelaM"].setValue(true)
+                break;
+            case 10:
+              this.artritisForm.controls["abuelaM"].setValue(true)
+                break;
+            case 11:
+              this.otraForm.controls["abuelaM"].setValue(true)
+                break;
+            case 12:
+              this.aparentementeSForm.controls["abuelaM"].setValue(true)
+                break;
+            }
+        }
+        if(Number.isInteger(this.antecedentesFyH.abueloM)){
+          //console.log(this.diabetesForm.get("idPatologias")?.value)
+          let idPatologia = this.antecedentesFyH.idPatologias
+          switch ( idPatologia ) {
+            case 1:
+              this.diabetesForm.controls["abueloM"].setValue(true)
+                break;
+            case 2:
+              this.hipertensionAForm.controls["abueloM"].setValue(true)
+                break;
+            case 3:
+              this.cardiopatiaForm.controls["abueloM"].setValue(true)
+                break;
+            case 4:
+              this.neoplasiasForm.controls["abueloM"].setValue(true)
+                break;
+            case 5:
+              this.epilepsiaForm.controls["abueloM"].setValue(true)
+                  break;
+            case 6:
+              this.malformacionesForm.controls["abueloM"].setValue(true)
+                break;
+            case 7:
+              this.SIDAForm.controls["abueloM"].setValue(true)
+                break;
+            case 8:
+              this.enfermedadesRForm.controls["abueloM"].setValue(true)
+                break;
+            case 9:
+              this.hepatitisForm.controls["abueloM"].setValue(true)
+                break;
+            case 10:
+              this.artritisForm.controls["abueloM"].setValue(true)
+                break;
+            case 11:
+              this.otraForm.controls["abueloM"].setValue(true)
+                break;
+            case 12:
+              this.aparentementeSForm.controls["abueloM"].setValue(true)
+                break;           
+            }
+        }
+        if(Number.isInteger(this.antecedentesFyH.otrosM)){
+          //console.log(this.diabetesForm.get("idPatologias")?.value)
+          let idPatologia = this.antecedentesFyH.idPatologias
+          switch ( idPatologia ) {
+            case 1:
+              this.diabetesForm.controls["otrosM"].setValue(true)
+                break;
+            case 2:
+              this.hipertensionAForm.controls["otrosM"].setValue(true)
+                break;
+            case 3:
+              this.cardiopatiaForm.controls["otrosM"].setValue(true)
+                break;
+            case 4:
+              this.neoplasiasForm.controls["otrosM"].setValue(true)
+                break;
+            case 5:
+              this.epilepsiaForm.controls["otrosM"].setValue(true)
+                  break;
+            case 6:
+              this.malformacionesForm.controls["otrosM"].setValue(true)
+                break;
+            case 7:
+              this.SIDAForm.controls["otrosM"].setValue(true)
+                break;
+            case 8:
+              this.enfermedadesRForm.controls["otrosM"].setValue(true)
+                break;
+            case 9:
+              this.hepatitisForm.controls["otrosM"].setValue(true)
+                break;
+            case 10:
+              this.artritisForm.controls["otrosM"].setValue(true)
+                break;
+            case 11:
+              this.otraForm.controls["otrosM"].setValue(true)
+                break;
+            case 12:
+              this.aparentementeSForm.controls["otrosM"].setValue(true)
+                break;           
+            }
+        }
+        if(Number.isInteger(this.antecedentesFyH.padre)){
+          //console.log(this.diabetesForm.get("idPatologias")?.value)
+          let idPatologia = this.antecedentesFyH.idPatologias
+          switch ( idPatologia ) {
+            case 1:
+              this.diabetesForm.controls["padre"].setValue(true)
+                break;
+            case 2:
+              this.hipertensionAForm.controls["padre"].setValue(true)
+                break;
+            case 3:
+              this.cardiopatiaForm.controls["padre"].setValue(true)
+                break;
+            case 4:
+              this.neoplasiasForm.controls["padre"].setValue(true)
+                break;
+            case 5:
+              this.epilepsiaForm.controls["padre"].setValue(true)
+                  break;
+            case 6:
+              this.malformacionesForm.controls["padre"].setValue(true)
+                break;
+            case 7:
+              this.SIDAForm.controls["padre"].setValue(true)
+                break;
+            case 8:
+              this.enfermedadesRForm.controls["padre"].setValue(true)
+                break;
+            case 9:
+              this.hepatitisForm.controls["padre"].setValue(true)
+                break;
+            case 10:
+              this.artritisForm.controls["padre"].setValue(true)
+                break;
+            case 11:
+              this.otraForm.controls["padre"].setValue(true)
+                break;
+            case 12:
+              this.aparentementeSForm.controls["padre"].setValue(true)
+                break;           
+            }
+        }
+        if(Number.isInteger(this.antecedentesFyH.abuelaP)){
+          //console.log(this.diabetesForm.get("idPatologias")?.value)
+          let idPatologia = this.antecedentesFyH.idPatologias
+          switch ( idPatologia ) {
+            case 1:
+              this.diabetesForm.controls["abuelaP"].setValue(true)
+                break;
+            case 2:
+              this.hipertensionAForm.controls["abuelaP"].setValue(true)
+                break;
+            case 3:
+              this.cardiopatiaForm.controls["abuelaP"].setValue(true)
+                break;
+            case 4:
+              this.neoplasiasForm.controls["abuelaP"].setValue(true)
+                break;
+            case 5:
+              this.epilepsiaForm.controls["abuelaP"].setValue(true)
+                  break;
+            case 6:
+              this.malformacionesForm.controls["abuelaP"].setValue(true)
+                break;
+            case 7:
+              this.SIDAForm.controls["abuelaP"].setValue(true)
+                break;
+            case 8:
+              this.enfermedadesRForm.controls["abuelaP"].setValue(true)
+                break;
+            case 9:
+              this.hepatitisForm.controls["abuelaP"].setValue(true)
+                break;
+            case 10:
+              this.artritisForm.controls["abuelaP"].setValue(true)
+                break;
+            case 11:
+              this.otraForm.controls["abuelaP"].setValue(true)
+                break;
+            case 12:
+              this.aparentementeSForm.controls["abuelaP"].setValue(true)
+                break;           
+            }
+        }
+        if(Number.isInteger(this.antecedentesFyH.abueloP)){
+          //console.log(this.diabetesForm.get("idPatologias")?.value)
+          let idPatologia = this.antecedentesFyH.idPatologias
+          switch ( idPatologia ) {
+            case 1:
+              this.diabetesForm.controls["abueloP"].setValue(true)
+                break;
+            case 2:
+              this.hipertensionAForm.controls["abueloP"].setValue(true)
+                break;
+            case 3:
+              this.cardiopatiaForm.controls["abueloP"].setValue(true)
+                break;
+            case 4:
+              this.neoplasiasForm.controls["abueloP"].setValue(true)
+                break;
+            case 5:
+              this.epilepsiaForm.controls["abueloP"].setValue(true)
+                  break;
+            case 6:
+              this.malformacionesForm.controls["abueloP"].setValue(true)
+                break;
+            case 7:
+              this.SIDAForm.controls["abueloP"].setValue(true)
+                break;
+            case 8:
+              this.enfermedadesRForm.controls["abueloP"].setValue(true)
+                break;
+            case 9:
+              this.hepatitisForm.controls["abueloP"].setValue(true)
+                break;
+            case 10:
+              this.artritisForm.controls["abueloP"].setValue(true)
+                break;
+            case 11:
+              this.otraForm.controls["abueloP"].setValue(true)
+                break;
+            case 12:
+              this.aparentementeSForm.controls["abueloP"].setValue(true)
+                break;           
+            }
+        }
+        if(Number.isInteger(this.antecedentesFyH.hermanosP)){
+          //console.log(this.diabetesForm.get("idPatologias")?.value)
+          let idPatologia = this.antecedentesFyH.idPatologias
+          switch ( idPatologia ) {
+            case 1:
+              this.diabetesForm.controls["hermanosP"].setValue(true)
+                break;
+            case 2:
+              this.hipertensionAForm.controls["hermanosP"].setValue(true)
+                break;
+            case 3:
+              this.cardiopatiaForm.controls["hermanosP"].setValue(true)
+                break;
+            case 4:
+              this.neoplasiasForm.controls["hermanosP"].setValue(true)
+                break;
+            case 5:
+              this.epilepsiaForm.controls["hermanosP"].setValue(true)
+                  break;
+            case 6:
+              this.malformacionesForm.controls["hermanosP"].setValue(true)
+                break;
+            case 7:
+              this.SIDAForm.controls["hermanosP"].setValue(true)
+                break;
+            case 8:
+              this.enfermedadesRForm.controls["hermanosP"].setValue(true)
+                break;
+            case 9:
+              this.hepatitisForm.controls["hermanosP"].setValue(true)
+                break;
+            case 10:
+              this.artritisForm.controls["hermanosP"].setValue(true)
+                break;
+            case 11:
+              this.otraForm.controls["hermanosP"].setValue(true)
+                break;
+            case 12:
+              this.aparentementeSForm.controls["hermanosP"].setValue(true)
+                break;           
+            }
+        }
+        if(Number.isInteger(this.antecedentesFyH.otrosP)){
+          //console.log(this.diabetesForm.get("idPatologias")?.value)
+          let idPatologia = this.antecedentesFyH.idPatologias
+          switch ( idPatologia ) {
+            case 1:
+              this.diabetesForm.controls["otrosP"].setValue(true)
+                break;
+            case 2:
+              this.hipertensionAForm.controls["otrosP"].setValue(true)
+                break;
+            case 3:
+              this.cardiopatiaForm.controls["otrosP"].setValue(true)
+                break;
+            case 4:
+              this.neoplasiasForm.controls["otrosP"].setValue(true)
+                break;
+            case 5:
+              this.epilepsiaForm.controls["otrosP"].setValue(true)
+                  break;
+            case 6:
+              this.malformacionesForm.controls["otrosP"].setValue(true)
+                break;
+            case 7:
+              this.SIDAForm.controls["otrosP"].setValue(true)
+                break;
+            case 8:
+              this.enfermedadesRForm.controls["otrosP"].setValue(true)
+                break;
+            case 9:
+              this.hepatitisForm.controls["otrosP"].setValue(true)
+                break;
+            case 10:
+              this.artritisForm.controls["otrosP"].setValue(true)
+                break;
+            case 11:
+              this.otraForm.controls["otrosP"].setValue(true)
+                break;
+            case 12:
+              this.aparentementeSForm.controls["otrosP"].setValue(true)
+                break;           
+            }
+        }
+      }
+    });
+  }
+
+  isKey<T extends object>(
+    x: T,
+    k: PropertyKey
+  ): k is keyof T {
+    return k in x;
   }
 
   formDatosGenerales: FormGroup = this.formBuilder.group({
@@ -318,6 +708,7 @@ export class NewDatosGeneralesComponent implements OnInit{
     "idPatologias": [12],
     "idDatosGenerales": [this.pacienteId]
   })
+
   observacionesForm: FormGroup = this.formBuilder.group({
     "observacionesPatologias": [""],
     "idDatosGenerales": [this.pacienteId]
@@ -665,7 +1056,7 @@ export class NewDatosGeneralesComponent implements OnInit{
     })
   }
 
-  cambioValorPatologia(formGroup: FormGroup){
+  cambioValorPatologiaBoolToNumber(formGroup: FormGroup){
     let idPatologia = formGroup.get('idPatologias')?.value
       Object.keys(formGroup.controls).forEach((key: string) => {
         let valorAntecedente = formGroup.get(key);
@@ -678,7 +1069,6 @@ export class NewDatosGeneralesComponent implements OnInit{
 
   savePatalogias(): void {
     this.completadoAntecedentesFyH = true;
-    //this.diabetesForm.get('idDatosGenerales')?.value <--- Asi se obtiene un dato del formgroup
     this.diabetesForm.controls['idDatosGenerales'].setValue(this.pacienteId)
     this.hipertensionAForm.controls['idDatosGenerales'].setValue(this.pacienteId)
     this.cardiopatiaForm.controls['idDatosGenerales'].setValue(this.pacienteId)
@@ -691,9 +1081,7 @@ export class NewDatosGeneralesComponent implements OnInit{
     this.artritisForm.controls['idDatosGenerales'].setValue(this.pacienteId)
     this.otraForm.controls['idDatosGenerales'].setValue(this.pacienteId)
     this.aparentementeSForm.controls['idDatosGenerales'].setValue(this.pacienteId)
-//console.log(this.diabetesForm.value)
-    //INSERTAR APARTE LAS OBSERVACIONES
-    
+
     this.patologiasArray.push(this.diabetesForm);
     this.patologiasArray.push(this.hipertensionAForm);
     this.patologiasArray.push(this.cardiopatiaForm);
@@ -706,10 +1094,11 @@ export class NewDatosGeneralesComponent implements OnInit{
     this.patologiasArray.push(this.artritisForm);
     this.patologiasArray.push(this.otraForm);
     this.patologiasArray.push(this.aparentementeSForm);
-
+    //INSERTAR APARTE LAS OBSERVACIONES
+    
     //console.log(this.patologiasArray)*/
     this.patologiasArray.forEach(element => {
-      this.cambioValorPatologia(element)
+      this.cambioValorPatologiaBoolToNumber(element)
       this.antecedentesFyHService.postAntecedentes(element.value).subscribe(patologia => {
         console.log(patologia)
       })
@@ -730,7 +1119,7 @@ export class NewDatosGeneralesComponent implements OnInit{
   }
 
   saveAntecedentesPyP(): void{
-    this.completadoAntecedentesPyP = true
+    //this.completadoAntecedentesPyP = true
     this.varicelaForm.controls['idDatosGenerales'].setValue(this.pacienteId);
     this.rubeolaForm.controls['idDatosGenerales'].setValue(this.pacienteId);
     this.sarampionForm.controls['idDatosGenerales'].setValue(this.pacienteId);
@@ -785,7 +1174,9 @@ export class NewDatosGeneralesComponent implements OnInit{
     
     //console.log(this.varicelaForm.value)
     //faltan las observaciones
+
     this.patologiasPyPArray.forEach(element => {
+      console.log(element.value)
       this.antecedentesServicePyP
       .postAntecedentePyP(element.value)
       .subscribe(enfermedad =>{
