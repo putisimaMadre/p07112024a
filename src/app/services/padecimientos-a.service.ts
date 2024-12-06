@@ -16,6 +16,14 @@ export class PadecimientosAService {
     return this.httpClient.get<PadecimientosA[]>(this.urlEndPoint);
   }
 
+  getPadecimientosById(idDatosGenerales: number): Observable<PadecimientosA>{
+    return this.httpClient.get<PadecimientosA>(this.urlEndPoint+'/'+idDatosGenerales);
+  }
+
+  getPadecimientosEdit(idDatosGenerales: number): Observable<PadecimientosA>{
+    return this.httpClient.get<PadecimientosA>(this.urlEndPoint+'/'+idDatosGenerales+'/edit');
+  }
+
   postPadecimientos(padecimientosA: PadecimientosA): Observable<PadecimientosA>{
     return this.httpClient.post<PadecimientosA>(this.urlEndPoint, padecimientosA, {headers: this.httpHeaders})
   }

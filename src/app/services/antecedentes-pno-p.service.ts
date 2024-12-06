@@ -16,6 +16,14 @@ export class AntecedentesPNoPService {
     return this.httpClient.get<AntecedentesPnoP[]>(this.urlEndPoint);
   }
 
+  getAntecedentesPnoPById(idDatosGenerales: number): Observable<AntecedentesPnoP>{
+    return this.httpClient.get<AntecedentesPnoP>(this.urlEndPoint+'/'+idDatosGenerales);
+  }
+
+  getAntecedentesPnoPEdit(idDatosGenerales: number): Observable<AntecedentesPnoP>{
+    return this.httpClient.get<AntecedentesPnoP>(this.urlEndPoint+'/'+idDatosGenerales+'/edit');
+  }
+
   postAntecedentes(antecedentesPnoP: AntecedentesPnoP): Observable<AntecedentesPnoP>{
     return this.httpClient.post<AntecedentesPnoP>(this.urlEndPoint, antecedentesPnoP, {headers: this.httpHeaders})
   }

@@ -16,6 +16,14 @@ export class AnalisisFacialService {
     return this.httpClient.get<AnalisisFacial[]>(this.urlEndPoint);
   }
 
+  getAnalisisFacialById(idDatosGenerales: number): Observable<AnalisisFacial>{
+    return this.httpClient.get<AnalisisFacial>(this.urlEndPoint+'/'+idDatosGenerales);
+  }
+
+  getAnalisisFacialEdit(idDatosGenerales: number): Observable<AnalisisFacial>{
+    return this.httpClient.get<AnalisisFacial>(this.urlEndPoint+'/'+idDatosGenerales+'/edit');
+  }
+
   postAnalisisFacial(analisisFacial: AnalisisFacial): Observable<AnalisisFacial>{
     return this.httpClient.post<AnalisisFacial>(this.urlEndPoint, analisisFacial, {headers: this.httpHeaders})
   }

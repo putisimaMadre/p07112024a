@@ -18,6 +18,8 @@ import { ConsentimientoInformadoService } from '../../services/consentimiento-in
 import { PagosService } from '../../services/pagos.service';
 import { switchMap } from 'rxjs';
 import { DatosGenerales } from '../../models/datos-generales';
+import { AntecedentesPyP } from '../../models/antecedentes-py-p';
+import { AnalisisFacial } from '../../models/analisis-facial';
 
 /*interface Odontologo {
   valor: string;
@@ -76,6 +78,12 @@ export class NewDatosGeneralesComponent implements OnInit{
   prueba = 2;
   datosGenerales?: DatosGenerales;
   antecedentesFyH?: any;
+  antecedentesPyP?: any;
+  antecedentesPnoP?: any;
+  padecimientosActuales?: any;
+  analisisFacial?: any
+  patronFacialArray: number[] = [1, 2, 3];
+  analisisFacialArrayBool: boolean[] = [false, false, false]
   antecedentesFyHBool = new AntecedentesFyHBool();
 
   constructor(private datosGeneralesService: DatosGeneralesService,
@@ -116,14 +124,214 @@ export class NewDatosGeneralesComponent implements OnInit{
     })
 
     //=========ANTECEDENTES PERSONALES Y PATOLOGICOS========
-    /*this.activatedRoute.params
+    this.activatedRoute.params
     .pipe(
-      switchMap(({id}) => this.antecedentesFyHService.getAntecedentesEdit(id)),
+      switchMap(({id}) => this.antecedentesServicePyP.getAntecedentesPyPEdit(id)),
     )
-    .subscribe(antecedentesFyH => {
-      this.convertirABoolean(antecedentesFyH)
+    .subscribe(antecedentesPyP => {
+      this.editAntecedentesPyP(antecedentesPyP)
       return;
-    })*/
+    })
+
+    //=========ANTECEDENTES PERSONALES NO PATOLOGICOS========
+    this.activatedRoute.params
+    .pipe(
+      switchMap(({id}) => this.antecedentesPnoPService.getAntecedentesPnoPEdit(id)),
+    )
+    .subscribe(antecedentesPnoP => {
+      const keys = Object.keys(antecedentesPnoP);
+      keys.forEach((key) => {
+        if(this.isKey(antecedentesPnoP, key)){
+          this.antecedentesPnoP = antecedentesPnoP[key];
+          this.antecedentesPersonalesNoPForm.controls["alcohol"].setValue(this.antecedentesPnoP.alcohol)
+          this.antecedentesPersonalesNoPForm.controls["tabaquismo"].setValue(this.antecedentesPnoP.tabaquismo)
+          this.antecedentesPersonalesNoPForm.controls["drogas"].setValue(this.antecedentesPnoP.drogas)
+          this.antecedentesPersonalesNoPForm.controls["otros"].setValue(this.antecedentesPnoP.otros)
+        }
+      })
+      return;
+    })
+
+    //=========PADECIMIENTOS ACTUALES========
+    this.activatedRoute.params
+    .pipe(
+      switchMap(({id}) => this.padecimientosAService.getPadecimientosEdit(id)),
+    )
+    .subscribe(padecimientosA => {
+      const keys = Object.keys(padecimientosA);
+      keys.forEach((key) => {
+        if(this.isKey(padecimientosA, key)){
+          this.padecimientosActuales = padecimientosA[key];
+          this.padecimientosActualesForm.controls["preguntaUno"].setValue(this.padecimientosActuales.preguntaUno)
+          this.padecimientosActualesForm.controls["preguntaUnoS"].setValue(this.padecimientosActuales.preguntaUnoS)
+          this.padecimientosActualesForm.controls["preguntaDos"].setValue(this.padecimientosActuales.preguntaDos)
+          this.padecimientosActualesForm.controls["preguntaDosS"].setValue(this.padecimientosActuales.preguntaDosS)
+          this.padecimientosActualesForm.controls["preguntaTres"].setValue(this.padecimientosActuales.preguntaTres)
+          this.padecimientosActualesForm.controls["preguntaTresS"].setValue(this.padecimientosActuales.preguntaTresS)
+          this.padecimientosActualesForm.controls["preguntaCuatro"].setValue(this.padecimientosActuales.preguntaCuatro)
+          this.padecimientosActualesForm.controls["preguntaCuatroS"].setValue(this.padecimientosActuales.preguntaCuatroS)
+          this.padecimientosActualesForm.controls["preguntaCinco"].setValue(this.padecimientosActuales.preguntaCinco)
+          this.padecimientosActualesForm.controls["preguntaCincoS"].setValue(this.padecimientosActuales.preguntaCincoS)
+          this.padecimientosActualesForm.controls["preguntaSeis"].setValue(this.padecimientosActuales.preguntaSeis)
+          this.padecimientosActualesForm.controls["preguntaSeisS"].setValue(this.padecimientosActuales.preguntaSeisS)
+          this.padecimientosActualesForm.controls["preguntaSiete"].setValue(this.padecimientosActuales.preguntaSiete)
+          this.padecimientosActualesForm.controls["preguntaSieteS"].setValue(this.padecimientosActuales.preguntaSieteS)
+          this.padecimientosActualesForm.controls["preguntaOcho"].setValue(this.padecimientosActuales.preguntaOcho)
+          this.padecimientosActualesForm.controls["preguntaOchoS"].setValue(this.padecimientosActuales.preguntaOchoS)
+        }
+      })
+      return;
+    })
+
+    //=========ANALISIS FACIAL========
+    /*"patronFacial": [],
+      "perfil": [],
+      "asimetria": [],
+      "alturaFE": [],
+      "anchuraFE": [],
+      "perfilMaxilar": [],
+      "perfilMandibular": [],
+      "surcoLM": [],
+      "labiosEr": [],*/
+
+    this.activatedRoute.params
+    .pipe(
+      switchMap(({id}) => this.analisisFacialService.getAnalisisFacialEdit(id)),
+    )
+    .subscribe(analisisFacial => {
+      this.editPatronFacial(analisisFacial)
+      return;
+    })
+  }
+
+  editPatronFacial(analisisFacial: AnalisisFacial){
+    const keys = Object.keys(analisisFacial);
+    keys.forEach((key) => {
+      if(this.isKey(analisisFacial, key)){
+        this.analisisFacial = analisisFacial[key];
+        for (let index = 0; index <= this.analisisFacialArrayBool.length; index++) {
+          if(this.patronFacialArray[index] == this.analisisFacial.patronFacial){
+            this.analisisFacialArrayBool[index] = true
+          }
+        }
+      }
+    })
+  }
+
+  //CLONAR editPatronFacial PARA LOS DEMAS
+
+  editAntecedentesPyP(antecedentesPyP: AntecedentesPyP){
+    const keys = Object.keys(antecedentesPyP);
+    keys.forEach((key) => {
+      if(this.isKey(antecedentesPyP, key)){
+        this.antecedentesPyP = antecedentesPyP[key];
+        if(this.antecedentesPyP.siNo){
+          let idEnfermedad = this.antecedentesPyP.idEnfermedad
+          switch ( idEnfermedad ) {
+            case 1:
+              this.varicelaForm.controls["siNo"].setValue(true)
+              this.varicelaForm.controls["fechaAgno"].setValue(this.antecedentesPyP.fechaAgno)
+                break;
+                case 2:
+                    this.rubeolaForm.controls["siNo"].setValue(true)
+                    this.rubeolaForm.controls["fechaAgno"].setValue(this.antecedentesPyP.fechaAgno)
+                  break;
+                case 3:
+                  this.sarampionForm.controls["siNo"].setValue(true)
+                  this.sarampionForm.controls["fechaAgno"].setValue(this.antecedentesPyP.fechaAgno)
+                break;
+                case 4:
+                  this.parotiditisForm.controls["siNo"].setValue(true)
+                  this.parotiditisForm.controls["fechaAgno"].setValue(this.antecedentesPyP.fechaAgno)
+                break;
+                case 5:
+                  this.tosferinaForm.controls["siNo"].setValue(true)
+                  this.tosferinaForm.controls["fechaAgno"].setValue(this.antecedentesPyP.fechaAgno)
+                break;
+                case 6:
+                  this.escarlatinaForm.controls["siNo"].setValue(true)
+                  this.escarlatinaForm.controls["fechaAgno"].setValue(this.antecedentesPyP.fechaAgno)
+                break;
+                case 7:
+                  this.parasitosisForm.controls["siNo"].setValue(true)
+                  this.parasitosisForm.controls["fechaAgno"].setValue(this.antecedentesPyP.fechaAgno)
+                break;
+                case 8:
+                  this.hepatitisPyPForm.controls["siNo"].setValue(true)
+                  this.hepatitisPyPForm.controls["fechaAgno"].setValue(this.antecedentesPyP.fechaAgno)
+                break;
+                case 9:
+                  this.SIDAForm.controls["siNo"].setValue(true)
+                  this.SIDAForm.controls["fechaAgno"].setValue(this.antecedentesPyP.fechaAgno)
+                break;
+                case 10:
+                  this.asmaForm.controls["siNo"].setValue(true)
+                  this.asmaForm.controls["fechaAgno"].setValue(this.antecedentesPyP.fechaAgno)
+                break;
+                case 11:
+                  this.disfuncionesEndocrinasForm.controls["siNo"].setValue(true)
+                  this.disfuncionesEndocrinasForm.controls["fechaAgno"].setValue(this.antecedentesPyP.fechaAgno)
+                break;
+                case 12:
+                  this.hipertensionForm.controls["siNo"].setValue(true)
+                  this.hipertensionForm.controls["fechaAgno"].setValue(this.antecedentesPyP.fechaAgno)
+                break;
+                case 13:
+                  this.hipertensionForm.controls["siNo"].setValue(true)
+                  this.hipertensionForm.controls["fechaAgno"].setValue(this.antecedentesPyP.fechaAgno)
+                break;
+            case 14:
+              this.enfTransSexForm.controls["siNo"].setValue(true)
+              this.enfTransSexForm.controls["fechaAgno"].setValue(this.antecedentesPyP.fechaAgno)
+                break;
+                case 15:
+              this.epilepsiaPyPForm.controls["siNo"].setValue(true)
+              this.epilepsiaPyPForm.controls["fechaAgno"].setValue(this.antecedentesPyP.fechaAgno)
+                break;
+                case 16:
+              this.amigdalitisForm.controls["siNo"].setValue(true)
+              this.amigdalitisForm.controls["fechaAgno"].setValue(this.antecedentesPyP.fechaAgno)
+                break;
+                case 17:
+              this.tubercolosisForm.controls["siNo"].setValue(true)
+              this.tubercolosisForm.controls["fechaAgno"].setValue(this.antecedentesPyP.fechaAgno)
+                break;
+                case 18:
+              this.fiebreReumaticaForm.controls["siNo"].setValue(true)
+              this.fiebreReumaticaForm.controls["fechaAgno"].setValue(this.antecedentesPyP.fechaAgno)
+                break;
+                case 19:
+              this.diabetesPyPForm.controls["siNo"].setValue(true)
+              this.diabetesPyPForm.controls["fechaAgno"].setValue(this.antecedentesPyP.fechaAgno)
+                break;
+                case 20:
+              this.enfCardiovascularesForm.controls["siNo"].setValue(true)
+              this.enfCardiovascularesForm.controls["fechaAgno"].setValue(this.antecedentesPyP.fechaAgno)
+                break;
+                case 21:
+              this.artritisPyPForm.controls["siNo"].setValue(true)
+              this.artritisPyPForm.controls["fechaAgno"].setValue(this.antecedentesPyP.fechaAgno)
+                break;
+                case 22:
+              this.traumatitisConSecuelasForm.controls["siNo"].setValue(true)
+              this.traumatitisConSecuelasForm.controls["fechaAgno"].setValue(this.antecedentesPyP.fechaAgno)
+                break;
+                case 23:
+              this.intervencionQuirurgicaForm.controls["siNo"].setValue(true)
+              this.intervencionQuirurgicaForm.controls["fechaAgno"].setValue(this.antecedentesPyP.fechaAgno)
+                break;
+                case 24:
+              this.transfusionSanguineaForm.controls["siNo"].setValue(true)
+              this.transfusionSanguineaForm.controls["fechaAgno"].setValue(this.antecedentesPyP.fechaAgno)
+                break;
+                case 25:
+              this.alergiaAForm.controls["siNo"].setValue(true)
+              this.alergiaAForm.controls["fechaAgno"].setValue(this.antecedentesPyP.fechaAgno)
+                break;
+          }
+        }
+      }
+    })
   }
 
   convertirABoolean(antecedentesFyH: AntecedentesFyH){
@@ -136,8 +344,7 @@ export class NewDatosGeneralesComponent implements OnInit{
       if (this.isKey(antecedentesFyH, key)) {
         this.antecedentesFyH = antecedentesFyH[key];
         //this.pacienteId = this.antecedentesFyH.idDatosGenerales //<-- idDatosGEnerales cuando es un edit
-        //console.log(this.antecedentesFyH.idPatologias)
-        if(Number.isInteger(this.antecedentesFyH.madre)){
+        if(Number.isInteger(this.antecedentesFyH.madre) && this.antecedentesFyH.madre != 0){
           //console.log(this.diabetesForm.get("idPatologias")?.value)
           let idPatologia = this.antecedentesFyH.idPatologias
           switch ( idPatologia ) {
@@ -179,8 +386,7 @@ export class NewDatosGeneralesComponent implements OnInit{
                 break;           
             }
         }
-
-        if(Number.isInteger(this.antecedentesFyH.abuelaM)){
+        if(Number.isInteger(this.antecedentesFyH.abuelaM) && this.antecedentesFyH.abuelaM != 0){
           //console.log(this.diabetesForm.get("idPatologias")?.value)
           let idPatologia = this.antecedentesFyH.idPatologias
           switch ( idPatologia ) {
@@ -222,7 +428,7 @@ export class NewDatosGeneralesComponent implements OnInit{
                 break;
             }
         }
-        if(Number.isInteger(this.antecedentesFyH.abueloM)){
+        if(Number.isInteger(this.antecedentesFyH.abueloM) && this.antecedentesFyH.abueloM != 0){
           //console.log(this.diabetesForm.get("idPatologias")?.value)
           let idPatologia = this.antecedentesFyH.idPatologias
           switch ( idPatologia ) {
@@ -264,7 +470,7 @@ export class NewDatosGeneralesComponent implements OnInit{
                 break;           
             }
         }
-        if(Number.isInteger(this.antecedentesFyH.otrosM)){
+        if(Number.isInteger(this.antecedentesFyH.otrosM) && this.antecedentesFyH.otrosM != 0){
           //console.log(this.diabetesForm.get("idPatologias")?.value)
           let idPatologia = this.antecedentesFyH.idPatologias
           switch ( idPatologia ) {
@@ -306,7 +512,7 @@ export class NewDatosGeneralesComponent implements OnInit{
                 break;           
             }
         }
-        if(Number.isInteger(this.antecedentesFyH.padre)){
+        if(Number.isInteger(this.antecedentesFyH.padre) && this.antecedentesFyH.padre != 0){
           //console.log(this.diabetesForm.get("idPatologias")?.value)
           let idPatologia = this.antecedentesFyH.idPatologias
           switch ( idPatologia ) {
@@ -348,7 +554,7 @@ export class NewDatosGeneralesComponent implements OnInit{
                 break;           
             }
         }
-        if(Number.isInteger(this.antecedentesFyH.abuelaP)){
+        if(Number.isInteger(this.antecedentesFyH.abuelaP) && this.antecedentesFyH.abuelaP != 0){
           //console.log(this.diabetesForm.get("idPatologias")?.value)
           let idPatologia = this.antecedentesFyH.idPatologias
           switch ( idPatologia ) {
@@ -390,7 +596,7 @@ export class NewDatosGeneralesComponent implements OnInit{
                 break;           
             }
         }
-        if(Number.isInteger(this.antecedentesFyH.abueloP)){
+        if(Number.isInteger(this.antecedentesFyH.abueloP) && this.antecedentesFyH.abueloP != 0){
           //console.log(this.diabetesForm.get("idPatologias")?.value)
           let idPatologia = this.antecedentesFyH.idPatologias
           switch ( idPatologia ) {
@@ -432,7 +638,7 @@ export class NewDatosGeneralesComponent implements OnInit{
                 break;           
             }
         }
-        if(Number.isInteger(this.antecedentesFyH.hermanosP)){
+        if(Number.isInteger(this.antecedentesFyH.hermanosP) && this.antecedentesFyH.hermanosP != 0){
           //console.log(this.diabetesForm.get("idPatologias")?.value)
           let idPatologia = this.antecedentesFyH.idPatologias
           switch ( idPatologia ) {
@@ -474,7 +680,7 @@ export class NewDatosGeneralesComponent implements OnInit{
                 break;           
             }
         }
-        if(Number.isInteger(this.antecedentesFyH.otrosP)){
+        if(Number.isInteger(this.antecedentesFyH.otrosP) && this.antecedentesFyH.otrosP != 0){
           //console.log(this.diabetesForm.get("idPatologias")?.value)
           let idPatologia = this.antecedentesFyH.idPatologias
           switch ( idPatologia ) {
@@ -520,10 +726,7 @@ export class NewDatosGeneralesComponent implements OnInit{
     });
   }
 
-  isKey<T extends object>(
-    x: T,
-    k: PropertyKey
-  ): k is keyof T {
+  isKey<T extends object>(x: T, k: PropertyKey): k is keyof T {
     return k in x;
   }
 
@@ -898,7 +1101,7 @@ export class NewDatosGeneralesComponent implements OnInit{
     "idDatosGenerales": [this.pacienteId]
   })
 
-  antecedentesPersonalesNoP: FormGroup = this.formBuilder.group({
+  antecedentesPersonalesNoPForm: FormGroup = this.formBuilder.group({
     "alcohol": [false],
     "tabaquismo": [false],
     "drogas": [false],
@@ -906,7 +1109,7 @@ export class NewDatosGeneralesComponent implements OnInit{
     "idDatosGenerales": [this.pacienteId]
   })
 
-  padecimientosActuales: FormGroup = this.formBuilder.group({
+  padecimientosActualesForm: FormGroup = this.formBuilder.group({
     "preguntaUno": [false],
     "preguntaUnoS": [""],
     "preguntaDos": [false],
@@ -1041,16 +1244,16 @@ export class NewDatosGeneralesComponent implements OnInit{
   }
 
   savePadecimientosActuales(){
-    this.padecimientosActuales.controls['idDatosGenerales'].setValue(this.pacienteId)
-    this.padecimientosAService.postPadecimientos(this.padecimientosActuales.value).subscribe(dato => {
+    this.padecimientosActualesForm.controls['idDatosGenerales'].setValue(this.pacienteId)
+    this.padecimientosAService.postPadecimientos(this.padecimientosActualesForm.value).subscribe(dato => {
       console.log(dato)
       this.completadoPadecimientosActuales = true
     })
   }
 
   saveAntecedentesPersonalesNoPatologicos(){
-    this.antecedentesPersonalesNoP.controls['idDatosGenerales'].setValue(this.pacienteId)
-    this.antecedentesPnoPService.postAntecedentes(this.antecedentesPersonalesNoP.value).subscribe(dato => {
+    this.antecedentesPersonalesNoPForm.controls['idDatosGenerales'].setValue(this.pacienteId)
+    this.antecedentesPnoPService.postAntecedentes(this.antecedentesPersonalesNoPForm.value).subscribe(dato => {
       console.log(dato)
       this.completadoAntecedentesPNoP = true
     })

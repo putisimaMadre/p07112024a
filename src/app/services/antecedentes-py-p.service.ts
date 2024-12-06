@@ -16,6 +16,14 @@ export class AntecedentesPyPService {
     return this.httpClient.get<AntecedentesPyP[]>(this.urlEndPoint);
   }
 
+  getAntecedentesPyPById(idDatosGenerales: number): Observable<AntecedentesPyP>{
+    return this.httpClient.get<AntecedentesPyP>(this.urlEndPoint+'/'+idDatosGenerales);
+  }
+
+  getAntecedentesPyPEdit(idDatosGenerales: number): Observable<AntecedentesPyP>{
+    return this.httpClient.get<AntecedentesPyP>(this.urlEndPoint+'/'+idDatosGenerales+'/edit');
+  }
+
   postAntecedentePyP(AntecedentesPyP: AntecedentesPyP): Observable<AntecedentesPyP>{
     return this.httpClient.post<AntecedentesPyP>(this.urlEndPoint, AntecedentesPyP, {headers: this.httpHeaders})
   }

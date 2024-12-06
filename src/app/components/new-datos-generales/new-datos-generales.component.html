@@ -1008,7 +1008,7 @@
         <mat-step>
             <!--<form [formGroup]="antecedentesFyHForm">-->
               <ng-template matStepLabel>Antecedentes Personales "NO" Patológicos</ng-template>
-              <form [formGroup]="antecedentesPersonalesNoP">
+              <form [formGroup]="antecedentesPersonalesNoPForm">
                 <div class="grid">
                     <div class="col-3">
                         <div class="paddingTitulosPyP"><p><b><i>Alcohol
@@ -1047,7 +1047,11 @@
                         </div>
                     </div>
                     <div class="col-3">
-                        <div class="paddingTitulosPyP"><p><b><i>Otros</i></b></p></div>
+                        <div class="paddingTitulosPyP"><p><b><i>Otros
+                            <mat-list>
+                                <mat-divider></mat-divider>
+                                </mat-list>
+                        </i></b></p></div>
                         <mat-form-field class="col-8">
                             <mat-label>Otros</mat-label>
                             <input matInput type="text" formControlName="otros">
@@ -1069,7 +1073,7 @@
         </mat-step>
         <mat-step>
             <ng-template matStepLabel>Padecimientos Actuales</ng-template>
-            <form [formGroup]="padecimientosActuales">
+            <form [formGroup]="padecimientosActualesForm">
                 <div class="grid">
                     <div class="col-3">
                         <div class="paddingTitulosPyP"><p><b><i>Padecimiento
@@ -1230,9 +1234,9 @@
                         <div class="col-8">
                             <mat-radio-group aria-label="Select an option" formControlName="patronFacial">
                                 <div class="grid">
-                                <mat-radio-button class="col-4" value="1">Mesofacial</mat-radio-button>
-                                <mat-radio-button class="col-4" value="2">Dólico Facial</mat-radio-button>
-                                <mat-radio-button class="col-4" value="3">Branquifacial</mat-radio-button>
+                                    <mat-radio-button class="col-4" value={{patronFacialArray[0]}} [checked]="analisisFacialArrayBool[0]">Mesofacial</mat-radio-button>
+                                    <mat-radio-button class="col-4" value={{patronFacialArray[1]}} [checked]="analisisFacialArrayBool[1]">Dólico Facial</mat-radio-button>
+                                    <mat-radio-button class="col-4" value={{patronFacialArray[2]}} [checked]="analisisFacialArrayBool[2]">Branquifacial</mat-radio-button>
                                 </div>
                             </mat-radio-group>
                         </div>
