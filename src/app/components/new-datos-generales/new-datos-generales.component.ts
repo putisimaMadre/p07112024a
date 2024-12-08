@@ -82,8 +82,27 @@ export class NewDatosGeneralesComponent implements OnInit{
   antecedentesPnoP?: any;
   padecimientosActuales?: any;
   analisisFacial?: any
+
   patronFacialArray: number[] = [1, 2, 3];
+  perfilArray: number[] = [4, 5, 6];
+  asimetriaArray: number[] = [7, 8, 9];
+  alturaFacialEquilibradaArray: number[] = [10, 11, 12];
+  anchoFacialEquilibradaArray: number[] = [13, 14, 15];
+  perfilMaxilarArray: number[] = [16, 17, 18];
+  perfilMandibularArray: number[] = [19, 20, 21];
+  surcoLabioMentonArray: number[] = [22, 23, 24];
+  labiosReposoArray: number[] = [25, 26];
+
   analisisFacialArrayBool: boolean[] = [false, false, false]
+  perfilArrayBool: boolean[] = [false, false, false]
+  asimetriaArrayBool: boolean[] = [false, false, false];
+  alturaFacialEquilibradaArrayBool: boolean[] = [false, false, false];
+  anchoFacialEquilibradaArrayBool: boolean[] = [false, false, false];
+  perfilMaxilarArrayBool: boolean[] = [false, false, false];
+  perfilMandibularArrayBool: boolean[] = [false, false, false];
+  surcoLabioMentonArrayBool: boolean[] = [false, false, false];
+  labiosReposoArrayBool: boolean[] = [false, false, false];
+
   antecedentesFyHBool = new AntecedentesFyHBool();
 
   constructor(private datosGeneralesService: DatosGeneralesService,
@@ -199,25 +218,95 @@ export class NewDatosGeneralesComponent implements OnInit{
       switchMap(({id}) => this.analisisFacialService.getAnalisisFacialEdit(id)),
     )
     .subscribe(analisisFacial => {
-      this.editPatronFacial(analisisFacial)
+      console.log(analisisFacial)
+      this.editAnalisisFacial(analisisFacial)
+      //this.editPerfil(analisisFacial)
       return;
     })
   }
 
-  editPatronFacial(analisisFacial: AnalisisFacial){
+  editAnalisisFacial(analisisFacial: AnalisisFacial){
     const keys = Object.keys(analisisFacial);
     keys.forEach((key) => {
       if(this.isKey(analisisFacial, key)){
         this.analisisFacial = analisisFacial[key];
-        for (let index = 0; index <= this.analisisFacialArrayBool.length; index++) {
-          if(this.patronFacialArray[index] == this.analisisFacial.patronFacial){
-            this.analisisFacialArrayBool[index] = true
+
+        if(this.analisisFacial.patronFacial){
+          for (let index = 0; index <= this.analisisFacialArrayBool.length; index++) {
+            if(this.patronFacialArray[index] == this.analisisFacial.patronFacial){
+              this.analisisFacialArrayBool[index] = true
+            }
           }
         }
+        if(this.analisisFacial.perfil){
+          for (let index = 0; index <= this.perfilArrayBool.length; index++) {
+              if(this.perfilArray[index] == this.analisisFacial.perfil){
+                this.perfilArrayBool[index] = true
+              }
+            }
+        }
+        if(this.analisisFacial.asimetria){
+          for (let index = 0; index <= this.asimetriaArrayBool.length; index++) {
+            if(this.asimetriaArray[index] == this.analisisFacial.asimetria){
+              this.asimetriaArrayBool[index] = true
+            }
+          }
+        }
+      if(this.analisisFacial.alturaFE){
+        for (let index = 0; index <= this.alturaFacialEquilibradaArrayBool.length; index++) {
+          if(this.alturaFacialEquilibradaArray[index] == this.analisisFacial.alturaFE){
+            this.alturaFacialEquilibradaArrayBool[index] = true
+          }
+        }
+      }
+      if(this.analisisFacial.alturaFE){
+        for (let index = 0; index <= this.alturaFacialEquilibradaArrayBool.length; index++) {
+          if(this.alturaFacialEquilibradaArray[index] == this.analisisFacial.alturaFE){
+            this.alturaFacialEquilibradaArrayBool[index] = true
+          }
+        }
+      }
+      if(this.analisisFacial.anchuraFE){
+        for (let index = 0; index <= this.anchoFacialEquilibradaArrayBool.length; index++) {
+          if(this.anchoFacialEquilibradaArray[index] == this.analisisFacial.anchuraFE){
+            this.anchoFacialEquilibradaArrayBool[index] = true
+          }
+        }
+      }
+      if(this.analisisFacial.perfilMaxilar){
+        for (let index = 0; index <= this.perfilMaxilarArrayBool.length; index++) {
+          if(this.perfilMandibularArray[index] == this.analisisFacial.perfilMaxilar){
+            this.perfilMaxilarArrayBool[index] = true
+          }
+        }
+      }
+      if(this.analisisFacial.perfilMandibular){
+        for (let index = 0; index <= this.perfilMandibularArrayBool.length; index++) {
+          if(this.perfilMandibularArray[index] == this.analisisFacial.perfilMandibular){
+            this.perfilMandibularArrayBool[index] = true
+          }
+        }
+      }
+      if(this.analisisFacial.surcoLM){
+        for (let index = 0; index <= this.surcoLabioMentonArrayBool.length; index++) {
+          if(this.surcoLabioMentonArray[index] == this.analisisFacial.surcoLM){
+            this.surcoLabioMentonArrayBool[index] = true
+          }
+        }
+      }
+      if(this.analisisFacial.labiosEr){
+        for (let index = 0; index <= this.labiosReposoArrayBool.length; index++) {
+          if(this.labiosReposoArray[index] == this.analisisFacial.labiosEr){
+            this.labiosReposoArrayBool[index] = true
+          }
+        }
+      }
+
       }
     })
   }
 
+  
   //CLONAR editPatronFacial PARA LOS DEMAS
 
   editAntecedentesPyP(antecedentesPyP: AntecedentesPyP){
@@ -1237,6 +1326,7 @@ export class NewDatosGeneralesComponent implements OnInit{
 
   saveAnalisisFacial(){
     this.analisisFacialForm.controls['idDatosGenerales'].setValue(this.pacienteId)
+    console.log(this.analisisFacialForm.value)
     this.analisisFacialService.postAnalisisFacial(this.analisisFacialForm.value).subscribe(dato => {
       console.log(dato)
       this.completadoAnalisisFacial = true

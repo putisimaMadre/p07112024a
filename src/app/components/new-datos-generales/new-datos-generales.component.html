@@ -1249,9 +1249,9 @@
                         <div class="col-8">
                             <mat-radio-group aria-label="Select an option" formControlName="perfil">
                                 <div class="grid">
-                                <mat-radio-button class="col-4" value="4">Recto</mat-radio-button>
-                                <mat-radio-button class="col-4" value="5">Cóncavo</mat-radio-button>
-                                <mat-radio-button class="col-4" value="6">Convexo</mat-radio-button>
+                                <mat-radio-button class="col-4" value={{perfilArray[0]}} [checked]="perfilArrayBool[0]">Recto</mat-radio-button>
+                                <mat-radio-button class="col-4" value={{perfilArray[1]}} [checked]="perfilArrayBool[1]">Cóncavo</mat-radio-button>
+                                <mat-radio-button class="col-4" value={{perfilArray[2]}} [checked]="perfilArrayBool[2]">Convexo</mat-radio-button>
                             </div>
                             </mat-radio-group>
                         </div>
@@ -1264,9 +1264,9 @@
                         <div class="col-8">
                         <mat-radio-group aria-label="Select an option" formControlName="asimetria">
                             <div class="grid">
-                            <mat-radio-button class="col-4" value="7">Mand. Derecha</mat-radio-button>
-                            <mat-radio-button class="col-4" value="8">Mand. Izquierda</mat-radio-button>
-                            <mat-radio-button class="col-4" value="9">Otras</mat-radio-button>
+                            <mat-radio-button class="col-4" value={{asimetriaArray[0]}} [checked]="asimetriaArrayBool[0]">Mand. Derecha</mat-radio-button>
+                            <mat-radio-button class="col-4" value={{asimetriaArray[1]}} [checked]="asimetriaArrayBool[1]">Mand. Izquierda</mat-radio-button>
+                            <mat-radio-button class="col-4" value={{asimetriaArray[2]}} [checked]="asimetriaArrayBool[2]">Otras</mat-radio-button>
                             </div>
                         </mat-radio-group>
                         </div>
@@ -1279,9 +1279,9 @@
                         <div class="col-8">
                         <mat-radio-group aria-label="Select an option" formControlName="alturaFE">
                             <div class="grid">
-                            <mat-radio-button class="col-4" value="10">Equilibrada</mat-radio-button>
-                            <mat-radio-button class="col-4" value="11">Larga</mat-radio-button>
-                            <mat-radio-button class="col-4" value="12">Corta</mat-radio-button>
+                            <mat-radio-button class="col-4" value={{alturaFacialEquilibradaArray[0]}} [checked]="alturaFacialEquilibradaArrayBool[0]">Equilibrada</mat-radio-button>
+                            <mat-radio-button class="col-4" value={{alturaFacialEquilibradaArray[1]}} [checked]="alturaFacialEquilibradaArrayBool[1]">Larga</mat-radio-button>
+                            <mat-radio-button class="col-4" value={{alturaFacialEquilibradaArray[2]}} [checked]="alturaFacialEquilibradaArrayBool[2]">Corta</mat-radio-button>
                             </div>
                         </mat-radio-group>
                         </div>
@@ -1294,9 +1294,9 @@
                         <div class="col-8">
                         <mat-radio-group aria-label="Select an option" formControlName="anchuraFE">
                             <div class="grid">
-                            <mat-radio-button class="col-4" value="13">Equilibrada</mat-radio-button>
-                            <mat-radio-button class="col-4" value="14">Estrecho</mat-radio-button>
-                            <mat-radio-button class="col-4" value="15">Amplio</mat-radio-button>
+                            <mat-radio-button class="col-4" value={{anchoFacialEquilibradaArray[0]}} [checked]="anchoFacialEquilibradaArrayBool[0]">Equilibrada</mat-radio-button>
+                            <mat-radio-button class="col-4" value={{anchoFacialEquilibradaArray[1]}} [checked]="anchoFacialEquilibradaArrayBool[1]">Estrecho</mat-radio-button>
+                            <mat-radio-button class="col-4" value={{anchoFacialEquilibradaArray[2]}} [checked]="anchoFacialEquilibradaArrayBool[2]">Amplio</mat-radio-button>
                             </div>
                         </mat-radio-group>
                         </div>
@@ -1309,9 +1309,9 @@
                         <div class="col-8">
                         <mat-radio-group aria-label="Select an option" formControlName="perfilMaxilar">
                             <div class="grid">
-                            <mat-radio-button class="col-4" value="16">Ortognático</mat-radio-button>
-                            <mat-radio-button class="col-4" value="17">Prognático</mat-radio-button>
-                            <mat-radio-button class="col-4" value="18">Retrognático</mat-radio-button>
+                            <mat-radio-button class="col-4" value={{perfilMandibularArray[0]}} [checked]="perfilArrayBool[0]">Ortognático</mat-radio-button>
+                            <mat-radio-button class="col-4" value={{perfilMandibularArray[1]}} [checked]="perfilArrayBool[1]">Prognático</mat-radio-button>
+                            <mat-radio-button class="col-4" value={{perfilMandibularArray[2]}} [checked]="perfilArrayBool[2]">Retrognático</mat-radio-button>
                             </div>
                         </mat-radio-group>
                         </div>
@@ -1324,9 +1324,9 @@
                         <div class="col-8">
                         <mat-radio-group aria-label="Select an option" formControlName="perfilMandibular">
                             <div class="grid">
-                            <mat-radio-button class="col-4" value="19">Ortognático</mat-radio-button>
-                            <mat-radio-button class="col-4" value="20">Prognático</mat-radio-button>
-                            <mat-radio-button class="col-4" value="21">Retrognático</mat-radio-button>
+                            <mat-radio-button class="col-4" value={{perfilMandibularArray[0]}} [checked]="perfilMandibularArrayBool[0]">Ortognático</mat-radio-button>
+                            <mat-radio-button class="col-4" value={{perfilMandibularArray[1]}} [checked]="perfilMandibularArrayBool[1]">Prognático</mat-radio-button>
+                            <mat-radio-button class="col-4" value={{perfilMandibularArray[2]}} [checked]="perfilMandibularArrayBool[2]">Retrognático</mat-radio-button>
                             </div>
                         </mat-radio-group>
                         </div>
@@ -1339,9 +1339,9 @@
                         <div class="col-8">
                         <mat-radio-group aria-label="Select an option" formControlName="surcoLM">
                             <div class="grid">
-                            <mat-radio-button class="col-4" value="22">Normal</mat-radio-button>
-                            <mat-radio-button class="col-4" value="23">Marcado</mat-radio-button>
-                            <mat-radio-button class="col-4" value="24">Borrador</mat-radio-button>
+                            <mat-radio-button class="col-4" value={{surcoLabioMentonArray[0]}} [checked]="surcoLabioMentonArrayBool[0]">Normal</mat-radio-button>
+                            <mat-radio-button class="col-4" value={{surcoLabioMentonArray[1]}} [checked]="surcoLabioMentonArrayBool[1]">Marcado</mat-radio-button>
+                            <mat-radio-button class="col-4" value={{surcoLabioMentonArray[2]}} [checked]="surcoLabioMentonArrayBool[2]">Borrador</mat-radio-button>
                             </div>
                         </mat-radio-group>
                         </div>
@@ -1354,8 +1354,8 @@
                         <div class="col-8">
                         <mat-radio-group aria-label="Select an option" formControlName="labiosEr">
                             <div class="grid">
-                            <mat-radio-button class="col-4" value="25">Competentes</mat-radio-button>
-                            <mat-radio-button class="col-4" value="26">Incompetentes</mat-radio-button>
+                            <mat-radio-button class="col-4" value={{labiosReposoArray[0]}} [checked]="labiosReposoArrayBool[0]">Competentes</mat-radio-button>
+                            <mat-radio-button class="col-4" value={{labiosReposoArray[1]}} [checked]="labiosReposoArrayBool[1]">Incompetentes</mat-radio-button>
                             </div>
                         </mat-radio-group>
                         </div>
