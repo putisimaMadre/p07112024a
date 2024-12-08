@@ -20,6 +20,7 @@ import { switchMap } from 'rxjs';
 import { DatosGenerales } from '../../models/datos-generales';
 import { AntecedentesPyP } from '../../models/antecedentes-py-p';
 import { AnalisisFacial } from '../../models/analisis-facial';
+import { AnalisisFuncional } from '../../models/analisis-funcional';
 
 /*interface Odontologo {
   valor: string;
@@ -82,6 +83,7 @@ export class NewDatosGeneralesComponent implements OnInit{
   antecedentesPnoP?: any;
   padecimientosActuales?: any;
   analisisFacial?: any
+  analisisFuncional?: any
 
   patronFacialArray: number[] = [1, 2, 3];
   perfilArray: number[] = [4, 5, 6];
@@ -101,9 +103,35 @@ export class NewDatosGeneralesComponent implements OnInit{
   perfilMaxilarArrayBool: boolean[] = [false, false, false];
   perfilMandibularArrayBool: boolean[] = [false, false, false];
   surcoLabioMentonArrayBool: boolean[] = [false, false, false];
-  labiosReposoArrayBool: boolean[] = [false, false, false];
+  labiosReposoArrayBool: boolean[] = [false, false];
+
+  actividadConmisuralArray: number[] = [1, 2, 3];
+  actividadConmisuralArrayBool: boolean[] = [false, false, false];
+
+  actividadLingualArray: number[] = [1, 3, 4];
+  actividadLingualArrayBool: boolean[] = [false, false, false];
+
+  labioSuperiorArray: number[] = [1, 5, 6];
+  labioSuperiorArrayBool: boolean[] = [false, false, false];
+
+  labioInferiorArray: number[] = [1, 5, 6];
+  labioInferiorArrayBool: boolean[] = [false, false, false];
+
+  maseteroArray: number[] = [1, 5, 6];
+  maseteroArrayBool: boolean[] = [false, false, false];
+
+  mentonianoArray: number[] = [1, 5, 6];
+  mentonianoArrayBool: boolean[] = [false, false, false];
+
+  respiracionArray: number[] = [7, 8, 10];
+  respiracionArrayBool: boolean[] = [false, false, false];
+
+  deglucionArray: number[] = [1, 9, 11];
+  deglucionArrayBool: boolean[] = [false, false, false];
 
   antecedentesFyHBool = new AntecedentesFyHBool();
+
+  edit: boolean = true
 
   constructor(private datosGeneralesService: DatosGeneralesService,
     private antecedentesFyHService: AntecedentesFyHService,
@@ -129,6 +157,9 @@ export class NewDatosGeneralesComponent implements OnInit{
     )
     .subscribe(datosGenerales => {
       this.datosGenerales = datosGenerales
+      if(this.datosGenerales != null){
+        this.edit = false
+      }
       return;
     })
     
@@ -202,25 +233,23 @@ export class NewDatosGeneralesComponent implements OnInit{
       return;
     })
 
-    //=========ANALISIS FACIAL========
-    /*"patronFacial": [],
-      "perfil": [],
-      "asimetria": [],
-      "alturaFE": [],
-      "anchuraFE": [],
-      "perfilMaxilar": [],
-      "perfilMandibular": [],
-      "surcoLM": [],
-      "labiosEr": [],*/
-
     this.activatedRoute.params
     .pipe(
       switchMap(({id}) => this.analisisFacialService.getAnalisisFacialEdit(id)),
     )
     .subscribe(analisisFacial => {
-      console.log(analisisFacial)
       this.editAnalisisFacial(analisisFacial)
       //this.editPerfil(analisisFacial)
+      return;
+    })
+
+    this.activatedRoute.params
+    .pipe(
+      switchMap(({id}) => this.analisisFuncionalService.getAnalisisFuncionalEdit(id)),
+    )
+    .subscribe(analisisFuncional => {
+      console.log(analisisFuncional)
+      this.editAnalisisFuncional(analisisFuncional)
       return;
     })
   }
@@ -306,6 +335,72 @@ export class NewDatosGeneralesComponent implements OnInit{
     })
   }
 
+  editAnalisisFuncional(analisisFuncional: AnalisisFuncional){
+    const keys = Object.keys(analisisFuncional);
+    keys.forEach((key) => {
+      if(this.isKey(analisisFuncional, key)){
+        this.analisisFuncional = analisisFuncional[key];
+        
+        if(this.analisisFuncional.actividadComisural){
+          for (let index = 0; index <= this.actividadConmisuralArrayBool.length; index++) {
+            if(this.actividadConmisuralArray[index] == this.analisisFuncional.actividadComisural){
+              this.actividadConmisuralArrayBool[index] = true
+            }
+          }
+        }
+        if(this.analisisFuncional.actividadLingual){
+          for (let index = 0; index <= this.actividadLingualArrayBool.length; index++) {
+            if(this.actividadLingualArray[index] == this.analisisFuncional.actividadLingual){
+              this.actividadLingualArrayBool[index] = true
+            }
+          }
+        }
+        if(this.analisisFuncional.labioSuperior){
+          for (let index = 0; index <= this.labioSuperiorArrayBool.length; index++) {
+            if(this.labioSuperiorArray[index] == this.analisisFuncional.labioSuperior){
+              this.labioSuperiorArrayBool[index] = true
+            }
+          }
+        }
+        if(this.analisisFuncional.labioInferior){
+          for (let index = 0; index <= this.labioInferiorArrayBool.length; index++) {
+            if(this.labioInferiorArray[index] == this.analisisFuncional.labioInferior){
+              this.labioInferiorArrayBool[index] = true
+            }
+          }
+        }
+        if(this.analisisFuncional.masetero){
+          for (let index = 0; index <= this.maseteroArrayBool.length; index++) {
+            if(this.maseteroArray[index] == this.analisisFuncional.masetero){
+              this.maseteroArrayBool[index] = true
+            }
+          }
+        }
+        if(this.analisisFuncional.mentoniano){
+          for (let index = 0; index <= this.mentonianoArrayBool.length; index++) {
+            if(this.mentonianoArray[index] == this.analisisFuncional.mentoniano){
+              this.mentonianoArrayBool[index] = true
+            }
+          }
+        }
+        if(this.analisisFuncional.respiracion){
+          for (let index = 0; index <= this.respiracionArrayBool.length; index++) {
+            if(this.respiracionArray[index] == this.analisisFuncional.respiracion){
+              this.respiracionArrayBool[index] = true
+            }
+          }
+        }
+        if(this.analisisFuncional.deglucion){
+          for (let index = 0; index <= this.deglucionArrayBool.length; index++) {
+            if(this.deglucionArray[index] == this.analisisFuncional.deglucion){
+              this.deglucionArrayBool[index] = true
+            }
+          }
+        }
+
+      }
+    })
+  }
   
   //CLONAR editPatronFacial PARA LOS DEMAS
 
@@ -1015,10 +1110,8 @@ export class NewDatosGeneralesComponent implements OnInit{
 
   ///ME QUEDO AQUI HAY QUE VERIFICAR COMO identificar eL siNo para que habilite el input
   verificarSiNoStatus(): void{
-    console.log("ahora")
     if (this.varicelaForm.get('siNo')?.value){
       //this.varicelaForm.controls['fechaAgno'].enable();
-      console.log(this.varicelaForm.get('siNo')?.value)
     }
   }
 
@@ -1283,7 +1376,6 @@ export class NewDatosGeneralesComponent implements OnInit{
   saveEvaluacionClinicaInfantil(){
     this.evaluacionClinicaInfantilForm.controls['idDatosGenerales'].setValue(this.pacienteId)
     this.evaluacionClinicaInfantilService.postEvaluacionClinicaInfantil(this.evaluacionClinicaInfantilForm.value).subscribe(dato => {
-      console.log(dato)
       this.completadoEvaluacionClinicaInfantil = true
     })
   }
@@ -1291,7 +1383,7 @@ export class NewDatosGeneralesComponent implements OnInit{
   saveEvaluacionClinica(){
     this.evaluacionClinicaForm.controls['idDatosGenerales'].setValue(this.pacienteId)
     this.evaluacionClinicaService.postEvaluacionClinica(this.evaluacionClinicaForm.value).subscribe(dato => {
-      console.log(dato)
+      
       this.completadoEvaluacionClinica = true
     })
   }
@@ -1302,7 +1394,7 @@ export class NewDatosGeneralesComponent implements OnInit{
     saldo = this.pagosForm.get('costo')?.value - this.pagosForm.get('aCuenta')?.value
     this.pagosForm.controls['saldo'].setValue(saldo)
     this.pagosService.postPagos(this.pagosForm.value).subscribe(dato => {
-      console.log(dato)
+      
       this.completadoPagos = true
     })
   }
@@ -1311,7 +1403,7 @@ export class NewDatosGeneralesComponent implements OnInit{
     this.consentimientoInformadoForm.controls['odontologo'].setValue(this.odontologoControl.value?.valorEnVista)
     this.consentimientoInformadoForm.controls['idDatosGenerales'].setValue(this.pacienteId)
     this.consentimientoInformado.postConsentimientoInformado(this.consentimientoInformadoForm.value).subscribe(dato => {
-      console.log(dato)
+      
       this.completadoConsentimientoInformado = true
     })
   }
@@ -1319,16 +1411,16 @@ export class NewDatosGeneralesComponent implements OnInit{
   saveAnalisisFuncional(){
     this.analisisFuncionalForm.controls['idDatosGenerales'].setValue(this.pacienteId)
     this.analisisFuncionalService.postAnalisisFuncional(this.analisisFuncionalForm.value).subscribe(dato => {
-      console.log(dato)
+      
       this.completadoAnalisisFuncional = true
     })
   }
 
   saveAnalisisFacial(){
     this.analisisFacialForm.controls['idDatosGenerales'].setValue(this.pacienteId)
-    console.log(this.analisisFacialForm.value)
+    
     this.analisisFacialService.postAnalisisFacial(this.analisisFacialForm.value).subscribe(dato => {
-      console.log(dato)
+    
       this.completadoAnalisisFacial = true
     })
   }
@@ -1336,7 +1428,7 @@ export class NewDatosGeneralesComponent implements OnInit{
   savePadecimientosActuales(){
     this.padecimientosActualesForm.controls['idDatosGenerales'].setValue(this.pacienteId)
     this.padecimientosAService.postPadecimientos(this.padecimientosActualesForm.value).subscribe(dato => {
-      console.log(dato)
+      
       this.completadoPadecimientosActuales = true
     })
   }
@@ -1344,7 +1436,7 @@ export class NewDatosGeneralesComponent implements OnInit{
   saveAntecedentesPersonalesNoPatologicos(){
     this.antecedentesPersonalesNoPForm.controls['idDatosGenerales'].setValue(this.pacienteId)
     this.antecedentesPnoPService.postAntecedentes(this.antecedentesPersonalesNoPForm.value).subscribe(dato => {
-      console.log(dato)
+      
       this.completadoAntecedentesPNoP = true
     })
   }
@@ -1355,7 +1447,7 @@ export class NewDatosGeneralesComponent implements OnInit{
         let valorAntecedente = formGroup.get(key);
         if(valorAntecedente!.value === true){
           formGroup.controls[key].setValue(idPatologia)
-          console.log(key + ' = ' + valorAntecedente!.value);
+          
         }
       });
   }
@@ -1393,7 +1485,7 @@ export class NewDatosGeneralesComponent implements OnInit{
     this.patologiasArray.forEach(element => {
       this.cambioValorPatologiaBoolToNumber(element)
       this.antecedentesFyHService.postAntecedentes(element.value).subscribe(patologia => {
-        console.log(patologia)
+        
       })
     });
 
@@ -1403,7 +1495,7 @@ export class NewDatosGeneralesComponent implements OnInit{
     this.datosGeneralesService
     .postDatosGenerales(this.formDatosGenerales.value)
     .subscribe(dato => {
-      console.log(dato)
+      
       this.completadoDatosGenerales = true
       this.paciente = dato.nombre
       this.sexo = dato.sexo
@@ -1469,11 +1561,11 @@ export class NewDatosGeneralesComponent implements OnInit{
     //faltan las observaciones
 
     this.patologiasPyPArray.forEach(element => {
-      console.log(element.value)
+      
       this.antecedentesServicePyP
       .postAntecedentePyP(element.value)
       .subscribe(enfermedad =>{
-        console.log(enfermedad)
+        
       })
     });
   }

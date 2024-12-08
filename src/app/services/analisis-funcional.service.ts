@@ -16,6 +16,14 @@ export class AnalisisFuncionalService {
     return this.httpClient.get<AnalisisFuncional[]>(this.urlEndPoint);
   }
 
+  getAnalisisFuncionalById(idDatosGenerales: number): Observable<AnalisisFuncional>{
+    return this.httpClient.get<AnalisisFuncional>(this.urlEndPoint+'/'+idDatosGenerales);
+  }
+
+  getAnalisisFuncionalEdit(idDatosGenerales: number): Observable<AnalisisFuncional>{
+    return this.httpClient.get<AnalisisFuncional>(this.urlEndPoint+'/'+idDatosGenerales+'/edit');
+  }
+
   postAnalisisFuncional(analisisFuncional: AnalisisFuncional): Observable<AnalisisFuncional>{
     return this.httpClient.post<AnalisisFuncional>(this.urlEndPoint, analisisFuncional, {headers: this.httpHeaders})
   }
