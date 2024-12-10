@@ -77,7 +77,7 @@ export class NewDatosGeneralesComponent implements OnInit{
   sexo: string = ""
   pacienteId: number = 0;
   prueba = 2;
-  datosGenerales?: DatosGenerales;
+  datosGenerales?: any;
   antecedentesFyH?: any;
   antecedentesPyP?: any;
   antecedentesPnoP?: any;
@@ -153,15 +153,21 @@ export class NewDatosGeneralesComponent implements OnInit{
     //=========DATOS GENERALES========
     this.activatedRoute.params
     .pipe(
-      switchMap(({id}) => this.datosGeneralesService.getDatosGeneralesById(id)),
+      switchMap(({id}) => this.datosGeneralesService.getDatosGeneralesEdit(id)),
     )
-    .subscribe(datosGenerales => {
-      this.datosGenerales = datosGenerales
-      if(this.datosGenerales != null){
-        this.edit = false
-      }
-      return;
-    })
+      .subscribe(datosGenerales => {
+        const keys = Object.keys(datosGenerales);
+        keys.forEach((key) => {
+          if(this.isKey(datosGenerales, key)){
+            this.datosGenerales = datosGenerales[key];
+            this.setearRegistrosDatosGenerales()
+          }
+        })
+        if(this.datosGenerales != null){ //<= para comprobra si se edita o no
+          this.edit = false
+        }
+        return;
+      })
     
     //=========ANTECEDENTES PERSONALES Y HEREDITARIOS========
     this.activatedRoute.params
@@ -248,9 +254,25 @@ export class NewDatosGeneralesComponent implements OnInit{
       switchMap(({id}) => this.analisisFuncionalService.getAnalisisFuncionalEdit(id)),
     )
     .subscribe(analisisFuncional => {
-      console.log(analisisFuncional)
       this.editAnalisisFuncional(analisisFuncional)
       return;
+    })
+  }
+
+  setearRegistrosDatosGenerales(){
+    this.formDatosGenerales.setValue({
+      id: this.datosGenerales.id,
+      nombre: this.datosGenerales.nombre,
+      domicilio: this.datosGenerales.domicilio,
+      edad: this.datosGenerales.edad,
+      entidad: this.datosGenerales.entidad,
+      fechaNacimiento: this.datosGenerales.fechaNacimiento,
+      numeroTelefono: this.datosGenerales.numeroTelefono,
+      ocupacion: this.datosGenerales.ocupacion,
+      escolaridad: this.datosGenerales.escolaridad,
+      sexo: this.datosGenerales.sexo,
+      lugarNacimiento: this.datosGenerales.lugarNacimiento,
+      estadoCivil: this.datosGenerales.estadoCivil,
     })
   }
 
@@ -915,6 +937,7 @@ export class NewDatosGeneralesComponent implements OnInit{
   }
 
   formDatosGenerales: FormGroup = this.formBuilder.group({
+    "id": ["", Validators.required],
     "nombre": ["", Validators.required],
     "domicilio": ["", Validators.required],
     "entidad": ["", Validators.required],
@@ -1376,6 +1399,7 @@ export class NewDatosGeneralesComponent implements OnInit{
   saveEvaluacionClinicaInfantil(){
     this.evaluacionClinicaInfantilForm.controls['idDatosGenerales'].setValue(this.pacienteId)
     this.evaluacionClinicaInfantilService.postEvaluacionClinicaInfantil(this.evaluacionClinicaInfantilForm.value).subscribe(dato => {
+      console.log(dato)
       this.completadoEvaluacionClinicaInfantil = true
     })
   }
@@ -1383,7 +1407,7 @@ export class NewDatosGeneralesComponent implements OnInit{
   saveEvaluacionClinica(){
     this.evaluacionClinicaForm.controls['idDatosGenerales'].setValue(this.pacienteId)
     this.evaluacionClinicaService.postEvaluacionClinica(this.evaluacionClinicaForm.value).subscribe(dato => {
-      
+      console.log(dato)
       this.completadoEvaluacionClinica = true
     })
   }
@@ -1394,7 +1418,7 @@ export class NewDatosGeneralesComponent implements OnInit{
     saldo = this.pagosForm.get('costo')?.value - this.pagosForm.get('aCuenta')?.value
     this.pagosForm.controls['saldo'].setValue(saldo)
     this.pagosService.postPagos(this.pagosForm.value).subscribe(dato => {
-      
+      console.log(dato)
       this.completadoPagos = true
     })
   }
@@ -1403,7 +1427,7 @@ export class NewDatosGeneralesComponent implements OnInit{
     this.consentimientoInformadoForm.controls['odontologo'].setValue(this.odontologoControl.value?.valorEnVista)
     this.consentimientoInformadoForm.controls['idDatosGenerales'].setValue(this.pacienteId)
     this.consentimientoInformado.postConsentimientoInformado(this.consentimientoInformadoForm.value).subscribe(dato => {
-      
+      console.log(dato)
       this.completadoConsentimientoInformado = true
     })
   }
@@ -1411,16 +1435,15 @@ export class NewDatosGeneralesComponent implements OnInit{
   saveAnalisisFuncional(){
     this.analisisFuncionalForm.controls['idDatosGenerales'].setValue(this.pacienteId)
     this.analisisFuncionalService.postAnalisisFuncional(this.analisisFuncionalForm.value).subscribe(dato => {
-      
+      console.log(dato)
       this.completadoAnalisisFuncional = true
     })
   }
 
   saveAnalisisFacial(){
     this.analisisFacialForm.controls['idDatosGenerales'].setValue(this.pacienteId)
-    
     this.analisisFacialService.postAnalisisFacial(this.analisisFacialForm.value).subscribe(dato => {
-    
+      console.log(dato)
       this.completadoAnalisisFacial = true
     })
   }
@@ -1428,7 +1451,7 @@ export class NewDatosGeneralesComponent implements OnInit{
   savePadecimientosActuales(){
     this.padecimientosActualesForm.controls['idDatosGenerales'].setValue(this.pacienteId)
     this.padecimientosAService.postPadecimientos(this.padecimientosActualesForm.value).subscribe(dato => {
-      
+      console.log(dato)
       this.completadoPadecimientosActuales = true
     })
   }
@@ -1436,7 +1459,7 @@ export class NewDatosGeneralesComponent implements OnInit{
   saveAntecedentesPersonalesNoPatologicos(){
     this.antecedentesPersonalesNoPForm.controls['idDatosGenerales'].setValue(this.pacienteId)
     this.antecedentesPnoPService.postAntecedentes(this.antecedentesPersonalesNoPForm.value).subscribe(dato => {
-      
+      console.log(dato)
       this.completadoAntecedentesPNoP = true
     })
   }
@@ -1485,7 +1508,7 @@ export class NewDatosGeneralesComponent implements OnInit{
     this.patologiasArray.forEach(element => {
       this.cambioValorPatologiaBoolToNumber(element)
       this.antecedentesFyHService.postAntecedentes(element.value).subscribe(patologia => {
-        
+        console.log(element.value)
       })
     });
 
@@ -1495,7 +1518,7 @@ export class NewDatosGeneralesComponent implements OnInit{
     this.datosGeneralesService
     .postDatosGenerales(this.formDatosGenerales.value)
     .subscribe(dato => {
-      
+      console.log(dato)
       this.completadoDatosGenerales = true
       this.paciente = dato.nombre
       this.sexo = dato.sexo
@@ -1503,8 +1526,14 @@ export class NewDatosGeneralesComponent implements OnInit{
     })
   }
 
+  updateDatosGenerales(): void {
+    this.datosGeneralesService.updateDatosGenerales(this.formDatosGenerales.value).subscribe(dato => {
+      console.log(dato)
+    })
+  }
+
   saveAntecedentesPyP(): void{
-    //this.completadoAntecedentesPyP = true
+    this.completadoAntecedentesPyP = true
     this.varicelaForm.controls['idDatosGenerales'].setValue(this.pacienteId);
     this.rubeolaForm.controls['idDatosGenerales'].setValue(this.pacienteId);
     this.sarampionForm.controls['idDatosGenerales'].setValue(this.pacienteId);
@@ -1559,13 +1588,9 @@ export class NewDatosGeneralesComponent implements OnInit{
     
     //console.log(this.varicelaForm.value)
     //faltan las observaciones
-
     this.patologiasPyPArray.forEach(element => {
-      
-      this.antecedentesServicePyP
-      .postAntecedentePyP(element.value)
-      .subscribe(enfermedad =>{
-        
+      this.antecedentesServicePyP.postAntecedentePyP(element.value).subscribe(enfermedad =>{
+        console.log(element.value)
       })
     });
   }

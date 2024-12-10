@@ -93,8 +93,8 @@
                         </mat-select>
                       </mat-form-field>
                 </div>
-                
-                <div class="grid">
+            <!--=============================================GUARDADO======================================-->                
+                <div class="grid"  *ngIf="!datosGenerales?.id else updateDatosGeneralesBlock">
                     <div class="col-offset-8"></div>
                     <div class="col-4" *ngIf="completadoDatosGenerales == false">
                         <button [disabled]="completadoDatosGenerales" mat-flat-button
@@ -105,6 +105,20 @@
                         >Informacion guardada</button>
                     </div>
                 </div>
+            <!--=============================================ACTUALIZADO======================================-->
+            <ng-template #updateDatosGeneralesBlock>
+                <div class="grid">
+                    <div class="col-offset-8"></div>
+                    <div class="col-4" *ngIf="completadoDatosGenerales == false">
+                        <button [disabled]="completadoDatosGenerales" mat-flat-button
+                        (click)="updateDatosGenerales()">Actualizar</button>
+                    </div>
+                    <div class="col-4" *ngIf="completadoDatosGenerales == true">
+                        <button [disabled]="completadoDatosGenerales" mat-flat-button 
+                        >Informacion guardada</button>
+                    </div>
+                </div>
+            </ng-template>
                 <!--<div *ngIf="estado == true">-->
                 <div *ngIf="completadoDatosGenerales == true">
                     <button mat-button matStepperNext>Siguente</button>

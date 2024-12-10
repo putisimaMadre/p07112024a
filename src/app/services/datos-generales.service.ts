@@ -16,11 +16,19 @@ export class DatosGeneralesService {
     return this.httpClient.get<DatosGenerales[]>(this.urlEndPoint);
   }
 
-  getDatosGeneralesById(idDatosGenerales: number): Observable<DatosGenerales>{
-    return this.httpClient.get<DatosGenerales>(this.urlEndPoint+'/'+idDatosGenerales);
+  getDatosGeneralesById(id: number): Observable<DatosGenerales>{
+    return this.httpClient.get<DatosGenerales>(this.urlEndPoint+'/'+id);
+  }
+
+  getDatosGeneralesEdit(id: number): Observable<DatosGenerales>{
+    return this.httpClient.get<DatosGenerales>(this.urlEndPoint+'/'+id+'/edit');
   }
 
   postDatosGenerales(datosGenerales: DatosGenerales): Observable<DatosGenerales>{
     return this.httpClient.post<DatosGenerales>(this.urlEndPoint, datosGenerales, {headers: this.httpHeaders})
+  }
+
+  updateDatosGenerales(datosGenerales: DatosGenerales): Observable<DatosGenerales>{
+    return this.httpClient.put<DatosGenerales>(this.urlEndPoint+'/'+datosGenerales.id, datosGenerales, {headers:this.httpHeaders})
   }
 }
