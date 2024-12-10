@@ -94,7 +94,7 @@
                       </mat-form-field>
                 </div>
             <!--=============================================GUARDADO======================================-->                
-                <div class="grid"  *ngIf="!datosGenerales?.id else updateDatosGeneralesBlock">
+                <div class="grid" *ngIf="!datosGenerales?.id else updateDatosGeneralesBlock">
                     <div class="col-offset-8"></div>
                     <div class="col-4" *ngIf="completadoDatosGenerales == false">
                         <button [disabled]="completadoDatosGenerales" mat-flat-button
@@ -119,7 +119,6 @@
                     </div>
                 </div>
             </ng-template>
-                <!--<div *ngIf="estado == true">-->
                 <div *ngIf="completadoDatosGenerales == true">
                     <button mat-button matStepperNext>Siguente</button>
                 </div>
@@ -626,18 +625,32 @@
                         </form>
                     </div>
                 </div>
-
-            <div class="grid">
+            <!--=============================================GUARDADO======================================-->
+            <div class="grid" *ngIf="!datosGenerales?.id else updateAntecedentesFyHBlock">
                 <div class="col-offset-8"></div>
                 <div class="col-4" *ngIf="completadoAntecedentesFyH == false">
                     <button [disabled]="completadoAntecedentesFyH" mat-flat-button
-                    (click)="savePatalogias()">Guardar</button>
+                    (click)="saveAntecedentesFyH()">Guardar</button>
                 </div>
                 <div class="col-4" *ngIf="completadoAntecedentesFyH == true">
                     <button [disabled]="completadoAntecedentesFyH" mat-flat-button 
                     >Informacion guardada</button>
                 </div>
             </div>
+            <!--=============================================ACTUALIZADO======================================-->
+            <ng-template #updateAntecedentesFyHBlock>
+                <div class="grid">
+                    <div class="col-offset-8"></div>
+                    <div class="col-4" *ngIf="completadoAntecedentesFyH == false">
+                        <button [disabled]="completadoAntecedentesFyH" mat-flat-button
+                        (click)="updateAntecedentesFyH()">Actualizar</button>
+                    </div>
+                    <div class="col-4" *ngIf="completadoAntecedentesFyH == true">
+                        <button [disabled]="completadoAntecedentesFyH" mat-flat-button 
+                        >Informacion guardada</button>
+                    </div>
+                </div>
+            </ng-template>
 
             <!--<div>
               <button mat-button matStepperPrevious>Back</button>

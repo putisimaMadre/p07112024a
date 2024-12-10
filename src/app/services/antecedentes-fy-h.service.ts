@@ -35,4 +35,8 @@ export class AntecedentesFyHService {
   postAntecedentes(antecedentesFyH: AntecedentesFyH): Observable<AntecedentesFyH>{
     return this.httpClient.post<AntecedentesFyH>(this.urlEndPoint, antecedentesFyH, {headers: this.httpHeaders})
   }
+
+  updateAntecedentes(antecedentesFyH: AntecedentesFyH): Observable<AntecedentesFyH>{
+    return this.httpClient.put<AntecedentesFyH>(this.urlEndPoint+'/'+antecedentesFyH.id, antecedentesFyH, {headers:this.httpHeaders})
+  }
 }

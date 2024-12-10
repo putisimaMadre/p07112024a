@@ -175,6 +175,7 @@ export class NewDatosGeneralesComponent implements OnInit{
       switchMap(({id}) => this.antecedentesFyHService.getAntecedentesEdit(id)),
     )
     .subscribe(antecedentesFyH => {
+      console.log(antecedentesFyH)
       this.convertirABoolean(antecedentesFyH)
       return;
     })
@@ -549,46 +550,92 @@ export class NewDatosGeneralesComponent implements OnInit{
     keys.forEach((key) => {
       if (this.isKey(antecedentesFyH, key)) {
         this.antecedentesFyH = antecedentesFyH[key];
-        //this.pacienteId = this.antecedentesFyH.idDatosGenerales //<-- idDatosGEnerales cuando es un edit
         if(Number.isInteger(this.antecedentesFyH.madre) && this.antecedentesFyH.madre != 0){
-          //console.log(this.diabetesForm.get("idPatologias")?.value)
           let idPatologia = this.antecedentesFyH.idPatologias
           switch ( idPatologia ) {
             case 1:
               this.diabetesForm.controls["madre"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.diabetesForm.controls["madre"].setValue(idPatologia)
+                console.log(this.diabetesForm.get("madre")?.value)
+              }
                 break;
             case 2:
               this.hipertensionAForm.controls["madre"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.hipertensionAForm.controls["madre"].setValue(idPatologia)
+                console.log(this.hipertensionAForm.get("madre")?.value)
+              }
                 break;
             case 3:
               this.cardiopatiaForm.controls["madre"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.cardiopatiaForm.controls["madre"].setValue(idPatologia)
+                console.log(this.cardiopatiaForm.get("madre")?.value)
+              }
                 break;
             case 4:
               this.neoplasiasForm.controls["madre"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.neoplasiasForm.controls["madre"].setValue(idPatologia)
+                console.log(this.neoplasiasForm.get("madre")?.value)
+              }
                 break;
             case 5:
               this.epilepsiaForm.controls["madre"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.epilepsiaForm.controls["madre"].setValue(idPatologia)
+                console.log(this.epilepsiaForm.get("madre")?.value)
+              }
                 break;
             case 6:
               this.malformacionesForm.controls["madre"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.malformacionesForm.controls["madre"].setValue(idPatologia)
+                console.log(this.malformacionesForm.get("madre")?.value)
+              }
                 break;
             case 7:
               this.SIDAForm.controls["madre"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.SIDAForm.controls["madre"].setValue(idPatologia)
+                console.log(this.SIDAForm.get("madre")?.value)
+              }
                 break;
             case 8:
               this.enfermedadesRForm.controls["madre"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.enfermedadesRForm.controls["madre"].setValue(idPatologia)
+                console.log(this.enfermedadesRForm.get("madre")?.value)
+              }
                 break;
             case 9:
               this.hepatitisForm.controls["madre"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.hepatitisForm.controls["madre"].setValue(idPatologia)
+                console.log(this.hepatitisForm.get("madre")?.value)
+              }
                 break;
             case 10:
               this.artritisForm.controls["madre"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.artritisForm.controls["madre"].setValue(idPatologia)
+                console.log(this.artritisForm.get("madre")?.value)
+              }
                 break;
             case 11:
               this.otraForm.controls["madre"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.otraForm.controls["madre"].setValue(idPatologia)
+                console.log(this.otraForm.get("madre")?.value)
+              }
                 break;
             case 12:
               this.aparentementeSForm.controls["madre"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.aparentementeSForm.controls["madre"].setValue(idPatologia)
+                console.log(this.aparentementeSForm.get("madre")?.value)
+              }
                 break;           
             }
         }
@@ -598,39 +645,87 @@ export class NewDatosGeneralesComponent implements OnInit{
           switch ( idPatologia ) {
             case 1:
               this.diabetesForm.controls["abuelaM"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.diabetesForm.controls["abuelaM"].setValue(idPatologia)
+                console.log(this.diabetesForm.get("abuelaM")?.value)
+              }
                 break;
             case 2:
               this.hipertensionAForm.controls["abuelaM"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.hipertensionAForm.controls["abuelaM"].setValue(idPatologia)
+                console.log(this.hipertensionAForm.get("abuelaM")?.value)
+              }
                 break;
             case 3:
               this.cardiopatiaForm.controls["abuelaM"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.cardiopatiaForm.controls["abuelaM"].setValue(idPatologia)
+                console.log(this.cardiopatiaForm.get("abuelaM")?.value)
+              }
                 break;
             case 4:
               this.neoplasiasForm.controls["abuelaM"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.neoplasiasForm.controls["abuelaM"].setValue(idPatologia)
+                console.log(this.neoplasiasForm.get("abuelaM")?.value)
+              }
                 break;
             case 5:
               this.epilepsiaForm.controls["abuelaM"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.epilepsiaForm.controls["abuelaM"].setValue(idPatologia)
+                console.log(this.epilepsiaForm.get("abuelaM")?.value)
+              }
                 break;
             case 6:
               this.malformacionesForm.controls["abuelaM"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.malformacionesForm.controls["abuelaM"].setValue(idPatologia)
+                console.log(this.malformacionesForm.get("abuelaM")?.value)
+              }
                 break;
             case 7:
               this.SIDAForm.controls["abuelaM"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.SIDAForm.controls["abuelaM"].setValue(idPatologia)
+                console.log(this.SIDAForm.get("abuelaM")?.value)
+              }
                 break;
             case 8:
               this.enfermedadesRForm.controls["abuelaM"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.enfermedadesRForm.controls["abuelaM"].setValue(idPatologia)
+                console.log(this.enfermedadesRForm.get("abuelaM")?.value)
+              }
                 break;
             case 9:
               this.hepatitisForm.controls["abuelaM"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.hepatitisForm.controls["abuelaM"].setValue(idPatologia)
+                console.log(this.hepatitisForm.get("abuelaM")?.value)
+              }
                 break;
             case 10:
               this.artritisForm.controls["abuelaM"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.artritisForm.controls["abuelaM"].setValue(idPatologia)
+                console.log(this.artritisForm.get("abuelaM")?.value)
+              }
                 break;
             case 11:
               this.otraForm.controls["abuelaM"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.otraForm.controls["abuelaM"].setValue(idPatologia)
+                console.log(this.otraForm.get("abuelaM")?.value)
+              }
                 break;
             case 12:
               this.aparentementeSForm.controls["abuelaM"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.aparentementeSForm.controls["abuelaM"].setValue(idPatologia)
+                console.log(this.aparentementeSForm.get("abuelaM")?.value)
+              }
                 break;
             }
         }
@@ -640,39 +735,87 @@ export class NewDatosGeneralesComponent implements OnInit{
           switch ( idPatologia ) {
             case 1:
               this.diabetesForm.controls["abueloM"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.diabetesForm.controls["abueloM"].setValue(idPatologia)
+                console.log(this.diabetesForm.get("abueloM")?.value)
+              }
                 break;
             case 2:
               this.hipertensionAForm.controls["abueloM"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.hipertensionAForm.controls["abueloM"].setValue(idPatologia)
+                console.log(this.hipertensionAForm.get("abueloM")?.value)
+              }
                 break;
             case 3:
               this.cardiopatiaForm.controls["abueloM"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.cardiopatiaForm.controls["abueloM"].setValue(idPatologia)
+                console.log(this.cardiopatiaForm.get("abueloM")?.value)
+              }
                 break;
             case 4:
               this.neoplasiasForm.controls["abueloM"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.neoplasiasForm.controls["abueloM"].setValue(idPatologia)
+                console.log(this.neoplasiasForm.get("abueloM")?.value)
+              }
                 break;
             case 5:
               this.epilepsiaForm.controls["abueloM"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.epilepsiaForm.controls["abueloM"].setValue(idPatologia)
+                console.log(this.epilepsiaForm.get("abueloM")?.value)
+              }
                   break;
             case 6:
               this.malformacionesForm.controls["abueloM"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.malformacionesForm.controls["abueloM"].setValue(idPatologia)
+                console.log(this.malformacionesForm.get("abueloM")?.value)
+              }
                 break;
             case 7:
               this.SIDAForm.controls["abueloM"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.SIDAForm.controls["abueloM"].setValue(idPatologia)
+                console.log(this.SIDAForm.get("abueloM")?.value)
+              }
                 break;
             case 8:
               this.enfermedadesRForm.controls["abueloM"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.enfermedadesRForm.controls["abueloM"].setValue(idPatologia)
+                console.log(this.enfermedadesRForm.get("abueloM")?.value)
+              }
                 break;
             case 9:
               this.hepatitisForm.controls["abueloM"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.hepatitisForm.controls["abueloM"].setValue(idPatologia)
+                console.log(this.enfermedadesRForm.get("abueloM")?.value)
+              }
                 break;
             case 10:
               this.artritisForm.controls["abueloM"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.artritisForm.controls["abueloM"].setValue(idPatologia)
+                console.log(this.artritisForm.get("abueloM")?.value)
+              }
                 break;
             case 11:
               this.otraForm.controls["abueloM"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.otraForm.controls["abueloM"].setValue(idPatologia)
+                console.log(this.otraForm.get("abueloM")?.value)
+              }
                 break;
             case 12:
               this.aparentementeSForm.controls["abueloM"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.aparentementeSForm.controls["abueloM"].setValue(idPatologia)
+                console.log(this.aparentementeSForm.get("abueloM")?.value)
+              }
                 break;           
             }
         }
@@ -682,39 +825,87 @@ export class NewDatosGeneralesComponent implements OnInit{
           switch ( idPatologia ) {
             case 1:
               this.diabetesForm.controls["otrosM"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.diabetesForm.controls["otrosM"].setValue(idPatologia)
+                console.log(this.diabetesForm.get("otrosM")?.value)
+              }
                 break;
             case 2:
               this.hipertensionAForm.controls["otrosM"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.hipertensionAForm.controls["otrosM"].setValue(idPatologia)
+                console.log(this.hipertensionAForm.get("otrosM")?.value)
+              }
                 break;
             case 3:
               this.cardiopatiaForm.controls["otrosM"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.cardiopatiaForm.controls["otrosM"].setValue(idPatologia)
+                console.log(this.cardiopatiaForm.get("otrosM")?.value)
+              }
                 break;
             case 4:
               this.neoplasiasForm.controls["otrosM"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.neoplasiasForm.controls["otrosM"].setValue(idPatologia)
+                console.log(this.neoplasiasForm.get("otrosM")?.value)
+              }
                 break;
             case 5:
               this.epilepsiaForm.controls["otrosM"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.epilepsiaForm.controls["otrosM"].setValue(idPatologia)
+                console.log(this.epilepsiaForm.get("otrosM")?.value)
+              }
                   break;
             case 6:
               this.malformacionesForm.controls["otrosM"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.malformacionesForm.controls["otrosM"].setValue(idPatologia)
+                console.log(this.malformacionesForm.get("otrosM")?.value)
+              }
                 break;
             case 7:
               this.SIDAForm.controls["otrosM"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.SIDAForm.controls["otrosM"].setValue(idPatologia)
+                console.log(this.SIDAForm.get("otrosM")?.value)
+              }
                 break;
             case 8:
               this.enfermedadesRForm.controls["otrosM"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.enfermedadesRForm.controls["otrosM"].setValue(idPatologia)
+                console.log(this.enfermedadesRForm.get("otrosM")?.value)
+              }
                 break;
             case 9:
               this.hepatitisForm.controls["otrosM"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.hepatitisForm.controls["otrosM"].setValue(idPatologia)
+                console.log(this.hepatitisForm.get("otrosM")?.value)
+              }
                 break;
             case 10:
               this.artritisForm.controls["otrosM"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.artritisForm.controls["otrosM"].setValue(idPatologia)
+                console.log(this.artritisForm.get("otrosM")?.value)
+              }
                 break;
             case 11:
               this.otraForm.controls["otrosM"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.otraForm.controls["otrosM"].setValue(idPatologia)
+                console.log(this.otraForm.get("otrosM")?.value)
+              }
                 break;
             case 12:
               this.aparentementeSForm.controls["otrosM"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.aparentementeSForm.controls["otrosM"].setValue(idPatologia)
+                console.log(this.aparentementeSForm.get("otrosM")?.value)
+              }
                 break;           
             }
         }
@@ -724,39 +915,87 @@ export class NewDatosGeneralesComponent implements OnInit{
           switch ( idPatologia ) {
             case 1:
               this.diabetesForm.controls["padre"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.diabetesForm.controls["padre"].setValue(idPatologia)
+                console.log(this.diabetesForm.get("padre")?.value)
+              }
                 break;
             case 2:
               this.hipertensionAForm.controls["padre"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.hipertensionAForm.controls["padre"].setValue(idPatologia)
+                console.log(this.hipertensionAForm.get("padre")?.value)
+              }
                 break;
             case 3:
               this.cardiopatiaForm.controls["padre"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.cardiopatiaForm.controls["padre"].setValue(idPatologia)
+                console.log(this.cardiopatiaForm.get("padre")?.value)
+              }
                 break;
             case 4:
               this.neoplasiasForm.controls["padre"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.neoplasiasForm.controls["padre"].setValue(idPatologia)
+                console.log(this.neoplasiasForm.get("padre")?.value)
+              }
                 break;
             case 5:
               this.epilepsiaForm.controls["padre"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.epilepsiaForm.controls["padre"].setValue(idPatologia)
+                console.log(this.epilepsiaForm.get("padre")?.value)
+              }
                   break;
             case 6:
               this.malformacionesForm.controls["padre"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.malformacionesForm.controls["padre"].setValue(idPatologia)
+                console.log(this.malformacionesForm.get("padre")?.value)
+              }
                 break;
             case 7:
               this.SIDAForm.controls["padre"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.SIDAForm.controls["padre"].setValue(idPatologia)
+                console.log(this.SIDAForm.get("padre")?.value)
+              }
                 break;
             case 8:
               this.enfermedadesRForm.controls["padre"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.enfermedadesRForm.controls["padre"].setValue(idPatologia)
+                console.log(this.enfermedadesRForm.get("padre")?.value)
+              }
                 break;
             case 9:
               this.hepatitisForm.controls["padre"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.hepatitisForm.controls["padre"].setValue(idPatologia)
+                console.log(this.hepatitisForm.get("padre")?.value)
+              }
                 break;
             case 10:
               this.artritisForm.controls["padre"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.artritisForm.controls["padre"].setValue(idPatologia)
+                console.log(this.artritisForm.get("padre")?.value)
+              }
                 break;
             case 11:
               this.otraForm.controls["padre"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.otraForm.controls["padre"].setValue(idPatologia)
+                console.log(this.otraForm.get("padre")?.value)
+              }
                 break;
             case 12:
               this.aparentementeSForm.controls["padre"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.aparentementeSForm.controls["padre"].setValue(idPatologia)
+                console.log(this.aparentementeSForm.get("padre")?.value)
+              }
                 break;           
             }
         }
@@ -766,39 +1005,87 @@ export class NewDatosGeneralesComponent implements OnInit{
           switch ( idPatologia ) {
             case 1:
               this.diabetesForm.controls["abuelaP"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.diabetesForm.controls["abuelaP"].setValue(idPatologia)
+                console.log(this.diabetesForm.get("abuelaP")?.value)
+              }
                 break;
             case 2:
               this.hipertensionAForm.controls["abuelaP"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.hipertensionAForm.controls["abuelaP"].setValue(idPatologia)
+                console.log(this.hipertensionAForm.get("abuelaP")?.value)
+              }
                 break;
             case 3:
               this.cardiopatiaForm.controls["abuelaP"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.cardiopatiaForm.controls["abuelaP"].setValue(idPatologia)
+                console.log(this.cardiopatiaForm.get("abuelaP")?.value)
+              }
                 break;
             case 4:
               this.neoplasiasForm.controls["abuelaP"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.neoplasiasForm.controls["abuelaP"].setValue(idPatologia)
+                console.log(this.neoplasiasForm.get("abuelaP")?.value)
+              }
                 break;
             case 5:
               this.epilepsiaForm.controls["abuelaP"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.epilepsiaForm.controls["abuelaP"].setValue(idPatologia)
+                console.log(this.epilepsiaForm.get("abuelaP")?.value)
+              }
                   break;
             case 6:
               this.malformacionesForm.controls["abuelaP"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.malformacionesForm.controls["abuelaP"].setValue(idPatologia)
+                console.log(this.malformacionesForm.get("abuelaP")?.value)
+              }
                 break;
             case 7:
               this.SIDAForm.controls["abuelaP"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.SIDAForm.controls["abuelaP"].setValue(idPatologia)
+                console.log(this.SIDAForm.get("abuelaP")?.value)
+              }
                 break;
             case 8:
               this.enfermedadesRForm.controls["abuelaP"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.enfermedadesRForm.controls["abuelaP"].setValue(idPatologia)
+                console.log(this.enfermedadesRForm.get("abuelaP")?.value)
+              }
                 break;
             case 9:
               this.hepatitisForm.controls["abuelaP"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.hepatitisForm.controls["abuelaP"].setValue(idPatologia)
+                console.log(this.hepatitisForm.get("abuelaP")?.value)
+              }
                 break;
             case 10:
               this.artritisForm.controls["abuelaP"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.artritisForm.controls["abuelaP"].setValue(idPatologia)
+                console.log(this.artritisForm.get("abuelaP")?.value)
+              }
                 break;
             case 11:
               this.otraForm.controls["abuelaP"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.otraForm.controls["abuelaP"].setValue(idPatologia)
+                console.log(this.otraForm.get("abuelaP")?.value)
+              }
                 break;
             case 12:
               this.aparentementeSForm.controls["abuelaP"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.aparentementeSForm.controls["abuelaP"].setValue(idPatologia)
+                console.log(this.aparentementeSForm.get("abuelaP")?.value)
+              }
                 break;           
             }
         }
@@ -808,39 +1095,87 @@ export class NewDatosGeneralesComponent implements OnInit{
           switch ( idPatologia ) {
             case 1:
               this.diabetesForm.controls["abueloP"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.diabetesForm.controls["abueloP"].setValue(idPatologia)
+                console.log(this.diabetesForm.get("abueloP")?.value)
+              }
                 break;
             case 2:
               this.hipertensionAForm.controls["abueloP"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.hipertensionAForm.controls["abueloP"].setValue(idPatologia)
+                console.log(this.hipertensionAForm.get("abueloP")?.value)
+              }
                 break;
             case 3:
               this.cardiopatiaForm.controls["abueloP"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.cardiopatiaForm.controls["abueloP"].setValue(idPatologia)
+                console.log(this.cardiopatiaForm.get("abueloP")?.value)
+              }
                 break;
             case 4:
               this.neoplasiasForm.controls["abueloP"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.neoplasiasForm.controls["abueloP"].setValue(idPatologia)
+                console.log(this.neoplasiasForm.get("abueloP")?.value)
+              }
                 break;
             case 5:
               this.epilepsiaForm.controls["abueloP"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.epilepsiaForm.controls["abueloP"].setValue(idPatologia)
+                console.log(this.epilepsiaForm.get("abueloP")?.value)
+              }
                   break;
             case 6:
               this.malformacionesForm.controls["abueloP"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.malformacionesForm.controls["abueloP"].setValue(idPatologia)
+                console.log(this.malformacionesForm.get("abueloP")?.value)
+              }
                 break;
             case 7:
               this.SIDAForm.controls["abueloP"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.SIDAForm.controls["abueloP"].setValue(idPatologia)
+                console.log(this.SIDAForm.get("abueloP")?.value)
+              }
                 break;
             case 8:
               this.enfermedadesRForm.controls["abueloP"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.enfermedadesRForm.controls["abueloP"].setValue(idPatologia)
+                console.log(this.enfermedadesRForm.get("abueloP")?.value)
+              }
                 break;
             case 9:
               this.hepatitisForm.controls["abueloP"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.hepatitisForm.controls["abueloP"].setValue(idPatologia)
+                console.log(this.hepatitisForm.get("abueloP")?.value)
+              }
                 break;
             case 10:
               this.artritisForm.controls["abueloP"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.artritisForm.controls["abueloP"].setValue(idPatologia)
+                console.log(this.artritisForm.get("abueloP")?.value)
+              }
                 break;
             case 11:
               this.otraForm.controls["abueloP"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.otraForm.controls["abueloP"].setValue(idPatologia)
+                console.log(this.otraForm.get("abueloP")?.value)
+              }
                 break;
             case 12:
               this.aparentementeSForm.controls["abueloP"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.aparentementeSForm.controls["abueloP"].setValue(idPatologia)
+                console.log(this.aparentementeSForm.get("abueloP")?.value)
+              }
                 break;           
             }
         }
@@ -850,39 +1185,87 @@ export class NewDatosGeneralesComponent implements OnInit{
           switch ( idPatologia ) {
             case 1:
               this.diabetesForm.controls["hermanosP"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.diabetesForm.controls["hermanosP"].setValue(idPatologia)
+                console.log(this.diabetesForm.get("hermanosP")?.value)
+              }
                 break;
             case 2:
               this.hipertensionAForm.controls["hermanosP"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.hipertensionAForm.controls["hermanosP"].setValue(idPatologia)
+                console.log(this.hipertensionAForm.get("hermanosP")?.value)
+              }
                 break;
             case 3:
               this.cardiopatiaForm.controls["hermanosP"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.cardiopatiaForm.controls["hermanosP"].setValue(idPatologia)
+                console.log(this.cardiopatiaForm.get("hermanosP")?.value)
+              }
                 break;
             case 4:
               this.neoplasiasForm.controls["hermanosP"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.neoplasiasForm.controls["hermanosP"].setValue(idPatologia)
+                console.log(this.neoplasiasForm.get("hermanosP")?.value)
+              }
                 break;
             case 5:
               this.epilepsiaForm.controls["hermanosP"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.epilepsiaForm.controls["hermanosP"].setValue(idPatologia)
+                console.log(this.epilepsiaForm.get("hermanosP")?.value)
+              }
                   break;
             case 6:
               this.malformacionesForm.controls["hermanosP"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.malformacionesForm.controls["hermanosP"].setValue(idPatologia)
+                console.log(this.malformacionesForm.get("hermanosP")?.value)
+              }
                 break;
             case 7:
               this.SIDAForm.controls["hermanosP"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.SIDAForm.controls["hermanosP"].setValue(idPatologia)
+                console.log(this.SIDAForm.get("hermanosP")?.value)
+              }
                 break;
             case 8:
               this.enfermedadesRForm.controls["hermanosP"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.enfermedadesRForm.controls["hermanosP"].setValue(idPatologia)
+                console.log(this.enfermedadesRForm.get("hermanosP")?.value)
+              }
                 break;
             case 9:
               this.hepatitisForm.controls["hermanosP"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.hepatitisForm.controls["hermanosP"].setValue(idPatologia)
+                console.log(this.hepatitisForm.get("hermanosP")?.value)
+              }
                 break;
             case 10:
               this.artritisForm.controls["hermanosP"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.artritisForm.controls["hermanosP"].setValue(idPatologia)
+                console.log(this.artritisForm.get("hermanosP")?.value)
+              }
                 break;
             case 11:
               this.otraForm.controls["hermanosP"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.otraForm.controls["hermanosP"].setValue(idPatologia)
+                console.log(this.otraForm.get("hermanosP")?.value)
+              }
                 break;
             case 12:
               this.aparentementeSForm.controls["hermanosP"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.aparentementeSForm.controls["hermanosP"].setValue(idPatologia)
+                console.log(this.aparentementeSForm.get("hermanosP")?.value)
+              }
                 break;           
             }
         }
@@ -892,39 +1275,87 @@ export class NewDatosGeneralesComponent implements OnInit{
           switch ( idPatologia ) {
             case 1:
               this.diabetesForm.controls["otrosP"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.diabetesForm.controls["otrosP"].setValue(idPatologia)
+                console.log(this.diabetesForm.get("otrosP")?.value)
+              }
                 break;
             case 2:
               this.hipertensionAForm.controls["otrosP"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.hipertensionAForm.controls["otrosP"].setValue(idPatologia)
+                console.log(this.hipertensionAForm.get("otrosP")?.value)
+              }
                 break;
             case 3:
               this.cardiopatiaForm.controls["otrosP"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.cardiopatiaForm.controls["otrosP"].setValue(idPatologia)
+                console.log(this.cardiopatiaForm.get("otrosP")?.value)
+              }
                 break;
             case 4:
               this.neoplasiasForm.controls["otrosP"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.neoplasiasForm.controls["otrosP"].setValue(idPatologia)
+                console.log(this.neoplasiasForm.get("otrosP")?.value)
+              }
                 break;
             case 5:
               this.epilepsiaForm.controls["otrosP"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.epilepsiaForm.controls["otrosP"].setValue(idPatologia)
+                console.log(this.epilepsiaForm.get("otrosP")?.value)
+              }
                   break;
             case 6:
               this.malformacionesForm.controls["otrosP"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.malformacionesForm.controls["otrosP"].setValue(idPatologia)
+                console.log(this.malformacionesForm.get("otrosP")?.value)
+              }
                 break;
             case 7:
               this.SIDAForm.controls["otrosP"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.SIDAForm.controls["otrosP"].setValue(idPatologia)
+                console.log(this.SIDAForm.get("otrosP")?.value)
+              }
                 break;
             case 8:
               this.enfermedadesRForm.controls["otrosP"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.enfermedadesRForm.controls["otrosP"].setValue(idPatologia)
+                console.log(this.enfermedadesRForm.get("otrosP")?.value)
+              }
                 break;
             case 9:
               this.hepatitisForm.controls["otrosP"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.hepatitisForm.controls["otrosP"].setValue(idPatologia)
+                console.log(this.hepatitisForm.get("otrosP")?.value)
+              }
                 break;
             case 10:
               this.artritisForm.controls["otrosP"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.artritisForm.controls["otrosP"].setValue(idPatologia)
+                console.log(this.artritisForm.get("otrosP")?.value)
+              }
                 break;
             case 11:
               this.otraForm.controls["otrosP"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.otraForm.controls["otrosP"].setValue(idPatologia)
+                console.log(this.otraForm.get("otrosP")?.value)
+              }
                 break;
             case 12:
               this.aparentementeSForm.controls["otrosP"].setValue(true)
+              if(this.datosGenerales.id != null){
+                this.aparentementeSForm.controls["otrosP"].setValue(idPatologia)
+                console.log(this.aparentementeSForm.get("otrosP")?.value)
+              }
                 break;           
             }
         }
@@ -1472,10 +1903,14 @@ export class NewDatosGeneralesComponent implements OnInit{
           formGroup.controls[key].setValue(idPatologia)
           
         }
+        if(valorAntecedente!.value === false){
+          formGroup.controls[key].setValue(0)
+          
+        }
       });
   }
 
-  savePatalogias(): void {
+  saveAntecedentesFyH(): void {
     this.completadoAntecedentesFyH = true;
     this.diabetesForm.controls['idDatosGenerales'].setValue(this.pacienteId)
     this.hipertensionAForm.controls['idDatosGenerales'].setValue(this.pacienteId)
@@ -1512,6 +1947,44 @@ export class NewDatosGeneralesComponent implements OnInit{
       })
     });
 
+  }
+
+  updateAntecedentesFyH(){
+    this.diabetesForm.controls['idDatosGenerales'].setValue(this.datosGenerales.id)
+    this.hipertensionAForm.controls['idDatosGenerales'].setValue(this.datosGenerales.id)
+    this.cardiopatiaForm.controls['idDatosGenerales'].setValue(this.datosGenerales.id)
+    this.neoplasiasForm.controls['idDatosGenerales'].setValue(this.datosGenerales.id)
+    this.epilepsiaForm.controls['idDatosGenerales'].setValue(this.datosGenerales.id)
+    this.malformacionesForm.controls['idDatosGenerales'].setValue(this.datosGenerales.id)
+    this.SIDAForm.controls['idDatosGenerales'].setValue(this.datosGenerales.id)
+    this.enfermedadesRForm.controls['idDatosGenerales'].setValue(this.datosGenerales.id)
+    this.hepatitisForm.controls['idDatosGenerales'].setValue(this.datosGenerales.id)
+    this.artritisForm.controls['idDatosGenerales'].setValue(this.datosGenerales.id)
+    this.otraForm.controls['idDatosGenerales'].setValue(this.datosGenerales.id)
+    this.aparentementeSForm.controls['idDatosGenerales'].setValue(this.datosGenerales.id)
+
+    this.patologiasArray.push(this.diabetesForm);
+    this.patologiasArray.push(this.hipertensionAForm);
+    this.patologiasArray.push(this.cardiopatiaForm);
+    this.patologiasArray.push(this.neoplasiasForm);
+    this.patologiasArray.push(this.epilepsiaForm);
+    this.patologiasArray.push(this.malformacionesForm);
+    this.patologiasArray.push(this.SIDAForm);
+    this.patologiasArray.push(this.enfermedadesRForm);
+    this.patologiasArray.push(this.hepatitisForm);
+    this.patologiasArray.push(this.artritisForm);
+    this.patologiasArray.push(this.otraForm);
+    this.patologiasArray.push(this.aparentementeSForm);
+    //INSERTAR APARTE LAS OBSERVACIONES
+    
+    //console.log(this.patologiasArray)*/
+    this.patologiasArray.forEach(element => {
+      this.cambioValorPatologiaBoolToNumber(element)
+      console.log(element.value)
+      this.antecedentesFyHService.updateAntecedentes(element.value).subscribe(patologia => {
+        console.log(patologia)
+      })
+    });
   }
 
   saveDatosGenerales(): void {
