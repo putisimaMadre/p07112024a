@@ -1020,7 +1020,7 @@
             </div> <!--col-4 donde van todos los antecedentes PyP-->
           </div> <!--grid final de ANTECEDENTES PERSONALES Y PATOLOGIAS-->
 
-        <div class="grid">
+        <div class="grid" *ngIf="!datosGenerales?.id else updateAntecedentesPyPBlock">
             <div class="col-offset-8"></div>
             <div class="col-4" *ngIf="completadoAntecedentesPyP == false">
                 <button [disabled]="completadoAntecedentesPyP" mat-flat-button
@@ -1031,6 +1031,20 @@
                 >Informacion guardada</button>
             </div>
         </div>
+        <!--=============================================ACTUALIZADO======================================-->
+        <ng-template #updateAntecedentesPyPBlock>
+            <div class="grid">
+                <div class="col-offset-8"></div>
+                <div class="col-4" *ngIf="completadoAntecedentesPyP == false">
+                    <button [disabled]="completadoAntecedentesPyP" mat-flat-button
+                    (click)="updateAntecedentesPyP()">Actualizar</button>
+                </div>
+                <div class="col-4" *ngIf="completadoAntecedentesPyP == true">
+                    <button [disabled]="completadoAntecedentesPyP" mat-flat-button 
+                    >Informacion guardada</button>
+                </div>
+            </div>
+        </ng-template>
         </mat-step>
         <mat-step>
             <!--<form [formGroup]="antecedentesFyHForm">-->
@@ -1085,7 +1099,7 @@
                         </mat-form-field>
                     </div>
                 </div>
-                <div class="grid">
+                <div class="grid" *ngIf="!datosGenerales?.id else updateAntecedentesPnoPBlock">
                     <div class="col-offset-8"></div>
                     <div class="col-4" *ngIf="completadoAntecedentesPNoP == false">
                         <button [disabled]="completadoAntecedentesPNoP" mat-flat-button
@@ -1096,6 +1110,20 @@
                         >Informacion guardada</button>
                     </div>
                 </div>
+            <!--=============================================ACTUALIZADO======================================-->
+                <ng-template #updateAntecedentesPnoPBlock>
+                    <div class="grid">
+                        <div class="col-offset-8"></div>
+                        <div class="col-4" *ngIf="completadoAntecedentesPNoP == false">
+                            <button [disabled]="completadoAntecedentesPNoP" mat-flat-button
+                            (click)="updateAntecedentesPnoP()">Actualizar</button>
+                        </div>
+                        <div class="col-4" *ngIf="completadoAntecedentesPNoP == true">
+                            <button [disabled]="completadoAntecedentesPNoP" mat-flat-button 
+                            >Informacion guardada</button>
+                        </div>
+                    </div>
+                </ng-template>
             </form>
         </mat-step>
         <mat-step>
@@ -1236,7 +1264,7 @@
                         </mat-form-field>
                     </div>
                 </div>
-                <div class="grid">
+                <div class="grid" *ngIf="!datosGenerales?.id else updatePadecimientosAPBlock">
                     <div class="col-offset-8"></div>
                     <div class="col-4" *ngIf="completadoPadecimientosActuales == false">
                         <button [disabled]="completadoPadecimientosActuales" mat-flat-button
@@ -1247,6 +1275,20 @@
                         >Informacion guardada</button>
                     </div>
                 </div>
+                <!--=============================================ACTUALIZADO======================================-->
+                <ng-template #updatePadecimientosAPBlock>
+                    <div class="grid">
+                        <div class="col-offset-8"></div>
+                        <div class="col-4" *ngIf="completadoPadecimientosActuales == false">
+                            <button [disabled]="completadoPadecimientosActuales" mat-flat-button
+                            (click)="updatePadecimientosActuales()">Actualizar</button>
+                        </div>
+                        <div class="col-4" *ngIf="completadoPadecimientosActuales == true">
+                            <button [disabled]="completadoPadecimientosActuales" mat-flat-button 
+                            >Informacion guardada</button>
+                        </div>
+                    </div>
+                </ng-template>
             </form>
         </mat-step>
         <mat-step>
@@ -1388,7 +1430,7 @@
                         </div>
                     </div>
                     <!--=============================================GUARDADO======================================-->
-                    <div class="grid">
+                    <div class="grid" *ngIf="!datosGenerales?.id else analisisFacialBlock">
                         <div class="col-offset-8"></div>
                         <div class="col-4" *ngIf="completadoAnalisisFacial == false">
                             <button [disabled]="completadoAnalisisFacial" mat-flat-button
@@ -1399,6 +1441,20 @@
                             >Informacion guardada</button>
                         </div>
                     </div>
+                    <!--=============================================ACTUALIZADO======================================-->
+                <ng-template #analisisFacialBlock>
+                    <div class="grid">
+                        <div class="col-offset-8"></div>
+                        <div class="col-4" *ngIf="completadoAnalisisFacial == false">
+                            <button [disabled]="completadoAnalisisFacial" mat-flat-button
+                            (click)="updateAnalisisFacial()">Actualizar</button>
+                        </div>
+                        <div class="col-4" *ngIf="completadoAnalisisFacial == true">
+                            <button [disabled]="completadoAnalisisFacial" mat-flat-button 
+                            >Informacion guardada</button>
+                        </div>
+                    </div>
+                </ng-template>
                 </form>
         </mat-step>
         <mat-step>
@@ -1534,7 +1590,7 @@
                     </div>
                 </div>
                 <!--=============================================GUARDADO======================================-->
-                <div class="grid">
+                <div class="grid" *ngIf="!datosGenerales?.id else analisisFuncionalBlock">
                     <div class="col-offset-8"></div>
                     <div class="col-4" *ngIf="completadoAnalisisFuncional == false">
                         <button [disabled]="completadoAnalisisFuncional" mat-flat-button
@@ -1545,6 +1601,20 @@
                         >Informacion guardada</button>
                     </div>
                 </div>
+                <!--=============================================ACTUALIZADO======================================-->
+                <ng-template #analisisFuncionalBlock>
+                    <div class="grid">
+                        <div class="col-offset-8"></div>
+                        <div class="col-4" *ngIf="completadoAnalisisFuncional == false">
+                            <button [disabled]="completadoAnalisisFuncional" mat-flat-button
+                            (click)="updateAnalisisFuncional()">Actualizar</button>
+                        </div>
+                        <div class="col-4" *ngIf="completadoAnalisisFuncional == true">
+                            <button [disabled]="completadoAnalisisFuncional" mat-flat-button 
+                            >Informacion guardada</button>
+                        </div>
+                    </div>
+                </ng-template>
             </form>
             </mat-step>
             <mat-step>

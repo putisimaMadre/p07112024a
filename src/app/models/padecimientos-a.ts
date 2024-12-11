@@ -1,4 +1,5 @@
 export interface PadecimientosA {
+    "id": number,
     "preguntaUno": boolean;
     "preguntaUnoS": string;
     "preguntaDos": boolean;

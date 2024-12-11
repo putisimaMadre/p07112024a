@@ -27,4 +27,8 @@ export class AntecedentesPNoPService {
   postAntecedentes(antecedentesPnoP: AntecedentesPnoP): Observable<AntecedentesPnoP>{
     return this.httpClient.post<AntecedentesPnoP>(this.urlEndPoint, antecedentesPnoP, {headers: this.httpHeaders})
   }
+
+  updateAntecedentesPnoP(antecedentesPnoP: AntecedentesPnoP): Observable<AntecedentesPnoP>{
+    return this.httpClient.put<AntecedentesPnoP>(this.urlEndPoint+'/'+antecedentesPnoP.id, antecedentesPnoP, {headers:this.httpHeaders})
+  }
 }

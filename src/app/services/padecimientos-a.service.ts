@@ -27,4 +27,8 @@ export class PadecimientosAService {
   postPadecimientos(padecimientosA: PadecimientosA): Observable<PadecimientosA>{
     return this.httpClient.post<PadecimientosA>(this.urlEndPoint, padecimientosA, {headers: this.httpHeaders})
   }
+
+  updatePadecimientos(padecimientosA: PadecimientosA): Observable<PadecimientosA>{
+    return this.httpClient.put<PadecimientosA>(this.urlEndPoint+'/'+padecimientosA.id, padecimientosA, {headers:this.httpHeaders})
+  }
 }

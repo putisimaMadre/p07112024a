@@ -27,4 +27,8 @@ export class AnalisisFuncionalService {
   postAnalisisFuncional(analisisFuncional: AnalisisFuncional): Observable<AnalisisFuncional>{
     return this.httpClient.post<AnalisisFuncional>(this.urlEndPoint, analisisFuncional, {headers: this.httpHeaders})
   }
+
+  updateAnalisisFuncional(analisisFuncional: AnalisisFuncional): Observable<AnalisisFuncional>{
+    return this.httpClient.put<AnalisisFuncional>(this.urlEndPoint+'/'+analisisFuncional.id, analisisFuncional, {headers:this.httpHeaders})
+  }
 }

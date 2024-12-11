@@ -1,4 +1,5 @@
 export interface AnalisisFuncional {
+    "id": number;
     "actividadComisural": number;
     "actividadLingual": number;
     "labioSuperior": number;

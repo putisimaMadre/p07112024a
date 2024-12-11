@@ -27,4 +27,8 @@ export class AnalisisFacialService {
   postAnalisisFacial(analisisFacial: AnalisisFacial): Observable<AnalisisFacial>{
     return this.httpClient.post<AnalisisFacial>(this.urlEndPoint, analisisFacial, {headers: this.httpHeaders})
   }
+
+  updateAnalisisFacial(analisisFacial: AnalisisFacial): Observable<AnalisisFacial>{
+    return this.httpClient.put<AnalisisFacial>(this.urlEndPoint+'/'+analisisFacial.id, analisisFacial, {headers:this.httpHeaders})
+  }
 }
