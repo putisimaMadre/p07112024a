@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subject, tap } from 'rxjs';
 import { DatosGenerales } from '../models/datos-generales';
 
 @Injectable({
@@ -9,6 +9,11 @@ import { DatosGenerales } from '../models/datos-generales';
 export class DatosGeneralesService {
   private urlEndPoint = "http://localhost:8000/api/datosGenerales"
   private httpHeaders = new HttpHeaders({"Content-type":"Application/json"})
+
+  private _refreshrequired = new Subject<void>();
+  get RequiredRefresh(){
+    return this._refreshrequired;
+  }
 
   constructor(private httpClient: HttpClient) { }
 
@@ -30,5 +35,14 @@ export class DatosGeneralesService {
 
   updateDatosGenerales(datosGenerales: DatosGenerales): Observable<DatosGenerales>{
     return this.httpClient.put<DatosGenerales>(this.urlEndPoint+'/'+datosGenerales.id, datosGenerales, {headers:this.httpHeaders})
+  }
+
+  deleteDatosGenerales(id: any): Observable<DatosGenerales>{
+    return this.httpClient.delete<DatosGenerales>(this.urlEndPoint+'/'+id)
+    .pipe(
+      tap(()=>{
+        this.RequiredRefresh.next();
+      })
+    );
   }
 }

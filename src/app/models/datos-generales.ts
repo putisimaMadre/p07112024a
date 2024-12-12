@@ -10,5 +10,7 @@ export interface DatosGenerales {
     "sexo": string,
     "lugarNacimiento": string,
     "estadoCivil": string,
+    "siNo": boolean,
+    "status": boolean,
     "numeroTelefono": string
 }

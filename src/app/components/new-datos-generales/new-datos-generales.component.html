@@ -8,7 +8,7 @@
 <div class="grid">
     <div class="col-12">
     <mat-stepper #stepper>
-        <mat-step >
+        <mat-step>
           <!--form uno-->
           <form [formGroup] = "formDatosGenerales">
             <ng-template matStepLabel>Datos Generales</ng-template>
@@ -66,6 +66,10 @@
                       <mat-option value="femenino" >femenino</mat-option>
                     </mat-select>
                   </mat-form-field>
+                  <div class="col-2 paddingSlide">
+                    <mat-label>Es alergico: </mat-label>
+                    <mat-slide-toggle formControlName="siNo"></mat-slide-toggle>
+                </div>
             </div>
                 <div class="grid">
                     <div class="col-offset-1"></div>
@@ -124,7 +128,7 @@
                 </div>
         </form>
         </mat-step>
-        <mat-step>
+        <mat-step *ngIf="datosGenerales.id != null">
           <!--<form [formGroup]="antecedentesFyHForm">-->
             <ng-template matStepLabel>Antecedentes Familiares y Hereditarios</ng-template>
 
@@ -1616,8 +1620,8 @@
                     </div>
                 </ng-template>
             </form>
-            </mat-step>
-            <mat-step>
+        </mat-step>
+        <mat-step>
                 <form [formGroup]="evaluacionClinicaForm">
                     <ng-template matStepLabel>Evaluación Clínica Adulto</ng-template>
                     <div class="grid">
@@ -1713,8 +1717,8 @@
                     </div>
                 </div>
                     </form>
-            </mat-step>
-            <mat-step>
+        </mat-step>
+        <mat-step>
                 <form [formGroup]="evaluacionClinicaInfantilForm">
                 <ng-template matStepLabel>Evaluación Clínica Infantil</ng-template>
                 <div class="grid">
@@ -1810,8 +1814,8 @@
                     </div>
                 </div>
                     </form>
-            </mat-step>
-            <mat-step *ngIf="edit">
+        </mat-step>
+        <mat-step *ngIf="edit">
                 <!--<form [formGroup]="antecedentesFyHForm">-->
                 <ng-template matStepLabel>Consentimiento Informado</ng-template>
                 <form [formGroup]="consentimientoInformadoForm">
@@ -1871,8 +1875,8 @@
                     </div>
                 </div>
             </form>
-            </mat-step>
-            <mat-step  *ngIf="edit">
+        </mat-step>
+        <mat-step  *ngIf="edit">
                 <ng-template matStepLabel>Pagos</ng-template>
                 <div class="grid">
                     <div class="col-3">
@@ -1967,7 +1971,7 @@
                     </div>
                 </div>
             </form>
-            </mat-step>
+        </mat-step>
       </mat-stepper>
     </div>
 </div>

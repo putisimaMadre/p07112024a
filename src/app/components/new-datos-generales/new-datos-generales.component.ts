@@ -276,6 +276,7 @@ export class NewDatosGeneralesComponent implements OnInit{
       sexo: this.datosGenerales.sexo,
       lugarNacimiento: this.datosGenerales.lugarNacimiento,
       estadoCivil: this.datosGenerales.estadoCivil,
+      siNo: this.datosGenerales.siNo,
     })
   }
 
@@ -1547,6 +1548,8 @@ export class NewDatosGeneralesComponent implements OnInit{
     "sexo": ["", Validators.required],
     "lugarNacimiento": ["", Validators.required],
     "estadoCivil": ["", Validators.required],
+    "siNo": ["", Validators.required],
+    "status": [1],
     "numeroTelefono": ["", Validators.required],
   })
 

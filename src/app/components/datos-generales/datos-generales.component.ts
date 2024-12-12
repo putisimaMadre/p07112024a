@@ -30,6 +30,13 @@ export class DatosGeneralesComponent implements OnInit{
   constructor(private datosGeneralesService: DatosGeneralesService ){}
 
   ngOnInit(): void {
+    this.obtenerTodoDatosGenerales()
+    this.datosGeneralesService.RequiredRefresh.subscribe(r => {
+      this.obtenerTodoDatosGenerales()    
+    });
+  }
+
+  obtenerTodoDatosGenerales(){
     this.datosGeneralesService.getDatosGenerales().subscribe(dato => {
       this.datosGenerales = dato
       this.dataSource = new MatTableDataSource(this.datosGenerales);
@@ -47,6 +54,12 @@ export class DatosGeneralesComponent implements OnInit{
         idDG:id
       }
     });
+  }
+
+  deleteDatosGenerales(id: number){
+    this.datosGeneralesService.deleteDatosGenerales(id).subscribe(dg => {
+      console.log("Dato eliminado")
+    })
   }
 
 }
