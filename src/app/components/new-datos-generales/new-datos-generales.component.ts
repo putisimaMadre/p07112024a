@@ -73,8 +73,9 @@ export class NewDatosGeneralesComponent implements OnInit{
   patologiasArray: FormGroup[] = []
   patologiasPyPArray: FormGroup[] = []
   //patologia = FormGroup
-  paciente: string = ""
-  sexo: string = ""
+  paciente: string = "";
+  edad: number = 0;
+  sexo: string = "";
   pacienteId: number = 0;
   prueba = 2;
   datosGenerales?: any;
@@ -150,7 +151,7 @@ export class NewDatosGeneralesComponent implements OnInit{
   ){}
 
   ngOnInit(): void {
-    //=========DATOS GENERALES========
+    //=========DATOS GENERALES========    
     this.activatedRoute.params
     .pipe(
       switchMap(({id}) => this.datosGeneralesService.getDatosGeneralesEdit(id)),
@@ -161,6 +162,8 @@ export class NewDatosGeneralesComponent implements OnInit{
           if(this.isKey(datosGenerales, key)){
             this.datosGenerales = datosGenerales[key];
             this.setearRegistrosDatosGenerales()
+            this.pacienteId = this.formDatosGenerales.get("id")?.value;
+            console.log(this.pacienteId)
           }
         })
         if(this.datosGenerales != null){ //<= para comprobra si se edita o no
@@ -276,7 +279,9 @@ export class NewDatosGeneralesComponent implements OnInit{
       sexo: this.datosGenerales.sexo,
       lugarNacimiento: this.datosGenerales.lugarNacimiento,
       estadoCivil: this.datosGenerales.estadoCivil,
-      siNo: this.datosGenerales.siNo,
+      alergico: this.datosGenerales.alergico,
+      status: this.datosGenerales.status,
+      observaciones: this.datosGenerales.observaciones,
     })
   }
 
@@ -1548,8 +1553,9 @@ export class NewDatosGeneralesComponent implements OnInit{
     "sexo": ["", Validators.required],
     "lugarNacimiento": ["", Validators.required],
     "estadoCivil": ["", Validators.required],
-    "siNo": ["", Validators.required],
+    "alergico": ["", Validators.required],
     "status": [1],
+    "observaciones": [""],
     "numeroTelefono": ["", Validators.required],
   })
 
@@ -2199,8 +2205,10 @@ export class NewDatosGeneralesComponent implements OnInit{
       console.log(dato)
       this.completadoDatosGenerales = true
       this.paciente = dato.nombre
+      this.edad = dato.edad
       this.sexo = dato.sexo
       this.pacienteId = dato.id
+      this.formDatosGenerales.controls['id'].setValue(dato.id);
     })
   }
 

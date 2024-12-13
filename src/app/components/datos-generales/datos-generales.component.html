@@ -10,8 +10,12 @@
     <div class="col-10">
         <mat-form-field>
             <mat-label>Filter</mat-label>
-            <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Escribe las iniciales" #input>
         </mat-form-field>
+        <div>
+            <button mat-button routerLink="/new-dato">NUEVO PACIENTE</button>
+        </div>
+            
 
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
         

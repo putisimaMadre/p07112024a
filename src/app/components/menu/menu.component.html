@@ -1,29 +1,6 @@
 <div class="grid">
-    <div class="col-offset-1"></div>
-    <div class="col-10">
-    <button mat-button [matMenuTriggerFor]="aboveMenu">Datos Generales</button>
-    <mat-menu #aboveMenu="matMenu" yPosition="above">
-    <button mat-menu-item routerLink="/datos">Lista de pacientes</button>
-    <button mat-menu-item routerLink="/new-dato">Nuevo paciente</button>
-    </mat-menu>
-
-    <button mat-button [matMenuTriggerFor]="belowMenu">Antecedentes Personales y patológicos</button>
-    <mat-menu #belowMenu="matMenu" yPosition="below">
-    <button mat-menu-item>Lista de antecedentes</button>
-    <button mat-menu-item>Nuevo antecedente</button>
-    </mat-menu>
-
-    <button mat-button [matMenuTriggerFor]="beforeMenu">Antecedentes Personales "NO" patológicos</button>
-    <mat-menu #beforeMenu="matMenu" xPosition="before">
-    <button mat-menu-item>Lista de antecedentes NO patológicos</button>
-    <button mat-menu-item>Nuevo antecedente</button>
-    </mat-menu>
-
-
-    <button mat-button [matMenuTriggerFor]="afterMenu">Padecimientos actuales</button>
-    <mat-menu #afterMenu="matMenu" xPosition="after">
-    <button mat-menu-item>Lista de padecimientos actuales</button>
-    <button mat-menu-item>Nuevos padecimientos</button>
-    </mat-menu>
-</div>
+    <div class="col-offset-10"></div>
+    <div class="col-2">
+        <button mat-button routerLink="/datos">LISTA DE PACIENTES</button>
+    </div>
 </div>

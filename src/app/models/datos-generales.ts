@@ -5,12 +5,13 @@ export interface DatosGenerales {
     "entidad": string,
     "ocupacion": string,
     "escolaridad": string,
-    "fechaNacimiento": string,
-    "edad": string,
+    "fechaNacimiento": Date,
+    "edad": number,
     "sexo": string,
     "lugarNacimiento": string,
     "estadoCivil": string,
-    "siNo": boolean,
+    "alergico": boolean,
     "status": boolean,
+    "observaciones": string,
     "numeroTelefono": string
 }

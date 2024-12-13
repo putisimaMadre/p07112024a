@@ -20,7 +20,9 @@
                 </mat-form-field>
                 <mat-form-field class="col-4">
                     <mat-label>Fecha de nacimiento</mat-label>
-                    <input matInput [matDatepicker]="picker" [value]="datosGenerales?.fechaNacimiento" formControlName="fechaNacimiento">
+                    <input matInput [matDatepicker]="picker" 
+                    [value]="datosGenerales?.fechaNacimiento" 
+                    formControlName="fechaNacimiento" readonly="true">
                     <mat-hint>DD/MM/YYYY</mat-hint>
                     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
@@ -41,7 +43,7 @@
                 </mat-form-field>
                 <mat-form-field class="col-2">
                     <mat-label>Edad</mat-label>
-                    <input matInput type="text" [value]="datosGenerales?.edad" formControlName="edad">
+                    <input matInput type="number" [value]="datosGenerales?.edad" formControlName="edad">
                 </mat-form-field>
                 <mat-form-field class="col-2">
                     <mat-label>Numero Telefonico</mat-label>
@@ -49,7 +51,7 @@
                 </mat-form-field>
                 <mat-form-field class="col-2">
                     <mat-label>Expediente</mat-label>
-                    <input matInput type="text">
+                    <input matInput type="text" [value]="datosGenerales?.id" formControlName="id" readonly="true">
                 </mat-form-field>
             </div>
             <div class="grid">
@@ -68,7 +70,7 @@
                   </mat-form-field>
                   <div class="col-2 paddingSlide">
                     <mat-label>Es alergico: </mat-label>
-                    <mat-slide-toggle formControlName="siNo"></mat-slide-toggle>
+                    <mat-slide-toggle formControlName="alergico"></mat-slide-toggle>
                 </div>
             </div>
                 <div class="grid">
@@ -95,7 +97,18 @@
                           <mat-option value="casado">casado</mat-option>
                           <mat-option value="soltero">soltero</mat-option>
                         </mat-select>
-                      </mat-form-field>
+                    </mat-form-field>
+                </div>
+                <div class="grid">
+                    <div class="col-offset-1"></div>
+                    <mat-form-field class="col-8">
+                        <mat-label>Observaciones</mat-label>
+                        <textarea matInput
+                                    cdkTextareaAutosize
+                                    #autosize="cdkTextareaAutosize"
+                                    cdkAutosizeMinRows="1"
+                                    cdkAutosizeMaxRows="5" formControlName="observaciones"></textarea>
+                        </mat-form-field>
                 </div>
             <!--=============================================GUARDADO======================================-->                
                 <div class="grid" *ngIf="!datosGenerales?.id else updateDatosGeneralesBlock">
@@ -128,7 +141,7 @@
                 </div>
         </form>
         </mat-step>
-        <mat-step *ngIf="datosGenerales.id != null">
+        <mat-step *ngIf="pacienteId != 0">
           <!--<form [formGroup]="antecedentesFyHForm">-->
             <ng-template matStepLabel>Antecedentes Familiares y Hereditarios</ng-template>
 
@@ -662,7 +675,7 @@
             </div>-->
           <!--</form>-->
         </mat-step>
-        <mat-step>
+        <mat-step *ngIf="pacienteId != 0">
           <ng-template matStepLabel>Antecedentes Personales y Patologicos</ng-template>
           <div class="grid">
             <div class="col-3"><!--columna de patologias-->
@@ -1050,7 +1063,7 @@
             </div>
         </ng-template>
         </mat-step>
-        <mat-step>
+        <mat-step *ngIf="pacienteId != 0">
             <!--<form [formGroup]="antecedentesFyHForm">-->
               <ng-template matStepLabel>Antecedentes Personales "NO" Patológicos</ng-template>
               <form [formGroup]="antecedentesPersonalesNoPForm">
@@ -1130,7 +1143,7 @@
                 </ng-template>
             </form>
         </mat-step>
-        <mat-step>
+        <mat-step *ngIf="pacienteId != 0">
             <ng-template matStepLabel>Padecimientos Actuales</ng-template>
             <form [formGroup]="padecimientosActualesForm">
                 <div class="grid">
@@ -1295,7 +1308,7 @@
                 </ng-template>
             </form>
         </mat-step>
-        <mat-step>
+        <mat-step *ngIf="pacienteId != 0">
             <!--<form [formGroup]="antecedentesFyHForm">-->
               <ng-template matStepLabel>Análisis Facial</ng-template>
                 <form [formGroup]="analisisFacialForm">
@@ -1461,7 +1474,7 @@
                 </ng-template>
                 </form>
         </mat-step>
-        <mat-step>
+        <mat-step *ngIf="pacienteId != 0">
             <!--<form [formGroup]="antecedentesFyHForm">-->
               <ng-template matStepLabel>Análisis Funcional</ng-template>
               <form [formGroup]="analisisFuncionalForm">
@@ -1621,7 +1634,7 @@
                 </ng-template>
             </form>
         </mat-step>
-        <mat-step>
+        <mat-step *ngIf="pacienteId != 0 && edad >= 18">
                 <form [formGroup]="evaluacionClinicaForm">
                     <ng-template matStepLabel>Evaluación Clínica Adulto</ng-template>
                     <div class="grid">
@@ -1718,7 +1731,7 @@
                 </div>
                     </form>
         </mat-step>
-        <mat-step>
+        <mat-step *ngIf="pacienteId != 0 && edad < 18">
                 <form [formGroup]="evaluacionClinicaInfantilForm">
                 <ng-template matStepLabel>Evaluación Clínica Infantil</ng-template>
                 <div class="grid">
@@ -1815,7 +1828,7 @@
                 </div>
                     </form>
         </mat-step>
-        <mat-step *ngIf="edit">
+        <mat-step *ngIf="edit && pacienteId != 0">
                 <!--<form [formGroup]="antecedentesFyHForm">-->
                 <ng-template matStepLabel>Consentimiento Informado</ng-template>
                 <form [formGroup]="consentimientoInformadoForm">
@@ -1876,7 +1889,7 @@
                 </div>
             </form>
         </mat-step>
-        <mat-step  *ngIf="edit">
+        <mat-step  *ngIf="edit && pacienteId != 0">
                 <ng-template matStepLabel>Pagos</ng-template>
                 <div class="grid">
                     <div class="col-3">
