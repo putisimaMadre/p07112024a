@@ -1,1 +1,385 @@
-<p>new-antecedentes-py-p works!</p>
+<div class="grid">
+    <div class="col-3"><!--columna de patologias-->
+        <!--<mat-list>
+            <mat-list-item><i><b>Nombre del paciente {{paciente}}</b></i></mat-list-item>
+            <mat-divider></mat-divider>
+        </mat-list>-->
+        <p><i><b>Enfermedades
+            <mat-list>
+                <mat-divider></mat-divider>
+                </mat-list>
+        </b></i></p>
+        <div class="paddingTitulosPyP"><p>Varicela</p></div>
+        <div class="paddingTitulosPyP"><p>Rubéola</p></div>
+        <div class="paddingTitulosPyP"><p>Sarampión</p></div>
+        <div class="paddingTitulosPyP"><p>Parotiditis</p></div>
+        <div class="paddingTitulosPyP"><p>Tosferina</p></div>
+        <div class="paddingTitulosPyP"><p>Escarlatina</p></div>
+        <div class="paddingTitulosPyP"><p>Parasitosis</p></div>
+        <div class="paddingTitulosPyP"><p>Hepatitis</p></div>
+        <div class="paddingTitulosPyP"><p>SIDA</p></div>
+        <div class="paddingTitulosPyP"><p>Asma</p></div>
+        <div class="paddingTitulosPyP"><p>Disfunciones Endocriticas</p></div>
+        <div class="paddingTitulosPyP"><p>Hipertension</p></div>
+        <div class="paddingTitulosPyP"><p>Cancer</p></div>
+    </div>
+    <div class="col-3">
+        <!--<mat-list>
+            <mat-list-item><i><b>Datos de la madre</b></i></mat-list-item>
+            <mat-divider></mat-divider>
+          </mat-list>-->
+        <div class="grid">
+            <div class="col-4">
+                <mat-label><i><b>Si - No<mat-list>
+                    <mat-divider></mat-divider>
+                    </mat-list></b></i></mat-label>
+            </div>
+            <div class="col-8">
+                <mat-label><i><b>Fechas<mat-list>
+                    <mat-divider></mat-divider>
+                    </mat-list></b></i></mat-label>
+            </div>
+        </div>
+        <form [formGroup]="varicelaForm">
+            <div class="grid altoRowSinoFecha">
+                <div class="col-4 paddingSlide">
+                    <mat-slide-toggle formControlName="siNo"></mat-slide-toggle>
+                </div>
+                <mat-form-field class="col-8">
+                    <mat-label>Fecha</mat-label>
+                    <input matInput type="text" formControlName="fechaAgno">
+                </mat-form-field>
+            </div>
+        </form>
+        <form [formGroup]="rubeolaForm">
+            <div class="grid altoRowSinoFecha">
+                <div class="col-4 paddingSlide">
+                    <mat-slide-toggle formControlName="siNo"></mat-slide-toggle>
+                </div>
+                <mat-form-field class="col-8">
+                    <mat-label>Fecha</mat-label>
+                    <input matInput type="text" formControlName="fechaAgno">
+                </mat-form-field>
+            </div>
+        </form>
+        <form [formGroup]="sarampionForm">
+            <div class="grid altoRowSinoFecha">
+                <div class="col-4 paddingSlide">
+                    <mat-slide-toggle formControlName="siNo"></mat-slide-toggle>
+                </div>
+                <mat-form-field class="col-8">
+                    <mat-label>Fecha</mat-label>
+                    <input matInput type="text" formControlName="fechaAgno">
+                </mat-form-field>
+            </div>
+        </form>
+        <form [formGroup]="parotiditisForm">
+            <div class="grid altoRowSinoFecha">
+                <div class="col-4 paddingSlide">
+                    <mat-slide-toggle formControlName="siNo"></mat-slide-toggle>
+                </div>
+                <mat-form-field class="col-8">
+                    <mat-label>Fecha</mat-label>
+                    <input matInput type="text" formControlName="fechaAgno">
+                </mat-form-field>
+            </div>
+        </form>
+        <form [formGroup]="tosferinaForm">
+            <div class="grid altoRowSinoFecha">
+                <div class="col-4 paddingSlide">
+                    <mat-slide-toggle formControlName="siNo"></mat-slide-toggle>
+                </div>
+                <mat-form-field class="col-8">
+                    <mat-label>Fecha</mat-label>
+                    <input matInput type="text" formControlName="fechaAgno">
+                </mat-form-field>
+            </div>
+        </form>
+        <form [formGroup]="escarlatinaForm">
+            <div class="grid altoRowSinoFecha">
+                <div class="col-4 paddingSlide">
+                    <mat-slide-toggle formControlName="siNo"></mat-slide-toggle>
+                </div>
+                <mat-form-field class="col-8">
+                    <mat-label>Fecha</mat-label>
+                    <input matInput type="text" formControlName="fechaAgno">
+                </mat-form-field>
+            </div>
+        </form>
+        <form [formGroup]="parasitosisForm">
+            <div class="grid altoRowSinoFecha">
+                <div class="col-4 paddingSlide">
+                    <mat-slide-toggle formControlName="siNo"></mat-slide-toggle>
+                </div>
+                <mat-form-field class="col-8">
+                    <mat-label>Fecha</mat-label>
+                    <input matInput type="text" formControlName="fechaAgno">
+                </mat-form-field>
+            </div>
+        </form>
+        <form [formGroup]="hepatitisPyPForm">
+            <div class="grid altoRowSinoFecha">
+                <div class="col-4 paddingSlide">
+                    <mat-slide-toggle formControlName="siNo"></mat-slide-toggle>
+                </div>
+                <mat-form-field class="col-8">
+                    <mat-label>Fecha</mat-label>
+                    <input matInput type="text" formControlName="fechaAgno">
+                </mat-form-field>
+            </div>
+        </form>
+        <form [formGroup]="SIDAPyPForm">
+            <div class="grid altoRowSinoFecha">
+                <div class="col-4 paddingSlide">
+                    <mat-slide-toggle formControlName="siNo"></mat-slide-toggle>
+                </div>
+                <mat-form-field class="col-8">
+                    <mat-label>Fecha</mat-label>
+                    <input matInput type="text" formControlName="fechaAgno">
+                </mat-form-field>
+            </div>
+        </form>
+        <form [formGroup]="asmaForm">
+            <div class="grid altoRowSinoFecha">
+                <div class="col-4 paddingSlide">
+                    <mat-slide-toggle formControlName="siNo"></mat-slide-toggle>
+                </div>
+                <mat-form-field class="col-8">
+                    <mat-label>Fecha</mat-label>
+                    <input matInput type="text" formControlName="fechaAgno">
+                </mat-form-field>
+            </div>
+        </form>
+        <form [formGroup]="disfuncionesEndocrinasForm">
+            <div class="grid altoRowSinoFecha">
+                <div class="col-4 paddingSlide">
+                    <mat-slide-toggle formControlName="siNo"></mat-slide-toggle>
+                </div>
+                <mat-form-field class="col-8">
+                    <mat-label>Fecha</mat-label>
+                    <input matInput type="text" formControlName="fechaAgno">
+                </mat-form-field>
+            </div>
+        </form>
+        <form [formGroup]="hipertensionForm">
+            <div class="grid altoRowSinoFecha">
+                <div class="col-4 paddingSlide">
+                    <mat-slide-toggle formControlName="siNo"></mat-slide-toggle>
+                </div>
+                <mat-form-field class="col-8">
+                    <mat-label>Fecha</mat-label>
+                    <input matInput type="text" formControlName="fechaAgno">
+                </mat-form-field>
+            </div>
+        </form>
+        <form [formGroup]="cancerForm">
+            <div class="grid altoRowSinoFecha">
+                <div class="col-4 paddingSlide">
+                    <mat-slide-toggle formControlName="siNo"></mat-slide-toggle>
+                </div>
+                <mat-form-field class="col-8">
+                    <mat-label>Fecha</mat-label>
+                    <input matInput type="text" formControlName="fechaAgno">
+                </mat-form-field>
+            </div>
+        </form>
+    </div> <!--col-4 donde van todos los antecedentes PyP-->
+    <!--poner aqui-->
+    <div class="col-3"><!--columna de patologias-->
+        <!--<mat-list>
+            <mat-list-item><i><b>Nombre del paciente {{paciente}}</b></i></mat-list-item>
+            <mat-divider></mat-divider>
+        </mat-list>-->
+        <p><i><b>Enfermedades<mat-list>
+            <mat-divider></mat-divider>
+            </mat-list></b></i></p>
+        <div class="paddingTitulosPyP"><p>Enf. transm. Sex.</p></div>
+        <div class="paddingTitulosPyP"><p>Epilepsia</p></div>
+        <div class="paddingTitulosPyP"><p>Amigdalitis</p></div>
+        <div class="paddingTitulosPyP"><p>Tuberculosis</p></div>
+        <div class="paddingTitulosPyP"><p>Fiebre Reumática</p></div>
+        <div class="paddingTitulosPyP"><p>Diabetes</p></div>
+        <div class="paddingTitulosPyP"><p>Enf. Cardiovasculares</p></div>
+        <div class="paddingTitulosPyP"><p>Artritis</p></div>
+        <div class="paddingTitulosPyP"><p>Traumatis con Secuelas</p></div>
+        <div class="paddingTitulosPyP"><p>Intervencion Quirúrgica</p></div>
+        <div class="paddingTitulosPyP"><p>Transfusión Sanguinea</p></div>
+        <div class="paddingTitulosPyP"><p>Alergias a:</p></div>
+    </div>
+    <div class="col-3">
+        <!--<mat-list>
+            <mat-list-item><i><b>Datos de la madre</b></i></mat-list-item>
+            <mat-divider></mat-divider>
+          </mat-list>-->
+        <div class="grid">
+            <div class="col-4">
+                <mat-label><i><b>Si - No<mat-list>
+                    <mat-divider></mat-divider>
+                    </mat-list></b></i></mat-label>
+            </div>
+            <div class="col-8">
+                <mat-label><i><b>Fechas<mat-list>
+                    <mat-divider></mat-divider>
+                    </mat-list></b></i></mat-label>
+            </div>
+        </div>
+        <form [formGroup]="enfTransSexForm">
+            <div class="grid altoRowSinoFecha"><!--Fila de checks madre diabetes-->
+                <div class="col-4 paddingSlide">
+                    <mat-slide-toggle formControlName="siNo"></mat-slide-toggle>
+                </div>
+                <mat-form-field class="col-8">
+                    <mat-label>Fecha</mat-label>
+                    <input matInput type="text" formControlName="fechaAgno">
+                </mat-form-field>
+            </div>
+        </form>
+        <form [formGroup]="epilepsiaPyPForm">
+            <div class="grid altoRowSinoFecha"><!--Fila de checks madre diabetes-->
+                <div class="col-4 paddingSlide">
+                    <mat-slide-toggle formControlName="siNo"></mat-slide-toggle>
+                </div>
+                <mat-form-field class="col-8">
+                    <mat-label>Fecha</mat-label>
+                    <input matInput type="text" formControlName="fechaAgno">
+                </mat-form-field>
+            </div>
+        </form>
+        <form [formGroup]="amigdalitisForm">
+            <div class="grid altoRowSinoFecha"><!--Fila de checks madre diabetes-->
+                <div class="col-4 paddingSlide">
+                    <mat-slide-toggle formControlName="siNo"></mat-slide-toggle>
+                </div>
+                <mat-form-field class="col-8">
+                    <mat-label>Fecha</mat-label>
+                    <input matInput type="text" formControlName="fechaAgno">
+                </mat-form-field>
+            </div>
+        </form>
+        <form [formGroup]="tubercolosisForm">
+            <div class="grid altoRowSinoFecha"><!--Fila de checks madre diabetes-->
+                <div class="col-4 paddingSlide">
+                    <mat-slide-toggle formControlName="siNo"></mat-slide-toggle>
+                </div>
+                <mat-form-field class="col-8">
+                    <mat-label>Fecha</mat-label>
+                    <input matInput type="text" formControlName="fechaAgno">
+                </mat-form-field>
+            </div>
+        </form>
+        <form [formGroup]="fiebreReumaticaForm">
+            <div class="grid altoRowSinoFecha"><!--Fila de checks madre diabetes-->
+                <div class="col-4 paddingSlide">
+                    <mat-slide-toggle formControlName="siNo"></mat-slide-toggle>
+                </div>
+                <mat-form-field class="col-8">
+                    <mat-label>Fecha</mat-label>
+                    <input matInput type="text" formControlName="fechaAgno">
+                </mat-form-field>
+            </div>
+        </form>
+        <form [formGroup]="diabetesPyPForm">
+            <div class="grid altoRowSinoFecha"><!--Fila de checks madre diabetes-->
+                <div class="col-4 paddingSlide">
+                    <mat-slide-toggle formControlName="siNo"></mat-slide-toggle>
+                </div>
+                <mat-form-field class="col-8">
+                    <mat-label>Fecha</mat-label>
+                    <input matInput type="text" formControlName="fechaAgno">
+                </mat-form-field>
+            </div>
+        </form>
+        <form [formGroup]="enfCardiovascularesForm">
+            <div class="grid altoRowSinoFecha"><!--Fila de checks madre diabetes-->
+                <div class="col-4 paddingSlide">
+                    <mat-slide-toggle formControlName="siNo"></mat-slide-toggle>
+                </div>
+                <mat-form-field class="col-8">
+                    <mat-label>Fecha</mat-label>
+                    <input matInput type="text" formControlName="fechaAgno">
+                </mat-form-field>
+            </div>
+        </form>
+        <form [formGroup]="artritisPyPForm">
+            <div class="grid altoRowSinoFecha"><!--Fila de checks madre diabetes-->
+                <div class="col-4 paddingSlide">
+                    <mat-slide-toggle formControlName="siNo"></mat-slide-toggle>
+                </div>
+                <mat-form-field class="col-8">
+                    <mat-label>Fecha</mat-label>
+                    <input matInput type="text" formControlName="fechaAgno">
+                </mat-form-field>
+            </div>
+        </form>
+        <form [formGroup]="traumatitisConSecuelasForm">
+            <div class="grid altoRowSinoFecha"><!--Fila de checks madre diabetes-->
+                <div class="col-4 paddingSlide">
+                    <mat-slide-toggle formControlName="siNo"></mat-slide-toggle>
+                </div>
+                <mat-form-field class="col-8">
+                    <mat-label>Fecha</mat-label>
+                    <input matInput type="text" formControlName="fechaAgno">
+                </mat-form-field>
+            </div>
+        </form>
+        <form [formGroup]="intervencionQuirurgicaForm">
+            <div class="grid altoRowSinoFecha"><!--Fila de checks madre diabetes-->
+                <div class="col-4 paddingSlide">
+                    <mat-slide-toggle formControlName="siNo"></mat-slide-toggle>
+                </div>
+                <mat-form-field class="col-8">
+                    <mat-label>Fecha</mat-label>
+                    <input matInput type="text" formControlName="fechaAgno">
+                </mat-form-field>
+            </div>
+        </form>
+        <form [formGroup]="transfusionSanguineaForm">
+            <div class="grid altoRowSinoFecha"><!--Fila de checks madre diabetes-->
+                <div class="col-4 paddingSlide">
+                    <mat-slide-toggle formControlName="siNo"></mat-slide-toggle>
+                </div>
+                <mat-form-field class="col-8">
+                    <mat-label>Fecha</mat-label>
+                    <input matInput type="text" formControlName="fechaAgno">
+                </mat-form-field>
+            </div>
+        </form>
+        <form [formGroup]="alergiaAForm">
+            <div class="grid altoRowSinoFecha"><!--Fila de checks madre diabetes-->
+                <div class="col-4 paddingSlide">
+                    <mat-slide-toggle formControlName="siNo"></mat-slide-toggle>
+                </div>
+                <mat-form-field class="col-8">
+                    <mat-label>Fecha</mat-label>
+                    <input matInput type="text" formControlName="fechaAgno">
+                </mat-form-field>
+            </div>
+        </form>
+    </div> <!--col-4 donde van todos los antecedentes PyP-->
+  </div> <!--grid final de ANTECEDENTES PERSONALES Y PATOLOGIAS-->
+
+<div class="grid" *ngIf="!datosGenerales?.id else updateAntecedentesPyPBlock">
+    <div class="col-offset-8"></div>
+    <div class="col-4" *ngIf="completadoAntecedentesPyP == false">
+        <button [disabled]="completadoAntecedentesPyP" mat-flat-button
+        (click)="saveAntecedentesPyP()">Guardar PyP</button>
+    </div>
+    <div class="col-4" *ngIf="completadoAntecedentesPyP == true">
+        <button [disabled]="completadoAntecedentesPyP" mat-flat-button 
+        >Informacion guardada</button>
+    </div>
+</div>
+<!--=============================================ACTUALIZADO======================================-->
+<ng-template #updateAntecedentesPyPBlock>
+    <div class="grid">
+        <div class="col-offset-8"></div>
+        <div class="col-4" *ngIf="completadoAntecedentesPyP == false">
+            <button [disabled]="completadoAntecedentesPyP" mat-flat-button
+            (click)="updateAntecedentesPyP()">Actualizar</button>
+        </div>
+        <div class="col-4" *ngIf="completadoAntecedentesPyP == true">
+            <button [disabled]="completadoAntecedentesPyP" mat-flat-button 
+            >Informacion guardada</button>
+        </div>
+    </div>
+</ng-template>

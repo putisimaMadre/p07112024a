@@ -1,0 +1,162 @@
+<form [formGroup]="padecimientosActualesForm">
+    <div class="grid">
+        <div class="col-3">
+            <div class="paddingTitulosPyP"><p><b><i>Padecimiento
+                <mat-list>
+                    <mat-divider></mat-divider>
+                    </mat-list>
+            </i></b></p></div>
+            <mat-label>Enfermedades que padece actualmente o haya padecido</mat-label>                        
+        </div>
+        <div class="col-3">
+            <div class="paddingTitulosPyP"><p><b><i>Si - No
+                <mat-list>
+                    <mat-divider></mat-divider>
+                    </mat-list>
+            </i></b></p></div>
+            <div class="col-4 paddingSlide">
+                <mat-slide-toggle formControlName="preguntaUno"></mat-slide-toggle>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="paddingTitulosPyP"><p><b><i>Especifique
+                <mat-list>
+                    <mat-divider></mat-divider>
+                    </mat-list>
+            </i></b></p></div>
+            <mat-form-field class="col-12">
+                <input matInput type="text" formControlName="preguntaUnoS">
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="grid">
+        <div class="col-3">
+            <mat-label>¿Se encuentra bajo tratamiento médico?</mat-label>                        
+        </div>
+        <div class="col-3">
+            <div class="col-4 paddingSlide">
+                <mat-slide-toggle formControlName="preguntaDos"></mat-slide-toggle>
+            </div>
+        </div>
+        <div class="col-6">
+            <mat-form-field class="col-12">
+                <input matInput type="text" formControlName="preguntaDosS">
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="grid">
+        <div class="col-3">
+            <mat-label>¿Se encuentra bajo tratamiento dental?</mat-label>
+        </div>
+        <div class="col-3">
+            <div class="col-4 paddingSlide">
+                <mat-slide-toggle formControlName="preguntaTres"></mat-slide-toggle>
+            </div>
+        </div>
+        <div class="col-6">
+            <mat-form-field class="col-12">
+                <input matInput type="text" formControlName="preguntaTresS">
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="grid">
+        <div class="col-3">
+            <mat-label>¿Toma actualmente algún medicamento?</mat-label>
+        </div>
+        <div class="col-3">
+            <div class="col-4 paddingSlide">
+                <mat-slide-toggle formControlName="preguntaCuatro"></mat-slide-toggle>
+            </div>
+        </div>
+        <div class="col-6">
+            <mat-form-field class="col-12">
+                <input matInput type="text" formControlName="preguntaCuatroS">
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="grid">
+        <div class="col-3">
+            <mat-label>¿Padece alguna alergia?</mat-label>
+        </div>
+        <div class="col-3">
+            <div class="col-4 paddingSlide">
+                <mat-slide-toggle formControlName="preguntaCinco"></mat-slide-toggle>
+            </div>
+        </div>
+        <div class="col-6">
+            <mat-form-field class="col-12">
+                <input matInput type="text" formControlName="preguntaCincoS">
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="grid">
+        <div class="col-3">
+            <mat-label>¿Ha tenido reacciones adversas con anestésicos dentales?</mat-label>
+        </div>
+        <div class="col-3">
+            <div class="col-4 paddingSlide">
+                <mat-slide-toggle formControlName="preguntaSeis"></mat-slide-toggle>
+            </div>
+        </div>
+        <div class="col-6">
+            <mat-form-field class="col-12">
+                <input matInput type="text" formControlName="preguntaSeisS">
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="grid">
+        <div class="col-3">
+            <mat-label>¿Ha comido o bebido algo en las ultimas 4 horas?</mat-label>
+        </div>
+        <div class="col-3">
+            <div class="col-4 paddingSlide">
+                <mat-slide-toggle formControlName="preguntaSiete"></mat-slide-toggle>
+            </div>
+        </div>
+        <div class="col-6">
+            <mat-form-field class="col-12">
+                <input matInput type="text" formControlName="preguntaSieteS">
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="grid">
+        <div class="col-3">
+            <mat-label>¿Se encuentra usted embarazada?</mat-label>
+        </div>
+        <div class="col-3">
+            <div class="col-4 paddingSlide">
+                <mat-slide-toggle formControlName="preguntaOcho"></mat-slide-toggle>
+            </div>
+        </div>
+        <div class="col-6">
+            <mat-form-field class="col-12">
+                <input matInput type="text" formControlName="preguntaOchoS">
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="grid" *ngIf="!datosGenerales?.id else updatePadecimientosAPBlock">
+        <div class="col-offset-8"></div>
+        <div class="col-4" *ngIf="completadoPadecimientosActuales == false">
+            <button [disabled]="completadoPadecimientosActuales" mat-flat-button
+            (click)="savePadecimientosActuales()">Guardar</button>
+        </div>
+        <div class="col-4" *ngIf="completadoPadecimientosActuales == true">
+            <button [disabled]="completadoPadecimientosActuales" mat-flat-button 
+            >Informacion guardada</button>
+        </div>
+    </div>
+    <!--=============================================ACTUALIZADO======================================-->
+    <ng-template #updatePadecimientosAPBlock>
+        <div class="grid">
+            <div class="col-offset-8"></div>
+            <div class="col-4" *ngIf="completadoPadecimientosActuales == false">
+                <button [disabled]="completadoPadecimientosActuales" mat-flat-button
+                (click)="updatePadecimientosActuales()">Actualizar</button>
+            </div>
+            <div class="col-4" *ngIf="completadoPadecimientosActuales == true">
+                <button [disabled]="completadoPadecimientosActuales" mat-flat-button 
+                >Informacion guardada</button>
+            </div>
+        </div>
+    </ng-template>
+</form>

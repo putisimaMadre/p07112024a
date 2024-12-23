@@ -1,0 +1,93 @@
+<div class="grid">
+    <div class="col-3">
+        <mat-list>
+            <mat-list-item><i><b>Nombre del paciente: {{paciente}}</b></i></mat-list-item>
+            <mat-divider></mat-divider>
+        </mat-list>
+    </div>
+</div>
+<div class="grid">
+    <div class="col-3">
+        <mat-list>
+            <mat-list-item><i><b>Sexo: {{sexo}}</b></i></mat-list-item>
+            <mat-divider></mat-divider>
+        </mat-list>
+    </div>
+</div>
+<div class="grid" style="margin-top: 5rem;">
+    <div class="col-offset-1"></div>
+    <div class="col-2">
+        <mat-list>
+            <mat-list-item><i><b>Fecha</b></i></mat-list-item>
+            <mat-divider></mat-divider>
+        </mat-list>
+    </div>
+    <div class="col-3">
+        <mat-list>
+            <mat-list-item><i><b>Evolución</b></i></mat-list-item>
+            <mat-divider></mat-divider>
+        </mat-list>
+    </div>
+    <div class="col-4">
+        <mat-list>
+            <mat-list-item><i><b>Pagos</b></i></mat-list-item>
+            <mat-divider></mat-divider>
+        </mat-list>
+    </div>
+</div>
+<form [formGroup]="pagosForm">
+<div class="grid">
+    <div class="col-offset-1"></div>
+    <div class="grid col-2">
+        <mat-form-field class="col-12">
+            <mat-label>Fecha</mat-label>
+            <input matInput [matDatepicker]="pickerFechaPago" formControlName="fecha">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="pickerFechaPago"></mat-datepicker-toggle>
+            <mat-datepicker #pickerFechaPago></mat-datepicker>
+        </mat-form-field>
+    </div>
+    <div class="grid col-3" style="margin-left: 1rem;">
+        <mat-form-field class="col-12">
+            <mat-label>Escriba aqui el texto</mat-label>
+            <textarea matInput
+                    cdkTextareaAutosize
+                    #autosize="cdkTextareaAutosize"
+                    cdkAutosizeMinRows="1"
+                    cdkAutosizeMaxRows="5" formControlName="evolucion"></textarea>
+        </mat-form-field>
+    </div>
+    <div class="grid col-6">
+            <div class="col-3" style="margin-left: 1rem;">
+                <mat-form-field>
+                    <mat-label>Costo</mat-label>
+                    <input matInput type="text" formControlName="costo">
+                </mat-form-field>
+            </div>
+            <div class="col-3">
+                <mat-form-field>
+                    <mat-label>A cuenta</mat-label>
+                    <input matInput type="text" formControlName="aCuenta">
+                </mat-form-field>
+            </div>
+            <div class="col-3">
+                <mat-form-field>
+                    <mat-label>Saldo</mat-label>
+                    <input matInput type="text" formControlName="saldo" readonly="true">
+                </mat-form-field>
+            </div>
+    </div>
+</div>
+<!--=============================================GUARDADO======================================-->
+<div class="grid">
+    <div class="col-offset-8"></div>
+    <div class="col-4" *ngIf="completadoPagos == false">
+        <button [disabled]="completadoPagos" mat-flat-button
+        (click)="savePagosForm()">Guardar</button>
+    </div>
+    <div class="col-4" *ngIf="completadoPagos == true">
+        <button [disabled]="completadoPagos" mat-flat-button 
+        >Informacion guardada</button>
+    </div>
+</div>
+</form>

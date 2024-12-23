@@ -1,0 +1,156 @@
+<form [formGroup]="analisisFuncionalForm">
+    <div class="grid">
+        <div class="col-offset-1"></div>
+        <div class="col-3">
+            <mat-label><b><i>Actividad Comisural</i></b></mat-label>
+        </div>
+        <div class="col-8">
+        <mat-radio-group aria-label="Select an option" formControlName="actividadComisural">
+            <div class="grid">
+            <mat-radio-button class="col-4" value={{actividadConmisuralArray[0]}} [checked]="actividadConmisuralArrayBool[0]">Normal</mat-radio-button>
+            <mat-radio-button class="col-4" value={{actividadConmisuralArray[1]}} [checked]="actividadConmisuralArrayBool[1]">Contraccion</mat-radio-button>
+            </div>
+        </mat-radio-group>
+        </div>
+    </div>
+    <div class="grid">
+        <div class="col-offset-1"></div>
+        <div class="col-3">
+            <mat-label><b><i>Actividad Lingual</i></b></mat-label>
+        </div>
+        <div class="col-8">
+        <mat-radio-group aria-label="Select an option" formControlName="actividadLingual">
+            <div class="grid">
+            <mat-radio-button class="col-4" value={{actividadLingualArray[0]}} [checked]="actividadLingualArrayBool[0]">Normal</mat-radio-button>
+            <mat-radio-button class="col-4" value={{actividadLingualArray[1]}} [checked]="actividadLingualArrayBool[1]">Interp. Anterior</mat-radio-button>
+            <mat-radio-button class="col-4" value={{actividadLingualArray[2]}} [checked]="actividadLingualArrayBool[2]">Interp. Lateral</mat-radio-button>
+            </div>
+        </mat-radio-group>
+        </div>
+    </div>
+    <div class="grid">
+        <div class="col-offset-1"></div>
+        <div class="col-3">
+            <mat-label><b><i>Labio Superior</i></b></mat-label>
+        </div>
+        <div class="col-8">
+        <mat-radio-group aria-label="Select an option" formControlName="labioSuperior">
+            <div class="grid">
+            <mat-radio-button class="col-4" value={{labioSuperiorArray[0]}} [checked]="labioSuperiorArrayBool[0]">Normal</mat-radio-button>
+            <mat-radio-button class="col-4" value={{labioSuperiorArray[1]}} [checked]="labioSuperiorArrayBool[1]">Hipoactivo</mat-radio-button>
+            <mat-radio-button class="col-4" value={{labioSuperiorArray[2]}} [checked]="labioSuperiorArrayBool[2]">Hiperactivo</mat-radio-button>
+            </div>
+        </mat-radio-group>
+        </div>
+    </div>
+    <div class="grid">
+        <div class="col-offset-1"></div>
+        <div class="col-3">
+            <mat-label><b><i>Labio Inferior</i></b></mat-label>
+        </div>
+        <div class="col-8">
+        <mat-radio-group aria-label="Select an option" formControlName="labioInferior">
+            <div class="grid">
+            <mat-radio-button class="col-4" value={{labioInferiorArray[0]}} [checked]="labioInferiorArrayBool[0]">Normal</mat-radio-button>
+            <mat-radio-button class="col-4" value={{labioInferiorArray[1]}} [checked]="labioInferiorArrayBool[1]">Hipoactivo</mat-radio-button>
+            <mat-radio-button class="col-4" value={{labioInferiorArray[2]}} [checked]="labioInferiorArrayBool[2]">Hiperactivo</mat-radio-button>
+            </div>
+        </mat-radio-group>
+        </div>
+    </div>
+    <div class="grid">
+        <div class="col-offset-1"></div>
+        <div class="col-3">
+            <mat-label><b><i>Masetero</i></b></mat-label>
+        </div>
+        <div class="col-8">
+        <mat-radio-group aria-label="Select an option" formControlName="masetero">
+            <div class="grid">
+            <mat-radio-button class="col-4" value={{maseteroArray[0]}} [checked]="maseteroArrayBool[0]">Normal</mat-radio-button>
+            <mat-radio-button class="col-4" value={{maseteroArray[1]}} [checked]="maseteroArrayBool[1]">Hipoactivo</mat-radio-button>
+            <mat-radio-button class="col-4" value={{maseteroArray[2]}} [checked]="maseteroArrayBool[2]">Hiperactivo</mat-radio-button>
+            </div>
+        </mat-radio-group>
+        </div>
+    </div>
+    <div class="grid">
+        <div class="col-offset-1"></div>
+        <div class="col-3">
+            <mat-label><b><i>Mentoniano</i></b></mat-label>
+        </div>
+        <div class="col-8">
+        <mat-radio-group aria-label="Select an option" formControlName="mentoniano">
+            <div class="grid">
+            <mat-radio-button class="col-4" value={{mentonianoArray[0]}} [checked]="mentonianoArrayBool[0]">Normal</mat-radio-button>
+            <mat-radio-button class="col-4" value={{mentonianoArray[1]}} [checked]="mentonianoArrayBool[1]">Hipoactivo</mat-radio-button>
+            <mat-radio-button class="col-4" value={{mentonianoArray[2]}} [checked]="mentonianoArrayBool[2]">Hiperactivo</mat-radio-button>
+            </div>
+        </mat-radio-group>
+        </div>
+    </div>
+    <div class="grid">
+        <div class="col-offset-1"></div>
+        <div class="col-10">
+            <mat-list>
+                <mat-divider></mat-divider>
+            </mat-list>
+        </div>
+    </div>
+    
+    <div class="grid">
+        <div class="col-offset-1"></div>
+        <div class="col-3">
+            <mat-label><b><i>Respiración</i></b></mat-label>
+        </div>
+        <div class="col-8">
+        <mat-radio-group aria-label="Select an option" formControlName="respiracion">
+            <div class="grid">
+            <mat-radio-button class="col-4" value={{respiracionArray[0]}} [checked]="respiracionArrayBool[0]">Bucal</mat-radio-button>
+            <mat-radio-button class="col-4" value={{respiracionArray[1]}} [checked]="respiracionArrayBool[1]">Nasal</mat-radio-button>
+            <mat-radio-button class="col-4" value={{respiracionArray[2]}} [checked]="respiracionArrayBool[2]">Mixta</mat-radio-button>
+            </div>
+        </mat-radio-group>
+        </div>
+    </div>
+    <div class="grid">
+        <div class="col-offset-1"></div>
+        <div class="col-3">
+            <mat-label><b><i>Deglución</i></b></mat-label>
+        </div>
+        <div class="col-8">
+        <mat-radio-group aria-label="Select an option" formControlName="deglucion">
+            <div class="grid">
+            <mat-radio-button class="col-4" value={{deglucionArray[0]}} [checked]="deglucionArrayBool[0]">Normal</mat-radio-button>
+            <mat-radio-button class="col-4" value={{deglucionArray[1]}} [checked]="deglucionArrayBool[1]">Atípica</mat-radio-button>
+            <mat-radio-button class="col-4" value={{deglucionArray[2]}} [checked]="deglucionArrayBool[2]">Especial</mat-radio-button>
+            </div>
+        </mat-radio-group>
+        </div>
+    </div>
+    <!--=============================================GUARDADO======================================-->
+    <div class="grid" *ngIf="!datosGenerales?.id else analisisFuncionalBlock">
+        <div class="col-offset-8"></div>
+        <div class="col-4" *ngIf="completadoAnalisisFuncional == false">
+            <button [disabled]="completadoAnalisisFuncional" mat-flat-button
+            (click)="saveAnalisisFuncional()">Guardar</button>
+        </div>
+        <div class="col-4" *ngIf="completadoAnalisisFuncional == true">
+            <button [disabled]="completadoAnalisisFuncional" mat-flat-button 
+            >Informacion guardada</button>
+        </div>
+    </div>
+    <!--=============================================ACTUALIZADO======================================-->
+    <ng-template #analisisFuncionalBlock>
+        <div class="grid">
+            <div class="col-offset-8"></div>
+            <div class="col-4" *ngIf="completadoAnalisisFuncional == false">
+                <button [disabled]="completadoAnalisisFuncional" mat-flat-button
+                (click)="updateAnalisisFuncional()">Actualizar</button>
+            </div>
+            <div class="col-4" *ngIf="completadoAnalisisFuncional == true">
+                <button [disabled]="completadoAnalisisFuncional" mat-flat-button 
+                >Informacion guardada</button>
+            </div>
+        </div>
+    </ng-template>
+</form>
