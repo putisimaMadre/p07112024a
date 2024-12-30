@@ -157,7 +157,7 @@ export class NewAnalisisFuncionalComponent implements OnInit{
             if(this.analisisFuncional.respiracion){
               for (let index = 0; index <= this.respiracionArrayBool.length; index++) {
                 if(this.respiracionArray[index] == this.analisisFuncional.respiracion){
-                  this.analisisFuncional[index] = true
+                  this.respiracionArrayBool[index] = true
                 }
                 if(this.datosGenerales.id != null){
                   this.analisisFuncionalForm.controls['respiracion'].setValue(this.respiracionArray[index])

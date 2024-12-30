@@ -16,7 +16,19 @@ export class EvaluacionClinicaInfantilService {
     return this.httpClient.get<EvaluacionClinicaInfantil[]>(this.urlEndPoint);
   }
 
+  getAnalisisFuncionalById(idDatosGenerales: number): Observable<EvaluacionClinicaInfantil>{
+    return this.httpClient.get<EvaluacionClinicaInfantil>(this.urlEndPoint+'/'+idDatosGenerales);
+  }
+  
+  getAnalisisFuncionalEdit(idDatosGenerales: number): Observable<EvaluacionClinicaInfantil>{
+    return this.httpClient.get<EvaluacionClinicaInfantil>(this.urlEndPoint+'/'+idDatosGenerales+'/edit');
+  }
+
   postEvaluacionClinicaInfantil(evaluacionClinicaInfantil: EvaluacionClinicaInfantil): Observable<EvaluacionClinicaInfantil>{
     return this.httpClient.post<EvaluacionClinicaInfantil>(this.urlEndPoint, evaluacionClinicaInfantil, {headers: this.httpHeaders})
+  }
+
+  updateEvaluacionClinicaInfantil(evaluacionClinicaInfantil: EvaluacionClinicaInfantil): Observable<EvaluacionClinicaInfantil>{
+    return this.httpClient.put<EvaluacionClinicaInfantil>(this.urlEndPoint+'/'+evaluacionClinicaInfantil.id, evaluacionClinicaInfantil, {headers:this.httpHeaders})
   }
 }

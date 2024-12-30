@@ -2,6 +2,9 @@ import { afterNextRender, Component, inject, Injector, Input, OnInit, ViewChild 
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { EvaluacionClinicaService } from '../../services/evaluacion-clinica.service';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
+import { ActivatedRoute } from '@angular/router';
+import { switchMap } from 'rxjs';
+import { EvaluacionClinica } from '../../models/evaluacion-clinica';
 
 @Component({
   selector: 'app-new-evaluacion-clinica',
@@ -26,21 +29,43 @@ export class NewEvaluacionClinicaComponent implements OnInit{
       );
     }
   //========ESTO ES PARA EL TEXT AREA =======//
-  @Input() edad: number = 0;
-  @Input() sexo: string = "";
   @Input() paciente: string = "";
   @Input() pacienteId?: any
   @Input() datosGenerales?: any
   
-  fechaHoy: number = Date.now();
+  //fechaHoy: number = Date.now();
   completadoEvaluacionClinica = false
+  evaluacionClinica?: any;
 
   constructor(
     private formBuilder: FormBuilder,
-    private evaluacionClinicaService: EvaluacionClinicaService
+    private evaluacionClinicaService: EvaluacionClinicaService,
+    private activatedRoute: ActivatedRoute
   ){}
 
   ngOnInit(): void {
+    this.activatedRoute.params
+    .pipe(
+      switchMap(({id}) => this.evaluacionClinicaService.getEvaluacionClinicaEdit(id)),
+    )
+    .subscribe(evaluacionC => {
+      const keys = Object.keys(evaluacionC);
+      keys.forEach((key) => {
+        if(this.isKey(evaluacionC, key)){
+          this.evaluacionClinica = evaluacionC[key]
+          this.evaluacionClinicaForm.setValue({
+            motivo: this.evaluacionClinica.motivo,
+            observaciones: this.evaluacionClinica.observaciones,
+            exploracion: this.evaluacionClinica.exploracion,
+            idDatosGenerales: this.evaluacionClinica.idDatosGenerales
+          })
+        }
+      })
+    })
+  }
+
+  isKey<T extends object>(x: T, k: PropertyKey): k is keyof T {
+    return k in x;
   }
 
   evaluacionClinicaForm: FormGroup = this.formBuilder.group({
@@ -56,6 +81,15 @@ export class NewEvaluacionClinicaComponent implements OnInit{
       console.log(dato)
       this.completadoEvaluacionClinica = true
     })
+  }
+
+  updateEvaluacionClinica(){
+    this.evaluacionClinicaForm.controls['idDatosGenerales'].setValue(this.datosGenerales.id)
+    this.evaluacionClinicaService.updateEvaluacionClinica(this.evaluacionClinicaForm.value).subscribe(dato => {
+      console.log(dato)
+      this.completadoEvaluacionClinica = true
+    })
+   console.log(this.evaluacionClinicaForm.value)
   }
 
 }

@@ -1,7 +1,7 @@
 <div class="grid"><!--Grid completo-->
     <div class="col-3"><!--columna de patologias-->
         <mat-list>
-            <mat-list-item><i><b>Nombre del paciente {{paciente}}</b></i></mat-list-item>
+            <mat-list-item><i><b>Nombre del paciente: {{paciente}}</b></i></mat-list-item>
             <mat-divider></mat-divider>
         </mat-list>
 
@@ -485,7 +485,7 @@
     </div>
 </div>
 
-<div class="grid">
+<!--<div class="grid">
     <div class="col-10">
         <form [formGroup]="observacionesForm">
             <mat-form-field class="ancho">
@@ -494,10 +494,9 @@
             </mat-form-field>
         </form>
     </div>
-</div>
+</div>-->
 <!--=============================================GUARDADO======================================-->
-<!--<div class="grid" *ngIf="!datosGenerales?.id else updateAntecedentesFyHBlock">-->
-<div class="grid">
+<div class="grid" *ngIf="!datosGenerales?.id else updateAntecedentesFyHBlock">
 <div class="col-offset-8"></div>
 <div class="col-4" *ngIf="completadoAntecedentesFyH == false">
     <button [disabled]="completadoAntecedentesFyH" mat-flat-button
@@ -509,7 +508,7 @@
 </div>
 </div>
 <!--=============================================ACTUALIZADO======================================-->
-<!--<ng-template #updateAntecedentesFyHBlock>
+<ng-template #updateAntecedentesFyHBlock>
 <div class="grid">
     <div class="col-offset-8"></div>
     <div class="col-4" *ngIf="completadoAntecedentesFyH == false">
@@ -521,4 +520,4 @@
         >Informacion guardada</button>
     </div>
 </div>
-</ng-template>-->
+</ng-template>

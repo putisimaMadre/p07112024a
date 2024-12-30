@@ -80,7 +80,7 @@
             </div>
     </div>
     <!--=============================================GUARDADO======================================-->
-<div class="grid">
+    <div class="grid" *ngIf="!datosGenerales?.id else evaluacionClinicaBlock">
     <div class="col-offset-8"></div>
     <div class="col-4" *ngIf="completadoEvaluacionClinica == false">
         <button [disabled]="completadoEvaluacionClinica" mat-flat-button
@@ -91,4 +91,18 @@
         >Informacion guardada</button>
     </div>
 </div>
+        <!--=============================================ACTUALIZADO======================================-->
+        <ng-template #evaluacionClinicaBlock>
+            <div class="grid">
+                <div class="col-offset-8"></div>
+                <div class="col-4" *ngIf="completadoEvaluacionClinica == false">
+                    <button [disabled]="completadoEvaluacionClinica" mat-flat-button
+                    (click)="updateEvaluacionClinica()">Actualizar</button>
+                </div>
+                <div class="col-4" *ngIf="completadoEvaluacionClinica == true">
+                    <button [disabled]="completadoEvaluacionClinica" mat-flat-button 
+                    >Informacion guardada</button>
+                </div>
+            </div>
+        </ng-template>
     </form>

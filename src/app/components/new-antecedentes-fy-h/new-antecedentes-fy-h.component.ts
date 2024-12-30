@@ -245,7 +245,6 @@ export class NewAntecedentesFyHComponent implements OnInit {
             console.log(element.value)
           })
         });
-    
       }
     
       updateAntecedentesFyH(){
@@ -276,12 +275,10 @@ export class NewAntecedentesFyHComponent implements OnInit {
         this.patologiasArray.push(this.aparentementeSForm);
         //INSERTAR APARTE LAS OBSERVACIONES
         
-        //console.log(this.patologiasArray)*/
         this.patologiasArray.forEach(element => {
           this.cambioValorPatologiaBoolToNumber(element)
-          
           this.antecedentesFyHService.updateAntecedentes(element.value).subscribe(patologia => {
-            
+            console.log("paciente actualizado")
           })
         });
       }

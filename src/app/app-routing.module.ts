@@ -15,6 +15,10 @@ const routes: Routes = [
   {
     path: "new-dato/:id",
     component: NewDatosGeneralesComponent
+  },
+  {
+    path: '**',
+    redirectTo: 'datos'
   }
 ];
 

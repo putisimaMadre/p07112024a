@@ -33,11 +33,13 @@ constructor(
           keys.forEach((key) => {
             if(this.isKey(padecimientosA, key)){
               this.padecimientosActuales = padecimientosA[key];
-              if(this.padecimientosActualesForm.get("preguntaUno")?.value != null 
+              this.padecimientosActualesForm.controls["preguntaUnoS"].setValue(this.padecimientosActuales.preguntaUnoS)
+              this.padecimientosActualesForm.controls["preguntaUno"].setValue(this.padecimientosActuales.preguntaUno)
+              /*if(this.padecimientosActualesForm.get("preguntaUno")?.value != null 
                 && this.padecimientosActualesForm.get("preguntaUno")?.value !=0){
                   this.padecimientosActualesForm.controls["preguntaUno"].setValue(this.padecimientosActuales.preguntaUno) //Se dejo solo este por que es el que daba problemas 
-              }
-              this.padecimientosActualesForm.controls["preguntaUnoS"].setValue(this.padecimientosActuales.preguntaUnoS)
+              }*/
+              //this.padecimientosActualesForm.controls["preguntaUnoS"].setValue(this.padecimientosActuales.preguntaUnoS)
               this.padecimientosActualesForm.controls["preguntaDos"].setValue(this.padecimientosActuales.preguntaDos)
               this.padecimientosActualesForm.controls["preguntaDosS"].setValue(this.padecimientosActuales.preguntaDosS)
               this.padecimientosActualesForm.controls["preguntaTres"].setValue(this.padecimientosActuales.preguntaTres)

@@ -2,6 +2,8 @@ import { afterNextRender, Component, inject, Injector, Input, OnInit, ViewChild 
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { EvaluacionClinicaInfantilService } from '../../services/evaluacion-clinica-infantil.service';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
+import { ActivatedRoute } from '@angular/router';
+import { switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-new-evaluacion-clinica-infantil',
@@ -29,21 +31,47 @@ export class NewEvaluacionClinicaInfantilComponent implements OnInit{
   @Input() paciente: string = "";
   @Input() pacienteId?: any
   @Input() datosGenerales?: any
-  completadoEvaluacionClinicaInfantil = false
 
-  constructor(private formBuilder: FormBuilder,
-    private evaluacionClinicaInfantilService: EvaluacionClinicaInfantilService
+  completadoEvaluacionClinicaInfantil = false
+  evaluacionClinicaInfantil?: any
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private evaluacionClinicaInfantilService: EvaluacionClinicaInfantilService,
+    private activatedRoute: ActivatedRoute
   ){}
 
   ngOnInit(): void {
+    this.activatedRoute.params
+    .pipe(
+      switchMap(({id}) => this.evaluacionClinicaInfantilService.getAnalisisFuncionalEdit(id)),
+    )
+    .subscribe(evaluacionC => {
+      const keys = Object.keys(evaluacionC);
+      keys.forEach((key) => {
+        if(this.isKey(evaluacionC, key)){
+          this.evaluacionClinicaInfantil = evaluacionC[key]
+          this.evaluacionClinicaInfantilForm.setValue({
+            motivo: this.evaluacionClinicaInfantil.motivo,
+            observaciones: this.evaluacionClinicaInfantil.observaciones,
+            exploracion: this.evaluacionClinicaInfantil.exploracion,
+            idDatosGenerales: this.evaluacionClinicaInfantil.idDatosGenerales
+          })
+        }
+      })
+    })
   }
 
-    evaluacionClinicaInfantilForm: FormGroup = this.formBuilder.group({
-      "motivo": [""],
-      "observaciones": [""],
-      "exploracion": [""],
-      "idDatosGenerales": [this.pacienteId]
-    })
+  isKey<T extends object>(x: T, k: PropertyKey): k is keyof T {
+    return k in x;
+  }
+
+  evaluacionClinicaInfantilForm: FormGroup = this.formBuilder.group({
+    "motivo": [""],
+    "observaciones": [""],
+    "exploracion": [""],
+    "idDatosGenerales": [this.pacienteId]
+  })
 
     saveEvaluacionClinicaInfantil(){
       this.evaluacionClinicaInfantilForm.controls['idDatosGenerales'].setValue(this.pacienteId)
@@ -51,5 +79,14 @@ export class NewEvaluacionClinicaInfantilComponent implements OnInit{
         console.log(dato)
         this.completadoEvaluacionClinicaInfantil = true
       })
+    }
+
+    updateEvaluacionClinicaInfantil(){
+      this.evaluacionClinicaInfantilForm.controls['idDatosGenerales'].setValue(this.datosGenerales.id)
+      this.evaluacionClinicaInfantilService.updateEvaluacionClinicaInfantil(this.evaluacionClinicaInfantilForm.value).subscribe(dato => {
+        console.log(dato)
+        this.completadoEvaluacionClinicaInfantil = true
+      })
+     console.log(this.evaluacionClinicaInfantilForm.value)
     }
 }

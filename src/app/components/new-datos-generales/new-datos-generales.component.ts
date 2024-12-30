@@ -62,6 +62,8 @@ export class NewDatosGeneralesComponent implements OnInit{
             this.datosGenerales = datosGenerales[key];
             this.setearRegistrosDatosGenerales()
             this.pacienteId = this.formDatosGenerales.get("id")?.value;
+            this.paciente = this.formDatosGenerales.get("nombre")?.value;
+            this.edad = this.formDatosGenerales.get("edad")?.value;
             console.log(this.pacienteId)
           }
         })
