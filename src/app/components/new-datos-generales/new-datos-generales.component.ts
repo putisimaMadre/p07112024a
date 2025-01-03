@@ -33,16 +33,14 @@ export class NewDatosGeneralesComponent implements OnInit{
 //========ESTO ES PARA EL TEXT AREA =======//
   fechaHoy: number = Date.now();
   completadoDatosGenerales = false;
-  
-  paciente: string = "";
-  edad: number = 0;
-  sexo: string = "";
-  pacienteId: number = 0;
   datosGenerales?: any;
+  pacienteId:number = 0
+  edad:number = 0
+  nombre:string = ''
   
   /****antecedentesFyHBool = new AntecedentesFyHBool();  parece que no se ocupa*/
 
-  edit: boolean = true
+  mostrarConsentimientoYpagos: boolean = true
 
   constructor(private datosGeneralesService: DatosGeneralesService,
     private formBuilder: FormBuilder,
@@ -61,14 +59,11 @@ export class NewDatosGeneralesComponent implements OnInit{
           if(this.isKey(datosGenerales, key)){
             this.datosGenerales = datosGenerales[key];
             this.setearRegistrosDatosGenerales()
-            this.pacienteId = this.formDatosGenerales.get("id")?.value;
-            this.paciente = this.formDatosGenerales.get("nombre")?.value;
-            this.edad = this.formDatosGenerales.get("edad")?.value;
-            console.log(this.pacienteId)
+            console.log(this.datosGenerales.id)
           }
         })
         if(this.datosGenerales != null){ //<= para comprobra si se edita o no
-          this.edit = false
+          this.mostrarConsentimientoYpagos = false
         }
         return;
       })  
@@ -121,13 +116,12 @@ export class NewDatosGeneralesComponent implements OnInit{
     this.datosGeneralesService
     .postDatosGenerales(this.formDatosGenerales.value)
     .subscribe(dato => {
-      console.log(dato)
-      this.completadoDatosGenerales = true
-      this.paciente = dato.nombre
-      this.edad = dato.edad
-      this.sexo = dato.sexo
       this.pacienteId = dato.id
+      this.edad = dato.edad
+      this.nombre = dato.nombre
+      this.completadoDatosGenerales = true
       this.formDatosGenerales.controls['id'].setValue(dato.id);
+      console.log(dato)
     })
   }
 

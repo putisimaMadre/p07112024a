@@ -4,6 +4,7 @@ import { EvaluacionClinicaInfantilService } from '../../services/evaluacion-clin
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import { ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs';
+import { DatosGenerales } from '../../models/datos-generales';
 
 @Component({
   selector: 'app-new-evaluacion-clinica-infantil',
@@ -28,9 +29,9 @@ export class NewEvaluacionClinicaInfantilComponent implements OnInit{
       );
     }
   //========ESTO ES PARA EL TEXT AREA =======//
-  @Input() paciente: string = "";
-  @Input() pacienteId?: any
-  @Input() datosGenerales?: any
+  @Input() datosGenerales!: DatosGenerales
+  pacienteId = this.datosGenerales.id
+  paciente = this.datosGenerales.nombre
 
   completadoEvaluacionClinicaInfantil = false
   evaluacionClinicaInfantil?: any

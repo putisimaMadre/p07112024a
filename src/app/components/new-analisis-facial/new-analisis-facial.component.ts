@@ -4,6 +4,7 @@ import { AnalisisFacial } from '../../models/analisis-facial';
 import { AnalisisFacialService } from '../../services/analisis-facial.service';
 import { ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs';
+import { DatosGenerales } from '../../models/datos-generales';
 
 @Component({
   selector: 'app-new-analisis-facial',
@@ -11,9 +12,9 @@ import { switchMap } from 'rxjs';
   styleUrl: './new-analisis-facial.component.css'
 })
 export class NewAnalisisFacialComponent implements OnInit{
-  @Input() pacienteId?: any
-  @Input() datosGenerales?: any
+  @Input() datosGenerales!: DatosGenerales
 
+  pacienteId:number = 0
   completadoAnalisisFacial = false;
   analisisFacial?: any
 
@@ -44,6 +45,7 @@ export class NewAnalisisFacialComponent implements OnInit{
   ){}
   
   ngOnInit(): void {
+    this.pacienteId = this.datosGenerales.id
     this.activatedRoute.params
         .pipe(
           switchMap(({id}) => this.analisisFacialService.getAnalisisFacialEdit(id)),
@@ -79,7 +81,7 @@ export class NewAnalisisFacialComponent implements OnInit{
                 if(this.patronFacialArray[index] == this.analisisFacial.patronFacial){
                   this.analisisFacialArrayBool[index] = true
                 }
-                if(this.datosGenerales.id != null){
+                if(this.pacienteId != null){
                   //this.patronFacialArray[index] = this.analisisFacial.patronFacial
                   this.analisisFacialForm.controls['patronFacial'].setValue(this.patronFacialArray[index])
                 }
@@ -90,7 +92,7 @@ export class NewAnalisisFacialComponent implements OnInit{
                   if(this.perfilArray[index] == this.analisisFacial.perfil){
                     this.perfilArrayBool[index] = true
                   }
-                  if(this.datosGenerales.id != null){
+                  if(this.pacienteId != null){
                     //this.perfilArray[index] = this.analisisFacial.perfil
                     this.analisisFacialForm.controls['perfil'].setValue(this.perfilArray[index])
                   }
@@ -101,7 +103,7 @@ export class NewAnalisisFacialComponent implements OnInit{
                 if(this.asimetriaArray[index] == this.analisisFacial.asimetria){
                   this.asimetriaArrayBool[index] = true
                 }
-                if(this.datosGenerales.id != null){
+                if(this.pacienteId != null){
                   //.asimetriaArray[index] = this.analisisFacial.asimetria
                   this.analisisFacialForm.controls['asimetria'].setValue(this.asimetriaArray[index])
                 }
@@ -112,7 +114,7 @@ export class NewAnalisisFacialComponent implements OnInit{
               if(this.alturaFacialEquilibradaArray[index] == this.analisisFacial.alturaFE){
                 this.alturaFacialEquilibradaArrayBool[index] = true
               }
-              if(this.datosGenerales.id != null){
+              if(this.pacienteId != null){
                 //this.alturaFacialEquilibradaArray[index] = this.analisisFacial.alturaFE
                 this.analisisFacialForm.controls['alturaFE'].setValue(this.alturaFacialEquilibradaArray[index])
               }
@@ -123,7 +125,7 @@ export class NewAnalisisFacialComponent implements OnInit{
               if(this.anchoFacialEquilibradaArray[index] == this.analisisFacial.anchuraFE){
                 this.anchoFacialEquilibradaArrayBool[index] = true
               }
-              if(this.datosGenerales.id != null){
+              if(this.pacienteId != null){
                 //this.anchoFacialEquilibradaArray[index] = this.analisisFacial.anchuraFE
                 this.analisisFacialForm.controls['anchuraFE'].setValue(this.anchoFacialEquilibradaArray[index])
               }
@@ -134,7 +136,7 @@ export class NewAnalisisFacialComponent implements OnInit{
               if(this.perfilMandibularArray[index] == this.analisisFacial.perfilMaxilar){
                 this.perfilMaxilarArrayBool[index] = true
               }
-              if(this.datosGenerales.id != null){
+              if(this.pacienteId != null){
                 //this.perfilMaxilarArray[index] = this.analisisFacial.perfilMaxilar
                 this.analisisFacialForm.controls['perfilMaxilar'].setValue(this.perfilMaxilarArray[index])
               }
@@ -145,7 +147,7 @@ export class NewAnalisisFacialComponent implements OnInit{
               if(this.perfilMandibularArray[index] == this.analisisFacial.perfilMandibular){
                 this.perfilMandibularArrayBool[index] = true
               }
-              if(this.datosGenerales.id != null){
+              if(this.pacienteId != null){
                 //this.perfilMandibularArray[index] = this.analisisFacial.perfilMandibular
                 this.analisisFacialForm.controls['perfilMandibular'].setValue(this.perfilMandibularArray[index])
               }
@@ -156,7 +158,7 @@ export class NewAnalisisFacialComponent implements OnInit{
               if(this.surcoLabioMentonArray[index] == this.analisisFacial.surcoLM){
                 this.surcoLabioMentonArrayBool[index] = true
               }
-              if(this.datosGenerales.id != null){
+              if(this.pacienteId != null){
                 //this.surcoLabioMentonArray[index] = this.analisisFacial.surcoLM
                 this.analisisFacialForm.controls['surcoLM'].setValue(this.surcoLabioMentonArray[index])
               }
@@ -167,7 +169,7 @@ export class NewAnalisisFacialComponent implements OnInit{
               if(this.labiosReposoArray[index] == this.analisisFacial.labiosEr){
                 this.labiosReposoArrayBool[index] = true
               }
-              if(this.datosGenerales.id != null){
+              if(this.pacienteId != null){
                 //this.labiosReposoArray[index] = this.analisisFacial.labiosEr
                 this.analisisFacialForm.controls['labiosEr'].setValue(this.labiosReposoArray[index])
               }
@@ -192,7 +194,7 @@ export class NewAnalisisFacialComponent implements OnInit{
     
       updateAnalisisFacial(){
         //console.log(this.analisisFacialForm.value)
-        this.analisisFacialForm.controls['idDatosGenerales'].setValue(this.datosGenerales.id)
+        this.analisisFacialForm.controls['idDatosGenerales'].setValue(this.pacienteId)
         this.analisisFacialService.updateAnalisisFacial(this.analisisFacialForm.value).subscribe(dato => {
           console.log(dato)
           this.completadoAnalisisFacial = true

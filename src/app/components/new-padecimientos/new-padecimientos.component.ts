@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { PadecimientosAService } from '../../services/padecimientos-a.service';
 import { ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs';
+import { DatosGenerales } from '../../models/datos-generales';
 
 @Component({
   selector: 'app-new-padecimientos',
@@ -10,9 +11,9 @@ import { switchMap } from 'rxjs';
   styleUrl: './new-padecimientos.component.css'
 })
 export class NewPadecimientosComponent implements OnInit{
-@Input() pacienteId?: any
-@Input() datosGenerales?: any
+@Input() datosGenerales!: DatosGenerales
 
+pacienteId: number = 0
 padecimientosActuales?: any;
 completadoPadecimientosActuales = false;
 
@@ -23,6 +24,7 @@ constructor(
 ){}
 
   ngOnInit(): void {
+    this.pacienteId = this.datosGenerales.id
     //=========PADECIMIENTOS ACTUALES========
         this.activatedRoute.params
         .pipe(
@@ -93,7 +95,7 @@ constructor(
   }
 
   updatePadecimientosActuales(){
-    this.padecimientosActualesForm.controls['idDatosGenerales'].setValue(this.datosGenerales.id)
+    this.padecimientosActualesForm.controls['idDatosGenerales'].setValue(this.pacienteId)
     this.padecimientosAService.updatePadecimientos(this.padecimientosActualesForm.value).subscribe(dato => {
       console.log(dato)
       this.completadoPadecimientosActuales = true

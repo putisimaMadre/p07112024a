@@ -12,8 +12,9 @@ import { switchMap } from 'rxjs';
   styleUrl: './new-analisis-funcional.component.css'
 })
 export class NewAnalisisFuncionalComponent implements OnInit{
-  @Input() pacienteId?: any 
-  @Input() datosGenerales?: any
+  @Input() datosGenerales!: DatosGenerales
+
+  pacienteId:number = 0
 
   actividadConmisuralArray: number[] = [1, 2, 3];
   actividadConmisuralArrayBool: boolean[] = [false, false, false];
@@ -49,6 +50,7 @@ export class NewAnalisisFuncionalComponent implements OnInit{
   ){}
 
   ngOnInit(): void {
+    this.pacienteId = this.datosGenerales.id
     this.activatedRoute.params
     .pipe(
       switchMap(({id}) => this.analisisFuncionalService.getAnalisisFuncionalEdit(id)),
@@ -80,7 +82,7 @@ export class NewAnalisisFuncionalComponent implements OnInit{
     }
   
     updateAnalisisFuncional(){
-      this.analisisFuncionalForm.controls['idDatosGenerales'].setValue(this.datosGenerales.id)
+      this.analisisFuncionalForm.controls['idDatosGenerales'].setValue(this.pacienteId)
       this.analisisFuncionalService.updateAnalisisFuncional(this.analisisFuncionalForm.value).subscribe(dato => {
         console.log(dato)
         this.completadoAnalisisFuncional = true
@@ -99,7 +101,7 @@ export class NewAnalisisFuncionalComponent implements OnInit{
                 if(this.actividadConmisuralArray[index] == this.analisisFuncional.actividadComisural){
                   this.actividadConmisuralArrayBool[index] = true
                 }
-                if(this.datosGenerales.id != null){
+                if(this.pacienteId != null){
                   this.analisisFuncionalForm.controls['actividadComisural'].setValue(this.actividadConmisuralArray[index])
                 }
               }
@@ -109,7 +111,7 @@ export class NewAnalisisFuncionalComponent implements OnInit{
                 if(this.actividadLingualArray[index] == this.analisisFuncional.actividadLingual){
                   this.actividadLingualArrayBool[index] = true
                 }
-                if(this.datosGenerales.id != null){
+                if(this.pacienteId != null){
                   this.analisisFuncionalForm.controls['actividadLingual'].setValue(this.actividadLingualArray[index])
                 }
               }
@@ -119,7 +121,7 @@ export class NewAnalisisFuncionalComponent implements OnInit{
                 if(this.labioSuperiorArray[index] == this.analisisFuncional.labioSuperior){
                   this.labioSuperiorArrayBool[index] = true
                 }
-                if(this.datosGenerales.id != null){
+                if(this.pacienteId != null){
                   this.analisisFuncionalForm.controls['labioSuperior'].setValue(this.labioSuperiorArray[index])
                 }
               }
@@ -129,7 +131,7 @@ export class NewAnalisisFuncionalComponent implements OnInit{
                 if(this.labioInferiorArray[index] == this.analisisFuncional.labioInferior){
                   this.labioInferiorArrayBool[index] = true
                 }
-                if(this.datosGenerales.id != null){
+                if(this.pacienteId != null){
                   this.analisisFuncionalForm.controls['labioInferior'].setValue(this.labioInferiorArray[index])
                 }
               }
@@ -139,7 +141,7 @@ export class NewAnalisisFuncionalComponent implements OnInit{
                 if(this.maseteroArray[index] == this.analisisFuncional.masetero){
                   this.maseteroArrayBool[index] = true
                 }
-                if(this.datosGenerales.id != null){
+                if(this.pacienteId != null){
                   this.analisisFuncionalForm.controls['masetero'].setValue(this.maseteroArray[index])
                 }
               }
@@ -149,7 +151,7 @@ export class NewAnalisisFuncionalComponent implements OnInit{
                 if(this.mentonianoArray[index] == this.analisisFuncional.mentoniano){
                   this.mentonianoArrayBool[index] = true
                 }
-                if(this.datosGenerales.id != null){
+                if(this.pacienteId != null){
                   this.analisisFuncionalForm.controls['mentoniano'].setValue(this.mentonianoArray[index])
                 }
               }
@@ -159,7 +161,7 @@ export class NewAnalisisFuncionalComponent implements OnInit{
                 if(this.respiracionArray[index] == this.analisisFuncional.respiracion){
                   this.respiracionArrayBool[index] = true
                 }
-                if(this.datosGenerales.id != null){
+                if(this.pacienteId != null){
                   this.analisisFuncionalForm.controls['respiracion'].setValue(this.respiracionArray[index])
                 }
               }
@@ -169,7 +171,7 @@ export class NewAnalisisFuncionalComponent implements OnInit{
                 if(this.deglucionArray[index] == this.analisisFuncional.deglucion){
                   this.deglucionArrayBool[index] = true
                 }
-                if(this.datosGenerales.id != null){
+                if(this.pacienteId != null){
                   this.analisisFuncionalForm.controls['deglucion'].setValue(this.deglucionArray[index])
                 }
               }

@@ -5,6 +5,7 @@ import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import { ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs';
 import { EvaluacionClinica } from '../../models/evaluacion-clinica';
+import { DatosGenerales } from '../../models/datos-generales';
 
 @Component({
   selector: 'app-new-evaluacion-clinica',
@@ -29,9 +30,9 @@ export class NewEvaluacionClinicaComponent implements OnInit{
       );
     }
   //========ESTO ES PARA EL TEXT AREA =======//
-  @Input() paciente: string = "";
-  @Input() pacienteId?: any
-  @Input() datosGenerales?: any
+  @Input() datosGenerales!: DatosGenerales
+  paciente:string = ''
+  pacienteId:number = 0
   
   //fechaHoy: number = Date.now();
   completadoEvaluacionClinica = false
@@ -44,6 +45,8 @@ export class NewEvaluacionClinicaComponent implements OnInit{
   ){}
 
   ngOnInit(): void {
+    this.paciente = this.datosGenerales.nombre
+    this.pacienteId = this.datosGenerales.id
     this.activatedRoute.params
     .pipe(
       switchMap(({id}) => this.evaluacionClinicaService.getEvaluacionClinicaEdit(id)),

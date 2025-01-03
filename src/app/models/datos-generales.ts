@@ -5,7 +5,7 @@ export interface DatosGenerales {
     "entidad": string,
     "ocupacion": string,
     "escolaridad": string,
-    "fechaNacimiento": Date,
+    "fechaNacimiento": string,
     "edad": number,
     "sexo": string,
     "lugarNacimiento": string,

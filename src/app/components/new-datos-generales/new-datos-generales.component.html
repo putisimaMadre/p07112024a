@@ -15,9 +15,8 @@
     <div class="col-12">
     <mat-stepper #stepper>
         <mat-step>
-          <!--form uno-->
+          <ng-template matStepLabel>Datos Generales</ng-template>
           <form [formGroup] = "formDatosGenerales">
-            <ng-template matStepLabel>Datos Generales</ng-template>
             <div class="grid">
                 <div class="col-offset-1"></div>
                 <mat-form-field class="col-4">
@@ -148,58 +147,44 @@
         </form>
         </mat-step>
         <mat-step *ngIf="pacienteId != 0">
-          <!--<form [formGroup]="antecedentesFyHForm">-->
             <ng-template matStepLabel>Antecedentes Familiares y Hereditarios</ng-template>
-                <app-new-antecedentes-fy-h 
-                    [paciente] = "paciente"
-                    [pacienteId] = "pacienteId"
+                <app-new-antecedentes-fy-h
                     [datosGenerales] ="datosGenerales"
                 ></app-new-antecedentes-fy-h>
         </mat-step>
         <mat-step *ngIf="pacienteId != 0">
           <ng-template matStepLabel>Antecedentes Personales y Patologicos</ng-template>
-            <app-new-antecedentes-py-p 
-                [pacienteId] = "pacienteId"
+            <app-new-antecedentes-py-p
                 [datosGenerales] = "datosGenerales"
             ></app-new-antecedentes-py-p>
         </mat-step>
         <mat-step *ngIf="pacienteId != 0">
-            <!--<form [formGroup]="antecedentesFyHForm">-->
             <ng-template matStepLabel>Antecedentes Personales "NO" Patológicos</ng-template>
               <app-new-antecedentes-pno-p
-                [pacienteId] = "pacienteId"
                 [datosGenerales] = "datosGenerales"
               ></app-new-antecedentes-pno-p>
         </mat-step>
         <mat-step *ngIf="pacienteId != 0">
             <ng-template matStepLabel>Padecimientos Actuales</ng-template>
                 <app-new-padecimientos
-                    [pacienteId] = "pacienteId"
                     [datosGenerales] = "datosGenerales"
                 ></app-new-padecimientos>
         </mat-step>
         <mat-step *ngIf="pacienteId != 0">
-            <!--<form [formGroup]="antecedentesFyHForm">-->
               <ng-template matStepLabel>Análisis Facial</ng-template>
                 <app-new-analisis-facial
-                    [pacienteId] = "pacienteId"
                     [datosGenerales] = "datosGenerales"
                 ></app-new-analisis-facial>
         </mat-step>
         <mat-step *ngIf="pacienteId != 0">
-            <!--<form [formGroup]="antecedentesFyHForm">-->
               <ng-template matStepLabel>Análisis Funcional</ng-template>
               <app-new-analisis-funcional
-                [pacienteId] = "pacienteId"
                 [datosGenerales] = "datosGenerales"
               ></app-new-analisis-funcional>
         </mat-step>
         <mat-step *ngIf="pacienteId != 0 && edad >= 18 else infantilBlock">
             <ng-template matStepLabel>Evaluación Clínica Adulto</ng-template>
-            <!--*ngIf="!datosGenerales?.id else updateDatosGeneralesBlock"-->
             <app-new-evaluacion-clinica
-                [paciente] = "paciente"
-                [pacienteId] = "pacienteId"
                 [datosGenerales] = "datosGenerales"
             ></app-new-evaluacion-clinica>
         </mat-step>
@@ -207,27 +192,19 @@
             <mat-step *ngIf="pacienteId != 0 && edad < 18">
                 <ng-template matStepLabel>Evaluación Clínica Infantil</ng-template>
                 <app-new-evaluacion-clinica-infantil
-                    [paciente] = "paciente"
-                    [pacienteId] = "pacienteId"
                     [datosGenerales] = "datosGenerales"
                 ></app-new-evaluacion-clinica-infantil>
             </mat-step>
         </ng-template>
-        <mat-step *ngIf="edit && pacienteId != 0">
-                <!--<form [formGroup]="antecedentesFyHForm">-->
+        <mat-step *ngIf="mostrarConsentimientoYpagos && pacienteId != 0">
             <ng-template matStepLabel>Consentimiento Informado</ng-template>
                 <app-new-consentimiento
-                    [pacienteId] = "pacienteId"
                     [datosGenerales] = "datosGenerales"
                 ></app-new-consentimiento>
         </mat-step>
-        <mat-step  *ngIf="edit && pacienteId != 0">
+        <mat-step  *ngIf="mostrarConsentimientoYpagos && pacienteId != 0">
                 <ng-template matStepLabel>Pagos</ng-template>
                 <app-new-pagos
-                    [edad] = "edad"
-                    [sexo] = "sexo"
-                    [paciente] = "paciente"
-                    [pacienteId] = "pacienteId"
                     [datosGenerales] = "datosGenerales"
                 ></app-new-pagos>
         </mat-step>

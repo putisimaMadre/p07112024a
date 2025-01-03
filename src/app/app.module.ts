@@ -23,6 +23,7 @@ import { NewEvaluacionClinicaInfantilComponent } from './components/new-evaluaci
 import { NewEvaluacionClinicaComponent } from './components/new-evaluacion-clinica/new-evaluacion-clinica.component';
 import { NewConsentimientoComponent } from './components/new-consentimiento/new-consentimiento.component';
 import { NewPagosComponent } from './components/new-pagos/new-pagos.component';
+import { NewPacienteComponent } from './components/new-paciente/new-paciente.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { NewPagosComponent } from './components/new-pagos/new-pagos.component';
     NewEvaluacionClinicaInfantilComponent,
     NewEvaluacionClinicaComponent,
     NewConsentimientoComponent,
-    NewPagosComponent
+    NewPagosComponent,
+    NewPacienteComponent
   ],
   imports: [
     BrowserModule,

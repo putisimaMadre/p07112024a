@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ConsentimientoInformadoService } from '../../services/consentimiento-informado.service';
+import { DatosGenerales } from '../../models/datos-generales';
 
 interface Odontologo {
   valor: string;
@@ -14,8 +15,8 @@ interface Odontologo {
 })
 
 export class NewConsentimientoComponent implements OnInit {
-  @Input() pacienteId?: any
-  @Input() datosGenerales?: any
+  @Input() datosGenerales!: DatosGenerales
+  pacienteId:number = 0
 
   completadoConsentimientoInformado = false
 
@@ -25,6 +26,7 @@ export class NewConsentimientoComponent implements OnInit {
   ){}
 
   ngOnInit(): void {
+    this.pacienteId = this.datosGenerales.id
   }
 
   consentimientoInformadoForm: FormGroup = this.formBuilder.group({

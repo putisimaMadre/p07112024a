@@ -9,11 +9,12 @@ import { PagosService } from '../../services/pagos.service';
   styleUrl: './new-pagos.component.css'
 })
 export class NewPagosComponent implements OnInit{
-  @Input() edad?: number
-  @Input() sexo?: string
-  @Input() paciente: string = ""
-  @Input() pacienteId?: any
-  @Input() datosGenerales?: any
+  @Input() datosGenerales!: DatosGenerales
+  edad:number = 0
+  sexo:string = ''
+  paciente:string = ''
+  pacienteId:number = 0
+  
   completadoPagos = false
   
   constructor(
@@ -22,6 +23,10 @@ export class NewPagosComponent implements OnInit{
   ){}
 
   ngOnInit(): void {
+    this.edad = this.datosGenerales.edad
+    this.sexo = this.datosGenerales.sexo
+    this.paciente = this.datosGenerales.nombre
+    this.pacienteId = this.datosGenerales.id
   }
 
   savePagosForm(){

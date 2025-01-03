@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs';
 import { AntecedentesPNoPService } from '../../services/antecedentes-pno-p.service';
+import { DatosGenerales } from '../../models/datos-generales';
 
 @Component({
   selector: 'app-new-antecedentes-pno-p',
@@ -10,8 +11,11 @@ import { AntecedentesPNoPService } from '../../services/antecedentes-pno-p.servi
   styleUrl: './new-antecedentes-pno-p.component.css'
 })
 export class NewAntecedentesPnoPComponent implements OnInit{
-  @Input() pacienteId?: any
-  @Input() datosGenerales?: any
+  @Input()
+  datosGenerales!: DatosGenerales;
+
+  pacienteId: number = 0
+
   antecedentesPnoP?: any;
   completadoAntecedentesPNoP = false;
 
@@ -22,6 +26,7 @@ export class NewAntecedentesPnoPComponent implements OnInit{
   ){}
   
   ngOnInit(): void {
+    this.pacienteId = this.datosGenerales.id
     //=========ANTECEDENTES PERSONALES NO PATOLOGICOS========
         this.activatedRoute.params
         .pipe(
@@ -59,7 +64,7 @@ export class NewAntecedentesPnoPComponent implements OnInit{
   }
 
   updateAntecedentesPnoP(){
-    this.antecedentesPersonalesNoPForm.controls['idDatosGenerales'].setValue(this.datosGenerales.id)
+    this.antecedentesPersonalesNoPForm.controls['idDatosGenerales'].setValue(this.pacienteId)
     this.antecedentesPnoPService.updateAntecedentesPnoP(this.antecedentesPersonalesNoPForm.value).subscribe(dato => {
       console.log(dato)
       this.completadoAntecedentesPNoP = true

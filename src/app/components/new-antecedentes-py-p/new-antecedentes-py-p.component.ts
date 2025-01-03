@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs';
 import { AntecedentesPyPService } from '../../services/antecedentes-py-p.service';
 import { AntecedentesPyP } from '../../models/antecedentes-py-p';
+import { DatosGenerales } from '../../models/datos-generales';
 
 @Component({
   selector: 'app-new-antecedentes-py-p',
@@ -11,8 +12,9 @@ import { AntecedentesPyP } from '../../models/antecedentes-py-p';
   styleUrl: './new-antecedentes-py-p.component.css'
 })
 export class NewAntecedentesPyPComponent implements OnInit{
-  @Input() pacienteId: number = 0;
-  @Input() datosGenerales?: any;
+  @Input() datosGenerales!: DatosGenerales;
+
+  pacienteId: number = 0
   
   completadoAntecedentesPyP = false;
   patologiasPyPArray: FormGroup[] = []
@@ -24,6 +26,7 @@ export class NewAntecedentesPyPComponent implements OnInit{
   ){}
 
   ngOnInit(): void {
+    this.pacienteId = this.datosGenerales.id
     //=========ANTECEDENTES PERSONALES Y PATOLOGICOS========
         this.activatedRoute.params
         .pipe(
@@ -291,31 +294,31 @@ export class NewAntecedentesPyPComponent implements OnInit{
 
   updateAntecedentesPyP(){
     this.completadoAntecedentesPyP = true
-    this.varicelaForm.controls['idDatosGenerales'].setValue(this.datosGenerales.id);
-    this.rubeolaForm.controls['idDatosGenerales'].setValue(this.datosGenerales.id);
-    this.sarampionForm.controls['idDatosGenerales'].setValue(this.datosGenerales.id);
-    this.parotiditisForm.controls['idDatosGenerales'].setValue(this.datosGenerales.id);
-    this.tosferinaForm.controls['idDatosGenerales'].setValue(this.datosGenerales.id);
-    this.escarlatinaForm.controls['idDatosGenerales'].setValue(this.datosGenerales.id);
-    this.parasitosisForm.controls['idDatosGenerales'].setValue(this.datosGenerales.id);
-    this.hepatitisPyPForm.controls['idDatosGenerales'].setValue(this.datosGenerales.id);
-    this.SIDAPyPForm.controls['idDatosGenerales'].setValue(this.datosGenerales.id);
-    this.asmaForm.controls['idDatosGenerales'].setValue(this.datosGenerales.id);
-    this.disfuncionesEndocrinasForm.controls['idDatosGenerales'].setValue(this.datosGenerales.id);
-    this.hipertensionForm.controls['idDatosGenerales'].setValue(this.datosGenerales.id);
-    this.cancerForm.controls['idDatosGenerales'].setValue(this.datosGenerales.id);
-    this.enfTransSexForm.controls['idDatosGenerales'].setValue(this.datosGenerales.id);
-    this.epilepsiaPyPForm.controls['idDatosGenerales'].setValue(this.datosGenerales.id);
-    this.amigdalitisForm.controls['idDatosGenerales'].setValue(this.datosGenerales.id);
-    this.tubercolosisForm.controls['idDatosGenerales'].setValue(this.datosGenerales.id);
-    this.fiebreReumaticaForm.controls['idDatosGenerales'].setValue(this.datosGenerales.id);
-    this.diabetesPyPForm.controls['idDatosGenerales'].setValue(this.datosGenerales.id);
-    this.enfCardiovascularesForm.controls['idDatosGenerales'].setValue(this.datosGenerales.id);
-    this.artritisPyPForm.controls['idDatosGenerales'].setValue(this.datosGenerales.id);
-    this.traumatitisConSecuelasForm.controls['idDatosGenerales'].setValue(this.datosGenerales.id);
-    this.intervencionQuirurgicaForm.controls['idDatosGenerales'].setValue(this.datosGenerales.id);
-    this.transfusionSanguineaForm.controls['idDatosGenerales'].setValue(this.datosGenerales.id);
-    this.alergiaAForm.controls['idDatosGenerales'].setValue(this.datosGenerales.id);
+    this.varicelaForm.controls['idDatosGenerales'].setValue(this.pacienteId);
+    this.rubeolaForm.controls['idDatosGenerales'].setValue(this.pacienteId);
+    this.sarampionForm.controls['idDatosGenerales'].setValue(this.pacienteId);
+    this.parotiditisForm.controls['idDatosGenerales'].setValue(this.pacienteId);
+    this.tosferinaForm.controls['idDatosGenerales'].setValue(this.pacienteId);
+    this.escarlatinaForm.controls['idDatosGenerales'].setValue(this.pacienteId);
+    this.parasitosisForm.controls['idDatosGenerales'].setValue(this.pacienteId);
+    this.hepatitisPyPForm.controls['idDatosGenerales'].setValue(this.pacienteId);
+    this.SIDAPyPForm.controls['idDatosGenerales'].setValue(this.pacienteId);
+    this.asmaForm.controls['idDatosGenerales'].setValue(this.pacienteId);
+    this.disfuncionesEndocrinasForm.controls['idDatosGenerales'].setValue(this.pacienteId);
+    this.hipertensionForm.controls['idDatosGenerales'].setValue(this.pacienteId);
+    this.cancerForm.controls['idDatosGenerales'].setValue(this.pacienteId);
+    this.enfTransSexForm.controls['idDatosGenerales'].setValue(this.pacienteId);
+    this.epilepsiaPyPForm.controls['idDatosGenerales'].setValue(this.pacienteId);
+    this.amigdalitisForm.controls['idDatosGenerales'].setValue(this.pacienteId);
+    this.tubercolosisForm.controls['idDatosGenerales'].setValue(this.pacienteId);
+    this.fiebreReumaticaForm.controls['idDatosGenerales'].setValue(this.pacienteId);
+    this.diabetesPyPForm.controls['idDatosGenerales'].setValue(this.pacienteId);
+    this.enfCardiovascularesForm.controls['idDatosGenerales'].setValue(this.pacienteId);
+    this.artritisPyPForm.controls['idDatosGenerales'].setValue(this.pacienteId);
+    this.traumatitisConSecuelasForm.controls['idDatosGenerales'].setValue(this.pacienteId);
+    this.intervencionQuirurgicaForm.controls['idDatosGenerales'].setValue(this.pacienteId);
+    this.transfusionSanguineaForm.controls['idDatosGenerales'].setValue(this.pacienteId);
+    this.alergiaAForm.controls['idDatosGenerales'].setValue(this.pacienteId);
 
     this.patologiasPyPArray.push(this.varicelaForm);
     this.patologiasPyPArray.push(this.rubeolaForm);
@@ -364,7 +367,7 @@ export class NewAntecedentesPyPComponent implements OnInit{
               case 1:
                 this.varicelaForm.controls["siNo"].setValue(true)
                 this.varicelaForm.controls["fechaAgno"].setValue(this.antecedentesPyP.fechaAgno)
-                if(this.datosGenerales.id != null){
+                if(this.pacienteId != null){
                   this.varicelaForm.controls["siNo"].setValue(true)
                   this.varicelaForm.controls["fechaAgno"].setValue(this.antecedentesPyP.fechaAgno)
                   
@@ -373,7 +376,7 @@ export class NewAntecedentesPyPComponent implements OnInit{
                   case 2:
                       this.rubeolaForm.controls["siNo"].setValue(true)
                       this.rubeolaForm.controls["fechaAgno"].setValue(this.antecedentesPyP.fechaAgno)
-                      if(this.datosGenerales.id != null){
+                      if(this.pacienteId != null){
                         this.rubeolaForm.controls["siNo"].setValue(true)
                         this.rubeolaForm.controls["fechaAgno"].setValue(this.antecedentesPyP.fechaAgno)
                         
@@ -382,7 +385,7 @@ export class NewAntecedentesPyPComponent implements OnInit{
                   case 3:
                     this.sarampionForm.controls["siNo"].setValue(true)
                     this.sarampionForm.controls["fechaAgno"].setValue(this.antecedentesPyP.fechaAgno)
-                    if(this.datosGenerales.id != null){
+                    if(this.pacienteId != null){
                       this.sarampionForm.controls["siNo"].setValue(true)
                       this.sarampionForm.controls["fechaAgno"].setValue(this.antecedentesPyP.fechaAgno)
                       
@@ -391,7 +394,7 @@ export class NewAntecedentesPyPComponent implements OnInit{
                   case 4:
                     this.parotiditisForm.controls["siNo"].setValue(true)
                     this.parotiditisForm.controls["fechaAgno"].setValue(this.antecedentesPyP.fechaAgno)
-                    if(this.datosGenerales.id != null){
+                    if(this.pacienteId != null){
                       this.parotiditisForm.controls["siNo"].setValue(true)
                       this.parotiditisForm.controls["fechaAgno"].setValue(this.antecedentesPyP.fechaAgno)
                       
@@ -400,7 +403,7 @@ export class NewAntecedentesPyPComponent implements OnInit{
                   case 5:
                     this.tosferinaForm.controls["siNo"].setValue(true)
                     this.tosferinaForm.controls["fechaAgno"].setValue(this.antecedentesPyP.fechaAgno)
-                    if(this.datosGenerales.id != null){
+                    if(this.pacienteId != null){
                       this.tosferinaForm.controls["siNo"].setValue(true)
                       this.tosferinaForm.controls["fechaAgno"].setValue(this.antecedentesPyP.fechaAgno)
                       
@@ -409,7 +412,7 @@ export class NewAntecedentesPyPComponent implements OnInit{
                   case 6:
                     this.escarlatinaForm.controls["siNo"].setValue(true)
                     this.escarlatinaForm.controls["fechaAgno"].setValue(this.antecedentesPyP.fechaAgno)
-                    if(this.datosGenerales.id != null){
+                    if(this.pacienteId != null){
                       this.escarlatinaForm.controls["siNo"].setValue(true)
                       this.escarlatinaForm.controls["fechaAgno"].setValue(this.antecedentesPyP.fechaAgno)
                       
@@ -418,7 +421,7 @@ export class NewAntecedentesPyPComponent implements OnInit{
                   case 7:
                     this.parasitosisForm.controls["siNo"].setValue(true)
                     this.parasitosisForm.controls["fechaAgno"].setValue(this.antecedentesPyP.fechaAgno)
-                    if(this.datosGenerales.id != null){
+                    if(this.pacienteId != null){
                       this.parasitosisForm.controls["siNo"].setValue(true)
                       this.parasitosisForm.controls["fechaAgno"].setValue(this.antecedentesPyP.fechaAgno)
                       
@@ -427,7 +430,7 @@ export class NewAntecedentesPyPComponent implements OnInit{
                   case 8:
                     this.hepatitisPyPForm.controls["siNo"].setValue(true)
                     this.hepatitisPyPForm.controls["fechaAgno"].setValue(this.antecedentesPyP.fechaAgno)
-                    if(this.datosGenerales.id != null){
+                    if(this.pacienteId != null){
                       this.hepatitisPyPForm.controls["siNo"].setValue(true)
                       this.hepatitisPyPForm.controls["fechaAgno"].setValue(this.antecedentesPyP.fechaAgno)
                       
@@ -436,7 +439,7 @@ export class NewAntecedentesPyPComponent implements OnInit{
                   case 9:
                     this.SIDAForm.controls["siNo"].setValue(true)
                     this.SIDAForm.controls["fechaAgno"].setValue(this.antecedentesPyP.fechaAgno)
-                    if(this.datosGenerales.id != null){
+                    if(this.pacienteId != null){
                       this.SIDAForm.controls["siNo"].setValue(true)
                       this.SIDAForm.controls["fechaAgno"].setValue(this.antecedentesPyP.fechaAgno)
                       
@@ -445,7 +448,7 @@ export class NewAntecedentesPyPComponent implements OnInit{
                   case 10:
                     this.asmaForm.controls["siNo"].setValue(true)
                     this.asmaForm.controls["fechaAgno"].setValue(this.antecedentesPyP.fechaAgno)
-                    if(this.datosGenerales.id != null){
+                    if(this.pacienteId != null){
                       this.asmaForm.controls["siNo"].setValue(true)
                       this.asmaForm.controls["fechaAgno"].setValue(this.antecedentesPyP.fechaAgno)
                       
@@ -454,7 +457,7 @@ export class NewAntecedentesPyPComponent implements OnInit{
                   case 11:
                     this.disfuncionesEndocrinasForm.controls["siNo"].setValue(true)
                     this.disfuncionesEndocrinasForm.controls["fechaAgno"].setValue(this.antecedentesPyP.fechaAgno)
-                    if(this.datosGenerales.id != null){
+                    if(this.pacienteId != null){
                       this.disfuncionesEndocrinasForm.controls["siNo"].setValue(true)
                       this.disfuncionesEndocrinasForm.controls["fechaAgno"].setValue(this.antecedentesPyP.fechaAgno)
                       
@@ -463,7 +466,7 @@ export class NewAntecedentesPyPComponent implements OnInit{
                   case 12:
                     this.hipertensionForm.controls["siNo"].setValue(true)
                     this.hipertensionForm.controls["fechaAgno"].setValue(this.antecedentesPyP.fechaAgno)
-                    if(this.datosGenerales.id != null){
+                    if(this.pacienteId != null){
                       this.hipertensionForm.controls["siNo"].setValue(true)
                       this.hipertensionForm.controls["fechaAgno"].setValue(this.antecedentesPyP.fechaAgno)
                       
@@ -472,7 +475,7 @@ export class NewAntecedentesPyPComponent implements OnInit{
                   case 13:
                     this.cancerForm.controls["siNo"].setValue(true)
                     this.cancerForm.controls["fechaAgno"].setValue(this.antecedentesPyP.fechaAgno)
-                    if(this.datosGenerales.id != null){
+                    if(this.pacienteId != null){
                       this.cancerForm.controls["siNo"].setValue(true)
                       this.cancerForm.controls["fechaAgno"].setValue(this.antecedentesPyP.fechaAgno)
                       
@@ -481,7 +484,7 @@ export class NewAntecedentesPyPComponent implements OnInit{
               case 14:
                 this.enfTransSexForm.controls["siNo"].setValue(true)
                 this.enfTransSexForm.controls["fechaAgno"].setValue(this.antecedentesPyP.fechaAgno)
-                if(this.datosGenerales.id != null){
+                if(this.pacienteId != null){
                   this.enfTransSexForm.controls["siNo"].setValue(true)
                   this.enfTransSexForm.controls["fechaAgno"].setValue(this.antecedentesPyP.fechaAgno)
                   
@@ -490,7 +493,7 @@ export class NewAntecedentesPyPComponent implements OnInit{
                   case 15:
                 this.epilepsiaPyPForm.controls["siNo"].setValue(true)
                 this.epilepsiaPyPForm.controls["fechaAgno"].setValue(this.antecedentesPyP.fechaAgno)
-                if(this.datosGenerales.id != null){
+                if(this.pacienteId != null){
                   this.epilepsiaPyPForm.controls["siNo"].setValue(true)
                   this.epilepsiaPyPForm.controls["fechaAgno"].setValue(this.antecedentesPyP.fechaAgno)
                   
@@ -499,7 +502,7 @@ export class NewAntecedentesPyPComponent implements OnInit{
                   case 16:
                 this.amigdalitisForm.controls["siNo"].setValue(true)
                 this.amigdalitisForm.controls["fechaAgno"].setValue(this.antecedentesPyP.fechaAgno)
-                if(this.datosGenerales.id != null){
+                if(this.pacienteId != null){
                   this.amigdalitisForm.controls["siNo"].setValue(true)
                   this.amigdalitisForm.controls["fechaAgno"].setValue(this.antecedentesPyP.fechaAgno)
                   
@@ -508,7 +511,7 @@ export class NewAntecedentesPyPComponent implements OnInit{
                   case 17:
                 this.tubercolosisForm.controls["siNo"].setValue(true)
                 this.tubercolosisForm.controls["fechaAgno"].setValue(this.antecedentesPyP.fechaAgno)
-                if(this.datosGenerales.id != null){
+                if(this.pacienteId != null){
                   this.tubercolosisForm.controls["siNo"].setValue(true)
                   this.tubercolosisForm.controls["fechaAgno"].setValue(this.antecedentesPyP.fechaAgno)
                   
@@ -517,7 +520,7 @@ export class NewAntecedentesPyPComponent implements OnInit{
                   case 18:
                 this.fiebreReumaticaForm.controls["siNo"].setValue(true)
                 this.fiebreReumaticaForm.controls["fechaAgno"].setValue(this.antecedentesPyP.fechaAgno)
-                if(this.datosGenerales.id != null){
+                if(this.pacienteId != null){
                   this.fiebreReumaticaForm.controls["siNo"].setValue(true)
                   this.fiebreReumaticaForm.controls["fechaAgno"].setValue(this.antecedentesPyP.fechaAgno)
                   
@@ -526,7 +529,7 @@ export class NewAntecedentesPyPComponent implements OnInit{
                   case 19:
                 this.diabetesPyPForm.controls["siNo"].setValue(true)
                 this.diabetesPyPForm.controls["fechaAgno"].setValue(this.antecedentesPyP.fechaAgno)
-                if(this.datosGenerales.id != null){
+                if(this.pacienteId != null){
                   this.diabetesPyPForm.controls["siNo"].setValue(true)
                   this.diabetesPyPForm.controls["fechaAgno"].setValue(this.antecedentesPyP.fechaAgno)
                   
@@ -535,7 +538,7 @@ export class NewAntecedentesPyPComponent implements OnInit{
                   case 20:
                 this.enfCardiovascularesForm.controls["siNo"].setValue(true)
                 this.enfCardiovascularesForm.controls["fechaAgno"].setValue(this.antecedentesPyP.fechaAgno)
-                if(this.datosGenerales.id != null){
+                if(this.pacienteId != null){
                   this.enfCardiovascularesForm.controls["siNo"].setValue(true)
                   this.enfCardiovascularesForm.controls["fechaAgno"].setValue(this.antecedentesPyP.fechaAgno)
                   
@@ -544,7 +547,7 @@ export class NewAntecedentesPyPComponent implements OnInit{
                   case 21:
                 this.artritisPyPForm.controls["siNo"].setValue(true)
                 this.artritisPyPForm.controls["fechaAgno"].setValue(this.antecedentesPyP.fechaAgno)
-                if(this.datosGenerales.id != null){
+                if(this.pacienteId != null){
                   this.artritisPyPForm.controls["siNo"].setValue(true)
                   this.artritisPyPForm.controls["fechaAgno"].setValue(this.antecedentesPyP.fechaAgno)
                   
@@ -553,7 +556,7 @@ export class NewAntecedentesPyPComponent implements OnInit{
                   case 22:
                 this.traumatitisConSecuelasForm.controls["siNo"].setValue(true)
                 this.traumatitisConSecuelasForm.controls["fechaAgno"].setValue(this.antecedentesPyP.fechaAgno)
-                if(this.datosGenerales.id != null){
+                if(this.pacienteId != null){
                   this.traumatitisConSecuelasForm.controls["siNo"].setValue(true)
                   this.traumatitisConSecuelasForm.controls["fechaAgno"].setValue(this.antecedentesPyP.fechaAgno)
                   
@@ -562,7 +565,7 @@ export class NewAntecedentesPyPComponent implements OnInit{
                   case 23:
                 this.intervencionQuirurgicaForm.controls["siNo"].setValue(true)
                 this.intervencionQuirurgicaForm.controls["fechaAgno"].setValue(this.antecedentesPyP.fechaAgno)
-                if(this.datosGenerales.id != null){
+                if(this.pacienteId != null){
                   this.intervencionQuirurgicaForm.controls["siNo"].setValue(true)
                   this.intervencionQuirurgicaForm.controls["fechaAgno"].setValue(this.antecedentesPyP.fechaAgno)
                   
@@ -571,7 +574,7 @@ export class NewAntecedentesPyPComponent implements OnInit{
                   case 24:
                 this.transfusionSanguineaForm.controls["siNo"].setValue(true)
                 this.transfusionSanguineaForm.controls["fechaAgno"].setValue(this.antecedentesPyP.fechaAgno)
-                if(this.datosGenerales.id != null){
+                if(this.pacienteId != null){
                   this.transfusionSanguineaForm.controls["siNo"].setValue(true)
                   this.transfusionSanguineaForm.controls["fechaAgno"].setValue(this.antecedentesPyP.fechaAgno)
                   
@@ -580,7 +583,7 @@ export class NewAntecedentesPyPComponent implements OnInit{
                   case 25:
                 this.alergiaAForm.controls["siNo"].setValue(true)
                 this.alergiaAForm.controls["fechaAgno"].setValue(this.antecedentesPyP.fechaAgno)
-                if(this.datosGenerales.id != null){
+                if(this.pacienteId != null){
                   this.alergiaAForm.controls["siNo"].setValue(true)
                   this.alergiaAForm.controls["fechaAgno"].setValue(this.antecedentesPyP.fechaAgno)
                   
