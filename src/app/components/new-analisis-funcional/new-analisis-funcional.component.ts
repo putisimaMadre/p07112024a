@@ -15,6 +15,7 @@ export class NewAnalisisFuncionalComponent implements OnInit{
   @Input() datosGenerales!: DatosGenerales
 
   pacienteId:number = 0
+  edit: boolean = false
 
   actividadConmisuralArray: number[] = [1, 2, 3];
   actividadConmisuralArrayBool: boolean[] = [false, false, false];
@@ -50,7 +51,6 @@ export class NewAnalisisFuncionalComponent implements OnInit{
   ){}
 
   ngOnInit(): void {
-    this.pacienteId = this.datosGenerales.id
     this.activatedRoute.params
     .pipe(
       switchMap(({id}) => this.analisisFuncionalService.getAnalisisFuncionalEdit(id)),
@@ -74,6 +74,7 @@ export class NewAnalisisFuncionalComponent implements OnInit{
     })
 
     saveAnalisisFuncional(){
+      this.pacienteId = this.datosGenerales.id
       this.analisisFuncionalForm.controls['idDatosGenerales'].setValue(this.pacienteId)
       this.analisisFuncionalService.postAnalisisFuncional(this.analisisFuncionalForm.value).subscribe(dato => {
         console.log(dato)
@@ -82,6 +83,7 @@ export class NewAnalisisFuncionalComponent implements OnInit{
     }
   
     updateAnalisisFuncional(){
+      this.pacienteId = this.datosGenerales.id
       this.analisisFuncionalForm.controls['idDatosGenerales'].setValue(this.pacienteId)
       this.analisisFuncionalService.updateAnalisisFuncional(this.analisisFuncionalForm.value).subscribe(dato => {
         console.log(dato)
@@ -95,7 +97,9 @@ export class NewAnalisisFuncionalComponent implements OnInit{
         keys.forEach((key) => {
           if(this.isKey(analisisFuncional, key)){
             this.analisisFuncional = analisisFuncional[key];
-            
+              if(this.analisisFuncional.id != undefined){
+                this.edit = true
+              }
             if(this.analisisFuncional.actividadComisural){
               for (let index = 0; index <= this.actividadConmisuralArrayBool.length; index++) {
                 if(this.actividadConmisuralArray[index] == this.analisisFuncional.actividadComisural){

@@ -358,7 +358,7 @@
     </div> <!--col-4 donde van todos los antecedentes PyP-->
   </div> <!--grid final de ANTECEDENTES PERSONALES Y PATOLOGIAS-->
 
-<div class="grid" *ngIf="!datosGenerales?.id else updateAntecedentesPyPBlock">
+<div class="grid" *ngIf="!edit else updateAntecedentesPyPBlock">
     <div class="col-offset-8"></div>
     <div class="col-4" *ngIf="completadoAntecedentesPyP == false">
         <button [disabled]="completadoAntecedentesPyP" mat-flat-button

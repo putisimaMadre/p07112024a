@@ -48,7 +48,8 @@
             </mat-form-field>
         </div>
     </div>
-    <div class="grid" *ngIf="!datosGenerales?.id else updateAntecedentesPnoPBlock">
+<!--=============================================GUARDADO======================================-->
+    <div class="grid" *ngIf="!edit else updateAntecedentesPnoPBlock">
         <div class="col-offset-8"></div>
         <div class="col-4" *ngIf="completadoAntecedentesPNoP == false">
             <button [disabled]="completadoAntecedentesPNoP" mat-flat-button

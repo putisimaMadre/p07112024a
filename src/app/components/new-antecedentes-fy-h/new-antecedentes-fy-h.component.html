@@ -496,7 +496,8 @@
     </div>
 </div>-->
 <!--=============================================GUARDADO======================================-->
-<div class="grid" *ngIf="!datosGenerales?.id else updateAntecedentesFyHBlock">
+
+<div class="grid" *ngIf="!edit else updateAntecedentesFyHBlock">
 <div class="col-offset-8"></div>
 <div class="col-4" *ngIf="completadoAntecedentesFyH == false">
     <button [disabled]="completadoAntecedentesFyH" mat-flat-button

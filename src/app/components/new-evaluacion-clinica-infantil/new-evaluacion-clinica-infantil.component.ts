@@ -30,8 +30,10 @@ export class NewEvaluacionClinicaInfantilComponent implements OnInit{
     }
   //========ESTO ES PARA EL TEXT AREA =======//
   @Input() datosGenerales!: DatosGenerales
-  pacienteId = this.datosGenerales.id
-  paciente = this.datosGenerales.nombre
+  @Input() paciente!: string;
+  pacienteId: number = 0
+  //paciente = this.datosGenerales.nombre
+  edit: boolean = false
 
   completadoEvaluacionClinicaInfantil = false
   evaluacionClinicaInfantil?: any
@@ -52,6 +54,9 @@ export class NewEvaluacionClinicaInfantilComponent implements OnInit{
       keys.forEach((key) => {
         if(this.isKey(evaluacionC, key)){
           this.evaluacionClinicaInfantil = evaluacionC[key]
+          if(this.evaluacionClinicaInfantil.id != undefined){
+            this.edit = true
+          }
           this.evaluacionClinicaInfantilForm.setValue({
             motivo: this.evaluacionClinicaInfantil.motivo,
             observaciones: this.evaluacionClinicaInfantil.observaciones,
@@ -75,6 +80,8 @@ export class NewEvaluacionClinicaInfantilComponent implements OnInit{
   })
 
     saveEvaluacionClinicaInfantil(){
+      this.paciente = this.datosGenerales.nombre
+      this.pacienteId = this.datosGenerales.id
       this.evaluacionClinicaInfantilForm.controls['idDatosGenerales'].setValue(this.pacienteId)
       this.evaluacionClinicaInfantilService.postEvaluacionClinicaInfantil(this.evaluacionClinicaInfantilForm.value).subscribe(dato => {
         console.log(dato)
@@ -83,6 +90,8 @@ export class NewEvaluacionClinicaInfantilComponent implements OnInit{
     }
 
     updateEvaluacionClinicaInfantil(){
+      this.paciente = this.datosGenerales.nombre
+      this.pacienteId = this.datosGenerales.id
       this.evaluacionClinicaInfantilForm.controls['idDatosGenerales'].setValue(this.datosGenerales.id)
       this.evaluacionClinicaInfantilService.updateEvaluacionClinicaInfantil(this.evaluacionClinicaInfantilForm.value).subscribe(dato => {
         console.log(dato)

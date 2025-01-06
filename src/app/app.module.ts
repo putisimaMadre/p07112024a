@@ -24,6 +24,7 @@ import { NewEvaluacionClinicaComponent } from './components/new-evaluacion-clini
 import { NewConsentimientoComponent } from './components/new-consentimiento/new-consentimiento.component';
 import { NewPagosComponent } from './components/new-pagos/new-pagos.component';
 import { NewPacienteComponent } from './components/new-paciente/new-paciente.component';
+import { provideNativeDateAdapter } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,7 @@ import { NewPacienteComponent } from './components/new-paciente/new-paciente.com
     ReactiveFormsModule,
     MaterialModule
   ],
-  providers: [provideHttpClient(), provideAnimationsAsync()],
+  providers: [provideHttpClient(), provideAnimationsAsync(), provideNativeDateAdapter()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

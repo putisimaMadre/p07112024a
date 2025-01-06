@@ -82,9 +82,9 @@
         <div class="col-8">
         <mat-radio-group aria-label="Select an option" formControlName="perfilMaxilar">
             <div class="grid">
-            <mat-radio-button class="col-4" value={{perfilMandibularArray[0]}} [checked]="perfilArrayBool[0]">Ortognático</mat-radio-button>
-            <mat-radio-button class="col-4" value={{perfilMandibularArray[1]}} [checked]="perfilArrayBool[1]">Prognático</mat-radio-button>
-            <mat-radio-button class="col-4" value={{perfilMandibularArray[2]}} [checked]="perfilArrayBool[2]">Retrognático</mat-radio-button>
+            <mat-radio-button class="col-4" value={{perfilMaxilarArray[0]}} [checked]="perfilMaxilarArrayBool[0]">Ortognático</mat-radio-button>
+            <mat-radio-button class="col-4" value={{perfilMaxilarArray[1]}} [checked]="perfilMaxilarArrayBool[1]">Prognático</mat-radio-button>
+            <mat-radio-button class="col-4" value={{perfilMaxilarArray[2]}} [checked]="perfilMaxilarArrayBool[2]">Retrognático</mat-radio-button>
             </div>
         </mat-radio-group>
         </div>
@@ -134,7 +134,7 @@
         </div>
     </div>
     <!--=============================================GUARDADO======================================-->
-    <div class="grid" *ngIf="!datosGenerales?.id else analisisFacialBlock">
+    <div class="grid" *ngIf="!edit else analisisFacialBlock">
         <div class="col-offset-8"></div>
         <div class="col-4" *ngIf="completadoAnalisisFacial == false">
             <button [disabled]="completadoAnalisisFacial" mat-flat-button

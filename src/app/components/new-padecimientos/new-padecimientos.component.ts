@@ -16,6 +16,7 @@ export class NewPadecimientosComponent implements OnInit{
 pacienteId: number = 0
 padecimientosActuales?: any;
 completadoPadecimientosActuales = false;
+edit: boolean = false
 
 constructor(
   private formBuilder: FormBuilder,
@@ -24,7 +25,6 @@ constructor(
 ){}
 
   ngOnInit(): void {
-    this.pacienteId = this.datosGenerales.id
     //=========PADECIMIENTOS ACTUALES========
         this.activatedRoute.params
         .pipe(
@@ -35,6 +35,10 @@ constructor(
           keys.forEach((key) => {
             if(this.isKey(padecimientosA, key)){
               this.padecimientosActuales = padecimientosA[key];
+              if(this.padecimientosActuales.id != undefined){
+                this.edit = true
+              }
+              console.log(this.edit)
               this.padecimientosActualesForm.controls["preguntaUnoS"].setValue(this.padecimientosActuales.preguntaUnoS)
               this.padecimientosActualesForm.controls["preguntaUno"].setValue(this.padecimientosActuales.preguntaUno)
               /*if(this.padecimientosActualesForm.get("preguntaUno")?.value != null 
@@ -87,6 +91,7 @@ constructor(
   }
 
   savePadecimientosActuales(){
+    this.pacienteId = this.datosGenerales.id
     this.padecimientosActualesForm.controls['idDatosGenerales'].setValue(this.pacienteId)
     this.padecimientosAService.postPadecimientos(this.padecimientosActualesForm.value).subscribe(dato => {
       console.log(dato)
@@ -95,6 +100,7 @@ constructor(
   }
 
   updatePadecimientosActuales(){
+    this.pacienteId = this.datosGenerales.id
     this.padecimientosActualesForm.controls['idDatosGenerales'].setValue(this.pacienteId)
     this.padecimientosAService.updatePadecimientos(this.padecimientosActualesForm.value).subscribe(dato => {
       console.log(dato)

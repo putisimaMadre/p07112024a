@@ -128,7 +128,7 @@
         </div>
     </div>
     <!--=============================================GUARDADO======================================-->
-    <div class="grid" *ngIf="!datosGenerales?.id else analisisFuncionalBlock">
+    <div class="grid" *ngIf="!edit else analisisFuncionalBlock">
         <div class="col-offset-8"></div>
         <div class="col-4" *ngIf="completadoAnalisisFuncional == false">
             <button [disabled]="completadoAnalisisFuncional" mat-flat-button

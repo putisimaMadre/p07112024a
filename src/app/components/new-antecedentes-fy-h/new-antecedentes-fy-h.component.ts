@@ -13,9 +13,11 @@ import { DatosGenerales } from '../../models/datos-generales';
 })
 export class NewAntecedentesFyHComponent implements OnInit {
   @Input() datosGenerales!: DatosGenerales;
+  @Input() paciente!: string;
 
   pacienteId: number = 0
-  paciente: string = ''
+  //paciente: string = ''
+  edit: boolean = false
   
   patologiasArray: FormGroup[] = []
   completadoAntecedentesFyH = false;
@@ -27,9 +29,6 @@ export class NewAntecedentesFyHComponent implements OnInit {
   ){}
 
   ngOnInit(): void {
-    console.log(this.datosGenerales)
-    //this.paciente = this.datosGenerales.nombre
-    //this.pacienteId = this.datosGenerales.id
     //=========ANTECEDENTES PERSONALES Y HEREDITARIOS========
         this.activatedRoute.params
         .pipe(
@@ -215,6 +214,7 @@ export class NewAntecedentesFyHComponent implements OnInit {
       })
 
       saveAntecedentesFyH(): void {
+        this.pacienteId = this.datosGenerales.id
         this.completadoAntecedentesFyH = true;
         this.diabetesForm.controls['idDatosGenerales'].setValue(this.pacienteId)
         this.hipertensionAForm.controls['idDatosGenerales'].setValue(this.pacienteId)
@@ -253,6 +253,7 @@ export class NewAntecedentesFyHComponent implements OnInit {
       }
     
       updateAntecedentesFyH(){
+        this.pacienteId = this.datosGenerales.id
         this.diabetesForm.controls['idDatosGenerales'].setValue(this.pacienteId)
         this.hipertensionAForm.controls['idDatosGenerales'].setValue(this.pacienteId)
         this.cardiopatiaForm.controls['idDatosGenerales'].setValue(this.pacienteId)
@@ -299,6 +300,11 @@ export class NewAntecedentesFyHComponent implements OnInit {
         keys.forEach((key) => {
           if (this.isKey(antecedentesFyH, key)) {
             this.antecedentesFyH = antecedentesFyH[key];
+              //console.log("Antecedentes: "+this.antecedentesFyH.id)
+              if(this.antecedentesFyH.id != undefined){
+                this.edit = true
+              }
+              //console.log("entrando: "+this.edit)
             if(Number.isInteger(this.antecedentesFyH.madre) && this.antecedentesFyH.madre != 0){
               let idPatologia = this.antecedentesFyH.idPatologias
               switch ( idPatologia ) {
@@ -1115,5 +1121,9 @@ export class NewAntecedentesFyHComponent implements OnInit {
               formGroup.controls[key].setValue(0)
             }
         });
+      }
+
+      prueba(){
+        console.log(this.datosGenerales)
       }
 }

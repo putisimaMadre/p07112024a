@@ -3,13 +3,21 @@
         <div class="col-offset-1"></div>
         <div class="col-4">
             
-            <mat-form-field class="col-8">
+            <!--<mat-form-field class="col-8">
                 <mat-label>Seleccione el Odontólogo</mat-label>
-                <mat-select [formControl]="odontologoControl" required>
+                <mat-select [value]="concentimientoInformado?.odontologo" [formControl]="odontologoControl" required>
                 <mat-option>--</mat-option>
                 @for (odontologo of odontologos; track odontologo) {
                     <mat-option [value]="odontologo">{{odontologo.valor}}</mat-option>
                 }
+                </mat-select>
+            </mat-form-field>-->
+            <mat-form-field class="col-4">
+                <mat-label>Odontologo</mat-label>
+                <mat-select disableRipple [value]="concentimientoInformado?.odontologo" formControlName="odontologo">
+                    <mat-option value="Etbaal Corona">Etbaal Corona</mat-option>
+                    <mat-option value="Rosa Martinez">Rosa Martinez</mat-option>
+                    <mat-option value="Araceli Gomez">Araceli Gomez</mat-option>
                 </mat-select>
             </mat-form-field>
             
@@ -17,11 +25,11 @@
         <div class="col-7">
             <p style="text-align: justify;">Yo, 
                 <mat-form-field class="col-4">
-                    <b><input matInput type="text" formControlName="nombrePersona"></b>
+                    <b><input matInput type="text" [value]="concentimientoInformado?.nombrePersona" formControlName="nombrePersona"></b>
                 </mat-form-field>
             por medio del presente documento o en mi calidad del representante legal del paciente
             en pleno y normal uso de mis facultades mentales, otorgo en forma libre mi consentimiento al Odontólogo 
-            <b>{{odontologoControl.value?.valorEnVista}}</b> así como de los auxiliares y técnicos en el ejercicio
+            <b>{{concentimientoInformado?.odontologo}}</b> así como de los auxiliares y técnicos en el ejercicio
             legal de su profesión, se me realice el siguiente tratamiento estipulado por escrito en este documento.
 
             Así mismo quedan autorizados para llevar a cabo o solicitar la práctica de conductas o procedimientos 
@@ -43,7 +51,7 @@
         </div>
     </div>
     <!--=============================================GUARDADO======================================-->
-    <div class="grid">
+    <div class="grid" *ngIf="!edit else concentimientoIBlock">
         <div class="col-offset-8"></div>
         <div class="col-4" *ngIf="completadoConsentimientoInformado == false">
             <button [disabled]="completadoConsentimientoInformado" mat-flat-button
@@ -54,4 +62,18 @@
             >Informacion guardada</button>
         </div>
     </div>
+    <!--=============================================ACTUALIZADO======================================-->
+    <ng-template #concentimientoIBlock>
+        <div class="grid">
+            <div class="col-offset-8"></div>
+            <div class="col-4" *ngIf="completadoConsentimientoInformado == false">
+                <button [disabled]="completadoConsentimientoInformado" mat-flat-button
+                (click)="updateAnalisisFacial()">Actualizar</button>
+            </div>
+            <div class="col-4" *ngIf="completadoConsentimientoInformado == true">
+                <button [disabled]="completadoConsentimientoInformado" mat-flat-button 
+                >Informacion guardada</button>
+            </div>
+        </div>
+    </ng-template>
     </form>

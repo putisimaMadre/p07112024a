@@ -30,9 +30,11 @@ export class NewEvaluacionClinicaComponent implements OnInit{
       );
     }
   //========ESTO ES PARA EL TEXT AREA =======//
-  @Input() datosGenerales!: DatosGenerales
-  paciente:string = ''
-  pacienteId:number = 0
+  @Input() datosGenerales!: DatosGenerales;
+  @Input() paciente!: string;
+  //paciente:string = ''
+  pacienteId: number = 0
+  edit: boolean = false
   
   //fechaHoy: number = Date.now();
   completadoEvaluacionClinica = false
@@ -45,8 +47,6 @@ export class NewEvaluacionClinicaComponent implements OnInit{
   ){}
 
   ngOnInit(): void {
-    this.paciente = this.datosGenerales.nombre
-    this.pacienteId = this.datosGenerales.id
     this.activatedRoute.params
     .pipe(
       switchMap(({id}) => this.evaluacionClinicaService.getEvaluacionClinicaEdit(id)),
@@ -56,6 +56,9 @@ export class NewEvaluacionClinicaComponent implements OnInit{
       keys.forEach((key) => {
         if(this.isKey(evaluacionC, key)){
           this.evaluacionClinica = evaluacionC[key]
+          if(this.evaluacionClinica.id != undefined){
+            this.edit = true
+          }
           this.evaluacionClinicaForm.setValue({
             motivo: this.evaluacionClinica.motivo,
             observaciones: this.evaluacionClinica.observaciones,
@@ -79,6 +82,8 @@ export class NewEvaluacionClinicaComponent implements OnInit{
   })
 
   saveEvaluacionClinica(){
+    this.paciente = this.datosGenerales.nombre
+    this.pacienteId = this.datosGenerales.id
     this.evaluacionClinicaForm.controls['idDatosGenerales'].setValue(this.pacienteId)
     this.evaluacionClinicaService.postEvaluacionClinica(this.evaluacionClinicaForm.value).subscribe(dato => {
       console.log(dato)
@@ -87,6 +92,8 @@ export class NewEvaluacionClinicaComponent implements OnInit{
   }
 
   updateEvaluacionClinica(){
+    this.paciente = this.datosGenerales.nombre
+    this.pacienteId = this.datosGenerales.id
     this.evaluacionClinicaForm.controls['idDatosGenerales'].setValue(this.datosGenerales.id)
     this.evaluacionClinicaService.updateEvaluacionClinica(this.evaluacionClinicaForm.value).subscribe(dato => {
       console.log(dato)

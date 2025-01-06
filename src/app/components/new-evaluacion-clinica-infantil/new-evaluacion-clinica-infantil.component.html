@@ -80,7 +80,7 @@
                     </div>
             </div>
             <!--=============================================GUARDADO======================================-->
-    <div class="grid" *ngIf="!datosGenerales?.id else evaluacionClinicaInfantilBlock">
+    <div class="grid" *ngIf="!edit else evaluacionClinicaInfantilBlock">
         <div class="col-offset-8"></div>
         <div class="col-4" *ngIf="completadoEvaluacionClinicaInfantil == false">
             <button [disabled]="completadoEvaluacionClinicaInfantil" mat-flat-button

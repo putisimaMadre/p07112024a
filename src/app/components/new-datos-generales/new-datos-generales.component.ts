@@ -1,10 +1,11 @@
-import { afterNextRender, Component ,inject, Injector, OnInit, ViewChild} from '@angular/core';
+import { afterNextRender, Component ,EventEmitter,inject, Injector, OnInit, Output, ViewChild} from '@angular/core';
 import { DatosGeneralesService } from '../../services/datos-generales.service';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import { switchMap } from 'rxjs';
+import { DatosGenerales } from '../../models/datos-generales';
 
 @Component({
   selector: 'app-new-datos-generales',
@@ -14,6 +15,9 @@ import { switchMap } from 'rxjs';
 })
 
 export class NewDatosGeneralesComponent implements OnInit{
+@Output("eventDatosGenerales") emitDatosGenerales = new EventEmitter<DatosGenerales>()
+//@Output("eventConcentimientoyPagos") emitConcentimientoyPagos = new EventEmitter<boolean>()
+
  //========ESTO ES PARA EL TEXT AREA =======//
   private _injector = inject(Injector);
   @ViewChild('autosize')
@@ -59,11 +63,13 @@ export class NewDatosGeneralesComponent implements OnInit{
           if(this.isKey(datosGenerales, key)){
             this.datosGenerales = datosGenerales[key];
             this.setearRegistrosDatosGenerales()
+            this.emitDatosGenerales.emit(this.datosGenerales)
             console.log(this.datosGenerales.id)
           }
         })
         if(this.datosGenerales != null){ //<= para comprobra si se edita o no
           this.mostrarConsentimientoYpagos = false
+          //this.emitConcentimientoyPagos.emit(this.mostrarConsentimientoYpagos)
         }
         return;
       })  
@@ -116,11 +122,9 @@ export class NewDatosGeneralesComponent implements OnInit{
     this.datosGeneralesService
     .postDatosGenerales(this.formDatosGenerales.value)
     .subscribe(dato => {
-      this.pacienteId = dato.id
-      this.edad = dato.edad
-      this.nombre = dato.nombre
       this.completadoDatosGenerales = true
       this.formDatosGenerales.controls['id'].setValue(dato.id);
+      this.emitDatosGenerales.emit(dato)
       console.log(dato)
     })
   }

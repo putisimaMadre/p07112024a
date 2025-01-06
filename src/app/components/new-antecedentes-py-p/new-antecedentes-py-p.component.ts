@@ -15,6 +15,7 @@ export class NewAntecedentesPyPComponent implements OnInit{
   @Input() datosGenerales!: DatosGenerales;
 
   pacienteId: number = 0
+  edit: boolean = false
   
   completadoAntecedentesPyP = false;
   patologiasPyPArray: FormGroup[] = []
@@ -26,7 +27,6 @@ export class NewAntecedentesPyPComponent implements OnInit{
   ){}
 
   ngOnInit(): void {
-    this.pacienteId = this.datosGenerales.id
     //=========ANTECEDENTES PERSONALES Y PATOLOGICOS========
         this.activatedRoute.params
         .pipe(
@@ -228,6 +228,7 @@ export class NewAntecedentesPyPComponent implements OnInit{
   })
 
   saveAntecedentesPyP(): void{
+    this.pacienteId = this.datosGenerales.id
     this.completadoAntecedentesPyP = true
     this.varicelaForm.controls['idDatosGenerales'].setValue(this.pacienteId);
     this.rubeolaForm.controls['idDatosGenerales'].setValue(this.pacienteId);
@@ -293,6 +294,7 @@ export class NewAntecedentesPyPComponent implements OnInit{
   //poner los combobox al primer cuestionario
 
   updateAntecedentesPyP(){
+    this.pacienteId = this.datosGenerales.id
     this.completadoAntecedentesPyP = true
     this.varicelaForm.controls['idDatosGenerales'].setValue(this.pacienteId);
     this.rubeolaForm.controls['idDatosGenerales'].setValue(this.pacienteId);
@@ -361,6 +363,9 @@ export class NewAntecedentesPyPComponent implements OnInit{
       keys.forEach((key) => {
         if(this.isKey(antecedentesPyP, key)){
           this.antecedentesPyP = antecedentesPyP[key];
+            if(this.antecedentesPyP.id != undefined){
+              this.edit = true
+            }
           if(this.antecedentesPyP.siNo){
             let idEnfermedad = this.antecedentesPyP.idEnfermedad
             switch ( idEnfermedad ) {

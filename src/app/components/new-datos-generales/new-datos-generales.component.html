@@ -1,213 +1,129 @@
-<div class="grid">
-    <div class="col-offset-3"></div>
-    <div class="col-7">
-        <h1 style="text-align: center;">Historia Clínica Odontología</h1>
+    <form [formGroup] = "formDatosGenerales">
+    <div class="grid">
+        <div class="col-offset-1"></div>
+        <mat-form-field class="col-4">
+            <mat-label>Nombre</mat-label>
+            <input matInput type="text" [value]="datosGenerales?.nombre" formControlName="nombre">
+        </mat-form-field>
+        <mat-form-field class="col-4">
+            <mat-label>Fecha de nacimiento</mat-label>
+            <input matInput [matDatepicker]="picker" 
+            [value]="datosGenerales?.fechaNacimiento" 
+            formControlName="fechaNacimiento" readonly="true">
+            <mat-hint>DD/MM/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        <div class="col-2">
+            <mat-card appearance="outlined">
+                <mat-card-header>
+                    <mat-card-title>  Fecha: {{fechaHoy | date: 'dd/MM/yyyy'}} </mat-card-title>
+                </mat-card-header>
+                </mat-card>
+        </div>
     </div>
-</div>
-
-<div class="grid">
-    <div class="col-12">
-        <app-menu></app-menu>
+    <div class="grid">
+        <div class="col-offset-1"></div>
+        <mat-form-field class="col-4">
+            <mat-label>Domicilio</mat-label>
+            <input matInput type="text" [value]="datosGenerales?.domicilio" formControlName="domicilio">
+        </mat-form-field>
+        <mat-form-field class="col-2">
+            <mat-label>Edad</mat-label>
+            <input matInput type="number" [value]="datosGenerales?.edad" formControlName="edad">
+        </mat-form-field>
+        <mat-form-field class="col-2">
+            <mat-label>Numero Telefonico</mat-label>
+            <input matInput type="text" [value]="datosGenerales?.numeroTelefono" formControlName="numeroTelefono">
+        </mat-form-field>
+        <mat-form-field class="col-2">
+            <mat-label>Expediente</mat-label>
+            <input matInput type="text" [value]="datosGenerales?.id" formControlName="id" readonly="true">
+        </mat-form-field>
     </div>
-</div>
+    <div class="grid">
+        <div class="col-offset-1"></div>
+        <mat-form-field class="col-4">
+            <mat-label>Entidad</mat-label>
+            <input matInput type="text" [value]="datosGenerales?.entidad" formControlName="entidad">
+        </mat-form-field>
 
-<div class="grid">
-    <div class="col-12">
-    <mat-stepper #stepper>
-        <mat-step>
-          <ng-template matStepLabel>Datos Generales</ng-template>
-          <form [formGroup] = "formDatosGenerales">
-            <div class="grid">
-                <div class="col-offset-1"></div>
-                <mat-form-field class="col-4">
-                    <mat-label>Nombre</mat-label>
-                    <input matInput type="text" [value]="datosGenerales?.nombre" formControlName="nombre">
-                </mat-form-field>
-                <mat-form-field class="col-4">
-                    <mat-label>Fecha de nacimiento</mat-label>
-                    <input matInput [matDatepicker]="picker" 
-                    [value]="datosGenerales?.fechaNacimiento" 
-                    formControlName="fechaNacimiento" readonly="true">
-                    <mat-hint>DD/MM/YYYY</mat-hint>
-                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-datepicker #picker></mat-datepicker>
-                  </mat-form-field>
-                <div class="col-2">
-                    <mat-card appearance="outlined">
-                        <mat-card-header>
-                          <mat-card-title>  Fecha: {{fechaHoy | date: 'dd/MM/yyyy'}} </mat-card-title>
-                        </mat-card-header>
-                      </mat-card>
-                </div>
-            </div>
-            <div class="grid">
-                <div class="col-offset-1"></div>
-                <mat-form-field class="col-4">
-                    <mat-label>Domicilio</mat-label>
-                    <input matInput type="text" [value]="datosGenerales?.domicilio" formControlName="domicilio">
-                </mat-form-field>
-                <mat-form-field class="col-2">
-                    <mat-label>Edad</mat-label>
-                    <input matInput type="number" [value]="datosGenerales?.edad" formControlName="edad">
-                </mat-form-field>
-                <mat-form-field class="col-2">
-                    <mat-label>Numero Telefonico</mat-label>
-                    <input matInput type="text" [value]="datosGenerales?.numeroTelefono" formControlName="numeroTelefono">
-                </mat-form-field>
-                <mat-form-field class="col-2">
-                    <mat-label>Expediente</mat-label>
-                    <input matInput type="text" [value]="datosGenerales?.id" formControlName="id" readonly="true">
-                </mat-form-field>
-            </div>
-            <div class="grid">
-                <div class="col-offset-1"></div>
-                <mat-form-field class="col-4">
-                    <mat-label>Entidad</mat-label>
-                    <input matInput type="text" [value]="datosGenerales?.entidad" formControlName="entidad">
-                </mat-form-field>
-
-                <mat-form-field class="col-4">
-                    <mat-label>Sexo</mat-label>
-                    <mat-select disableRipple [value]="datosGenerales?.sexo" formControlName="sexo">
-                      <mat-option value="masculino" >masculino</mat-option>
-                      <mat-option value="femenino" >femenino</mat-option>
-                    </mat-select>
-                  </mat-form-field>
-                  <div class="col-2 paddingSlide">
-                    <mat-label>Es alergico: </mat-label>
-                    <mat-slide-toggle formControlName="alergico"></mat-slide-toggle>
-                </div>
-            </div>
-                <div class="grid">
-                    <div class="col-offset-1"></div>
-                    <mat-form-field class="col-4">
-                        <mat-label>Ocupacion</mat-label>
-                        <input matInput type="text" [value]="datosGenerales?.ocupacion" formControlName="ocupacion">
-                    </mat-form-field>
-                    <mat-form-field class="col-4">
-                        <mat-label>Lugar Nacimiento</mat-label>
-                        <input matInput type="text" [value]="datosGenerales?.lugarNacimiento" formControlName="lugarNacimiento">
-                    </mat-form-field>
-                </div>
-                
-                <div class="grid">
-                    <div class="col-offset-1"></div>
-                    <mat-form-field class="col-4">
-                        <mat-label>Escolaridad</mat-label>
-                        <input matInput type="text" [value]="datosGenerales?.escolaridad" formControlName="escolaridad">
-                    </mat-form-field>
-                    <mat-form-field class="col-4">
-                        <mat-label>Estado civil</mat-label>
-                        <mat-select disableRipple [value]="datosGenerales?.estadoCivil" formControlName="estadoCivil">
-                          <mat-option value="casado">casado</mat-option>
-                          <mat-option value="soltero">soltero</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </div>
-                <div class="grid">
-                    <div class="col-offset-1"></div>
-                    <mat-form-field class="col-8">
-                        <mat-label>Observaciones</mat-label>
-                        <textarea matInput
-                                    cdkTextareaAutosize
-                                    #autosize="cdkTextareaAutosize"
-                                    cdkAutosizeMinRows="1"
-                                    cdkAutosizeMaxRows="5" formControlName="observaciones"></textarea>
-                        </mat-form-field>
-                </div>
-            <!--=============================================GUARDADO======================================-->                
-                <div class="grid" *ngIf="!datosGenerales?.id else updateDatosGeneralesBlock">
-                    <div class="col-offset-8"></div>
-                    <div class="col-4" *ngIf="completadoDatosGenerales == false">
-                        <button [disabled]="completadoDatosGenerales" mat-flat-button
-                        (click)="saveDatosGenerales()">Guardar</button>
-                    </div>
-                    <div class="col-4" *ngIf="completadoDatosGenerales == true">
-                        <button [disabled]="completadoDatosGenerales" mat-flat-button 
-                        >Informacion guardada</button>
-                    </div>
-                </div>
-            <!--=============================================ACTUALIZADO======================================-->
-            <ng-template #updateDatosGeneralesBlock>
-                <div class="grid">
-                    <div class="col-offset-8"></div>
-                    <div class="col-4" *ngIf="completadoDatosGenerales == false">
-                        <button [disabled]="completadoDatosGenerales" mat-flat-button
-                        (click)="updateDatosGenerales()">Actualizar</button>
-                    </div>
-                    <div class="col-4" *ngIf="completadoDatosGenerales == true">
-                        <button [disabled]="completadoDatosGenerales" mat-flat-button 
-                        >Informacion guardada</button>
-                    </div>
-                </div>
-            </ng-template>
-                <div *ngIf="completadoDatosGenerales == true">
-                    <button mat-button matStepperNext>Siguente</button>
-                </div>
-        </form>
-        </mat-step>
-        <mat-step *ngIf="pacienteId != 0">
-            <ng-template matStepLabel>Antecedentes Familiares y Hereditarios</ng-template>
-                <app-new-antecedentes-fy-h
-                    [datosGenerales] ="datosGenerales"
-                ></app-new-antecedentes-fy-h>
-        </mat-step>
-        <mat-step *ngIf="pacienteId != 0">
-          <ng-template matStepLabel>Antecedentes Personales y Patologicos</ng-template>
-            <app-new-antecedentes-py-p
-                [datosGenerales] = "datosGenerales"
-            ></app-new-antecedentes-py-p>
-        </mat-step>
-        <mat-step *ngIf="pacienteId != 0">
-            <ng-template matStepLabel>Antecedentes Personales "NO" Patológicos</ng-template>
-              <app-new-antecedentes-pno-p
-                [datosGenerales] = "datosGenerales"
-              ></app-new-antecedentes-pno-p>
-        </mat-step>
-        <mat-step *ngIf="pacienteId != 0">
-            <ng-template matStepLabel>Padecimientos Actuales</ng-template>
-                <app-new-padecimientos
-                    [datosGenerales] = "datosGenerales"
-                ></app-new-padecimientos>
-        </mat-step>
-        <mat-step *ngIf="pacienteId != 0">
-              <ng-template matStepLabel>Análisis Facial</ng-template>
-                <app-new-analisis-facial
-                    [datosGenerales] = "datosGenerales"
-                ></app-new-analisis-facial>
-        </mat-step>
-        <mat-step *ngIf="pacienteId != 0">
-              <ng-template matStepLabel>Análisis Funcional</ng-template>
-              <app-new-analisis-funcional
-                [datosGenerales] = "datosGenerales"
-              ></app-new-analisis-funcional>
-        </mat-step>
-        <mat-step *ngIf="pacienteId != 0 && edad >= 18 else infantilBlock">
-            <ng-template matStepLabel>Evaluación Clínica Adulto</ng-template>
-            <app-new-evaluacion-clinica
-                [datosGenerales] = "datosGenerales"
-            ></app-new-evaluacion-clinica>
-        </mat-step>
-        <ng-template #infantilBlock>
-            <mat-step *ngIf="pacienteId != 0 && edad < 18">
-                <ng-template matStepLabel>Evaluación Clínica Infantil</ng-template>
-                <app-new-evaluacion-clinica-infantil
-                    [datosGenerales] = "datosGenerales"
-                ></app-new-evaluacion-clinica-infantil>
-            </mat-step>
-        </ng-template>
-        <mat-step *ngIf="mostrarConsentimientoYpagos && pacienteId != 0">
-            <ng-template matStepLabel>Consentimiento Informado</ng-template>
-                <app-new-consentimiento
-                    [datosGenerales] = "datosGenerales"
-                ></app-new-consentimiento>
-        </mat-step>
-        <mat-step  *ngIf="mostrarConsentimientoYpagos && pacienteId != 0">
-                <ng-template matStepLabel>Pagos</ng-template>
-                <app-new-pagos
-                    [datosGenerales] = "datosGenerales"
-                ></app-new-pagos>
-        </mat-step>
-      </mat-stepper>
+        <mat-form-field class="col-4">
+            <mat-label>Sexo</mat-label>
+            <mat-select disableRipple [value]="datosGenerales?.sexo" formControlName="sexo">
+                <mat-option value="masculino" >masculino</mat-option>
+                <mat-option value="femenino" >femenino</mat-option>
+            </mat-select>
+        </mat-form-field>
+            <div class="col-2 paddingSlide">
+            <mat-label>Es alergico: </mat-label>
+            <mat-slide-toggle formControlName="alergico"></mat-slide-toggle>
+        </div>
     </div>
-</div>
+        <div class="grid">
+            <div class="col-offset-1"></div>
+            <mat-form-field class="col-4">
+                <mat-label>Ocupacion</mat-label>
+                <input matInput type="text" [value]="datosGenerales?.ocupacion" formControlName="ocupacion">
+            </mat-form-field>
+            <mat-form-field class="col-4">
+                <mat-label>Lugar Nacimiento</mat-label>
+                <input matInput type="text" [value]="datosGenerales?.lugarNacimiento" formControlName="lugarNacimiento">
+            </mat-form-field>
+        </div>
+        
+        <div class="grid">
+            <div class="col-offset-1"></div>
+            <mat-form-field class="col-4">
+                <mat-label>Escolaridad</mat-label>
+                <input matInput type="text" [value]="datosGenerales?.escolaridad" formControlName="escolaridad">
+            </mat-form-field>
+            <mat-form-field class="col-4">
+                <mat-label>Estado civil</mat-label>
+                <mat-select disableRipple [value]="datosGenerales?.estadoCivil" formControlName="estadoCivil">
+                    <mat-option value="casado">casado</mat-option>
+                    <mat-option value="soltero">soltero</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="grid">
+            <div class="col-offset-1"></div>
+            <mat-form-field class="col-8">
+                <mat-label>Observaciones</mat-label>
+                <textarea matInput
+                            cdkTextareaAutosize
+                            #autosize="cdkTextareaAutosize"
+                            cdkAutosizeMinRows="1"
+                            cdkAutosizeMaxRows="5" formControlName="observaciones"></textarea>
+                </mat-form-field>
+        </div>
+    <!--=============================================GUARDADO======================================-->                
+        <div class="grid" *ngIf="!datosGenerales?.id else updateDatosGeneralesBlock">
+            <div class="col-offset-8"></div>
+            <div class="col-4" *ngIf="completadoDatosGenerales == false">
+                <button [disabled]="completadoDatosGenerales" mat-flat-button
+                (click)="saveDatosGenerales()">Guardar</button>
+            </div>
+            <div class="col-4" *ngIf="completadoDatosGenerales == true">
+                <button [disabled]="completadoDatosGenerales" mat-flat-button 
+                >Informacion guardada</button>
+            </div>
+        </div>
+    <!--=============================================ACTUALIZADO======================================-->
+    <ng-template #updateDatosGeneralesBlock>
+        <div class="grid">
+            <div class="col-offset-8"></div>
+            <div class="col-4" *ngIf="completadoDatosGenerales == false">
+                <button [disabled]="completadoDatosGenerales" mat-flat-button
+                (click)="updateDatosGenerales()">Actualizar</button>
+            </div>
+            <div class="col-4" *ngIf="completadoDatosGenerales == true">
+                <button [disabled]="completadoDatosGenerales" mat-flat-button 
+                >Informacion guardada</button>
+            </div>
+        </div>
+    </ng-template>
+        <div *ngIf="completadoDatosGenerales == true">
+            <button mat-button matStepperNext>Siguente</button>
+        </div>
+</form>

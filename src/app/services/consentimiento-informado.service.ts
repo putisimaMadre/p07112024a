@@ -17,7 +17,19 @@ export class ConsentimientoInformadoService {
     return this.httpClient.get<ConsentimientoInformado[]>(this.urlEndPoint);
   }
 
+  getConsentimientoInformadoById(idDatosGenerales: number): Observable<ConsentimientoInformado>{
+      return this.httpClient.get<ConsentimientoInformado>(this.urlEndPoint+'/'+idDatosGenerales);
+    }
+  
+  getConsentimientoInformadoEdit(idDatosGenerales: number): Observable<ConsentimientoInformado>{
+    return this.httpClient.get<ConsentimientoInformado>(this.urlEndPoint+'/'+idDatosGenerales+'/edit');
+  }
+
   postConsentimientoInformado(consentimientoInformado: ConsentimientoInformado): Observable<ConsentimientoInformado>{
     return this.httpClient.post<ConsentimientoInformado>(this.urlEndPoint, consentimientoInformado, {headers: this.httpHeaders})
+  }
+
+  updateConsentimientoInformado(concentimientoI: ConsentimientoInformado): Observable<ConsentimientoInformado>{
+      return this.httpClient.put<ConsentimientoInformado>(this.urlEndPoint+'/'+concentimientoI.id, concentimientoI, {headers:this.httpHeaders})
   }
 }

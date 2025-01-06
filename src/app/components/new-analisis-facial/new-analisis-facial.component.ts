@@ -17,6 +17,7 @@ export class NewAnalisisFacialComponent implements OnInit{
   pacienteId:number = 0
   completadoAnalisisFacial = false;
   analisisFacial?: any
+  edit: boolean = false
 
   perfilArray: number[] = [4, 5, 6];
   asimetriaArray: number[] = [7, 8, 9];
@@ -45,7 +46,6 @@ export class NewAnalisisFacialComponent implements OnInit{
   ){}
   
   ngOnInit(): void {
-    this.pacienteId = this.datosGenerales.id
     this.activatedRoute.params
         .pipe(
           switchMap(({id}) => this.analisisFacialService.getAnalisisFacialEdit(id)),
@@ -75,6 +75,9 @@ export class NewAnalisisFacialComponent implements OnInit{
         keys.forEach((key) => {
           if(this.isKey(analisisFacial, key)){
             this.analisisFacial = analisisFacial[key];
+            if(this.analisisFacial.id != undefined){
+              this.edit = true
+            }
             
             if(this.analisisFacial.patronFacial){
               for (let index = 0; index <= this.analisisFacialArrayBool.length; index++) {
@@ -133,11 +136,10 @@ export class NewAnalisisFacialComponent implements OnInit{
           }
           if(this.analisisFacial.perfilMaxilar){
             for (let index = 0; index <= this.perfilMaxilarArrayBool.length; index++) {
-              if(this.perfilMandibularArray[index] == this.analisisFacial.perfilMaxilar){
+              if(this.perfilMaxilarArray[index] == this.analisisFacial.perfilMaxilar){
                 this.perfilMaxilarArrayBool[index] = true
               }
               if(this.pacienteId != null){
-                //this.perfilMaxilarArray[index] = this.analisisFacial.perfilMaxilar
                 this.analisisFacialForm.controls['perfilMaxilar'].setValue(this.perfilMaxilarArray[index])
               }
             }
@@ -148,7 +150,6 @@ export class NewAnalisisFacialComponent implements OnInit{
                 this.perfilMandibularArrayBool[index] = true
               }
               if(this.pacienteId != null){
-                //this.perfilMandibularArray[index] = this.analisisFacial.perfilMandibular
                 this.analisisFacialForm.controls['perfilMandibular'].setValue(this.perfilMandibularArray[index])
               }
             }
@@ -185,6 +186,7 @@ export class NewAnalisisFacialComponent implements OnInit{
       }
 
       saveAnalisisFacial(){
+        this.pacienteId = this.datosGenerales.id
         this.analisisFacialForm.controls['idDatosGenerales'].setValue(this.pacienteId)
         this.analisisFacialService.postAnalisisFacial(this.analisisFacialForm.value).subscribe(dato => {
           console.log(dato)
@@ -193,7 +195,7 @@ export class NewAnalisisFacialComponent implements OnInit{
       }
     
       updateAnalisisFacial(){
-        //console.log(this.analisisFacialForm.value)
+        this.pacienteId = this.datosGenerales.id
         this.analisisFacialForm.controls['idDatosGenerales'].setValue(this.pacienteId)
         this.analisisFacialService.updateAnalisisFacial(this.analisisFacialForm.value).subscribe(dato => {
           console.log(dato)

@@ -14,8 +14,8 @@ export class NewAntecedentesPnoPComponent implements OnInit{
   @Input()
   datosGenerales!: DatosGenerales;
 
-  pacienteId: number = 0
-
+  pacienteId!: number
+  edit: boolean =false
   antecedentesPnoP?: any;
   completadoAntecedentesPNoP = false;
 
@@ -26,7 +26,6 @@ export class NewAntecedentesPnoPComponent implements OnInit{
   ){}
   
   ngOnInit(): void {
-    this.pacienteId = this.datosGenerales.id
     //=========ANTECEDENTES PERSONALES NO PATOLOGICOS========
         this.activatedRoute.params
         .pipe(
@@ -41,6 +40,7 @@ export class NewAntecedentesPnoPComponent implements OnInit{
               this.antecedentesPersonalesNoPForm.controls["tabaquismo"].setValue(this.antecedentesPnoP.tabaquismo)
               this.antecedentesPersonalesNoPForm.controls["drogas"].setValue(this.antecedentesPnoP.drogas)
               this.antecedentesPersonalesNoPForm.controls["otros"].setValue(this.antecedentesPnoP.otros)
+              this.edit = true
             }
           })
           return;
@@ -56,6 +56,7 @@ export class NewAntecedentesPnoPComponent implements OnInit{
     })
 
   saveAntecedentesPersonalesNoPatologicos(){
+    this.pacienteId = this.datosGenerales.id
     this.antecedentesPersonalesNoPForm.controls['idDatosGenerales'].setValue(this.pacienteId)
     this.antecedentesPnoPService.postAntecedentes(this.antecedentesPersonalesNoPForm.value).subscribe(dato => {
       console.log(dato)
@@ -64,6 +65,7 @@ export class NewAntecedentesPnoPComponent implements OnInit{
   }
 
   updateAntecedentesPnoP(){
+    this.pacienteId = this.datosGenerales.id
     this.antecedentesPersonalesNoPForm.controls['idDatosGenerales'].setValue(this.pacienteId)
     this.antecedentesPnoPService.updateAntecedentesPnoP(this.antecedentesPersonalesNoPForm.value).subscribe(dato => {
       console.log(dato)
