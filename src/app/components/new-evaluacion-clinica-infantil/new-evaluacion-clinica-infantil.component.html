@@ -97,7 +97,7 @@
                 <div class="col-offset-8"></div>
                 <div class="col-4" *ngIf="completadoEvaluacionClinicaInfantil == false">
                     <button [disabled]="completadoEvaluacionClinicaInfantil" mat-flat-button
-                    (click)="updateEvaluacionClinicaInfantil()">Actualizar</button>
+                    (click)="updateEvaluacionClinicaInfantil()" class="oculto-impresion">Actualizar</button>
                 </div>
                 <div class="col-4" *ngIf="completadoEvaluacionClinicaInfantil == true">
                     <button [disabled]="completadoEvaluacionClinicaInfantil" mat-flat-button 

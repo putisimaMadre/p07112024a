@@ -25,6 +25,8 @@ import { NewConsentimientoComponent } from './components/new-consentimiento/new-
 import { NewPagosComponent } from './components/new-pagos/new-pagos.component';
 import { NewPacienteComponent } from './components/new-paciente/new-paciente.component';
 import { provideNativeDateAdapter } from '@angular/material/core';
+import { PdfComponent } from './components/pdf/pdf.component';
+import { NewConsentimientoPDFComponent } from './components/new-consentimiento-pdf/new-consentimiento-pdf.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,9 @@ import { provideNativeDateAdapter } from '@angular/material/core';
     NewEvaluacionClinicaComponent,
     NewConsentimientoComponent,
     NewPagosComponent,
-    NewPacienteComponent
+    NewPacienteComponent,
+    PdfComponent,
+    NewConsentimientoPDFComponent
   ],
   imports: [
     BrowserModule,

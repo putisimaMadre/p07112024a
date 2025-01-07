@@ -1,0 +1,67 @@
+<div class="grid">
+    <div class="col-12">
+        <ng-template matStepLabel>Datos Generales</ng-template>
+            <app-new-datos-generales 
+                (eventDatosGenerales)="getDatosGenerales($event)">
+            </app-new-datos-generales>
+            <div class="col-offset-1 col-10">
+                <ng-template *ngIf="pacienteId != 0 && pacienteId != undefined" matStepLabel>Antecedentes Familiares y Hereditarios</ng-template>
+                    <app-new-antecedentes-fy-h
+                        [datosGenerales] ="datosGenerales"
+                        [paciente] ="paciente"
+                ></app-new-antecedentes-fy-h>
+            </div>
+            <div class="col-offset-1 col-10">
+                <ng-template *ngIf="pacienteId != 0 && pacienteId != undefined" matStepLabel>Antecedentes Personales y Patologicos</ng-template>
+                    <app-new-antecedentes-py-p
+                        [datosGenerales] = "datosGenerales"
+                    ></app-new-antecedentes-py-p>
+            </div>
+            <div class="col-offset-1 col-10">
+                <ng-template *ngIf="pacienteId != 0 && pacienteId != undefined" matStepLabel>Antecedentes Personales "NO" Patológicos</ng-template>
+                    <app-new-antecedentes-pno-p
+                        [datosGenerales] = "datosGenerales"
+                    ></app-new-antecedentes-pno-p>
+            </div>
+            <div class="col-offset-1 col-10">
+                <ng-template *ngIf="pacienteId != 0 && pacienteId != undefined" matStepLabel>Padecimientos Actuales</ng-template>
+                    <app-new-padecimientos
+                        [datosGenerales] = "datosGenerales"
+                    ></app-new-padecimientos>
+            </div>
+                <ng-template *ngIf="pacienteId != 0 && pacienteId != undefined" matStepLabel>Análisis Facial</ng-template><!--aqui se comenzo a realizar sin pruebas-->
+                    <app-new-analisis-facial
+                        [datosGenerales] = "datosGenerales"
+                ></app-new-analisis-facial>
+                <ng-template *ngIf="pacienteId != 0 && pacienteId != undefined" matStepLabel>Análisis Funcional</ng-template>
+                    <app-new-analisis-funcional
+                        [datosGenerales] = "datosGenerales"
+                    ></app-new-analisis-funcional>
+                <ng-template *ngIf="pacienteId != 0 && pacienteId != undefined && edad >= 18 else infantilBlock" matStepLabel>Evaluación Clínica Adulto</ng-template>
+                    <app-new-evaluacion-clinica
+                        [datosGenerales] = "datosGenerales"
+                        [paciente] ="paciente"
+                    ></app-new-evaluacion-clinica>
+                <ng-template #infantilBlock>
+                    <ng-template *ngIf="pacienteId != 0 && pacienteId != undefined && edad < 18" matStepLabel>Evaluación Clínica Infantil</ng-template>
+                        <app-new-evaluacion-clinica-infantil
+                            [datosGenerales] = "datosGenerales"
+                            [paciente] ="paciente"
+                        ></app-new-evaluacion-clinica-infantil>
+                    </ng-template>
+                <div class="col-offset-1 col-10">
+                    <ng-template *ngIf="pacienteId != 0 && pacienteId != undefined" matStepLabel>Consentimiento Informado</ng-template>
+                        <app-new-consentimiento-pdf
+                            [datosGenerales] = "datosGenerales">
+                        </app-new-consentimiento-pdf>
+                </div>
+                <div class="col-offset-1">
+                    <ng-template *ngIf="pacienteId != 0 && pacienteId != undefined" matStepLabel>Pagos</ng-template>
+                        <app-new-pagos
+                            [datosGenerales] = "datosGenerales"
+                            [paciente] ="paciente"
+                            [sexo] ="sexo"
+                        ></app-new-pagos>
+                </div>
+    </div>
+</div>

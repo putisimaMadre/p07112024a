@@ -151,7 +151,7 @@
             <div class="col-offset-8"></div>
             <div class="col-4" *ngIf="completadoPadecimientosActuales == false">
                 <button [disabled]="completadoPadecimientosActuales" mat-flat-button
-                (click)="updatePadecimientosActuales()">Actualizar</button>
+                (click)="updatePadecimientosActuales()" class="oculto-impresion">Actualizar</button>
             </div>
             <div class="col-4" *ngIf="completadoPadecimientosActuales == true">
                 <button [disabled]="completadoPadecimientosActuales" mat-flat-button 

@@ -92,7 +92,7 @@
     <div class="col-offset-9"></div>
     <div class="col-3" *ngIf="completadoPagos == false">
         <button [disabled]="completadoPagos" mat-flat-button
-        (click)="savePagosForm()">Realizar Pago</button>
+        (click)="savePagosForm()" class="oculto-impresion">Realizar Pago</button>
     </div>
     <div class="col-3" *ngIf="completadoPagos == true">
         <button [disabled]="completadoPagos" mat-flat-button 

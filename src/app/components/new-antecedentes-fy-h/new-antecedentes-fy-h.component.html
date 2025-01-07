@@ -514,7 +514,7 @@
     <div class="col-offset-8"></div>
     <div class="col-4" *ngIf="completadoAntecedentesFyH == false">
         <button [disabled]="completadoAntecedentesFyH" mat-flat-button
-        (click)="updateAntecedentesFyH()">Actualizar</button>
+        (click)="updateAntecedentesFyH()" class="oculto-impresion">Actualizar</button>
     </div>
     <div class="col-4" *ngIf="completadoAntecedentesFyH == true">
         <button [disabled]="completadoAntecedentesFyH" mat-flat-button 

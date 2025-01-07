@@ -375,7 +375,7 @@
         <div class="col-offset-8"></div>
         <div class="col-4" *ngIf="completadoAntecedentesPyP == false">
             <button [disabled]="completadoAntecedentesPyP" mat-flat-button
-            (click)="updateAntecedentesPyP()">Actualizar</button>
+            (click)="updateAntecedentesPyP()" class="oculto-impresion">Actualizar</button>
         </div>
         <div class="col-4" *ngIf="completadoAntecedentesPyP == true">
             <button [disabled]="completadoAntecedentesPyP" mat-flat-button 

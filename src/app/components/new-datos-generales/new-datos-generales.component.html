@@ -102,7 +102,7 @@
             <div class="col-offset-8"></div>
             <div class="col-4" *ngIf="completadoDatosGenerales == false">
                 <button [disabled]="completadoDatosGenerales" mat-flat-button
-                (click)="saveDatosGenerales()">Guardar</button>
+                (click)="saveDatosGenerales()" class="oculto-impresion">Guardar</button>
             </div>
             <div class="col-4" *ngIf="completadoDatosGenerales == true">
                 <button [disabled]="completadoDatosGenerales" mat-flat-button 
@@ -115,7 +115,7 @@
             <div class="col-offset-8"></div>
             <div class="col-4" *ngIf="completadoDatosGenerales == false">
                 <button [disabled]="completadoDatosGenerales" mat-flat-button
-                (click)="updateDatosGenerales()">Actualizar</button>
+                (click)="updateDatosGenerales()" class="oculto-impresion">Actualizar</button>
             </div>
             <div class="col-4" *ngIf="completadoDatosGenerales == true">
                 <button [disabled]="completadoDatosGenerales" mat-flat-button 

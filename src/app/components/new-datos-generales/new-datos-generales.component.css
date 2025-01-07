@@ -5,3 +5,10 @@
 colorRowCheckbox{
   background-color: #e0e2ec
 }
+
+@media print{
+  .oculto-impresion {
+    display: none !important;
+  }
+
+}

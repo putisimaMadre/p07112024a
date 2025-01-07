@@ -1,7 +1,7 @@
 <form [formGroup]="consentimientoInformadoForm">
     <div class="grid">
-        <div class="col-offset-1"></div>
-        <div class="col-4">
+        <div class="col-offset-1 oculto-impresion"></div>
+        <div class="col-4 oculto-impresion">
             
             <!--<mat-form-field class="col-8">
                 <mat-label>Seleccione el Odontólogo</mat-label>
@@ -68,7 +68,7 @@
             <div class="col-offset-8"></div>
             <div class="col-4" *ngIf="completadoConsentimientoInformado == false">
                 <button [disabled]="completadoConsentimientoInformado" mat-flat-button
-                (click)="updateAnalisisFacial()">Actualizar</button>
+                (click)="updateAnalisisFacial()" class="oculto-impresion">Actualizar</button>
             </div>
             <div class="col-4" *ngIf="completadoConsentimientoInformado == true">
                 <button [disabled]="completadoConsentimientoInformado" mat-flat-button 

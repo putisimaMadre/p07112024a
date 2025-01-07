@@ -1,0 +1,33 @@
+<form [formGroup]="consentimientoInformadoForm">
+    <div class="grid">
+        <div class="col-12">
+            <p style="text-align: justify;">Yo, 
+                <mat-form-field class="col-4">
+                    <b><input matInput type="text" [value]="concentimientoInformado?.nombrePersona" formControlName="nombrePersona"></b>
+                </mat-form-field>
+            por medio del presente documento o en mi calidad del representante legal del paciente
+            en pleno y normal uso de mis facultades mentales, otorgo en forma libre mi consentimiento al Odontólogo 
+            <b>{{concentimientoInformado?.odontologo}}</b> así como de los auxiliares y técnicos en el ejercicio
+            legal de su profesión, se me realice el siguiente tratamiento estipulado por escrito en este documento.
+
+            Así mismo quedan autorizados para llevar a cabo o solicitar la práctica de conductas o procedimientos 
+            odontológicos adicionales a los ya autorizados en el punto anterior, cuando el resultado del tratamiento
+            así lo requiera.
+
+            Como paciente o representante legal, declaro que conozco y comprendo en su totalidad la explicación antes
+            dada y la posibilidad de que estos eventos se presenten en el desarrollo del curso del tratamiento y/o 
+            post-operatorio y acepto todos los riesgos que conlleva dichos tratamientos a realizar.
+
+            Acepto que la odontología no es una ciencia exacta y que con intervención autorizada se buscará la
+            utilización de los medios idóneos para el caso y que los resultados no dependen exclusivamente del 
+            Odontólogo.
+
+            He recibido claras instrucciones en el sentido de que el consentimiento que otorgo mediante este documento
+            puede ser revisado o dejado sin efecto por la simple decisión del suscrito, tomada antes de la intervención
+            o realización del tratamiento.
+            </p>
+        </div>
+    </div>
+    
+    </form>
+

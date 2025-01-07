@@ -2,3 +2,9 @@
     display: block; 
     padding-top: .7rem; 
   }
+
+@media print{
+  .oculto-impresion {
+    display: none !important;
+  }
+}

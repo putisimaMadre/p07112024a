@@ -151,7 +151,7 @@
         <div class="col-offset-8"></div>
         <div class="col-4" *ngIf="completadoAnalisisFacial == false">
             <button [disabled]="completadoAnalisisFacial" mat-flat-button
-            (click)="updateAnalisisFacial()">Actualizar</button>
+            (click)="updateAnalisisFacial()" class="oculto-impresion">Actualizar</button>
         </div>
         <div class="col-4" *ngIf="completadoAnalisisFacial == true">
             <button [disabled]="completadoAnalisisFacial" mat-flat-button 
