@@ -1,0 +1,77 @@
+<form [formGroup]="antecedentesPersonalesNoPForm">
+    <div class="grid">
+        <div class="col-3">
+            <div class="paddingTitulosPyP"><p><b><i>Alcohol
+                <mat-list>
+                    <mat-divider></mat-divider>
+                    </mat-list>
+            </i></b></p></div>
+                <div class="grid altoRowSinoFecha"><!--Fila de checks madre diabetes-->
+                    <div class="col-4 paddingSlide">
+                        <mat-slide-toggle formControlName="alcohol"></mat-slide-toggle>
+                    </div>                                
+                </div>
+            </div>
+        <div class="col-3">
+            <div class="paddingTitulosPyP"><p><b><i>Tabaquismo
+                <mat-list>
+                    <mat-divider></mat-divider>
+                    </mat-list>
+            </i></b></p></div>
+            <div class="grid altoRowSinoFecha"><!--Fila de checks madre diabetes-->
+                <div class="col-4 paddingSlide">
+                    <mat-slide-toggle formControlName="tabaquismo"></mat-slide-toggle>
+                </div>                                
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="paddingTitulosPyP"><p><b><i>Drogas
+                <mat-list>
+                    <mat-divider></mat-divider>
+                    </mat-list>
+            </i></b></p></div>
+            <div class="grid altoRowSinoFecha"><!--Fila de checks madre diabetes-->
+                <div class="col-4 paddingSlide">
+                    <mat-slide-toggle formControlName="drogas"></mat-slide-toggle>
+                </div>                                
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="paddingTitulosPyP"><p><b><i>Otros
+                <mat-list>
+                    <mat-divider></mat-divider>
+                    </mat-list>
+            </i></b></p></div>
+            <mat-form-field class="col-8">
+                <mat-label>Otros</mat-label>
+                <input matInput type="text" formControlName="otros">
+            </mat-form-field>
+        </div>
+    </div>
+<!--=============================================GUARDADO======================================-->
+    <div class="grid" *ngIf="!edit else updateAntecedentesPnoPBlock">
+        <div class="col-offset-8"></div>
+        <div class="col-4" *ngIf="completadoAntecedentesPNoP == false">
+            <button [disabled]="completadoAntecedentesPNoP" mat-flat-button
+            (click)="saveAntecedentesPersonalesNoPatologicos()">Guardar</button>
+        </div>
+        <div class="col-4" *ngIf="completadoAntecedentesPNoP == true">
+            <button [disabled]="completadoAntecedentesPNoP" mat-flat-button 
+            >Informacion guardada</button>
+        </div>
+    </div>
+<!--=============================================ACTUALIZADO======================================-->
+    <ng-template #updateAntecedentesPnoPBlock>
+        <div class="grid">
+            <div class="col-offset-8"></div>
+            <div class="col-4" *ngIf="completadoAntecedentesPNoP == false">
+                <button [disabled]="completadoAntecedentesPNoP" mat-flat-button
+                (click)="updateAntecedentesPnoP()">Actualizar</button>
+            </div>
+            <div class="col-4" *ngIf="completadoAntecedentesPNoP == true">
+                <button [disabled]="completadoAntecedentesPNoP" mat-flat-button 
+                >Informacion guardada</button>
+            </div>
+        </div>
+    </ng-template>
+</form>

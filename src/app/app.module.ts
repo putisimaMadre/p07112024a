@@ -15,6 +15,18 @@ import { MaterialModule } from './material/material.module';
 import { MenuComponent } from './components/menu/menu.component';
 import { NewAntecedentesPyPComponent } from './components/new-antecedentes-py-p/new-antecedentes-py-p.component';
 import { DatosGeneralesDialogComponent } from './dialogs/datos-generales-dialog/datos-generales-dialog.component';
+import { NewAntecedentesPnoPComponent } from './components/new-antecedentes-pno-p/new-antecedentes-pno-p.component';
+import { NewPadecimientosComponent } from './components/new-padecimientos/new-padecimientos.component';
+import { NewAnalisisFacialComponent } from './components/new-analisis-facial/new-analisis-facial.component';
+import { NewAnalisisFuncionalComponent } from './components/new-analisis-funcional/new-analisis-funcional.component';
+import { NewEvaluacionClinicaInfantilComponent } from './components/new-evaluacion-clinica-infantil/new-evaluacion-clinica-infantil.component';
+import { NewEvaluacionClinicaComponent } from './components/new-evaluacion-clinica/new-evaluacion-clinica.component';
+import { NewConsentimientoComponent } from './components/new-consentimiento/new-consentimiento.component';
+import { NewPagosComponent } from './components/new-pagos/new-pagos.component';
+import { NewPacienteComponent } from './components/new-paciente/new-paciente.component';
+import { provideNativeDateAdapter } from '@angular/material/core';
+import { PdfComponent } from './components/pdf/pdf.component';
+import { NewConsentimientoPDFComponent } from './components/new-consentimiento-pdf/new-consentimiento-pdf.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +38,18 @@ import { DatosGeneralesDialogComponent } from './dialogs/datos-generales-dialog/
     NewAntecedentesFyHComponent,
     MenuComponent,
     NewAntecedentesPyPComponent,
-    DatosGeneralesDialogComponent
+    DatosGeneralesDialogComponent,
+    NewAntecedentesPnoPComponent,
+    NewPadecimientosComponent,
+    NewAnalisisFacialComponent,
+    NewAnalisisFuncionalComponent,
+    NewEvaluacionClinicaInfantilComponent,
+    NewEvaluacionClinicaComponent,
+    NewConsentimientoComponent,
+    NewPagosComponent,
+    NewPacienteComponent,
+    PdfComponent,
+    NewConsentimientoPDFComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +58,7 @@ import { DatosGeneralesDialogComponent } from './dialogs/datos-generales-dialog/
     ReactiveFormsModule,
     MaterialModule
   ],
-  providers: [provideHttpClient(), provideAnimationsAsync()],
+  providers: [provideHttpClient(), provideAnimationsAsync(), provideNativeDateAdapter()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

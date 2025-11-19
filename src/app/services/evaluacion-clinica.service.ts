@@ -16,7 +16,19 @@ export class EvaluacionClinicaService {
     return this.httpClient.get<EvaluacionClinica[]>(this.urlEndPoint);
   }
 
+  getEvaluacionClinicaById(idDatosGenerales: number): Observable<EvaluacionClinica>{
+    return this.httpClient.get<EvaluacionClinica>(this.urlEndPoint+'/'+idDatosGenerales);
+  }
+
+  getEvaluacionClinicaEdit(idDatosGenerales: number): Observable<EvaluacionClinica>{
+    return this.httpClient.get<EvaluacionClinica>(this.urlEndPoint+'/'+idDatosGenerales+'/edit');
+  }
+
   postEvaluacionClinica(evaluacionClinica: EvaluacionClinica): Observable<EvaluacionClinica>{
     return this.httpClient.post<EvaluacionClinica>(this.urlEndPoint, evaluacionClinica, {headers: this.httpHeaders})
+  }
+
+  updateEvaluacionClinica(evaluacionClinica: EvaluacionClinica): Observable<EvaluacionClinica>{
+      return this.httpClient.put<EvaluacionClinica>(this.urlEndPoint+'/'+evaluacionClinica.id, evaluacionClinica, {headers:this.httpHeaders})
   }
 }

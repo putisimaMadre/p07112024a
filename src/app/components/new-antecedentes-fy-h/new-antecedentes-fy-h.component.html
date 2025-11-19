@@ -1,1 +1,524 @@
-<p>new-antecedentes-fy-h works!</p>
+<div class="grid"><!--Grid completo-->
+    <div class="col-3"><!--columna de patologias-->
+        <mat-list>
+            <mat-list-item><i><b>Nombre del paciente: {{paciente}}</b></i></mat-list-item>
+            <mat-divider></mat-divider>
+        </mat-list>
+
+            <p><i><b>Enfermedades</b></i></p>
+            <div class="paddingTitulosFyH"><p>Diabetes</p></div>
+            <div class="paddingTitulosFyH"><p>Hipertensión Arterial</p></div>
+            <div class="paddingTitulosFyH"><p>Cardiopatías</p></div>
+            <div class="paddingTitulosFyH"><p>Neoplasia</p></div>
+            <div class="paddingTitulosFyH"><p>Epilepsia</p></div>
+            <div class="paddingTitulosFyH"><p>Malformaciones</p></div>
+            <div class="paddingTitulosFyH"><p>SIDA</p></div>
+            <div class="paddingTitulosFyH"><p>Enfermedades renales</p></div>
+            <div class="paddingTitulosFyH"><p>Hepatitis</p></div>
+            <div class="paddingTitulosFyH"><p>Artritis</p></div>
+            <div class="paddingTitulosFyH"><p>Otra</p></div>
+            <div class="paddingTitulosFyH"><p>Aparentemente sano</p></div>
+    </div>
+    <div class="col-4"><!--columna de datos de la madre-->
+        <mat-list>
+            <mat-list-item><i><b>Datos de la madre</b></i></mat-list-item>
+            <mat-divider></mat-divider>
+          </mat-list>
+
+          <div class="grid">
+            <div class="col-3">
+                <mat-label><i><b>Madre</b></i></mat-label>
+            </div>
+            <div class="col-3">
+                <mat-label><i><b>Abuela</b></i></mat-label>
+            </div>
+            <div class="col-3">
+                <mat-label><i><b>Abuelo</b></i></mat-label>
+            </div>
+            <div class="col-3">
+                <mat-label><i><b>Otros</b></i></mat-label>
+            </div>
+        </div>
+    <form [formGroup]="diabetesForm">
+        <div class="grid"><!--Fila de checks madre diabetes-->
+            <div class="col-3 colorRowCheckbox">
+                <mat-checkbox class="example-margin" formControlName="madre"></mat-checkbox>
+            </div>
+            <div class="col-3 colorRowCheckbox">
+                <mat-checkbox class="example-margin" formControlName="abuelaM"></mat-checkbox>
+            </div>
+            <div class="col-3 colorRowCheckbox">
+                <mat-checkbox class="example-margin" formControlName="abueloM"></mat-checkbox>
+            </div>
+            <div class="col-3 colorRowCheckbox">
+                <mat-checkbox class="example-margin" formControlName="otrosM"></mat-checkbox>
+            </div>
+        </div>
+    </form>
+    <form [formGroup]="hipertensionAForm">
+        <div class="grid"><!--Fila de checks para madre-->
+            <div class="col-3">
+                <mat-checkbox class="example-margin" formControlName="madre"></mat-checkbox>
+            </div>
+            <div class="col-3">
+                <mat-checkbox class="example-margin" formControlName="abuelaM"></mat-checkbox>
+            </div>
+            <div class="col-3">
+                <mat-checkbox class="example-margin" formControlName="abueloM"></mat-checkbox>
+            </div>
+            <div class="col-3">
+                <mat-checkbox class="example-margin" formControlName="otrosM"></mat-checkbox>
+            </div>
+        </div>
+    </form>
+    <form [formGroup]="cardiopatiaForm">
+        <div class="grid"><!--Fila de checks para madre-->
+            <div class="col-3 colorRowCheckbox">
+                <mat-checkbox class="example-margin" formControlName="madre"></mat-checkbox>
+            </div>
+            <div class="col-3 colorRowCheckbox">
+                <mat-checkbox class="example-margin" formControlName="abuelaM"></mat-checkbox>
+            </div>
+            <div class="col-3 colorRowCheckbox">
+                <mat-checkbox class="example-margin" formControlName="abueloM"></mat-checkbox>
+            </div>
+            <div class="col-3 colorRowCheckbox">
+                <mat-checkbox class="example-margin" formControlName="otrosM"></mat-checkbox>
+            </div>
+        </div>
+    </form>
+    <form [formGroup]="neoplasiasForm">
+        <div class="grid"><!--Fila de checks para madre-->
+            <div class="col-3">
+                <mat-checkbox class="example-margin" formControlName="madre"></mat-checkbox>
+            </div>
+            <div class="col-3">
+                <mat-checkbox class="example-margin" formControlName="abuelaM"></mat-checkbox>
+            </div>
+            <div class="col-3">
+                <mat-checkbox class="example-margin" formControlName="abueloM"></mat-checkbox>
+            </div>
+            <div class="col-3">
+                <mat-checkbox class="example-margin" formControlName="otrosM"></mat-checkbox>
+            </div>
+        </div>
+    </form>
+    <form [formGroup]="epilepsiaForm">
+        <div class="grid"><!--Fila de checks para madre-->
+            <div class="col-3 colorRowCheckbox">
+                <mat-checkbox class="example-margin" formControlName="madre"></mat-checkbox>
+            </div>
+            <div class="col-3 colorRowCheckbox">
+                <mat-checkbox class="example-margin" formControlName="abuelaM"></mat-checkbox>
+            </div>
+            <div class="col-3 colorRowCheckbox">
+                <mat-checkbox class="example-margin" formControlName="abueloM"></mat-checkbox>
+            </div>
+            <div class="col-3 colorRowCheckbox">
+                <mat-checkbox class="example-margin" formControlName="otrosM"></mat-checkbox>
+            </div>
+        </div>
+    </form>
+    <form [formGroup]="malformacionesForm">
+        <div class="grid"><!--Fila de checks para madre-->
+            <div class="col-3">
+                <mat-checkbox class="example-margin" formControlName="madre"></mat-checkbox>
+            </div>
+            <div class="col-3">
+                <mat-checkbox class="example-margin" formControlName="abuelaM"></mat-checkbox>
+            </div>
+            <div class="col-3">
+                <mat-checkbox class="example-margin" formControlName="abueloM"></mat-checkbox>
+            </div>
+            <div class="col-3">
+                <mat-checkbox class="example-margin" formControlName="otrosM"></mat-checkbox>
+            </div>
+        </div>
+    </form>
+    <form [formGroup]="SIDAForm">
+        <div class="grid"><!--Fila de checks para madre-->
+            <div class="col-3 colorRowCheckbox">
+                <mat-checkbox class="example-margin" formControlName="madre"></mat-checkbox>
+            </div>
+            <div class="col-3 colorRowCheckbox">
+                <mat-checkbox class="example-margin" formControlName="abuelaM"></mat-checkbox>
+            </div>
+            <div class="col-3 colorRowCheckbox">
+                <mat-checkbox class="example-margin" formControlName="abueloM"></mat-checkbox>
+            </div>
+            <div class="col-3 colorRowCheckbox">
+                <mat-checkbox class="example-margin" formControlName="otrosM"></mat-checkbox>
+            </div>
+        </div>
+    </form>
+    <form [formGroup]="enfermedadesRForm">
+        <div class="grid"><!--Fila de checks para madre-->
+            <div class="col-3">
+                <mat-checkbox class="example-margin" formControlName="madre"></mat-checkbox>
+            </div>
+            <div class="col-3">
+                <mat-checkbox class="example-margin" formControlName="abuelaM"></mat-checkbox>
+            </div>
+            <div class="col-3">
+                <mat-checkbox class="example-margin" formControlName="abueloM"></mat-checkbox>
+            </div>
+            <div class="col-3">
+                <mat-checkbox class="example-margin" formControlName="otrosM"></mat-checkbox>
+            </div>
+        </div>
+    </form>
+    <form [formGroup]="hepatitisForm">
+        <div class="grid"><!--Fila de checks para madre-->
+            <div class="col-3 colorRowCheckbox">
+                <mat-checkbox class="example-margin" formControlName="madre"></mat-checkbox>
+            </div>
+            <div class="col-3 colorRowCheckbox">
+                <mat-checkbox class="example-margin" formControlName="abuelaM"></mat-checkbox>
+            </div>
+            <div class="col-3 colorRowCheckbox">
+                <mat-checkbox class="example-margin" formControlName="abueloM"></mat-checkbox>
+            </div>
+            <div class="col-3 colorRowCheckbox">
+                <mat-checkbox class="example-margin" formControlName="otrosM"></mat-checkbox>
+            </div>
+        </div>
+    </form>
+    <form [formGroup]="artritisForm">
+        <div class="grid"><!--Fila de checks para madre-->
+            <div class="col-3">
+                <mat-checkbox class="example-margin" formControlName="madre"></mat-checkbox>
+            </div>
+            <div class="col-3">
+                <mat-checkbox class="example-margin" formControlName="abuelaM"></mat-checkbox>
+            </div>
+            <div class="col-3">
+                <mat-checkbox class="example-margin" formControlName="abueloM"></mat-checkbox>
+            </div>
+            <div class="col-3">
+                <mat-checkbox class="example-margin" formControlName="otrosM"></mat-checkbox>
+            </div>
+        </div>
+    </form>
+    <form [formGroup]="otraForm">
+        <div class="grid"><!--Fila de checks para madre-->
+            <div class="col-3 colorRowCheckbox">
+                <mat-checkbox class="example-margin" formControlName="madre"></mat-checkbox>
+            </div>
+            <div class="col-3 colorRowCheckbox">
+                <mat-checkbox class="example-margin" formControlName="abuelaM"></mat-checkbox>
+            </div>
+            <div class="col-3 colorRowCheckbox">
+                <mat-checkbox class="example-margin" formControlName="abueloM"></mat-checkbox>
+            </div>
+            <div class="col-3 colorRowCheckbox">
+                <mat-checkbox class="example-margin" formControlName="otrosM"></mat-checkbox>
+            </div>
+        </div>
+    </form>
+    <form [formGroup]="aparentementeSForm">
+        <div class="grid"><!--Fila de checks para madre-->
+            <div class="col-3">
+                <mat-checkbox class="example-margin" formControlName="madre"></mat-checkbox>
+            </div>
+            <div class="col-3">
+                <mat-checkbox class="example-margin" formControlName="abuelaM"></mat-checkbox>
+            </div>
+            <div class="col-3">
+                <mat-checkbox class="example-margin" formControlName="abueloM"></mat-checkbox>
+            </div>
+            <div class="col-3">
+                <mat-checkbox class="example-margin" formControlName="otrosM"></mat-checkbox>
+            </div>
+        </div>
+    </form>
+    </div>
+    <div class="col-5"><!--columna de datos de la padre-->
+        <mat-list>
+            <mat-list-item><i><b>Datos del padre</b></i></mat-list-item>
+            <mat-divider></mat-divider>
+          </mat-list>
+        <div class="grid">
+            <div class="col-2">
+                <mat-label><i><b>Padre</b></i></mat-label>
+            </div>
+            <div class="col-2">
+                <mat-label><i><b>Abuela</b></i></mat-label>
+            </div>
+            <div class="col-2">
+                <mat-label><i><b>Abuelo</b></i></mat-label>
+            </div>
+            <div class="col-2">
+                <mat-label><i><b>Hermano</b></i></mat-label>
+            </div>
+            <div class="col-2">
+                <mat-label><i><b>Otros</b></i></mat-label>
+            </div>
+        </div>
+        <form [formGroup]="diabetesForm">
+        <div class="grid"><!--fila de checks para padre-->
+            <div class="col-2 colorRowCheckbox">
+                <mat-checkbox class="example-margin" formControlName="padre"></mat-checkbox>
+            </div>
+            <div class="col-2 colorRowCheckbox">
+                <mat-checkbox class="example-margin" formControlName="abuelaP"></mat-checkbox>
+            </div>
+            <div class="col-2 colorRowCheckbox">
+                <mat-checkbox class="example-margin" formControlName="abueloP"></mat-checkbox>
+            </div>
+            <div class="col-2 colorRowCheckbox">
+                <mat-checkbox class="example-margin" formControlName="hermanosP"></mat-checkbox>
+            </div>
+            <div class="col-2 colorRowCheckbox">
+                <mat-checkbox class="example-margin" formControlName="otrosP"></mat-checkbox>
+            </div>
+        </div>
+        </form>
+        <form [formGroup]="hipertensionAForm">
+            <div class="grid"><!--fila de checks para padre-->
+                <div class="col-2">
+                    <mat-checkbox class="example-margin" formControlName="padre"></mat-checkbox>
+                </div>
+                <div class="col-2">
+                    <mat-checkbox class="example-margin" formControlName="abuelaP"></mat-checkbox>
+                </div>
+                <div class="col-2">
+                    <mat-checkbox class="example-margin" formControlName="abueloP"></mat-checkbox>
+                </div>
+                <div class="col-2">
+                    <mat-checkbox class="example-margin" formControlName="hermanosP"></mat-checkbox>
+                </div>
+                <div class="col-2">
+                    <mat-checkbox class="example-margin" formControlName="otrosP"></mat-checkbox>
+                </div>
+            </div>
+        </form>
+        <form [formGroup]="cardiopatiaForm">
+            <div class="grid"><!--fila de checks para padre-->
+                <div class="col-2 colorRowCheckbox">
+                    <mat-checkbox class="example-margin" formControlName="padre"></mat-checkbox>
+                </div>
+                <div class="col-2 colorRowCheckbox">
+                    <mat-checkbox class="example-margin" formControlName="abuelaP"></mat-checkbox>
+                </div>
+                <div class="col-2 colorRowCheckbox">
+                    <mat-checkbox class="example-margin" formControlName="abueloP"></mat-checkbox>
+                </div>
+                <div class="col-2 colorRowCheckbox">
+                    <mat-checkbox class="example-margin" formControlName="hermanosP"></mat-checkbox>
+                </div>
+                <div class="col-2 colorRowCheckbox">
+                    <mat-checkbox class="example-margin" formControlName="otrosP"></mat-checkbox>
+                </div>
+            </div>
+        </form>
+        <form [formGroup]="neoplasiasForm">
+            <div class="grid"><!--fila de checks para padre-->
+                <div class="col-2">
+                    <mat-checkbox class="example-margin" formControlName="padre"></mat-checkbox>
+                </div>
+                <div class="col-2">
+                    <mat-checkbox class="example-margin" formControlName="abuelaP"></mat-checkbox>
+                </div>
+                <div class="col-2">
+                    <mat-checkbox class="example-margin" formControlName="abueloP"></mat-checkbox>
+                </div>
+                <div class="col-2">
+                    <mat-checkbox class="example-margin" formControlName="hermanosP"></mat-checkbox>
+                </div>
+                <div class="col-2">
+                    <mat-checkbox class="example-margin" formControlName="otrosP"></mat-checkbox>
+                </div>
+            </div>
+        </form>
+        <form [formGroup]="epilepsiaForm">
+            <div class="grid"><!--fila de checks para padre-->
+                <div class="col-2 colorRowCheckbox">
+                    <mat-checkbox class="example-margin" formControlName="padre"></mat-checkbox>
+                </div>
+                <div class="col-2 colorRowCheckbox">
+                    <mat-checkbox class="example-margin" formControlName="abuelaP"></mat-checkbox>
+                </div>
+                <div class="col-2 colorRowCheckbox">
+                    <mat-checkbox class="example-margin" formControlName="abueloP"></mat-checkbox>
+                </div>
+                <div class="col-2 colorRowCheckbox">
+                    <mat-checkbox class="example-margin" formControlName="hermanosP"></mat-checkbox>
+                </div>
+                <div class="col-2 colorRowCheckbox">
+                    <mat-checkbox class="example-margin" formControlName="otrosP"></mat-checkbox>
+                </div>
+            </div>
+        </form>
+        <form [formGroup]="malformacionesForm">
+            <div class="grid"><!--fila de checks para padre-->
+                <div class="col-2">
+                    <mat-checkbox class="example-margin" formControlName="padre"></mat-checkbox>
+                </div>
+                <div class="col-2">
+                    <mat-checkbox class="example-margin" formControlName="abuelaP"></mat-checkbox>
+                </div>
+                <div class="col-2">
+                    <mat-checkbox class="example-margin" formControlName="abueloP"></mat-checkbox>
+                </div>
+                <div class="col-2">
+                    <mat-checkbox class="example-margin" formControlName="hermanosP"></mat-checkbox>
+                </div>
+                <div class="col-2">
+                    <mat-checkbox class="example-margin" formControlName="otrosP"></mat-checkbox>
+                </div>
+            </div>
+        </form>
+        <form [formGroup]="SIDAForm">
+            <div class="grid"><!--fila de checks para padre-->
+                <div class="col-2 colorRowCheckbox">
+                    <mat-checkbox class="example-margin" formControlName="padre"></mat-checkbox>
+                </div>
+                <div class="col-2 colorRowCheckbox">
+                    <mat-checkbox class="example-margin" formControlName="abuelaP"></mat-checkbox>
+                </div>
+                <div class="col-2 colorRowCheckbox">
+                    <mat-checkbox class="example-margin" formControlName="abueloP"></mat-checkbox>
+                </div>
+                <div class="col-2 colorRowCheckbox">
+                    <mat-checkbox class="example-margin" formControlName="hermanosP"></mat-checkbox>
+                </div>
+                <div class="col-2 colorRowCheckbox">
+                    <mat-checkbox class="example-margin" formControlName="otrosP"></mat-checkbox>
+                </div>
+            </div>
+        </form>
+        <form [formGroup]="enfermedadesRForm">
+            <div class="grid"><!--fila de checks para padre-->
+                <div class="col-2">
+                    <mat-checkbox class="example-margin" formControlName="padre"></mat-checkbox>
+                </div>
+                <div class="col-2">
+                    <mat-checkbox class="example-margin" formControlName="abuelaP"></mat-checkbox>
+                </div>
+                <div class="col-2">
+                    <mat-checkbox class="example-margin" formControlName="abueloP"></mat-checkbox>
+                </div>
+                <div class="col-2">
+                    <mat-checkbox class="example-margin" formControlName="hermanosP"></mat-checkbox>
+                </div>
+                <div class="col-2">
+                    <mat-checkbox class="example-margin" formControlName="otrosP"></mat-checkbox>
+                </div>
+            </div>
+        </form>
+        <form [formGroup]="hepatitisForm">
+            <div class="grid"><!--fila de checks para padre-->
+                <div class="col-2 colorRowCheckbox">
+                    <mat-checkbox class="example-margin" formControlName="padre"></mat-checkbox>
+                </div>
+                <div class="col-2 colorRowCheckbox">
+                    <mat-checkbox class="example-margin" formControlName="abuelaP"></mat-checkbox>
+                </div>
+                <div class="col-2 colorRowCheckbox">
+                    <mat-checkbox class="example-margin" formControlName="abueloP"></mat-checkbox>
+                </div>
+                <div class="col-2 colorRowCheckbox">
+                    <mat-checkbox class="example-margin" formControlName="hermanosP"></mat-checkbox>
+                </div>
+                <div class="col-2 colorRowCheckbox">
+                    <mat-checkbox class="example-margin" formControlName="otrosP"></mat-checkbox>
+                </div>
+            </div>
+        </form>
+        <form [formGroup]="artritisForm">
+            <div class="grid"><!--fila de checks para padre-->
+                <div class="col-2">
+                    <mat-checkbox class="example-margin" formControlName="padre"></mat-checkbox>
+                </div>
+                <div class="col-2">
+                    <mat-checkbox class="example-margin" formControlName="abuelaP"></mat-checkbox>
+                </div>
+                <div class="col-2">
+                    <mat-checkbox class="example-margin" formControlName="abueloP"></mat-checkbox>
+                </div>
+                <div class="col-2">
+                    <mat-checkbox class="example-margin" formControlName="hermanosP"></mat-checkbox>
+                </div>
+                <div class="col-2">
+                    <mat-checkbox class="example-margin" formControlName="otrosP"></mat-checkbox>
+                </div>
+            </div>
+        </form>
+        <form [formGroup]="otraForm">
+            <div class="grid"><!--fila de checks para padre-->
+                <div class="col-2 colorRowCheckbox">
+                    <mat-checkbox class="example-margin" formControlName="padre"></mat-checkbox>
+                </div>
+                <div class="col-2 colorRowCheckbox">
+                    <mat-checkbox class="example-margin" formControlName="abuelaP"></mat-checkbox>
+                </div>
+                <div class="col-2 colorRowCheckbox">
+                    <mat-checkbox class="example-margin" formControlName="abueloP"></mat-checkbox>
+                </div>
+                <div class="col-2 colorRowCheckbox">
+                    <mat-checkbox class="example-margin" formControlName="hermanosP"></mat-checkbox>
+                </div>
+                <div class="col-2 colorRowCheckbox">
+                    <mat-checkbox class="example-margin" formControlName="otrosP"></mat-checkbox>
+                </div>
+            </div>
+        </form>
+        <form [formGroup]="aparentementeSForm">
+            <div class="grid"><!--fila de checks para padre-->
+                <div class="col-2">
+                    <mat-checkbox class="example-margin" formControlName="padre"></mat-checkbox>
+                </div>
+                <div class="col-2">
+                    <mat-checkbox class="example-margin" formControlName="abuelaP"></mat-checkbox>
+                </div>
+                <div class="col-2">
+                    <mat-checkbox class="example-margin" formControlName="abueloP"></mat-checkbox>
+                </div>
+                <div class="col-2">
+                    <mat-checkbox class="example-margin" formControlName="hermanosP"></mat-checkbox>
+                </div>
+                <div class="col-2">
+                    <mat-checkbox class="example-margin" formControlName="otrosP"></mat-checkbox>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!--<div class="grid">
+    <div class="col-10">
+        <form [formGroup]="observacionesForm">
+            <mat-form-field class="ancho">
+                <mat-label>Observaciones</mat-label>
+                <textarea matInput formControlName="observacionesPatologias"></textarea>
+            </mat-form-field>
+        </form>
+    </div>
+</div>-->
+<!--=============================================GUARDADO======================================-->
+
+<div class="grid" *ngIf="!edit else updateAntecedentesFyHBlock">
+<div class="col-offset-8"></div>
+<div class="col-4" *ngIf="completadoAntecedentesFyH == false">
+    <button [disabled]="completadoAntecedentesFyH" mat-flat-button
+    (click)="saveAntecedentesFyH()">Guardar</button>
+</div>
+<div class="col-4" *ngIf="completadoAntecedentesFyH == true">
+    <button [disabled]="completadoAntecedentesFyH" mat-flat-button 
+    >Informacion guardada</button>
+</div>
+</div>
+<!--=============================================ACTUALIZADO======================================-->
+<ng-template #updateAntecedentesFyHBlock>
+<div class="grid">
+    <div class="col-offset-8"></div>
+    <div class="col-4" *ngIf="completadoAntecedentesFyH == false">
+        <button [disabled]="completadoAntecedentesFyH" mat-flat-button
+        (click)="updateAntecedentesFyH()" class="oculto-impresion">Actualizar</button>
+    </div>
+    <div class="col-4" *ngIf="completadoAntecedentesFyH == true">
+        <button [disabled]="completadoAntecedentesFyH" mat-flat-button 
+        >Informacion guardada</button>
+    </div>
+</div>
+</ng-template>

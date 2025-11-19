@@ -1,0 +1,92 @@
+<div class="grid">
+    <div class="col-offset-3"></div>
+    <div class="col-7">
+        <h1 style="text-align: center;">Historia Clínica Odontología</h1>
+    </div>
+</div>
+
+<div class="grid">
+    <div class="col-12">
+        <app-menu></app-menu>
+    </div>
+</div>
+<button (click)="showDatosGenerales()">Mostrar</button>
+<div class="grid">
+    <div class="col-12">
+    <mat-stepper #stepper>
+        <mat-step>
+          <ng-template matStepLabel>Datos Generales</ng-template>
+            <app-new-datos-generales 
+                (eventDatosGenerales)="getDatosGenerales($event)">
+            </app-new-datos-generales>    
+        </mat-step>
+        <mat-step *ngIf="pacienteId != 0 && pacienteId != undefined">
+            <ng-template matStepLabel>Antecedentes Familiares y Hereditarios</ng-template>
+                <app-new-antecedentes-fy-h
+                    [datosGenerales] ="datosGenerales"
+                    [paciente] ="paciente"
+                ></app-new-antecedentes-fy-h>
+        </mat-step>
+        <mat-step *ngIf="pacienteId != 0 && pacienteId != undefined">
+          <ng-template matStepLabel>Antecedentes Personales y Patologicos</ng-template>
+            <app-new-antecedentes-py-p
+                [datosGenerales] = "datosGenerales"
+            ></app-new-antecedentes-py-p>
+        </mat-step>
+        <mat-step *ngIf="pacienteId != 0 && pacienteId != undefined">
+            <ng-template matStepLabel>Antecedentes Personales "NO" Patológicos</ng-template>
+              <app-new-antecedentes-pno-p
+                [datosGenerales] = "datosGenerales"
+              ></app-new-antecedentes-pno-p>
+        </mat-step>
+        <mat-step *ngIf="pacienteId != 0 && pacienteId != undefined">
+            <ng-template matStepLabel>Padecimientos Actuales</ng-template>
+                <app-new-padecimientos
+                    [datosGenerales] = "datosGenerales"
+                ></app-new-padecimientos>
+        </mat-step>
+        <mat-step *ngIf="pacienteId != 0 && pacienteId != undefined">
+              <ng-template matStepLabel>Análisis Facial</ng-template><!--aqui se comenzo a realizar sin pruebas-->
+                <app-new-analisis-facial
+                    [datosGenerales] = "datosGenerales"
+                ></app-new-analisis-facial>
+        </mat-step>
+        <mat-step *ngIf="pacienteId != 0 && pacienteId != undefined">
+              <ng-template matStepLabel>Análisis Funcional</ng-template>
+              <app-new-analisis-funcional
+                [datosGenerales] = "datosGenerales"
+              ></app-new-analisis-funcional>
+        </mat-step>
+        <mat-step *ngIf="pacienteId != 0 && pacienteId != undefined && edad >= 18 else infantilBlock">
+            <ng-template matStepLabel>Evaluación Clínica Adulto</ng-template>
+            <app-new-evaluacion-clinica
+                [datosGenerales] = "datosGenerales"
+                [paciente] ="paciente"
+            ></app-new-evaluacion-clinica>
+        </mat-step>
+        <ng-template #infantilBlock>
+            <mat-step *ngIf="pacienteId != 0 && pacienteId != undefined && edad < 18">
+                <ng-template matStepLabel>Evaluación Clínica Infantil</ng-template>
+                <app-new-evaluacion-clinica-infantil
+                    [datosGenerales] = "datosGenerales"
+                    [paciente] ="paciente"
+                ></app-new-evaluacion-clinica-infantil>
+            </mat-step>
+        </ng-template>
+        <mat-step *ngIf="pacienteId != 0 && pacienteId != undefined">
+            <ng-template matStepLabel>Consentimiento Informado</ng-template>
+                <app-new-consentimiento
+                    [datosGenerales] = "datosGenerales"
+                ></app-new-consentimiento>
+        </mat-step>
+        <mat-step  *ngIf="pacienteId != 0 && pacienteId != undefined">
+                <ng-template matStepLabel>Pagos</ng-template>
+                <app-new-pagos
+                    [datosGenerales] = "datosGenerales"
+                    [paciente] ="paciente"
+                    [sexo] ="sexo"
+                ></app-new-pagos>
+        </mat-step>
+      </mat-stepper>
+    </div>
+</div>

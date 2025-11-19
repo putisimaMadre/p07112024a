@@ -1,0 +1,79 @@
+<form [formGroup]="consentimientoInformadoForm">
+    <div class="grid">
+        <div class="col-offset-1 oculto-impresion"></div>
+        <div class="col-4 oculto-impresion">
+            
+            <!--<mat-form-field class="col-8">
+                <mat-label>Seleccione el Odontólogo</mat-label>
+                <mat-select [value]="concentimientoInformado?.odontologo" [formControl]="odontologoControl" required>
+                <mat-option>--</mat-option>
+                @for (odontologo of odontologos; track odontologo) {
+                    <mat-option [value]="odontologo">{{odontologo.valor}}</mat-option>
+                }
+                </mat-select>
+            </mat-form-field>-->
+            <mat-form-field class="col-4">
+                <mat-label>Odontologo</mat-label>
+                <mat-select disableRipple [value]="concentimientoInformado?.odontologo" formControlName="odontologo">
+                    <mat-option value="Etbaal Corona">Etbaal Corona</mat-option>
+                    <mat-option value="Rosa Martinez">Rosa Martinez</mat-option>
+                    <mat-option value="Araceli Gomez">Araceli Gomez</mat-option>
+                </mat-select>
+            </mat-form-field>
+            
+        </div>
+        <div class="col-7">
+            <p style="text-align: justify;">Yo, 
+                <mat-form-field class="col-4">
+                    <b><input matInput type="text" [value]="concentimientoInformado?.nombrePersona" formControlName="nombrePersona"></b>
+                </mat-form-field>
+            por medio del presente documento o en mi calidad del representante legal del paciente
+            en pleno y normal uso de mis facultades mentales, otorgo en forma libre mi consentimiento al Odontólogo 
+            <b>{{concentimientoInformado?.odontologo}}</b> así como de los auxiliares y técnicos en el ejercicio
+            legal de su profesión, se me realice el siguiente tratamiento estipulado por escrito en este documento.
+
+            Así mismo quedan autorizados para llevar a cabo o solicitar la práctica de conductas o procedimientos 
+            odontológicos adicionales a los ya autorizados en el punto anterior, cuando el resultado del tratamiento
+            así lo requiera.
+
+            Como paciente o representante legal, declaro que conozco y comprendo en su totalidad la explicación antes
+            dada y la posibilidad de que estos eventos se presenten en el desarrollo del curso del tratamiento y/o 
+            post-operatorio y acepto todos los riesgos que conlleva dichos tratamientos a realizar.
+
+            Acepto que la odontología no es una ciencia exacta y que con intervención autorizada se buscará la
+            utilización de los medios idóneos para el caso y que los resultados no dependen exclusivamente del 
+            Odontólogo.
+
+            He recibido claras instrucciones en el sentido de que el consentimiento que otorgo mediante este documento
+            puede ser revisado o dejado sin efecto por la simple decisión del suscrito, tomada antes de la intervención
+            o realización del tratamiento.
+            </p>
+        </div>
+    </div>
+    <!--=============================================GUARDADO======================================-->
+    <div class="grid" *ngIf="!edit else concentimientoIBlock">
+        <div class="col-offset-8"></div>
+        <div class="col-4" *ngIf="completadoConsentimientoInformado == false">
+            <button [disabled]="completadoConsentimientoInformado" mat-flat-button
+            (click)="saveConsentimientoInformado()">Guardar</button>
+        </div>
+        <div class="col-4" *ngIf="completadoConsentimientoInformado == true">
+            <button [disabled]="completadoConsentimientoInformado" mat-flat-button 
+            >Informacion guardada</button>
+        </div>
+    </div>
+    <!--=============================================ACTUALIZADO======================================-->
+    <ng-template #concentimientoIBlock>
+        <div class="grid">
+            <div class="col-offset-8"></div>
+            <div class="col-4" *ngIf="completadoConsentimientoInformado == false">
+                <button [disabled]="completadoConsentimientoInformado" mat-flat-button
+                (click)="updateAnalisisFacial()" class="oculto-impresion">Actualizar</button>
+            </div>
+            <div class="col-4" *ngIf="completadoConsentimientoInformado == true">
+                <button [disabled]="completadoConsentimientoInformado" mat-flat-button 
+                >Informacion guardada</button>
+            </div>
+        </div>
+    </ng-template>
+    </form>

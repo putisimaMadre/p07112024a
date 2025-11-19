@@ -1,0 +1,20 @@
+.paddingTitulosPyP{
+    display: block; 
+    padding-top: .6rem; 
+    padding-bottom: .7rem; 
+    margin-top: .9rem
+}
+
+.paddingSlide{
+    padding-top: 1rem;
+}
+
+.altoRowSinoFecha{
+    height: 5rem;
+}
+
+@media print{
+    .oculto-impresion {
+      display: none !important;
+    }
+}

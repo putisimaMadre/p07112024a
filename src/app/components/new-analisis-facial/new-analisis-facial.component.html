@@ -1,0 +1,162 @@
+<form [formGroup]="analisisFacialForm">
+    <div class="grid">
+        <div class="col-offset-1"></div>
+        <div class="col-3">
+            <mat-label><b><i>Patrón Facial:</i></b></mat-label>
+        </div>
+        <div class="col-8">
+            <mat-radio-group aria-label="Select an option" formControlName="patronFacial">
+                <div class="grid">
+                    <mat-radio-button class="col-4" value={{patronFacialArray[0]}} [checked]="analisisFacialArrayBool[0]">Mesofacial</mat-radio-button>
+                    <mat-radio-button class="col-4" value={{patronFacialArray[1]}} [checked]="analisisFacialArrayBool[1]">Dólico Facial</mat-radio-button>
+                    <mat-radio-button class="col-4" value={{patronFacialArray[2]}} [checked]="analisisFacialArrayBool[2]">Branquifacial</mat-radio-button>
+                </div>
+            </mat-radio-group>
+        </div>
+    </div>
+    <div class="grid">
+        <div class="col-offset-1"></div>
+        <div class="col-3">
+            <mat-label><b><i>Perfil:</i></b></mat-label>
+        </div>
+        <div class="col-8">
+            <mat-radio-group aria-label="Select an option" formControlName="perfil">
+                <div class="grid">
+                <mat-radio-button class="col-4" value={{perfilArray[0]}} [checked]="perfilArrayBool[0]">Recto</mat-radio-button>
+                <mat-radio-button class="col-4" value={{perfilArray[1]}} [checked]="perfilArrayBool[1]">Cóncavo</mat-radio-button>
+                <mat-radio-button class="col-4" value={{perfilArray[2]}} [checked]="perfilArrayBool[2]">Convexo</mat-radio-button>
+            </div>
+            </mat-radio-group>
+        </div>
+    </div>
+    <div class="grid">
+        <div class="col-offset-1"></div>
+        <div class="col-3">
+            <mat-label><b><i>Asimetría:</i></b></mat-label>
+        </div>
+        <div class="col-8">
+        <mat-radio-group aria-label="Select an option" formControlName="asimetria">
+            <div class="grid">
+            <mat-radio-button class="col-4" value={{asimetriaArray[0]}} [checked]="asimetriaArrayBool[0]">Mand. Derecha</mat-radio-button>
+            <mat-radio-button class="col-4" value={{asimetriaArray[1]}} [checked]="asimetriaArrayBool[1]">Mand. Izquierda</mat-radio-button>
+            <mat-radio-button class="col-4" value={{asimetriaArray[2]}} [checked]="asimetriaArrayBool[2]">Otras</mat-radio-button>
+            </div>
+        </mat-radio-group>
+        </div>
+    </div>
+    <div class="grid">
+        <div class="col-offset-1"></div>
+        <div class="col-3">
+            <mat-label><b><i>Altura Facial: Equilibrada</i></b></mat-label>
+        </div>
+        <div class="col-8">
+        <mat-radio-group aria-label="Select an option" formControlName="alturaFE">
+            <div class="grid">
+            <mat-radio-button class="col-4" value={{alturaFacialEquilibradaArray[0]}} [checked]="alturaFacialEquilibradaArrayBool[0]">Equilibrada</mat-radio-button>
+            <mat-radio-button class="col-4" value={{alturaFacialEquilibradaArray[1]}} [checked]="alturaFacialEquilibradaArrayBool[1]">Larga</mat-radio-button>
+            <mat-radio-button class="col-4" value={{alturaFacialEquilibradaArray[2]}} [checked]="alturaFacialEquilibradaArrayBool[2]">Corta</mat-radio-button>
+            </div>
+        </mat-radio-group>
+        </div>
+    </div>
+    <div class="grid">
+        <div class="col-offset-1"></div>
+        <div class="col-3">
+            <mat-label><b><i>Ancho Facial: Equilibrada</i></b></mat-label>
+        </div>
+        <div class="col-8">
+        <mat-radio-group aria-label="Select an option" formControlName="anchuraFE">
+            <div class="grid">
+            <mat-radio-button class="col-4" value={{anchoFacialEquilibradaArray[0]}} [checked]="anchoFacialEquilibradaArrayBool[0]">Equilibrada</mat-radio-button>
+            <mat-radio-button class="col-4" value={{anchoFacialEquilibradaArray[1]}} [checked]="anchoFacialEquilibradaArrayBool[1]">Estrecho</mat-radio-button>
+            <mat-radio-button class="col-4" value={{anchoFacialEquilibradaArray[2]}} [checked]="anchoFacialEquilibradaArrayBool[2]">Amplio</mat-radio-button>
+            </div>
+        </mat-radio-group>
+        </div>
+    </div>
+    <div class="grid">
+        <div class="col-offset-1"></div>
+        <div class="col-3">
+            <mat-label><b><i>Perfil Maxilar</i></b></mat-label>
+        </div>
+        <div class="col-8">
+        <mat-radio-group aria-label="Select an option" formControlName="perfilMaxilar">
+            <div class="grid">
+            <mat-radio-button class="col-4" value={{perfilMaxilarArray[0]}} [checked]="perfilMaxilarArrayBool[0]">Ortognático</mat-radio-button>
+            <mat-radio-button class="col-4" value={{perfilMaxilarArray[1]}} [checked]="perfilMaxilarArrayBool[1]">Prognático</mat-radio-button>
+            <mat-radio-button class="col-4" value={{perfilMaxilarArray[2]}} [checked]="perfilMaxilarArrayBool[2]">Retrognático</mat-radio-button>
+            </div>
+        </mat-radio-group>
+        </div>
+    </div>
+    <div class="grid">
+        <div class="col-offset-1"></div>
+        <div class="col-3">
+            <mat-label><b><i>Perfil Mandibular</i></b></mat-label>
+        </div>
+        <div class="col-8">
+        <mat-radio-group aria-label="Select an option" formControlName="perfilMandibular">
+            <div class="grid">
+            <mat-radio-button class="col-4" value={{perfilMandibularArray[0]}} [checked]="perfilMandibularArrayBool[0]">Ortognático</mat-radio-button>
+            <mat-radio-button class="col-4" value={{perfilMandibularArray[1]}} [checked]="perfilMandibularArrayBool[1]">Prognático</mat-radio-button>
+            <mat-radio-button class="col-4" value={{perfilMandibularArray[2]}} [checked]="perfilMandibularArrayBool[2]">Retrognático</mat-radio-button>
+            </div>
+        </mat-radio-group>
+        </div>
+    </div>
+    <div class="grid">
+        <div class="col-offset-1"></div>
+        <div class="col-3">
+            <mat-label><b><i>Surco Labio-Mentón</i></b></mat-label>
+        </div>
+        <div class="col-8">
+        <mat-radio-group aria-label="Select an option" formControlName="surcoLM">
+            <div class="grid">
+            <mat-radio-button class="col-4" value={{surcoLabioMentonArray[0]}} [checked]="surcoLabioMentonArrayBool[0]">Normal</mat-radio-button>
+            <mat-radio-button class="col-4" value={{surcoLabioMentonArray[1]}} [checked]="surcoLabioMentonArrayBool[1]">Marcado</mat-radio-button>
+            <mat-radio-button class="col-4" value={{surcoLabioMentonArray[2]}} [checked]="surcoLabioMentonArrayBool[2]">Borrador</mat-radio-button>
+            </div>
+        </mat-radio-group>
+        </div>
+    </div>
+    <div class="grid">
+        <div class="col-offset-1"></div>
+        <div class="col-3">
+            <mat-label><b><i>Labios en Reposo</i></b></mat-label>
+        </div>
+        <div class="col-8">
+        <mat-radio-group aria-label="Select an option" formControlName="labiosEr">
+            <div class="grid">
+            <mat-radio-button class="col-4" value={{labiosReposoArray[0]}} [checked]="labiosReposoArrayBool[0]">Competentes</mat-radio-button>
+            <mat-radio-button class="col-4" value={{labiosReposoArray[1]}} [checked]="labiosReposoArrayBool[1]">Incompetentes</mat-radio-button>
+            </div>
+        </mat-radio-group>
+        </div>
+    </div>
+    <!--=============================================GUARDADO======================================-->
+    <div class="grid" *ngIf="!edit else analisisFacialBlock">
+        <div class="col-offset-8"></div>
+        <div class="col-4" *ngIf="completadoAnalisisFacial == false">
+            <button [disabled]="completadoAnalisisFacial" mat-flat-button
+            (click)="saveAnalisisFacial()">Guardar</button>
+        </div>
+        <div class="col-4" *ngIf="completadoAnalisisFacial == true">
+            <button [disabled]="completadoAnalisisFacial" mat-flat-button 
+            >Informacion guardada</button>
+        </div>
+    </div>
+    <!--=============================================ACTUALIZADO======================================-->
+<ng-template #analisisFacialBlock>
+    <div class="grid">
+        <div class="col-offset-8"></div>
+        <div class="col-4" *ngIf="completadoAnalisisFacial == false">
+            <button [disabled]="completadoAnalisisFacial" mat-flat-button
+            (click)="updateAnalisisFacial()" class="oculto-impresion">Actualizar</button>
+        </div>
+        <div class="col-4" *ngIf="completadoAnalisisFacial == true">
+            <button [disabled]="completadoAnalisisFacial" mat-flat-button 
+            >Informacion guardada</button>
+        </div>
+    </div>
+</ng-template>
+</form>

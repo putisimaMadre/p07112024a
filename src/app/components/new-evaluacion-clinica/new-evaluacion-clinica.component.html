@@ -1,0 +1,108 @@
+<form [formGroup]="evaluacionClinicaForm">
+    <div class="grid">
+        <div class="col-offset-1"></div>
+        <div class="col-3">
+            <mat-list>
+                <mat-list-item><i><b>Nombre del paciente: {{paciente}}</b></i></mat-list-item>
+                <mat-divider></mat-divider>
+            </mat-list>
+            </div>
+    </div>
+    <div class="grid">
+        <div class="col-offset-1"></div>
+        <div class="col-3">
+            <mat-list>
+                <mat-list-item><i><b>Motivo de la consulta: </b></i></mat-list-item>
+                <mat-divider></mat-divider>
+                
+            </mat-list>
+            <mat-form-field class="col-12">
+                <mat-label>Escriba aqui el texto</mat-label>
+                <textarea matInput
+                            cdkTextareaAutosize
+                            #autosize="cdkTextareaAutosize"
+                            cdkAutosizeMinRows="1"
+                            cdkAutosizeMaxRows="5" formControlName="motivo"></textarea>
+                </mat-form-field>
+            </div>
+        </div>
+    <div class="grid">
+        <div class="col-offset-1"></div>
+        <div class="col-10">
+            <mat-card class="example-card" appearance="outlined">
+                <mat-card-header>
+                    <div mat-card-avatar class="example-header-image"></div>
+                    <mat-card-title></mat-card-title>
+                    <mat-card-subtitle></mat-card-subtitle>
+                </mat-card-header>
+                <img mat-card-image src="/odontograma-imagen.png">
+                <mat-card-content>
+                <!---->  
+                </mat-card-content>
+                <mat-card-actions>
+                    <!---->
+                </mat-card-actions>
+                </mat-card>
+        </div>
+    </div>
+    <div class="grid">
+        <div class="col-offset-1"></div>
+    <div class="col-4">
+        <mat-list>
+            <mat-list-item><i><b>Observaciones: </b></i></mat-list-item>
+            <mat-divider></mat-divider>
+            
+        </mat-list>
+        <mat-form-field class="col-12">
+            <mat-label>Escriba aqui el texto</mat-label>
+            <textarea matInput
+                        cdkTextareaAutosize
+                        #autosize="cdkTextareaAutosize"
+                        cdkAutosizeMinRows="1"
+                        cdkAutosizeMaxRows="5" formControlName="observaciones"></textarea>
+            </mat-form-field>
+        </div>
+        <div class="col-offset-1"></div>
+        <div class="col-5">
+            <mat-list>
+                <mat-list-item><i><b>Exploración: </b></i></mat-list-item>
+                <mat-divider></mat-divider>
+                
+            </mat-list>
+            <mat-form-field class="col-12">
+                <mat-label>Escriba aqui el texto</mat-label>
+                <textarea matInput
+                            cdkTextareaAutosize
+                            #autosize="cdkTextareaAutosize"
+                            cdkAutosizeMinRows="1"
+                            cdkAutosizeMaxRows="5" formControlName="exploracion"></textarea>
+                </mat-form-field>
+            </div>
+    </div>
+    <!--=============================================GUARDADO======================================-->
+    <div class="grid" *ngIf="!edit else evaluacionClinicaBlock">
+    <div class="col-offset-8"></div>
+    <div class="col-4" *ngIf="completadoEvaluacionClinica == false">
+        <button [disabled]="completadoEvaluacionClinica" mat-flat-button
+        (click)="saveEvaluacionClinica()">Guardar</button>
+    </div>
+    <div class="col-4" *ngIf="completadoEvaluacionClinica == true">
+        <button [disabled]="completadoEvaluacionClinica" mat-flat-button 
+        >Informacion guardada</button>
+    </div>
+</div>
+        <!--=============================================ACTUALIZADO======================================-->
+        <ng-template #evaluacionClinicaBlock>
+            <div class="grid">
+                <div class="col-offset-8"></div>
+                <div class="col-4" *ngIf="completadoEvaluacionClinica == false">
+                    <button [disabled]="completadoEvaluacionClinica" mat-flat-button
+                    (click)="updateEvaluacionClinica()" class="oculto-impresion">Actualizar</button>
+                </div>
+                <div class="col-4" *ngIf="completadoEvaluacionClinica == true">
+                    <button [disabled]="completadoEvaluacionClinica" mat-flat-button 
+                    >Informacion guardada</button>
+                </div>
+            </div>
+        </ng-template>
+    </form>
